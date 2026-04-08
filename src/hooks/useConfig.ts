@@ -44,6 +44,8 @@ export function useConfig() {
           await setDoc(docRef, defaultSiteConfig);
           setConfigState(defaultSiteConfig);
         }
+        // Sécurité : débloquer le loading après le déclenchement de la migration
+        setTimeout(() => setConfigLoading(false), 2000);
       }
       setConfigLoading(false);
     }, (error) => {

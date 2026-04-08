@@ -42,6 +42,7 @@ export function useArticles() {
             await setDoc(doc(db, ARTICLES_COLLECTION, article.id), article);
           }
         }
+        setTimeout(() => setArticlesLoading(false), 2000);
         return;
       }
 
