@@ -36,7 +36,7 @@ export default function ShopPage() {
       results = results.filter((a) => a.categorie === activeCategory);
     }
     if (activeStone) {
-      results = results.filter((a) => a.pierres.includes(activeStone as Stone));
+      results = results.filter((a) => a.pierres?.includes(activeStone as Stone));
     }
 
     return results;
@@ -147,7 +147,7 @@ export default function ShopPage() {
                 className="product-card reveal-item"
               >
                 <div className="product-card__image">
-                  {article.photos.length > 0 ? (
+                  {article.photos && article.photos.length > 0 ? (
                     <img src={article.photos[0]} alt={article.titre} />
                   ) : (
                     <div className="product-card__placeholder">
@@ -170,7 +170,7 @@ export default function ShopPage() {
                       {formatPrice(article.prix)}
                     </span>
                     <div className="product-card__stones">
-                      {article.pierres.slice(0, 2).map((p) => (
+                      {article.pierres?.slice(0, 2).map((p) => (
                         <span key={p} className="badge badge--gold">{p}</span>
                       ))}
                     </div>

@@ -45,10 +45,15 @@ export function useArticles() {
         return;
       }
 
-      const updatedArticles = snapshot.docs.map(docSnap => ({
-        id: docSnap.id,
-        ...docSnap.data()
-      })) as Article[];
+      const updatedArticles = snapshot.docs.map(docSnap => {
+        const data = docSnap.data();
+        return {
+          id: docSnap.id,
+          ...data,
+          pierres: data.pierres || [], 
+          photos: data.photos || []
+        };
+      }) as Article[];
 
       updatedArticles.sort((a, b) => new Date(b.dateCreation).getTime() - new Date(a.dateCreation).getTime());
 

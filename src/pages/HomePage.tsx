@@ -91,7 +91,7 @@ export default function HomePage() {
                 className="product-card reveal-item"
               >
                 <div className="product-card__image">
-                  {article.photos.length > 0 ? (
+                  {article.photos && article.photos.length > 0 ? (
                     <img src={article.photos[0]} alt={article.titre} />
                   ) : (
                     <div className="product-card__placeholder">
@@ -112,7 +112,7 @@ export default function HomePage() {
                       {formatPrice(article.prix)}
                     </span>
                     <div className="product-card__stones">
-                      {article.pierres.map((pierre) => (
+                      {article.pierres?.map((pierre) => (
                         <span key={pierre} className="badge badge--gold">
                           {pierre}
                         </span>
