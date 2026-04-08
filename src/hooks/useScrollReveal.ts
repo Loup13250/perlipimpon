@@ -58,28 +58,22 @@ export function useScrollRevealGroup(
     const container = containerRef.current;
     if (!container) return;
 
-    let items: NodeListOf<Element>;
-    let observer: IntersectionObserver;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            if (once) observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold, rootMargin }
+    );
 
-    const setupObserver = () => {
-      items = container.querySelectorAll('.reveal-item');
-      if (!items.length) return;
-
-      observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('revealed');
-              if (once) observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold, rootMargin }
-      );
-
+    const scanAndObserve = () => {
+      const items = container.querySelectorAll('.reveal-item:not(.revealed)');
       items.forEach((item) => {
         const rect = item.getBoundingClientRect();
-        // Si l'élément est déjà visible ou au-dessus du fold, on le montre tout de suite
         if (rect.top < window.innerHeight) {
           item.classList.add('revealed');
         } else {
@@ -88,15 +82,12 @@ export function useScrollRevealGroup(
       });
     };
 
-    // Premier scan immédiat
-    setupObserver();
-
-    // Re-scan après 500ms au cas où le rendu async a pris du temps
-    const timer = setTimeout(setupObserver, 500);
+    scanAndObserve();
+    const timer = setTimeout(scanAndObserve, 500);
 
     return () => {
       clearTimeout(timer);
-      if (observer) observer.disconnect();
+      observer.disconnect();
     };
   }, [threshold, rootMargin, once, ...dependencies]);
 

@@ -68,8 +68,8 @@ export function useArticles() {
     return unsubscribe;
   }, []);
 
-  const visibleArticles = articles;
-  const featuredArticles = visibleArticles.filter((a) => a.enVedette);
+  const visibleArticles = useMemo(() => articles, [articles]);
+  const featuredArticles = useMemo(() => articles.filter((a) => a.enVedette), [articles]);
 
   const getArticle = useCallback(
     (id: string): Article | undefined => {
