@@ -341,6 +341,7 @@
 .gallery__thumbs {
   display: flex;
   gap: var(--space-sm);
+  flex-wrap: wrap; /* Permettre le passage à la ligne sur mobile */
 }
 
 .gallery__thumb {
@@ -352,6 +353,13 @@
   border: 2px solid transparent;
   transition: border-color var(--transition-fast);
   flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .gallery__thumb {
+    width: 60px; /* Plus petit sur très petit mobile */
+    height: 60px;
+  }
 }
 
 .gallery__thumb.active,

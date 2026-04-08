@@ -11,6 +11,7 @@
 .product-breadcrumb {
   display: flex;
   align-items: center;
+  flex-wrap: wrap; /* Permettre le passage à la ligne si titre trop long */
   gap: var(--space-sm);
   font-size: var(--text-sm);
   color: var(--color-gray-500);
@@ -158,5 +159,13 @@
 
   .product-info h1 {
     font-size: var(--text-3xl);
+  }
+
+  .product-info__detail-label {
+    min-width: 80px; /* Plus petit sur mobile */
+  }
+
+  .product-breadcrumb {
+    margin-bottom: var(--space-lg);
   }
 }

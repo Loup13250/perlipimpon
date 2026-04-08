@@ -34,6 +34,7 @@
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--space-xl);
+  overflow: hidden; /* Sécurité anti-débordement */
 }
 
 /* Logo / Marque */
@@ -41,6 +42,8 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .header-brand h1 {
@@ -292,5 +295,11 @@
     flex-direction: column;
     gap: var(--space-md);
     text-align: center;
+    padding-bottom: var(--space-lg);
+  }
+
+  .site-header {
+    width: 100%;
+    overflow: hidden;
   }
 }

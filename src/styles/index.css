@@ -94,6 +94,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
@@ -103,6 +104,7 @@ body {
   color: var(--color-black);
   background-color: var(--color-cream);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -266,5 +268,9 @@ input, textarea, select {
     --text-5xl: 2rem;
     --text-4xl: 1.75rem;
     --text-3xl: 1.25rem;
+  }
+
+  .container {
+    padding: 0 var(--space-sm);
   }
 }
