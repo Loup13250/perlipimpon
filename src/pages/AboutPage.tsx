@@ -27,9 +27,9 @@ const values = [
 // Le processus de création est dynamique depuis la config (processSteps)
 
 export default function AboutPage() {
-  const valuesRef = useScrollRevealGroup();
-  const processRef = useScrollRevealGroup();
   const { config, configLoading } = useConfig();
+  const valuesRef = useScrollRevealGroup();
+  const processRef = useScrollRevealGroup({}, [config.processSteps]);
 
   if (configLoading) {
     return (

@@ -13,9 +13,9 @@ import { formatPrice, truncateText } from '../utils/helpers';
 export default function HomePage() {
   const { featuredArticles, articlesLoading } = useArticles();
   const { config, configLoading } = useConfig();
-  const featuredRef = useScrollRevealGroup();
-  const categoriesRef = useScrollRevealGroup();
-  const testimonialsRef = useScrollRevealGroup();
+  const featuredRef = useScrollRevealGroup({}, [featuredArticles]);
+  const categoriesRef = useScrollRevealGroup({}, [config.categories]);
+  const testimonialsRef = useScrollRevealGroup({}, [config.testimonials]);
 
   if (configLoading || articlesLoading) {
     return (

@@ -58,12 +58,14 @@ export function useScrollRevealGroup(
     const container = containerRef.current;
     if (!container) return;
 
-    // Petit délai pour laisser le DOM se mettre à jour après le rendu Firebase
-    const timer = setTimeout(() => {
-      const items = container.querySelectorAll('.reveal-item');
+    let items: NodeListOf<Element>;
+    let observer: IntersectionObserver;
+
+    const setupObserver = () => {
+      items = container.querySelectorAll('.reveal-item');
       if (!items.length) return;
 
-      const observer = new IntersectionObserver(
+      observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -76,19 +78,26 @@ export function useScrollRevealGroup(
       );
 
       items.forEach((item) => {
-        // Si l'élément est déjà dans le viewport, le révéler immédiatement
         const rect = item.getBoundingClientRect();
+        // Si l'élément est déjà visible ou au-dessus du fold, on le montre tout de suite
         if (rect.top < window.innerHeight) {
           item.classList.add('revealed');
         } else {
           observer.observe(item);
         }
       });
+    };
 
-      return () => observer.disconnect();
-    }, 100);
+    // Premier scan immédiat
+    setupObserver();
 
-    return () => clearTimeout(timer);
+    // Re-scan après 500ms au cas où le rendu async a pris du temps
+    const timer = setTimeout(setupObserver, 500);
+
+    return () => {
+      clearTimeout(timer);
+      if (observer) observer.disconnect();
+    };
   }, [threshold, rootMargin, once, ...dependencies]);
 
   return containerRef;
