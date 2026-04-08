@@ -58,23 +58,37 @@ export function useScrollRevealGroup(
     const container = containerRef.current;
     if (!container) return;
 
-    const items = container.querySelectorAll('.reveal-item');
+    // Petit délai pour laisser le DOM se mettre à jour après le rendu Firebase
+    const timer = setTimeout(() => {
+      const items = container.querySelectorAll('.reveal-item');
+      if (!items.length) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            if (once) observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold, rootMargin }
-    );
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              if (once) observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold, rootMargin }
+      );
 
-    items.forEach((item) => observer.observe(item));
+      items.forEach((item) => {
+        // Si l'élément est déjà dans le viewport, le révéler immédiatement
+        const rect = item.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          item.classList.add('revealed');
+        } else {
+          observer.observe(item);
+        }
+      });
 
-    return () => observer.disconnect();
+      return () => observer.disconnect();
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [threshold, rootMargin, once, ...dependencies]);
 
   return containerRef;

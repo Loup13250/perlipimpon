@@ -10,9 +10,22 @@ import { formatPrice, formatDate } from '../utils/helpers';
 
 export default function ProductDetailPage() {
   const { id } = useParams<{ id: string }>();
-  const { getArticle } = useArticles();
+  const { getArticle, articlesLoading } = useArticles();
   const article = id ? getArticle(id) : undefined;
   const [activePhoto, setActivePhoto] = useState(0);
+
+  // Chargement Firebase en cours — on attend avant d'afficher "introuvable"
+  if (articlesLoading) {
+    return (
+      <div className="product-page">
+        <div className="container">
+          <div className="product-not-found">
+            <p style={{ color: 'var(--color-gold)' }}>Chargement de la création...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   // Article non trouvé
   if (!article) {
