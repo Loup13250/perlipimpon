@@ -89,7 +89,7 @@ export function useScrollRevealGroup(
       clearTimeout(t);
       if (observer) observer.disconnect();
     };
-  }, [threshold, rootMargin, once, ...dependencies]);
+  }, [threshold, rootMargin, once, dependencies]);
 
   return containerRef;
 }

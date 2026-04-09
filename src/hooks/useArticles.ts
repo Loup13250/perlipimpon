@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import type { Article, ArticleFormData } from '../types';
 import { db } from '../lib/firebase';
 import { collection, doc, onSnapshot, setDoc, deleteDoc, updateDoc, query } from 'firebase/firestore';
@@ -74,7 +74,8 @@ export function useArticles() {
 
   const getArticle = useCallback(
     (id: string): Article | undefined => {
-      return articles.find((a) => a.id === id);
+      // S'assurer que les articles sont chargés et forcés en array
+      return (articles || []).find((a) => a.id === id);
     },
     [articles]
   );

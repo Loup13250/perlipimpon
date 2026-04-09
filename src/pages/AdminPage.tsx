@@ -435,7 +435,7 @@ function SiteConfigForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
           </>
         )}
 
-        {/* TAB 3: ABOUT & PROCESS (To be continued in another chunk if needed, or done here) */}
+        {/* TAB 3: ABOUT & PROCESS */}
         {activeTab === 'about' && (
           <>
             <h2>Histoire de la Marque (A Propos)</h2>
@@ -659,7 +659,7 @@ export default function AdminPage() {
   const [editingArticle, setEditingArticle] = useState<Article | undefined>();
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
 
-  // ── All hooks MUST be declared before any early return ──────────────
+  // ── Hooks Hooks Hooks ──────────────
   const handleSave = useCallback(async (data: ArticleFormData) => {
     if (view === 'edit' && editingArticle) await updateArticle(editingArticle.id, data);
     else await addArticle(data);
@@ -713,20 +713,18 @@ export default function AdminPage() {
     alert('Modifications enregistrées avec succès !');
   }, [setConfig]);
 
-  // ── Early returns AFTER all hooks ────────────────────────────────────
-  if (authLoading || configLoading || articlesLoading) {
-    return (
-      <div className="admin-page" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <p>Chargement de l'atelier...</p>
-      </div>
-    );
-  }
-
-  if (!isAuthenticated) return <AdminLogin onLogin={login} />;
-
-  if (view === 'create' || view === 'edit') {
-    return (
-      <div className="admin-page">
+  // ──────────────────────────────────────────────
+  // Rendu Unique (No Early Return)
+  // ──────────────────────────────────────────────
+  return (
+    <div className="admin-page">
+      {authLoading || configLoading || articlesLoading ? (
+        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <p>Chargement de l'atelier...</p>
+        </div>
+      ) : !isAuthenticated ? (
+        <AdminLogin onLogin={login} />
+      ) : (view === 'create' || view === 'edit') ? (
         <div className="container" style={{ maxWidth: '1400px' }}>
           <ArticleForm
             article={editingArticle}
@@ -736,47 +734,45 @@ export default function AdminPage() {
             onCancel={() => { setView('list'); setEditingArticle(undefined); }}
           />
         </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="admin-page">
-      <div className="container" style={{ maxWidth: '1400px' }}>
-        {/* Header admin global */}
-        <div className="admin-header" style={{ marginBottom: '2rem', padding: '1.5rem', background: 'var(--color-white)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-sm)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-             <div style={{ width: '48px', height: '48px', borderRadius: 'var(--radius-md)', background: 'var(--color-black)', color: 'var(--color-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>✨</div>
-             <div>
-               <h1 style={{ fontSize: 'var(--text-xl)', margin: 0 }}>Espace Créatrice</h1>
-               <p style={{ margin: 0, fontSize: 'var(--text-sm)', color: 'var(--color-gray-500)' }}>Bienvenue dans votre atelier digital</p>
-             </div>
+      ) : (
+        <div className="container" style={{ maxWidth: '1400px' }}>
+          {/* Header admin global */}
+          <div className="admin-header" style={{ marginBottom: '2rem', padding: '1.5rem', background: 'var(--color-white)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-sm)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+               <div style={{ width: '48px', height: '48px', borderRadius: 'var(--radius-md)', background: 'var(--color-black)', color: 'var(--color-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>✨</div>
+               <div>
+                 <h1 style={{ fontSize: 'var(--text-xl)', margin: 0 }}>Espace Créatrice</h1>
+                 <p style={{ margin: 0, fontSize: 'var(--text-sm)', color: 'var(--color-gray-500)' }}>Bienvenue dans votre atelier digital</p>
+               </div>
+            </div>
+            <div className="admin-header__actions" style={{ marginTop: '1rem' }}>
+               <a href="/" className="btn btn--primary btn--sm">👁️ Voir le site</a>
+               <button className="btn btn--outline btn--sm" onClick={() => { logout(); window.location.href = '/'; }}>Déconnexion</button>
+            </div>
           </div>
-          <div className="admin-header__actions" style={{ marginTop: '1rem' }}>
-             <a href="/" className="btn btn--primary btn--sm">👁️ Voir le site</a>
-             <button className="btn btn--outline btn--sm" onClick={() => { logout(); window.location.href = '/'; }}>Déconnexion</button>
+
+          {/* Navigation Admin */}
+          <div className="admin-tabs" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '2rem', background: 'var(--color-white)', padding: '0.5rem', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-sm)' }}>
+            <button style={{ flex: 1, minWidth: '150px' }} className={`btn ${adminTab === 'articles' ? 'btn--primary' : 'btn--outline'}`} onClick={() => setAdminTab('articles')}>📦 Mes Créations</button>
+            <button style={{ flex: 1, minWidth: '150px' }} className={`btn ${adminTab === 'categories' ? 'btn--primary' : 'btn--outline'}`} onClick={() => setAdminTab('categories')}>📂 Catégories</button>
+            <button style={{ flex: 1, minWidth: '150px' }} className={`btn ${adminTab === 'pierres' ? 'btn--primary' : 'btn--outline'}`} onClick={() => setAdminTab('pierres')}>💎 Pierres</button>
+            <button style={{ flex: 1, minWidth: '150px' }} className={`btn ${adminTab === 'config' ? 'btn--primary' : 'btn--outline'}`} onClick={() => setAdminTab('config')}>⚙️ Design & Textes</button>
           </div>
-        </div>
 
-        {/* Navigation Admin (Onglets Segmented Control) */}
-        <div className="admin-tabs" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '2rem', background: 'var(--color-white)', padding: '0.5rem', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-sm)' }}>
-          <button style={{ flex: 1, minWidth: '150px' }} className={`btn ${adminTab === 'articles' ? 'btn--primary' : 'btn--outline'}`} onClick={() => setAdminTab('articles')}>📦 Mes Créations</button>
-          <button style={{ flex: 1, minWidth: '150px' }} className={`btn ${adminTab === 'categories' ? 'btn--primary' : 'btn--outline'}`} onClick={() => setAdminTab('categories')}>📂 Catégories</button>
-          <button style={{ flex: 1, minWidth: '150px' }} className={`btn ${adminTab === 'pierres' ? 'btn--primary' : 'btn--outline'}`} onClick={() => setAdminTab('pierres')}>💎 Pierres</button>
-          <button style={{ flex: 1, minWidth: '150px' }} className={`btn ${adminTab === 'config' ? 'btn--primary' : 'btn--outline'}`} onClick={() => setAdminTab('config')}>⚙️ Design & Textes</button>
-        </div>
+          {/* Onglets */}
+          {adminTab === 'config' && <SiteConfigForm config={config} onSave={onSaveConfigAndAlert} />}
+          {adminTab === 'categories' && <CategoriesForm config={config} onSave={onSaveConfigAndAlert} />}
+          {adminTab === 'pierres' && <StonesForm config={config} onSave={onSaveConfigAndAlert} />}
 
-        {/* Contenu de l'onglet actif */}
-        {adminTab === 'config' && <SiteConfigForm config={config} onSave={onSaveConfigAndAlert} />}
-        {adminTab === 'categories' && <CategoriesForm config={config} onSave={onSaveConfigAndAlert} />}
-        {adminTab === 'pierres' && <StonesForm config={config} onSave={onSaveConfigAndAlert} />}
-
-        {adminTab === 'articles' && (
-          <>
+          {adminTab === 'articles' && (
             <div className="admin-list">
-              <div className="admin-list__header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h2>Vos Créations</h2>
-                <button className="btn btn--primary" onClick={() => setView('create')}>+ Nouvel article</button>
+              <div className="admin-list__header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+                <h2>Vos Créations ({articles.length})</h2>
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <button className="btn btn--outline btn--sm" onClick={handleExport}>📥 Backup JSON</button>
+                  <button className="btn btn--outline btn--sm" onClick={handleImport}>📤 Importer JSON</button>
+                  <button className="btn btn--primary" onClick={() => setView('create')}>+ Nouvel article</button>
+                </div>
               </div>
 
               {articles.length === 0 ? (
@@ -786,65 +782,60 @@ export default function AdminPage() {
                   <button className="btn btn--primary" onClick={() => setView('create')}>Créer votre première pièce</button>
                 </div>
               ) : (
-                articles.map((article) => (
-                  <div key={article.id} className="article-row">
-                    <div className="article-row__thumb">
-                      {article.photos.length > 0 ? <img src={article.photos[0]} alt={article.titre} /> : '💎'}
+                <div className="admin-table">
+                  {articles.map((article) => (
+                    <div key={article.id} className="article-row">
+                      <div className="article-row__thumb">
+                        {Array.isArray(article.photos) && article.photos.length > 0 ? (
+                          <img src={article.photos[0]} alt={article.titre} />
+                        ) : '💎'}
+                      </div>
+                      <div className="article-row__info">
+                        <div className="article-row__title">{article.titre}</div>
+                        <div className="article-row__meta">{formatDate(article.dateCreation)}</div>
+                      </div>
+                      <div className="article-row__category">
+                        <span className="badge badge--dark">{article.categorie}</span>
+                      </div>
+                      <div className="article-row__price">{formatPrice(article.prix)}</div>
+                      <div className="article-row__actions">
+                        <button className="btn btn--outline btn--sm" onClick={() => handleEdit(article)}>Modifier</button>
+                        {deleteConfirm === article.id ? (
+                          <div style={{ display: 'flex', gap: '0.25rem' }}>
+                            <button className="btn btn--danger btn--sm" onClick={() => handleDelete(article.id)}>Confirmer</button>
+                            <button className="btn btn--outline btn--sm" onClick={() => setDeleteConfirm(null)}>Annuler</button>
+                          </div>
+                        ) : (
+                          <button className="btn btn--danger btn--sm" onClick={() => setDeleteConfirm(article.id)}>Supprimer</button>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <div className="article-row__title">{article.titre}</div>
-                      <div style={{ fontSize: '0.75rem', color: '#888', marginTop: '2px' }}>{formatDate(article.dateCreation)}</div>
-                    </div>
-                    <div className="article-row__category"><span className="badge badge--dark">{article.categorie}</span></div>
-                    <div className="article-row__price">{formatPrice(article.prix)}</div>
-                    <div className="article-row__actions">
-                      <button className="btn btn--outline btn--sm" onClick={() => handleEdit(article)}>✏️</button>
-                      {deleteConfirm === article.id ? (
-                        <>
-                          <button className="btn btn--danger btn--sm" onClick={() => handleDelete(article.id)}>Confirmer</button>
-                          <button className="btn btn--outline btn--sm" onClick={() => setDeleteConfirm(null)}>✕</button>
-                        </>
-                      ) : (
-                        <button className="btn btn--danger btn--sm" onClick={() => setDeleteConfirm(article.id)}>🗑️</button>
-                      )}
-                    </div>
-                  </div>
-                ))
+                  ))}
+                </div>
               )}
             </div>
+          )}
 
-            <div className="data-manager">
-              <h3>📁 Gestion des données</h3>
-              <div className="data-manager__actions">
-                <button className="btn btn--outline btn--sm" onClick={handleExport}>📥 Exporter (JSON)</button>
-                <button className="btn btn--outline btn--sm" onClick={handleImport}>📤 Importer (JSON)</button>
-              </div>
-              <p className="data-manager__info">
-                Téléchargez une copie de secours (fichier JSON) contenant tous vos articles et paramètres pour ne jamais les perdre. Vous pourrez les restaurer à tout moment via l'import.
-              </p>
+          {/* Statistiques rapides */}
+          <div className="admin-stats" style={{ marginTop: '3rem', borderTop: '1px solid var(--color-gray-300)', paddingTop: '2rem' }}>
+            <div className="stat-card">
+              <div className="stat-card__icon">📦</div>
+              <div className="stat-card__value">{articles.length}</div>
+              <div className="stat-card__label">Créations</div>
             </div>
-          </>
-        )}
-
-        <div className="admin-stats" style={{ marginTop: '3rem', borderTop: '1px solid var(--color-gray-300)', paddingTop: '2rem' }}>
-          <div className="stat-card">
-            <div className="stat-card__icon">📦</div>
-            <div className="stat-card__value">{articles.length}</div>
-            <div className="stat-card__label">Créations</div>
-          </div>
-          <div className="stat-card">
-            <div className="stat-card__icon">📂</div>
-            <div className="stat-card__value">{config.categories?.length || 0}</div>
-            <div className="stat-card__label">Catégories</div>
-          </div>
-          <div className="stat-card">
-            <div className="stat-card__icon">💎</div>
-            <div className="stat-card__value">{config.stones?.length || 0}</div>
-            <div className="stat-card__label">Pierres référencées</div>
+            <div className="stat-card">
+              <div className="stat-card__icon">📂</div>
+              <div className="stat-card__value">{config.categories?.length || 0}</div>
+              <div className="stat-card__label">Catégories</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-card__icon">💎</div>
+              <div className="stat-card__value">{config.stones?.length || 0}</div>
+              <div className="stat-card__label">Pierres référencées</div>
+            </div>
           </div>
         </div>
-
-      </div>
+      )}
     </div>
   );
 }

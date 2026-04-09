@@ -36,14 +36,6 @@ export default function ShopPage() {
 
   const gridRef = useScrollRevealGroup({}, [filteredArticles]);
 
-  if (configLoading || articlesLoading) {
-    return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <p>Recherche des créations...</p>
-      </div>
-    );
-  }
-
   const handleCategoryFilter = (cat: string) => {
     setActiveCategory(cat);
     if (cat) {
@@ -63,86 +55,93 @@ export default function ShopPage() {
     setSearchParams({});
   };
 
+  // ──────────────────────────────────────────────
+  // Rendu Unique (Safe Hooks)
+  // ──────────────────────────────────────────────
   return (
     <div className="shop-page">
       <div className="container">
-        {/* En-tête */}
+        {/* En-tête (toujours visible) */}
         <div className="shop-header">
           <h1>Nos Créations</h1>
           <p>Bijoux fantaisies artisanaux, pièces uniques faites main</p>
         </div>
 
-        {/* Filtres Séparés & Modernisés */}
-        <div className="shop-filters-container">
-          <div className="shop-filter-bar">
-            
-            {/* Filtre Catégorie */}
-            <div className="shop-filter-select-wrapper">
-              <label htmlFor="cat-select" className="shop-filter-label">📂 Catégorie</label>
-              <select 
-                id="cat-select" 
-                className="shop-select"
-                value={activeCategory} 
-                onChange={(e) => handleCategoryFilter(e.target.value)}
-              >
-                <option value="">Toutes les catégories</option>
-                {config.categories.map((cat) => (
-                  <option key={cat.name} value={cat.name}>{cat.name}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Filtre Pierres */}
-            <div className="shop-filter-select-wrapper">
-              <label htmlFor="stone-select" className="shop-filter-label">💎 Pierre</label>
-              <select 
-                id="stone-select" 
-                className="shop-select"
-                value={activeStone} 
-                onChange={(e) => handleStoneFilter(e.target.value)}
-              >
-                <option value="">Toutes les pierres</option>
-                {config.stones?.map((stone) => (
-                  <option key={stone} value={stone}>{stone}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Vider les filtres quand au moins un est actif */}
-            {(activeCategory || activeStone) && (
-              <button 
-                className="btn btn--outline btn--sm shop-filter-clear-btn" 
-                onClick={clearFilters}
-              >
-                ✕ Vider les filtres
-              </button>
-            )}
-
+        {articlesLoading || configLoading ? (
+          <div style={{ minHeight: '40vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '1rem' }}>
+            <div className="loader-spinner" style={{ width: '40px', height: '40px', border: '3px solid var(--color-gold-light)', borderTopColor: 'var(--color-gold)', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
+            <p>Recherche des créations...</p>
           </div>
-        </div>
+        ) : (
+          <>
+            {/* Filtres Séparés & Modernisés */}
+            <div className="shop-filters-container">
+              <div className="shop-filter-bar">
+                
+                {/* Filtre Catégorie */}
+                <div className="shop-filter-select-wrapper">
+                  <label htmlFor="cat-select" className="shop-filter-label">📂 Catégorie</label>
+                  <select 
+                    id="cat-select" 
+                    className="shop-select"
+                    value={activeCategory} 
+                    onChange={(e) => handleCategoryFilter(e.target.value)}
+                  >
+                    <option value="">Toutes les catégories</option>
+                    {config.categories.map((cat) => (
+                      <option key={cat.name} value={cat.name}>{cat.name}</option>
+                    ))}
+                  </select>
+                </div>
 
-        {/* Compteur */}
-        <p className="shop-count">
-          {filteredArticles.length} création{filteredArticles.length > 1 ? 's' : ''}
-          {activeCategory && ` dans ${activeCategory}`}
-          {activeStone && ` avec ${activeStone}`}
-        </p>
+                {/* Filtre Pierres */}
+                <div className="shop-filter-select-wrapper">
+                  <label htmlFor="stone-select" className="shop-filter-label">💎 Pierre</label>
+                  <select 
+                    id="stone-select" 
+                    className="shop-select"
+                    value={activeStone} 
+                    onChange={(e) => handleStoneFilter(e.target.value)}
+                  >
+                    <option value="">Toutes les pierres</option>
+                    {(config.stones || []).map((stone) => (
+                      <option key={stone} value={stone}>{stone}</option>
+                    ))}
+                  </select>
+                </div>
 
-        {/* Grille */}
-        <div className="shop-grid" ref={gridRef}>
-          {filteredArticles.length === 0 ? (
-            <div className="shop-empty">
-              <div className="shop-empty__icon">🔍</div>
-              <h3>Aucune création trouvée</h3>
-              <p>Essayez de modifier vos filtres ou retirez les restrictions pour voir plus de résultats.</p>
-              <button className="btn btn--primary" style={{ marginTop: '1.5rem' }} onClick={clearFilters}>
-                Vider les filtres
-              </button>
+                {/* Vider les filtres quand au moins un est actif */}
+                {(activeCategory || activeStone) && (
+                  <button 
+                    className="btn btn--outline btn--sm shop-filter-clear-btn" 
+                    onClick={clearFilters}
+                  >
+                    ✕ Vider les filtres
+                  </button>
+                )}
+              </div>
             </div>
-          ) : (
-            filteredArticles.map((article) => {
-              try {
-                return (
+
+            {/* Compteur */}
+            <p className="shop-count">
+              {filteredArticles.length} création{filteredArticles.length > 1 ? 's' : ''}
+              {activeCategory && ` dans ${activeCategory}`}
+              {activeStone && ` avec ${activeStone}`}
+            </p>
+
+            {/* Grille */}
+            <div className="shop-grid" ref={gridRef}>
+              {filteredArticles.length === 0 ? (
+                <div className="shop-empty">
+                  <div className="shop-empty__icon">🔍</div>
+                  <h3>Aucune création trouvée</h3>
+                  <p>Essayez de modifier vos filtres ou retirez les restrictions pour voir plus de résultats.</p>
+                  <button className="btn btn--primary" style={{ marginTop: '1.5rem' }} onClick={clearFilters}>
+                    Vider les filtres
+                  </button>
+                </div>
+              ) : (
+                filteredArticles.map((article) => (
                   <Link
                     to={`/creations/${article.id}`}
                     key={article.id}
@@ -179,14 +178,11 @@ export default function ShopPage() {
                       </div>
                     </div>
                   </Link>
-                );
-              } catch (e) {
-                console.error("Error rendering article card", article.id, e);
-                return null;
-              }
-            })
-          )}
-        </div>
+                ))
+              )}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
