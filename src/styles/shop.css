@@ -59,36 +59,98 @@
 
 .shop-filter-chips {
   display: flex;
-  gap: var(--space-sm);
+  gap: var(--space-md); /* Bigger gap for the string */
   flex-wrap: wrap;
+  align-items: center;
+  padding: 10px 0;
 }
 
 .shop-chip {
-  padding: 0.5rem 1.25rem;
-  border-radius: var(--radius-full);
-  background: var(--color-white);
-  border: 1px solid var(--color-gray-200);
-  color: var(--color-gray-700);
+  position: relative;
+  padding: 0.7rem 1.6rem;
+  border-radius: 40px;
+  background: transparent;
+  color: var(--color-white);
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
+  border: none;
   transition: all var(--transition-fast);
   white-space: nowrap;
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+  z-index: 1;
 }
 
+/* 3D Bead background (::after) */
+.shop-chip::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 40px;
+  z-index: -1;
+  box-shadow: 
+    inset -4px -4px 10px rgba(0,0,0,0.4),
+    inset 3px 3px 8px rgba(255,255,255,0.7),
+    3px 5px 8px rgba(0,0,0,0.2);
+  transition: all var(--transition-fast);
+}
+
+/* String connector (::before) */
+.shop-chip::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(-1 * var(--space-md));
+  width: var(--space-md);
+  height: 3px;
+  background: linear-gradient(180deg, #d4af37, #8a6700);
+  transform: translateY(-50%);
+  z-index: -2;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.shop-chip:first-child::before {
+  display: none;
+}
+
+/* Gemstone colors based on position */
+/* 1: Amethyst */
+.shop-chip:nth-child(6n + 1)::after { background: radial-gradient(ellipse at 35% 25%, #EED7D1, #a16492 40%, #4a214b 100%); }
+/* 2: Lapis Blue */
+.shop-chip:nth-child(6n + 2)::after { background: radial-gradient(ellipse at 35% 25%, #d1e2e8, #295B8A 40%, #0d1e38 100%); }
+/* 3: Rose Quartz */
+.shop-chip:nth-child(6n + 3)::after { background: radial-gradient(ellipse at 35% 25%, #ffffff, #F4C4C2 40%, #bb6a67 100%); }
+/* 4: Jade Green */
+.shop-chip:nth-child(6n + 4)::after { background: radial-gradient(ellipse at 35% 25%, #e0f2dc, #6e9f65 40%, #2f4f2c 100%); }
+/* 5: Amber Gold */
+.shop-chip:nth-child(6n + 5)::after { background: radial-gradient(ellipse at 35% 25%, #fff1c5, #d4af37 40%, #805500 100%); }
+/* 6: Onyx Black */
+.shop-chip:nth-child(6n + 0)::after { background: radial-gradient(ellipse at 35% 25%, #7a7a7a, #2c2c2c 50%, #000000 100%); }
+
+
 .shop-chip:hover {
-  border-color: var(--color-gold);
-  color: var(--color-gold-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.shop-chip:hover::after {
+  box-shadow: 
+    inset -4px -4px 10px rgba(0,0,0,0.5),
+    inset 3px 3px 10px rgba(255,255,255,0.9),
+    0 8px 15px rgba(0,0,0,0.3);
 }
 
 .shop-chip.active {
-  background: var(--color-gold);
-  border-color: var(--color-gold);
-  color: var(--color-white);
-  box-shadow: var(--shadow-gold);
+  transform: scale(1.08); /* slight bulge to signify active bead */
+}
+
+.shop-chip.active::after {
+  box-shadow: 
+    inset -4px -4px 10px rgba(0,0,0,0.4),
+    inset 3px 3px 8px rgba(255,255,255,0.7),
+    0 0 15px rgba(212, 175, 55, 0.8),
+    0 0 5px rgba(212, 175, 55, 0.5);
+  border: 2px solid var(--color-gold-light);
 }
 
 /* Clear btn in chips */
