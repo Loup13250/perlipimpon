@@ -107,6 +107,7 @@ function ArticleForm({
     pierres: article?.pierres || [],
     photos: article?.photos || [],
     enVedette: article?.enVedette || false,
+    vendu: article?.vendu || false,
   });
 
   const updateField = <K extends keyof ArticleFormData>(
@@ -281,8 +282,8 @@ function ArticleForm({
             )}
           </div>
 
-          {/* En vedette */}
-          <div className="form-group">
+          {/* En vedette & Vendu */}
+          <div className="form-group" style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
             <div className="form-toggle">
               <input
                 id="article-vedette"
@@ -292,7 +293,20 @@ function ArticleForm({
                 onChange={(e) => updateField('enVedette', e.target.checked)}
               />
               <label htmlFor="article-vedette">
-                Mettre en vedette sur la page d'accueil
+                Mettre en vedette (Accueil)
+              </label>
+            </div>
+
+            <div className="form-toggle">
+              <input
+                id="article-vendu"
+                type="checkbox"
+                className="toggle-switch"
+                checked={form.vendu}
+                onChange={(e) => updateField('vendu', e.target.checked)}
+              />
+              <label htmlFor="article-vendu">
+                Marquer comme "VENDU"
               </label>
             </div>
           </div>
@@ -795,6 +809,9 @@ export default function AdminPage() {
                         <div className="article-row__meta">{formatDate(article.dateCreation)}</div>
                       </div>
                       <div className="article-row__category">
+                        {article.vendu ? (
+                          <span className="badge badge--danger" style={{ marginRight: '0.5rem' }}>Vendu</span>
+                        ) : null}
                         <span className="badge badge--dark">{article.categorie}</span>
                       </div>
                       <div className="article-row__price">{formatPrice(article.prix)}</div>

@@ -218,7 +218,10 @@ export default function ShopPage() {
                           <span>{article.categorie}</span>
                         </div>
                       )}
-                      {article.enVedette && (
+                      {article.vendu && (
+                        <div className="product-card__banner-vendu"><span>Vendu</span></div>
+                      )}
+                      {!article.vendu && article.enVedette && (
                         <div className="product-card__badge">Vedette</div>
                       )}
                     </div>

@@ -45,7 +45,12 @@ export default function ProductDetailPage() {
             <div className="product-layout">
               {/* Galerie images */}
               <div className="gallery">
-                <div className="gallery__main">
+                <div className="gallery__main" style={{ position: 'relative' }}>
+                  {article.vendu && (
+                    <div className="product-card__banner-vendu" style={{ top: '35px', right: '-45px', padding: '8px 50px', fontSize: 'var(--text-sm)' }}>
+                      <span>Vendu</span>
+                    </div>
+                  )}
                   {article.photos.length > 0 ? (
                     <img
                       src={article.photos[activePhoto]}
@@ -111,11 +116,17 @@ export default function ProductDetailPage() {
 
                 {/* Actions */}
                 <div className="product-info__actions">
-                  <Link to="/contact" className="btn btn--primary btn--lg">
-                    Prendre contact pour ce bijou
-                  </Link>
-                  <Link to="/creations" className="btn btn--outline">
-                    ← Retour
+                  {article.vendu ? (
+                    <button className="btn btn--outline btn--lg" disabled style={{ opacity: 0.7, cursor: 'not-allowed', width: '100%', borderColor: 'var(--color-gray-500)', color: 'var(--color-gray-500)' }}>
+                      Cette création a été vendue
+                    </button>
+                  ) : (
+                    <Link to="/contact" className="btn btn--primary btn--lg" style={{ width: '100%', textAlign: 'center' }}>
+                      Prendre contact pour ce bijou
+                    </Link>
+                  )}
+                  <Link to="/creations" className="btn btn--outline" style={{ width: '100%', textAlign: 'center' }}>
+                    ← Retour aux créations
                   </Link>
                 </div>
               </div>

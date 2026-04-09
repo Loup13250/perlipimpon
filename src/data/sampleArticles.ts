@@ -101,6 +101,7 @@ export const sampleArticles: Article[] = [
     dateCreation: '2026-02-03T14:30:00Z',
     dateMaj: '2026-02-03T14:30:00Z',
     enVedette: true,
+    vendu: true,
   },
   {
     id: 'demo-003',

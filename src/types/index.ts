@@ -33,6 +33,7 @@ export interface Article {
   dateCreation: string;   // ISO string
   dateMaj: string;        // ISO string — dernière modification
   enVedette: boolean;     // Mis en avant sur la page d'accueil
+  vendu?: boolean;        // Si le bijou est vendu
 }
 
 // Formulaire de création / édition d'article
@@ -44,6 +45,7 @@ export interface ArticleFormData {
   pierres: Stone[];
   photos: string[];
   enVedette: boolean;
+  vendu?: boolean;
 }
 
 export interface CategoryData {

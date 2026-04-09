@@ -97,7 +97,12 @@ export default function HomePage() {
                           <span>{article.categorie}</span>
                         </div>
                       )}
-                      <div className="product-card__badge">Vedette</div>
+                      {article.vendu && (
+                        <div className="product-card__banner-vendu"><span>Vendu</span></div>
+                      )}
+                      {!article.vendu && (
+                        <div className="product-card__badge">Vedette</div>
+                      )}
                     </div>
                     <div className="product-card__body">
                       <p className="product-card__category">{article.categorie}</p>
