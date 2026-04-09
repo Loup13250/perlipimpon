@@ -68,12 +68,13 @@ interface BeadProps {
   gemStyle: React.CSSProperties;
   index: number;
   isAll?: boolean;
+  beadType?: 'category' | 'stone';
 }
 
-function Bead({ label, isActive, onClick, gemStyle, index, isAll }: BeadProps) {
+function Bead({ label, isActive, onClick, gemStyle, index, isAll, beadType = 'stone' }: BeadProps) {
   return (
     <button
-      className={`bead ${isActive ? 'bead--active' : ''} ${isAll ? 'bead--all' : ''}`}
+      className={`bead bead--${beadType} ${isActive ? 'bead--active' : ''} ${isAll ? 'bead--all' : ''}`}
       onClick={onClick}
       aria-pressed={isActive}
       title={label}
@@ -154,7 +155,7 @@ export default function BraceletFilter({
           )}
         </header>
 
-        <div className="bracelet-row">
+        <div className="bracelet-row bracelet-row--category">
           <span className="clasp clasp--left" aria-hidden="true" />
           <span className="wire" aria-hidden="true">
             <span className="wire__body" />
@@ -169,6 +170,7 @@ export default function BraceletFilter({
               gemStyle={goldGem}
               index={0}
               isAll
+              beadType="category"
             />
             {categories.map((cat, i) => (
               <Bead
@@ -178,6 +180,7 @@ export default function BraceletFilter({
                 onClick={() => onCategoryToggle(cat.name)}
                 gemStyle={makeGemGradient(getCatColor(cat))}
                 index={i + 1}
+                beadType="category"
               />
             ))}
           </div>
@@ -196,7 +199,7 @@ export default function BraceletFilter({
             </span>
           </header>
 
-          <div className="bracelet-row">
+          <div className="bracelet-row bracelet-row--stone">
             <span className="clasp clasp--left" aria-hidden="true" />
             <span className="wire" aria-hidden="true">
               <span className="wire__body" />

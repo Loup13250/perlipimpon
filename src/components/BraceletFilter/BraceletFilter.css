@@ -9,11 +9,13 @@
    VARIABLES DU BRACELET
    ═══════════════════════════════════════════════════════════════ */
 :root {
-  --sphere-d: 50px;       /* Diamètre des perles */
-  --bead-gap: 12px;       /* Écart entre perles */
+  --sphere-d: 50px;       /* Diamètre des perles pierres */
+  --cat-sphere-d: 54px;   /* Diamètre des perles catégories */
+  --bead-gap: 12px;       /* Écart entre perles pierres */
+  --cat-bead-gap: 20px;   /* Écart entre perles catégories */
   --clasp-d: 22px;        /* Diamètre des fermoirs */
   --wire-h: 3px;          /* Épaisseur du fil */
-  --label-h: 20px;        /* Hauteur réservée au label */
+  --label-h: 24px;        /* Hauteur réservée au label */
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -113,14 +115,14 @@
   display: flex;
   align-items: flex-start;
   /* Espace en haut pour le halo/hover qui soulève les perles */
-  padding-top: 14px;
+  padding-top: 30px;
 }
 
 /* ─── Fil doré ─────────────────────────────────────────────── */
 /* Le fil est centré au milieu des sphères = sphere-d/2 depuis le haut + padding-top */
 .wire {
   position: absolute;
-  top: calc(14px + var(--sphere-d) / 2 - var(--wire-h) / 2);
+  top: calc(30px + var(--sphere-d) / 2 - var(--wire-h) / 2);
   left: 0;
   right: 0;
   height: var(--wire-h);
@@ -170,10 +172,10 @@
 }
 
 /* ─── Fermoirs ──────────────────────────────────────────────── */
-/* Le fermoir est centré verticalement sur le fil (= centre sphère) */
 .clasp {
-  flex-shrink: 0;
-  display: block;
+  position: absolute;
+  top: calc(30px + var(--sphere-d) / 2 - var(--clasp-d) / 2);
+  z-index: 2;
   width: var(--clasp-d);
   height: var(--clasp-d);
   border-radius: 50%;
@@ -188,11 +190,9 @@
     0 3px 8px rgba(100,70,0,.30),
     inset -2px -3px 6px rgba(70,40,0,.42),
     inset 2px 2px 5px rgba(255,240,140,.50);
-  position: relative;
-  z-index: 2;
-  /* Centre le fermoir sur la ligne du fil */
-  margin-top: calc(14px + var(--sphere-d) / 2 - var(--clasp-d) / 2);
 }
+.clasp--left { left: 0; }
+.clasp--right { right: 0; }
 
 /* Petit rivet central */
 .clasp::after {
@@ -215,7 +215,7 @@
   z-index: 1;
   overflow-x: auto;
   overflow-y: visible;
-  padding: 0 10px;
+  padding: 0 calc(var(--clasp-d) + 10px);
 
   /* Cache la scrollbar */
   scrollbar-width: none;
@@ -252,6 +252,41 @@
 
   transition: transform .3s cubic-bezier(.34,1.56,.64,1);
 }
+
+/* ── Spécificités par type ── */
+.bracelet-row--category {
+  /* Espacement plus généreux pour les catégories */
+  margin-bottom: .8rem;
+}
+.bracelet-row--category .bead-rail {
+  gap: var(--cat-bead-gap);
+}
+.bracelet-row--category .bead__sphere {
+  width: var(--cat-sphere-d);
+  height: var(--cat-sphere-d);
+  /* Un peu plus d'éclat pour les catégories */
+  filter: contrast(1.05);
+}
+.bracelet-row--category .bead__halo {
+  width: calc(var(--cat-sphere-d) * 1.25);
+  height: calc(var(--cat-sphere-d) * 1.25);
+}
+
+.bracelet-row--category .wire {
+  top: calc(30px + var(--cat-sphere-d) / 2 - var(--wire-h) / 2);
+}
+.bracelet-row--category .clasp {
+  top: calc(30px + var(--cat-sphere-d) / 2 - var(--clasp-d) / 2);
+}
+
+.bead--category {
+  gap: 8px;
+}
+.bead--category .bead__label {
+  font-weight: 500;
+  letter-spacing: .05em;
+}
+
 @keyframes bead-in {
   to { opacity:1; transform:scale(1) translateY(0); }
 }
@@ -298,9 +333,9 @@
 /* ── Halo sélection ── */
 .bead__halo {
   position: absolute;
-  top: calc(var(--sphere-d) * -.12);
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   width: calc(var(--sphere-d) * 1.28);
   height: calc(var(--sphere-d) * 1.28);
   border-radius: 50%;
@@ -314,19 +349,19 @@
   z-index: 1;
 }
 @keyframes halo-pulse {
-  0%,100% { opacity:1;   transform:translateX(-50%) scale(1); }
-  50%      { opacity:.6;  transform:translateX(-50%) scale(1.06); }
+  0%,100% { opacity:1;   transform:translate(-50%, -50%) scale(1); }
+  50%      { opacity:.6;  transform:translate(-50%, -50%) scale(1.06); }
 }
 
 /* ── Étiquette ── */
 .bead__label {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: .7rem;
+  font-size: .85rem;
   font-style: italic;
   font-weight: 400;
   color: #7a6a50;
   white-space: nowrap;
-  letter-spacing: .02em;
+  letter-spacing: .01em;
   text-align: center;
   user-select: none;
   pointer-events: none;

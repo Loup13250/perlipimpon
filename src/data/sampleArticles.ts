@@ -28,6 +28,7 @@ export const defaultSiteConfig: SiteConfig = {
     'Labradorite', 'Aigue-marine', 'Tourmaline', 'Opale',
     'Nacre', 'Cristal de roche'
   ],
+  stonesData: [],
   aboutTitle: 'Fait main, fait avec cœur',
   aboutText1: 'Bienvenue chez Perlipimpon ! Chaque bijou est une création unique, façonnée à la main avec patience et passion. Des pierres de lune aux perles d\'eau douce, chaque matériau est choisi pour sa beauté et son énergie.',
   aboutText2: 'Que ce soit pour vous faire plaisir ou pour offrir, nos bijoux fantaisies apportent une touche d\'élégance naturelle à chaque tenue.',

@@ -3,6 +3,7 @@ import type { SiteConfig } from '../types';
 import { defaultSiteConfig } from '../data/sampleArticles';
 import { db } from '../lib/firebase';
 import { doc, onSnapshot, setDoc } from 'firebase/firestore';
+import { removeUndefined } from '../utils/sanitize';
 
 const CONFIG_DOC = 'main';
 
@@ -18,7 +19,7 @@ export function useConfig() {
         const merged = { ...defaultSiteConfig, ...existing };
         merged.categories = existing.categories || defaultSiteConfig.categories;
         merged.stones = existing.stones || defaultSiteConfig.stones;
-        merged.stonesData = existing.stonesData || undefined;
+        merged.stonesData = existing.stonesData || defaultSiteConfig.stonesData || [];
         merged.testimonials = existing.testimonials || defaultSiteConfig.testimonials;
         merged.processSteps = existing.processSteps || defaultSiteConfig.processSteps;
         if (!existing.heroTitle2) merged.heroTitle2 = defaultSiteConfig.heroTitle2;
@@ -34,15 +35,15 @@ export function useConfig() {
             const localConfig: Partial<SiteConfig> = JSON.parse(localData);
             const merged = { ...defaultSiteConfig, ...localConfig };
             console.info('[Migration] Config trouvée en localStorage. Migration vers Firestore...');
-            await setDoc(docRef, merged);
+            await saveToFirestore(merged as SiteConfig);
             setConfigState(merged as SiteConfig);
           } else {
-            await setDoc(docRef, defaultSiteConfig);
+            await saveToFirestore(defaultSiteConfig);
             setConfigState(defaultSiteConfig);
           }
         } catch (e) {
           console.warn('[Migration] Erreur config migration:', e);
-          await setDoc(docRef, defaultSiteConfig);
+          await saveToFirestore(defaultSiteConfig);
           setConfigState(defaultSiteConfig);
         }
         // Sécurité : débloquer le loading après le déclenchement de la migration
@@ -57,14 +58,19 @@ export function useConfig() {
     return unsubscribe;
   }, []);
 
-  const setConfig = useCallback(async (newConfig: SiteConfig) => {
+  const saveToFirestore = useCallback(async (data: SiteConfig) => {
     try {
+      const sanitized = removeUndefined(data);
       const docRef = doc(db, 'config', CONFIG_DOC);
-      await setDoc(docRef, newConfig);
+      await setDoc(docRef, sanitized);
     } catch (e) {
-      console.error("Error saving config", e);
+      console.error("Error saving config to Firestore", e);
     }
   }, []);
+
+  const setConfig = useCallback(async (newConfig: SiteConfig) => {
+    await saveToFirestore(newConfig);
+  }, [saveToFirestore]);
 
   return {
     config,

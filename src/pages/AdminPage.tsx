@@ -567,7 +567,7 @@ function CategoriesForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
     }
   };
   const addCategory = () => {
-    setForm(prev => ({ ...prev, categories: [...prev.categories, { name: 'Nouvelle', image: '' }] }));
+    setForm(prev => ({ ...prev, categories: [...prev.categories, { name: 'Nouvelle', image: '', color: '#c8a07a' }] }));
   };
   const handleSubmit = (e: FormEvent) => { e.preventDefault(); onSave(form); };
 
@@ -579,7 +579,7 @@ function CategoriesForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
       </p>
       <div className="config-categories">
         {form.categories.map((cat, index) => (
-          <div key={index} className="category-edit-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem', alignItems: 'center', background: 'var(--color-white)', padding: '1rem', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)' }}>
+          <div key={`cat-${cat.name}-${index}`} className="category-edit-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem', alignItems: 'center', background: 'var(--color-white)', padding: '1rem', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)' }}>
             <div style={{ flexShrink: 0, width: '64px', height: '64px', borderRadius: 'var(--radius-sm)', overflow: 'hidden', background: 'var(--color-black)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem' }}>
               {cat.image ? <img src={cat.image} alt="cat" style={{width: '100%', height:'100%', objectFit:'cover'}} /> : '🌙'}
             </div>
@@ -592,7 +592,7 @@ function CategoriesForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
                 value={cat.color || '#c8a07a'}
                 onChange={e => updateCategory(index, 'color', e.target.value)}
                 title="Couleur de la perle"
-                style={{ width: '36px', height: '36px', border: 'none', borderRadius: '50%', cursor: 'pointer', background: 'none', padding: 0 }}
+                style={{ width: '40px', height: '40px', border: '1px solid var(--color-gray-300)', borderRadius: 'var(--radius-md)', cursor: 'pointer', padding: '2px', backgroundColor: 'var(--color-white)' }}
               />
               <span style={{ fontSize: '.7rem', color: 'var(--color-gray-500)' }}>Perle</span>
             </div>
@@ -628,7 +628,7 @@ function StonesForm({ config, onSave }: { config: SiteConfig, onSave: (c: SiteCo
   // Fusion stonesData ↔ stones pour rétro-compatibilité
   const initialData = (config.stonesData && config.stonesData.length > 0)
     ? config.stonesData
-    : (config.stones || []).map(s => ({ name: s, color: undefined as string | undefined }));
+    : (config.stones || []).map(s => ({ name: s, color: '#b0a090' }));
 
   const [items, setItems] = useState(initialData);
 
@@ -666,13 +666,13 @@ function StonesForm({ config, onSave }: { config: SiteConfig, onSave: (c: SiteCo
       </p>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
         {items.map((item, index) => (
-          <div key={index} style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', background: 'var(--color-white)', padding: '0.75rem', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)' }}>
+          <div key={`stone-${item.name}-${index}`} style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', background: 'var(--color-white)', padding: '0.75rem', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)' }}>
             <input
               type="color"
               value={item.color || '#b0a090'}
               onChange={e => updateItem(index, 'color', e.target.value)}
               title="Couleur de la perle"
-              style={{ width: '36px', height: '36px', border: 'none', borderRadius: '50%', cursor: 'pointer', background: 'none', padding: 0, flexShrink: 0 }}
+              style={{ width: '40px', height: '40px', border: '1px solid var(--color-gray-300)', borderRadius: 'var(--radius-md)', cursor: 'pointer', padding: '2px', backgroundColor: 'var(--color-white)', flexShrink: 0 }}
             />
             <input type="text" value={item.name} onChange={e => updateItem(index, 'name', e.target.value)} style={{ flex: 1, padding: '0.65rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-gray-300)' }} required />
             <button type="button" className="btn btn--danger btn--sm" onClick={() => removeItem(index)}>✕</button>
