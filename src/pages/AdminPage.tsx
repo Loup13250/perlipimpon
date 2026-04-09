@@ -284,31 +284,29 @@ function ArticleForm({
 
           {/* En vedette & Vendu */}
           <div className="form-group" style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
-            <div className="form-toggle">
+            <label className="beautiful-toggle">
               <input
-                id="article-vedette"
                 type="checkbox"
-                className="toggle-switch"
                 checked={form.enVedette}
                 onChange={(e) => updateField('enVedette', e.target.checked)}
               />
-              <label htmlFor="article-vedette">
+              <span className="beautiful-toggle__slider"></span>
+              <span className="beautiful-toggle__label">
                 Mettre en vedette (Accueil)
-              </label>
-            </div>
+              </span>
+            </label>
 
-            <div className="form-toggle">
+            <label className="beautiful-toggle">
               <input
-                id="article-vendu"
                 type="checkbox"
-                className="toggle-switch"
                 checked={form.vendu}
                 onChange={(e) => updateField('vendu', e.target.checked)}
               />
-              <label htmlFor="article-vendu">
+              <span className="beautiful-toggle__slider"></span>
+              <span className="beautiful-toggle__label">
                 Marquer comme "VENDU"
-              </label>
-            </div>
+              </span>
+            </label>
           </div>
 
           {/* Actions */}
