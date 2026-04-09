@@ -16,14 +16,6 @@ export default function ShopPage() {
   const { config, configLoading } = useConfig();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  if (configLoading || articlesLoading) {
-    return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <p>Recherche des créations...</p>
-      </div>
-    );
-  }
-
   // On récupère le filtre catégorie depuis l'URL si on vient de la page d'accueil
   const urlCategory = searchParams.get('cat') || '';
   const [activeCategory, setActiveCategory] = useState<string>(urlCategory);
@@ -43,6 +35,14 @@ export default function ShopPage() {
   }, [visibleArticles, activeCategory, activeStone]);
 
   const gridRef = useScrollRevealGroup({}, [filteredArticles]);
+
+  if (configLoading || articlesLoading) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <p>Recherche des créations...</p>
+      </div>
+    );
+  }
 
   const handleCategoryFilter = (cat: string) => {
     setActiveCategory(cat);
