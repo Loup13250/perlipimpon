@@ -1,6 +1,7 @@
 /**
  * Page Boutique — grille filtrable de toutes les créations.
- * Filtres par catégorie et par pierre.
+ * Filtres par catégorie (bracelet desktop) et par pierre.
+ * Multi-sélection + toggle pour les deux.
  */
 
 import { useState, useMemo } from 'react';
@@ -9,7 +10,7 @@ import { useArticles } from '../hooks/useArticles';
 import { useConfig } from '../hooks/useConfig';
 import { useScrollRevealGroup } from '../hooks/useScrollReveal';
 import { formatPrice, truncateText } from '../utils/helpers';
-import type { Stone } from '../types';
+import BraceletFilter from '../components/BraceletFilter';
 
 export default function ShopPage() {
   const { visibleArticles, articlesLoading } = useArticles();
@@ -18,40 +19,71 @@ export default function ShopPage() {
 
   // On récupère le filtre catégorie depuis l'URL si on vient de la page d'accueil
   const urlCategory = searchParams.get('cat') || '';
-  const [activeCategory, setActiveCategory] = useState<string>(urlCategory);
-  const [activeStone, setActiveStone] = useState<string>('');
+  const [activeCategories, setActiveCategories] = useState<string[]>(
+    urlCategory ? [urlCategory] : []
+  );
+  const [activeStones, setActiveStones] = useState<string[]>([]);
 
   const filteredArticles = useMemo(() => {
     let results = visibleArticles;
 
-    if (activeCategory) {
-      results = results.filter((a) => a.categorie === activeCategory);
+    if (activeCategories.length > 0) {
+      results = results.filter((a) => activeCategories.includes(a.categorie));
     }
-    if (activeStone) {
-      results = results.filter((a) => Array.isArray(a.pierres) && a.pierres.includes(activeStone as Stone));
+    if (activeStones.length > 0) {
+      results = results.filter(
+        (a) =>
+          Array.isArray(a.pierres) &&
+          a.pierres.some((p) => activeStones.includes(p))
+      );
     }
 
     return results;
-  }, [visibleArticles, activeCategory, activeStone]);
+  }, [visibleArticles, activeCategories, activeStones]);
 
   const gridRef = useScrollRevealGroup({}, [filteredArticles]);
 
-  const handleCategoryFilter = (cat: string) => {
-    setActiveCategory(cat);
-    if (cat) {
-      setSearchParams({ cat });
-    } else {
-      setSearchParams({});
-    }
+  // Toggle catégorie : clic = ajouter/retirer de la sélection
+  const handleCategoryToggle = (cat: string) => {
+    setActiveCategories((prev) => {
+      const next = prev.includes(cat)
+        ? prev.filter((c) => c !== cat)
+        : [...prev, cat];
+      // Sync URL
+      if (next.length === 1) {
+        setSearchParams({ cat: next[0] });
+      } else if (next.length === 0) {
+        setSearchParams({});
+      } else {
+        setSearchParams({ cat: next.join(',') });
+      }
+      return next;
+    });
   };
 
-  const handleStoneFilter = (stone: string) => {
-    setActiveStone(stone);
+  // Toggle pierre : clic = ajouter/retirer
+  const handleStoneToggle = (stone: string) => {
+    setActiveStones((prev) =>
+      prev.includes(stone)
+        ? prev.filter((s) => s !== stone)
+        : [...prev, stone]
+    );
+  };
+
+  // "Tout" = réinitialiser les catégories
+  const handleCategoryAll = () => {
+    setActiveCategories([]);
+    setSearchParams({});
+  };
+
+  // "Toutes" pierres = réinitialiser
+  const handleStoneAll = () => {
+    setActiveStones([]);
   };
 
   const clearFilters = () => {
-    setActiveCategory('');
-    setActiveStone('');
+    setActiveCategories([]);
+    setActiveStones([]);
     setSearchParams({});
   };
 
@@ -74,121 +106,88 @@ export default function ShopPage() {
           </div>
         ) : (
           <>
-            {/* Filtres Séparés & Modernisés */}
-            <div className="shop-filters-container">
-              
-              {/* === VERSION DESKTOP : BRACELET DE PIERRES === */}
-              <div className="shop-filters-desktop">
-                <div className="shop-filters-row">
-                  <div className="shop-filter-header">
-                    <span className="shop-filter-label">Catégories</span>
-                    {(activeCategory || activeStone) && (
-                      <span 
-                        className="shop-filter-clear-btn" 
-                        onClick={clearFilters}
-                      >
-                        Effacer les filtres
-                      </span>
-                    )}
-                  </div>
-                  <div className="shop-filter-chips">
-                    <button 
-                      className={`shop-chip ${activeCategory === '' ? 'active' : ''}`}
-                      onClick={() => handleCategoryFilter('')}
-                    >
-                      Toutes
-                    </button>
+            {/* ── BRACELET FILTRES (Desktop) ── */}
+            <div className="shop-filters-desktop-wrapper">
+              <BraceletFilter
+                categories={config.categories}
+                stonesData={config.stonesData}
+                stones={config.stones || []}
+                activeCategories={activeCategories}
+                activeStones={activeStones}
+                onCategoryToggle={handleCategoryToggle}
+                onCategoryAll={handleCategoryAll}
+                onStoneToggle={handleStoneToggle}
+                onStoneAll={handleStoneAll}
+                onClearFilters={clearFilters}
+              />
+            </div>
+
+            {/* ── FILTRES MOBILE : Menus déroulants ── */}
+            <div className="shop-filters-mobile">
+              <div className="shop-filter-bar">
+
+                {/* Filtre Catégorie */}
+                <div className="shop-filter-select-wrapper">
+                  <label htmlFor="cat-select-mob" className="shop-filter-label">Sélectionner une catégorie</label>
+                  <select
+                    id="cat-select-mob"
+                    className="shop-select"
+                    value={activeCategories.length === 1 ? activeCategories[0] : ''}
+                    onChange={(e) => {
+                      if (e.target.value) {
+                        setActiveCategories([e.target.value]);
+                        setSearchParams({ cat: e.target.value });
+                      } else {
+                        handleCategoryAll();
+                      }
+                    }}
+                  >
+                    <option value="">Toutes les catégories</option>
                     {config.categories.map((cat) => (
-                      <button 
-                        key={cat.name}
-                        className={`shop-chip ${activeCategory === cat.name ? 'active' : ''}`}
-                        onClick={() => handleCategoryFilter(cat.name)}
-                      >
-                        {cat.name}
-                      </button>
+                      <option key={cat.name} value={cat.name}>{cat.name}</option>
                     ))}
-                  </div>
+                  </select>
                 </div>
 
-                {config.stones && config.stones.length > 0 && (
-                  <div className="shop-filters-row">
-                    <span className="shop-filter-label">Pierres</span>
-                    <div className="shop-filter-chips">
-                      <button 
-                        className={`shop-chip ${activeStone === '' ? 'active' : ''}`}
-                        onClick={() => handleStoneFilter('')}
-                      >
-                        Toutes
-                      </button>
-                      {config.stones.map((stone) => (
-                        <button 
-                          key={stone}
-                          className={`shop-chip ${activeStone === stone ? 'active' : ''}`}
-                          onClick={() => handleStoneFilter(stone)}
-                        >
-                          {stone}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+                {/* Filtre Pierres */}
+                <div className="shop-filter-select-wrapper">
+                  <label htmlFor="stone-select-mob" className="shop-filter-label">Choisir une pierre</label>
+                  <select
+                    id="stone-select-mob"
+                    className="shop-select"
+                    value={activeStones.length === 1 ? activeStones[0] : ''}
+                    onChange={(e) => {
+                      if (e.target.value) {
+                        setActiveStones([e.target.value]);
+                      } else {
+                        handleStoneAll();
+                      }
+                    }}
+                  >
+                    <option value="">Toutes les pierres</option>
+                    {(config.stones || []).map((stone) => (
+                      <option key={stone} value={stone}>{stone}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Vider */}
+                {(activeCategories.length > 0 || activeStones.length > 0) && (
+                  <button
+                    className="btn btn--outline btn--sm shop-filter-clear-btn-mobile"
+                    onClick={clearFilters}
+                  >
+                    Vider les filtres
+                  </button>
                 )}
               </div>
-
-              {/* === VERSION MOBILE : MENUS DÉROULANTS PREMIUM === */}
-              <div className="shop-filters-mobile">
-                <div className="shop-filter-bar">
-                  
-                  {/* Filtre Catégorie */}
-                  <div className="shop-filter-select-wrapper">
-                    <label htmlFor="cat-select-mob" className="shop-filter-label">Sélectionner une catégorie</label>
-                    <select 
-                      id="cat-select-mob" 
-                      className="shop-select"
-                      value={activeCategory} 
-                      onChange={(e) => handleCategoryFilter(e.target.value)}
-                    >
-                      <option value="">Toutes les catégories</option>
-                      {config.categories.map((cat) => (
-                        <option key={cat.name} value={cat.name}>{cat.name}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Filtre Pierres */}
-                  <div className="shop-filter-select-wrapper">
-                    <label htmlFor="stone-select-mob" className="shop-filter-label">Choisir une pierre</label>
-                    <select 
-                      id="stone-select-mob" 
-                      className="shop-select"
-                      value={activeStone} 
-                      onChange={(e) => handleStoneFilter(e.target.value)}
-                    >
-                      <option value="">Toutes les pierres</option>
-                      {(config.stones || []).map((stone) => (
-                        <option key={stone} value={stone}>{stone}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Vider les filtres */}
-                  {(activeCategory || activeStone) && (
-                    <button 
-                      className="btn btn--outline btn--sm shop-filter-clear-btn-mobile" 
-                      onClick={clearFilters}
-                    >
-                      Vider les filtres
-                    </button>
-                  )}
-                </div>
-              </div>
-
             </div>
 
             {/* Compteur */}
             <p className="shop-count">
               {filteredArticles.length} création{filteredArticles.length > 1 ? 's' : ''}
-              {activeCategory && ` dans ${activeCategory}`}
-              {activeStone && ` avec ${activeStone}`}
+              {activeCategories.length > 0 && ` dans ${activeCategories.join(', ')}`}
+              {activeStones.length > 0 && ` avec ${activeStones.join(', ')}`}
             </p>
 
             {/* Grille */}
@@ -221,7 +220,7 @@ export default function ShopPage() {
                       {article.vendu && (
                         <div className="product-card__banner-vendu"><span>Vendu</span></div>
                       )}
-                      {!article.vendu && article.enVedette && (
+                      {article.enVedette && (
                         <div className="product-card__badge">Vedette</div>
                       )}
                     </div>

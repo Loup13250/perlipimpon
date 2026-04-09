@@ -1,0 +1,380 @@
+/*
+ * ── BraceletFilter Premium ────────────────────────────────────
+ * Bracelet de joaillerie : perles sphériques sur fil doré poli.
+ * Une seule ligne par bracelet, perles centrées.
+ * Desktop uniquement.
+ */
+
+/* ═══════════════════════════════════════════════════════════════
+   VARIABLES DU BRACELET
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  --sphere-d: 50px;       /* Diamètre des perles */
+  --bead-gap: 12px;       /* Écart entre perles */
+  --clasp-d: 22px;        /* Diamètre des fermoirs */
+  --wire-h: 3px;          /* Épaisseur du fil */
+  --label-h: 20px;        /* Hauteur réservée au label */
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CONTENEUR PRINCIPAL
+   ═══════════════════════════════════════════════════════════════ */
+.bracelet-filter {
+  padding: 2rem 2.2rem 1.6rem;
+  background:
+    radial-gradient(ellipse at 15% 50%, rgba(212,175,55,.05) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 30%, rgba(200,160,120,.04) 0%, transparent 60%),
+    linear-gradient(180deg, #fffcf5 0%, #faf4ea 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(212,175,55,.14);
+  box-shadow:
+    0 2px 24px rgba(160,120,40,.08),
+    0 0 0 1px rgba(255,255,255,.9) inset;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  overflow: visible;
+
+  /* Animation entrée */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.bracelet-filter--in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION (un bracelet)
+   ═══════════════════════════════════════════════════════════════ */
+.bracelet-section {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+/* ── En-tête section ── */
+.bracelet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2px;
+}
+
+.bracelet-title {
+  display: flex;
+  align-items: center;
+  gap: .38rem;
+  font-family: 'Inter', sans-serif;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  color: #a09070;
+}
+
+.bracelet-title__gem {
+  font-size: .6rem;
+  color: #d4af37;
+  animation: gem-pulse 3.5s ease-in-out infinite;
+}
+@keyframes gem-pulse {
+  0%,100% { opacity:.9; }
+  50%      { opacity:.4; }
+}
+
+.bracelet-clear {
+  font-family: 'Inter', sans-serif;
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: #b0a080;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color .2s;
+}
+.bracelet-clear:hover { color: #8a6500; }
+
+/* ═══════════════════════════════════════════════════════════════
+   LA RANGÉE DU BRACELET
+   Structure : [CLASP─────WIRE+BEADS─────CLASP]
+   
+   Tout est aligné sur le CENTRE des sphères.
+   La hauteur totale d'un bead = sphere-d + gap + label-h ≈ 77px
+   Le centre de la sphère = sphere-d / 2 = 25px depuis le haut
+   ═══════════════════════════════════════════════════════════════ */
+.bracelet-row {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  /* Espace en haut pour le halo/hover qui soulève les perles */
+  padding-top: 14px;
+}
+
+/* ─── Fil doré ─────────────────────────────────────────────── */
+/* Le fil est centré au milieu des sphères = sphere-d/2 depuis le haut + padding-top */
+.wire {
+  position: absolute;
+  top: calc(14px + var(--sphere-d) / 2 - var(--wire-h) / 2);
+  left: 0;
+  right: 0;
+  height: var(--wire-h);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wire__body {
+  display: block;
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  background: linear-gradient(
+    180deg,
+    #f0d854 0%,
+    #d4af37 35%,
+    #b8901a 60%,
+    #c8a830 80%,
+    #e0c048 100%
+  );
+  box-shadow:
+    0 1px 0 rgba(255,240,120,.5),
+    0 -1px 0 rgba(100,60,0,.3);
+}
+
+.wire__shine {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  border-radius: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,200,.8) 30%,
+    rgba(255,255,255,.92) 50%,
+    rgba(255,255,200,.7) 70%,
+    transparent
+  );
+  animation: wire-shimmer 4s ease-in-out infinite;
+}
+@keyframes wire-shimmer {
+  0%,100% { opacity:.9; }
+  50%      { opacity:.5; }
+}
+
+/* ─── Fermoirs ──────────────────────────────────────────────── */
+/* Le fermoir est centré verticalement sur le fil (= centre sphère) */
+.clasp {
+  flex-shrink: 0;
+  display: block;
+  width: var(--clasp-d);
+  height: var(--clasp-d);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 38% 32%,
+    #f8f0a8 0%,
+    #d4af37 38%,
+    #a07a10 68%,
+    #705800 100%
+  );
+  box-shadow:
+    0 3px 8px rgba(100,70,0,.30),
+    inset -2px -3px 6px rgba(70,40,0,.42),
+    inset 2px 2px 5px rgba(255,240,140,.50);
+  position: relative;
+  z-index: 2;
+  /* Centre le fermoir sur la ligne du fil */
+  margin-top: calc(14px + var(--sphere-d) / 2 - var(--clasp-d) / 2);
+}
+
+/* Petit rivet central */
+.clasp::after {
+  content: '';
+  position: absolute;
+  inset: 28%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff8d0, #b08010);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.4);
+}
+
+/* ─── Rails de perles ───────────────────────────────────────── */
+.bead-rail {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--bead-gap);
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 0 10px;
+
+  /* Cache la scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.bead-rail::-webkit-scrollbar { display: none; }
+
+/* ═══════════════════════════════════════════════════════════════
+   PERLE — SPHÈRE 3D
+   Structure :
+     .bead (flex-col, centré)
+       .bead__sphere  (cercle — le cabochon)
+       .bead__gloss   (reflet spéculaire)
+       .bead__halo    (visible si active)
+       .bead__label   (texte sous la perle)
+   ═══════════════════════════════════════════════════════════════ */
+.bead {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  /* Animation d'entrée échelonnée */
+  opacity: 0;
+  transform: scale(.82) translateY(6px);
+  animation: bead-in .48s cubic-bezier(.22,1,.36,1) forwards;
+  animation-delay: var(--bead-delay, 0s);
+
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes bead-in {
+  to { opacity:1; transform:scale(1) translateY(0); }
+}
+
+/* ── Sphère ── */
+.bead__sphere {
+  display: block;
+  width: var(--sphere-d);
+  height: var(--sphere-d);
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+  /* Le background gradient est injecté par style inline (makeGemStyle) */
+  box-shadow:
+    /* Ombre portée douce */
+    0 5px 16px rgba(0,0,0,.20),
+    /* Ombre interne bas → profondeur 3D */
+    inset 0 -8px 16px rgba(0,0,0,.30),
+    /* Lueur interne haute gauche → éclat matière */
+    inset 3px 5px 12px rgba(255,255,255,.32),
+    /* Éclat subtil bord droit */
+    inset -2px 0px 6px rgba(255,255,255,.10);
+  transition: box-shadow .28s ease, filter .28s ease;
+}
+
+/* ── Reflet spéculaire (petit • brillant en haut-gauche) ── */
+.bead__gloss {
+  position: absolute;
+  top: 10%;
+  left: 25%;
+  width: calc(var(--sphere-d) * .32);
+  height: calc(var(--sphere-d) * .2);
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 45% 45%,
+    rgba(255,255,255,.72) 0%,
+    rgba(255,255,255,.20) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ── Halo sélection ── */
+.bead__halo {
+  position: absolute;
+  top: calc(var(--sphere-d) * -.12);
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(var(--sphere-d) * 1.28);
+  height: calc(var(--sphere-d) * 1.28);
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgba(212,175,55,.7);
+  box-shadow:
+    0 0 12px rgba(212,175,55,.45),
+    0 0 28px rgba(212,175,55,.20);
+  animation: halo-pulse 2.4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes halo-pulse {
+  0%,100% { opacity:1;   transform:translateX(-50%) scale(1); }
+  50%      { opacity:.6;  transform:translateX(-50%) scale(1.06); }
+}
+
+/* ── Étiquette ── */
+.bead__label {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: .7rem;
+  font-style: italic;
+  font-weight: 400;
+  color: #7a6a50;
+  white-space: nowrap;
+  letter-spacing: .02em;
+  text-align: center;
+  user-select: none;
+  pointer-events: none;
+  transition: color .2s;
+}
+
+/* ── Hover ── */
+.bead:hover { transform: translateY(-5px) scale(1.08); }
+.bead:hover .bead__sphere {
+  box-shadow:
+    0 10px 26px rgba(0,0,0,.26),
+    inset 0 -8px 16px rgba(0,0,0,.35),
+    inset 3px 5px 14px rgba(255,255,255,.40),
+    inset -2px 0px 6px rgba(255,255,255,.12);
+  filter: brightness(1.06) saturate(1.08);
+}
+.bead:hover .bead__label { color: #5a4a30; }
+
+/* ── Active ── */
+.bead--active { transform: translateY(-3px) scale(1.10); }
+.bead--active .bead__sphere {
+  box-shadow:
+    0 8px 22px rgba(0,0,0,.24),
+    inset 0 -8px 16px rgba(0,0,0,.30),
+    inset 3px 5px 12px rgba(255,255,255,.35),
+    inset -2px 0px 6px rgba(255,255,255,.10);
+  filter: brightness(1.04) saturate(1.05);
+}
+.bead--active .bead__label {
+  color: #5a4010;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.bead--active:hover { transform: translateY(-6px) scale(1.13); }
+
+/* ── Perle Or (Tout / Toutes) ── */
+.bead--all .bead__sphere {
+  box-shadow:
+    0 5px 18px rgba(160,120,0,.28),
+    inset 0 -8px 16px rgba(100,70,0,.32),
+    inset 3px 5px 12px rgba(255,248,160,.38),
+    inset -2px 0px 6px rgba(255,240,100,.15);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — masqué sur mobile
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .bracelet-filter { display: none; }
+}

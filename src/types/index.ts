@@ -52,6 +52,13 @@ export interface CategoryData {
   name: string;
   description?: string;
   image?: string;
+  color?: string;  // Couleur hex pour le bracelet filter
+}
+
+// Pierre avec couleur personnalisable
+export interface StoneData {
+  name: string;
+  color?: string;  // Couleur hex pour le bracelet filter
 }
 
 // Témoignage client
@@ -81,7 +88,8 @@ export interface SiteConfig {
   metaTitle: string;
   metaDescription: string;
   categories: CategoryData[];
-  stones: string[];
+  stones: string[];           // Liste simple (rétro-compat)
+  stonesData?: StoneData[];   // Liste enrichie avec couleur
   
   // ABOUT Preview
   aboutTitle: string;

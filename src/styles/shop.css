@@ -24,162 +24,23 @@
   font-size: var(--text-lg);
 }
 
-/* ── NOUVEAUX FILTRES (RESPONSIVE) ── */
-.shop-filters-mobile {
-  display: none; /* Caches par défaut sur PC */
-}
-
-.shop-filters-desktop {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xl);
-}
-
-.shop-filters-container {
+/* ── Wrappers filtres ── */
+.shop-filters-desktop-wrapper {
   margin-bottom: var(--space-3xl);
-  padding: 0;
-  background: transparent;
-  border: none;
-  box-shadow: none;
+  display: block;
 }
 
-.shop-filters-row {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
+.shop-filters-mobile {
+  display: none;
+  margin-bottom: var(--space-2xl);
 }
 
-.shop-filter-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* Garde-fou : on ne montre plus les anciens .shop-filters-desktop */
+.shop-filters-container,
+.shop-filters-desktop {
+  display: none;
 }
 
-.shop-filter-label {
-  font-size: var(--text-sm);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-gray-500);
-  font-weight: 600;
-  padding-left: var(--space-xs);
-}
-
-/* --- LE BRACELET (DESKTOP) --- */
-.shop-filter-chips {
-  display: flex;
-  gap: 15px; /* Espace entre les perles */
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 10px 0;
-  position: relative;
-}
-
-/* Le fil du bracelet */
-.shop-filter-chips::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(180deg, #d4af37, #b59b56);
-  z-index: 0;
-  transform: translateY(-50%);
-}
-
-.shop-chip {
-  position: relative;
-  /* Forme de pierre lissée (belle perle ovale) */
-  border-radius: 40px;
-  padding: 0.6rem 1.6rem;
-  background: transparent;
-  color: var(--color-white);
-  font-family: var(--font-display);
-  font-size: 1rem;
-  letter-spacing: 0.03em;
-  font-weight: 500;
-  text-shadow: 0px 1px 3px rgba(0,0,0,0.5);
-  cursor: pointer;
-  border: none;
-  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  white-space: nowrap;
-  box-shadow: none;
-  z-index: 1; /* Reste au-dessus du fil */
-}
-
-/* 3D Bead background - Pierres polies élégantes */
-.shop-chip::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 40px; /* Force l'ovale sur le fond */
-  z-index: -1;
-  /* Effet Volume 3D Cabochon */
-  box-shadow: 
-    3px 6px 15px rgba(0,0,0,0.2), /* Ombre portée douce */
-    inset -3px -6px 12px rgba(0,0,0,0.4), /* Sous la pierre */
-    inset 3px 5px 12px rgba(255,255,255,0.6), /* Éclat lumineux supérieur */
-    inset 0 0 10px rgba(255,255,255,0.2); 
-  transition: all 0.4s ease;
-  pointer-events: none;
-}
-
-/* Reflet de polissage additionnel (Verre/Gemme) */
-.shop-chip::before {
-  content: '';
-  position: absolute;
-  inset: 2px;
-  border-radius: 40px;
-  z-index: -1;
-  background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.15) 45%, rgba(255,255,255,0.3) 50%, transparent 55%);
-  pointer-events: none;
-}
-
-/* Couleurs de Gemmes Lisses et Luxueuses */
-.shop-chip:nth-child(6n + 1)::after { background: radial-gradient(circle at 35% 25%, #EED7D1, #a16492 50%, #4a214b 100%); }
-.shop-chip:nth-child(6n + 2)::after { background: radial-gradient(circle at 35% 25%, #88b1cc, #295B8A 60%, #0d1e38 100%); }
-.shop-chip:nth-child(6n + 3)::after { background: radial-gradient(circle at 35% 25%, #ffffff, #F4C4C2 50%, #bb6a67 100%); color: #4a2933; text-shadow: 0 1px 2px rgba(255,255,255,0.6); }
-.shop-chip:nth-child(6n + 4)::after { background: radial-gradient(circle at 35% 25%, #cde5c9, #6e9f65 60%, #2b4528 100%); color: #1f301d; text-shadow: 0 1px 2px rgba(255,255,255,0.5); }
-.shop-chip:nth-child(6n + 5)::after { background: radial-gradient(circle at 35% 25%, #fff1c5, #d4af37 50%, #805500 100%); }
-.shop-chip:nth-child(6n + 0)::after { background: radial-gradient(circle at 35% 25%, #7a7a7a, #2c2c2c 50%, #000000 100%); }
-
-.shop-chip:hover {
-  transform: translateY(-2px) scale(1.05);
-}
-
-.shop-chip:hover::after {
-  box-shadow: 
-    6px 10px 20px rgba(0,0,0,0.3),
-    inset -3px -6px 12px rgba(0,0,0,0.5),
-    inset 3px 5px 15px rgba(255,255,255,0.8),
-    inset 0 0 20px rgba(255,255,255,0.4);
-}
-
-.shop-chip.active {
-  transform: scale(1.08); 
-}
-
-.shop-chip.active::after {
-  box-shadow: 
-    6px 10px 15px rgba(0,0,0,0.2),
-    inset -3px -6px 12px rgba(0,0,0,0.5),
-    inset 3px 5px 12px rgba(255,255,255,0.8),
-    0 0 0 2px var(--color-gold-light),
-    0 0 15px rgba(212, 175, 55, 0.6);
-}
-
-/* Clear btn */
-.shop-filter-clear-btn {
-  margin-left: auto;
-  font-size: var(--text-xs);
-  color: var(--color-gray-500);
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.shop-filter-clear-btn:hover {
-  color: var(--color-gold-dark);
-}
 
 /* --- MENUS DEROULEMENT (MOBILE) PREMIUM --- */
 .shop-filter-bar {
@@ -259,7 +120,7 @@
 }
 
 @media (max-width: 768px) {
-  .shop-filters-desktop {
+  .shop-filters-desktop-wrapper {
     display: none;
   }
   .shop-filters-mobile {

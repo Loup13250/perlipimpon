@@ -585,6 +585,18 @@ function CategoriesForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
             </div>
             <input type="text" value={cat.name} onChange={e => updateCategory(index, 'name', e.target.value)} placeholder="Nom de la catégorie" style={{ flex: '1 1 150px', padding: '0.75rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-gray-300)' }} required />
             
+            {/* Color picker pour le bracelet */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '.4rem', flexShrink: 0 }}>
+              <input
+                type="color"
+                value={cat.color || '#c8a07a'}
+                onChange={e => updateCategory(index, 'color', e.target.value)}
+                title="Couleur de la perle"
+                style={{ width: '36px', height: '36px', border: 'none', borderRadius: '50%', cursor: 'pointer', background: 'none', padding: 0 }}
+              />
+              <span style={{ fontSize: '.7rem', color: 'var(--color-gray-500)' }}>Perle</span>
+            </div>
+
             <label className="btn btn--outline btn--sm" style={{ cursor: 'pointer', margin: 0 }}>
               Modifier l'image
               <input type="file" accept="image/*" style={{ display: 'none' }} onClick={(e) => { (e.target as HTMLInputElement).value = ''; }} onChange={async (e) => {
@@ -610,40 +622,64 @@ function CategoriesForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
 }
 
 // ──────────────────────────────────────────────
-// Formulaire Pierres
+// Formulaire Pierres (avec couleur)
 // ──────────────────────────────────────────────
 function StonesForm({ config, onSave }: { config: SiteConfig, onSave: (c: SiteConfig) => void }) {
-  const [form, setForm] = useState<SiteConfig>(config);
-  const updateStone = (index: number, val: string) => {
-    const newStones = [...(form.stones || [])];
-    newStones[index] = val;
-    setForm(prev => ({ ...prev, stones: newStones }));
+  // Fusion stonesData ↔ stones pour rétro-compatibilité
+  const initialData = (config.stonesData && config.stonesData.length > 0)
+    ? config.stonesData
+    : (config.stones || []).map(s => ({ name: s, color: undefined as string | undefined }));
+
+  const [items, setItems] = useState(initialData);
+
+  const updateItem = (index: number, field: 'name' | 'color', val: string) => {
+    setItems(prev => {
+      const copy = [...prev];
+      copy[index] = { ...copy[index], [field]: val };
+      return copy;
+    });
   };
-  const removeStone = (index: number) => {
+  const removeItem = (index: number) => {
     if (window.confirm("Voulez-vous vraiment supprimer cette pierre ?")) {
-      setForm(prev => ({ ...prev, stones: (prev.stones || []).filter((_, i) => i !== index) }));
+      setItems(prev => prev.filter((_, i) => i !== index));
     }
   };
-  const addStone = () => {
-    setForm(prev => ({ ...prev, stones: [...(prev.stones || []), 'Nouvelle pierre'] }));
+  const addItem = () => {
+    setItems(prev => [...prev, { name: 'Nouvelle pierre', color: '#b0a090' }]);
   };
-  const handleSubmit = (e: FormEvent) => { e.preventDefault(); onSave(form); };
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    // Sync les deux champs
+    const newConfig = {
+      ...config,
+      stones: items.map(i => i.name),
+      stonesData: items,
+    };
+    onSave(newConfig);
+  };
 
   return (
     <form onSubmit={handleSubmit} className="admin-form">
       <h2>Gestion des Pierres et Propriétés (Filtres)</h2>
       <p style={{ color: 'var(--color-gray-500)', marginBottom: 'var(--space-lg)' }}>
-        Modifiez le nom ou ajoutez de nouvelles pierres. Ces pierres apparaitront dynamiquement lors de la création d'un article et dans les filtres de la boutique.
+        Chaque pierre a une couleur de perle pour le bracelet sur la page Créations.
       </p>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
-        {(form.stones || []).map((stone, index) => (
-          <div key={index} style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-            <input type="text" value={stone} onChange={e => updateStone(index, e.target.value)} style={{ flex: 1, padding: '0.75rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-gray-300)' }} required />
-            <button type="button" className="btn btn--danger btn--sm" onClick={() => removeStone(index)}>✕</button>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+        {items.map((item, index) => (
+          <div key={index} style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', background: 'var(--color-white)', padding: '0.75rem', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)' }}>
+            <input
+              type="color"
+              value={item.color || '#b0a090'}
+              onChange={e => updateItem(index, 'color', e.target.value)}
+              title="Couleur de la perle"
+              style={{ width: '36px', height: '36px', border: 'none', borderRadius: '50%', cursor: 'pointer', background: 'none', padding: 0, flexShrink: 0 }}
+            />
+            <input type="text" value={item.name} onChange={e => updateItem(index, 'name', e.target.value)} style={{ flex: 1, padding: '0.65rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-gray-300)' }} required />
+            <button type="button" className="btn btn--danger btn--sm" onClick={() => removeItem(index)}>✕</button>
           </div>
         ))}
       </div>
-      <button type="button" className="btn btn--outline btn--sm" onClick={addStone}>+ Ajouter une pierre</button>
+      <button type="button" className="btn btn--outline btn--sm" onClick={addItem}>+ Ajouter une pierre</button>
       <div className="admin-form__actions" style={{ marginTop: '2rem' }}>
         <button type="submit" className="btn btn--primary">Enregistrer les pierres</button>
       </div>
