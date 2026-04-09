@@ -59,75 +59,126 @@
 
 .shop-filter-chips {
   display: flex;
-  gap: var(--space-md); /* Bigger gap for the string */
+  gap: 20px; /* Espace pour le fil */
   flex-wrap: wrap;
   align-items: center;
-  padding: 10px 0;
+  padding: 15px 10px;
 }
 
 .shop-chip {
   position: relative;
-  padding: 0.7rem 1.6rem;
-  border-radius: 40px;
+  /* Forme de base ovale */
+  padding: 0.8rem 1.8rem;
   background: transparent;
   color: var(--color-white);
-  font-size: var(--text-sm);
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  text-shadow: 0px 1px 3px rgba(0,0,0,0.4);
   cursor: pointer;
   border: none;
-  transition: all var(--transition-fast);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   white-space: nowrap;
   box-shadow: none;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
   z-index: 1;
 }
 
-/* 3D Bead background (::after) */
+/* 3D Bead background - Formes organiques (Galets) et Textures */
 .shop-chip::after {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 40px;
   z-index: -1;
+  /* Ombre de la pierre portée sur la page */
   box-shadow: 
-    inset -4px -4px 10px rgba(0,0,0,0.4),
-    inset 3px 3px 8px rgba(255,255,255,0.7),
-    3px 5px 8px rgba(0,0,0,0.2);
-  transition: all var(--transition-fast);
+    3px 6px 10px rgba(0,0,0,0.15),
+    inset -5px -8px 12px rgba(0,0,0,0.5), /* Ombre du dessous de la pierre (volume) */
+    inset 5px 6px 15px rgba(255,255,255,0.7), /* Reflet principal de lumière au-dessus */
+    inset 0 0 20px rgba(255,255,255,0.2); /* Voile soyeux de poli */
+  transition: all 0.4s ease;
+  pointer-events: none;
 }
 
-/* String connector (::before) */
+/* Brillance vitreuse supplémentaire (éclat de la pierre polie) */
 .shop-chip::before {
   content: '';
   position: absolute;
-  top: 50%;
-  left: calc(-1 * var(--space-md));
-  width: var(--space-md);
-  height: 3px;
-  background: linear-gradient(180deg, #d4af37, #8a6700);
-  transform: translateY(-50%);
-  z-index: -2;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  inset: 2px;
+  border-radius: inherit;
+  z-index: -1;
+  /* Faux reflet strié */
+  background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.2) 45%, rgba(255,255,255,0.4) 50%, transparent 55%);
+  pointer-events: none;
 }
 
-.shop-chip:first-child::before {
-  display: none;
+/* Le fil du bracelet accroché entre chaque pierre */
+/* On va utiliser un pseudo-element sur le texte par ex, ou créer un span. 
+   Puisque ::before et ::after sont pris, utilisons un ciblage adjacent pour le fil.*/
+.shop-chip + .shop-chip {
+  margin-left: 0px; 
 }
 
-/* Gemstone colors based on position */
-/* 1: Amethyst */
-.shop-chip:nth-child(6n + 1)::after { background: radial-gradient(ellipse at 35% 25%, #EED7D1, #a16492 40%, #4a214b 100%); }
-/* 2: Lapis Blue */
-.shop-chip:nth-child(6n + 2)::after { background: radial-gradient(ellipse at 35% 25%, #d1e2e8, #295B8A 40%, #0d1e38 100%); }
-/* 3: Rose Quartz */
-.shop-chip:nth-child(6n + 3)::after { background: radial-gradient(ellipse at 35% 25%, #ffffff, #F4C4C2 40%, #bb6a67 100%); }
-/* 4: Jade Green */
-.shop-chip:nth-child(6n + 4)::after { background: radial-gradient(ellipse at 35% 25%, #e0f2dc, #6e9f65 40%, #2f4f2c 100%); }
-/* 5: Amber Gold */
-.shop-chip:nth-child(6n + 5)::after { background: radial-gradient(ellipse at 35% 25%, #fff1c5, #d4af37 40%, #805500 100%); }
-/* 6: Onyx Black */
-.shop-chip:nth-child(6n + 0)::after { background: radial-gradient(ellipse at 35% 25%, #7a7a7a, #2c2c2c 50%, #000000 100%); }
+/* Astuce: On met le fil sur un pseudo-element d'un parent si on veut, 
+   mais comme on n'a que la classe shop-chip, recréons le fil en background du conteneur, ou avec un mixin.
+   On ajoute des lignes de connexion sur la gauche via une ombre portée spécifique : */
 
+/* Différentes formes organiques (Pierres roulées) */
+.shop-chip:nth-child(5n + 1) { border-radius: 65% 55% 45% 60% / 55% 45% 65% 40%; }
+.shop-chip:nth-child(5n + 2) { border-radius: 45% 60% 65% 50% / 50% 65% 45% 55%; }
+.shop-chip:nth-child(5n + 3) { border-radius: 55% 45% 60% 40% / 45% 55% 45% 65%; }
+.shop-chip:nth-child(5n + 4) { border-radius: 60% 50% 40% 65% / 55% 40% 60% 50%; }
+.shop-chip:nth-child(5n + 0) { border-radius: 50% 55% 60% 45% / 60% 45% 50% 55%; }
+
+/* Couleurs de Gemmes très réalistes et marbrées (multi-dégradés) */
+/* 1: Quartz Rose */
+.shop-chip:nth-child(6n + 1)::after { 
+  background: radial-gradient(ellipse at 30% 30%, #fffcfd 0%, #fadce4 30%, #e6aebc 70%, #bc7789 100%); 
+}
+.shop-chip:nth-child(6n + 1) { color: #4a2933; text-shadow: 0 1px 2px rgba(255,255,255,0.6); }
+
+/* 2: Labradorite / Lapis (Bleu nuit) */
+.shop-chip:nth-child(6n + 2)::after { 
+  background: radial-gradient(ellipse at 30% 30%, #9fcbe3 0%, #3e72a1 40%, #173352 80%, #0a1727 100%); 
+}
+
+/* 3: Jade Blanc / Aventurine (Vert Laiteux) */
+.shop-chip:nth-child(6n + 3)::after { 
+  background: radial-gradient(ellipse at 30% 30%, #ffffff 0%, #e1efdf 35%, #97bc90 75%, #597a53 100%); 
+}
+.shop-chip:nth-child(6n + 3) { color: #2b3d27; text-shadow: 0 1px 2px rgba(255,255,255,0.6); }
+
+/* 4: Améthyste (Violet nuancé) */
+.shop-chip:nth-child(6n + 4)::after { 
+  background: radial-gradient(ellipse at 30% 30%, #ebdbf5 0%, #ae84c9 40%, #684a77 80%, #352140 100%); 
+}
+
+/* 5: Œil de Tigre / Ambre (Or et Brun) */
+.shop-chip:nth-child(6n + 5)::after { 
+  background: radial-gradient(ellipse at 30% 30%, #ffeecc 0%, #dfa539 35%, #855312 75%, #3d2303 100%); 
+}
+
+/* 6: Onyx Mat (Gris Noir absolu) */
+.shop-chip:nth-child(6n + 0)::after { 
+  background: radial-gradient(ellipse at 30% 30%, #a3a3a3 0%, #444444 40%, #1a1a1a 80%, #000000 100%); 
+}
+
+/* Le fil du bracelet, dessiné en pseudo élément sur le conteneur row / chips */
+.shop-filter-chips {
+  /* On dessine des lignes dorées derrières les pierres pour simuler 3 ou 4 rangées de fils */
+  background-image: 
+    linear-gradient(180deg, transparent 20px, var(--color-gold-dark) 20px, var(--color-gold-dark) 21px, transparent 21px),
+    linear-gradient(180deg, transparent 23px, var(--color-gold) 23px, var(--color-gold) 24px, transparent 24px);
+  background-size: 100% 60px; /* Hauteur estimée d'une ligne de pierres */
+  background-position: 0 50%;
+}
+
+@media (max-width: 768px) {
+  .shop-filter-chips {
+    background-size: 100% 60px;
+    background-position: 0 25px; /* Aligné sur la seule ligne scrollable */
+  }
+}
 
 .shop-chip:hover {
   transform: translateY(-2px) scale(1.05);
@@ -135,22 +186,23 @@
 
 .shop-chip:hover::after {
   box-shadow: 
-    inset -4px -4px 10px rgba(0,0,0,0.5),
-    inset 3px 3px 10px rgba(255,255,255,0.9),
-    0 8px 15px rgba(0,0,0,0.3);
+    6px 10px 15px rgba(0,0,0,0.2),
+    inset -5px -8px 12px rgba(0,0,0,0.6),
+    inset 5px 6px 20px rgba(255,255,255,0.9),
+    inset 0 0 20px rgba(255,255,255,0.3);
 }
 
 .shop-chip.active {
-  transform: scale(1.08); /* slight bulge to signify active bead */
+  transform: scale(1.08); 
 }
 
 .shop-chip.active::after {
   box-shadow: 
-    inset -4px -4px 10px rgba(0,0,0,0.4),
-    inset 3px 3px 8px rgba(255,255,255,0.7),
-    0 0 15px rgba(212, 175, 55, 0.8),
-    0 0 5px rgba(212, 175, 55, 0.5);
-  border: 2px solid var(--color-gold-light);
+    6px 10px 15px rgba(0,0,0,0.2),
+    inset -5px -8px 12px rgba(0,0,0,0.5),
+    inset 5px 6px 15px rgba(255,255,255,0.8),
+    0 0 0 2px var(--color-gold-light), /* Cerclage d'or pour la pierre active */
+    0 0 15px rgba(212, 175, 55, 0.6);
 }
 
 /* Clear btn in chips */
