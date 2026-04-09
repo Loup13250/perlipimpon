@@ -51,12 +51,13 @@ export function useArticles() {
         return {
           id: docSnap.id,
           ...data,
-          pierres: data.pierres || [], 
-          photos: data.photos || []
+          pierres: Array.isArray(data.pierres) ? data.pierres : [], 
+          photos: Array.isArray(data.photos) ? data.photos : []
         };
       }) as Article[];
 
-      updatedArticles.sort((a, b) => new Date(b.dateCreation).getTime() - new Date(a.dateCreation).getTime());
+      const getTime = (iso: string) => iso ? new Date(iso).getTime() : 0;
+      updatedArticles.sort((a, b) => getTime(b.dateCreation) - getTime(a.dateCreation));
 
       setArticles(updatedArticles);
       setArticlesLoading(false);

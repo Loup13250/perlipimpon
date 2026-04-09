@@ -28,7 +28,7 @@ export default function ShopPage() {
       results = results.filter((a) => a.categorie === activeCategory);
     }
     if (activeStone) {
-      results = results.filter((a) => a.pierres?.includes(activeStone as Stone));
+      results = results.filter((a) => Array.isArray(a.pierres) && a.pierres.includes(activeStone as Stone));
     }
 
     return results;
@@ -140,44 +140,51 @@ export default function ShopPage() {
               </button>
             </div>
           ) : (
-            filteredArticles.map((article) => (
-              <Link
-                to={`/creations/${article.id}`}
-                key={article.id}
-                className="product-card reveal-item"
-              >
-                <div className="product-card__image">
-                  {article.photos && article.photos.length > 0 ? (
-                    <img src={article.photos[0]} alt={article.titre} />
-                  ) : (
-                    <div className="product-card__placeholder">
-                      <span role="img" aria-label="placeholder" style={{ fontSize: '3rem', color: 'var(--color-gold)' }}>🌙</span>
-                      <span>{article.categorie}</span>
+            filteredArticles.map((article) => {
+              try {
+                return (
+                  <Link
+                    to={`/creations/${article.id}`}
+                    key={article.id}
+                    className="product-card reveal-item"
+                  >
+                    <div className="product-card__image">
+                      {Array.isArray(article.photos) && article.photos.length > 0 ? (
+                        <img src={article.photos[0]} alt={article.titre} />
+                      ) : (
+                        <div className="product-card__placeholder">
+                          <span role="img" aria-label="placeholder" style={{ fontSize: '3rem', color: 'var(--color-gold)' }}>🌙</span>
+                          <span>{article.categorie}</span>
+                        </div>
+                      )}
+                      {article.enVedette && (
+                        <div className="product-card__badge">Vedette</div>
+                      )}
                     </div>
-                  )}
-                  {article.enVedette && (
-                    <div className="product-card__badge">Vedette</div>
-                  )}
-                </div>
-                <div className="product-card__body">
-                  <p className="product-card__category">{article.categorie}</p>
-                  <h3 className="product-card__title">{article.titre}</h3>
-                  <p className="product-card__description">
-                    {truncateText(article.description, 100)}
-                  </p>
-                  <div className="product-card__footer">
-                    <span className="product-card__price">
-                      {formatPrice(article.prix)}
-                    </span>
-                    <div className="product-card__stones">
-                      {article.pierres?.slice(0, 2).map((p) => (
-                        <span key={p} className="badge badge--gold">{p}</span>
-                      ))}
+                    <div className="product-card__body">
+                      <p className="product-card__category">{article.categorie}</p>
+                      <h3 className="product-card__title">{article.titre}</h3>
+                      <p className="product-card__description">
+                        {truncateText(article.description || "", 100)}
+                      </p>
+                      <div className="product-card__footer">
+                        <span className="product-card__price">
+                          {formatPrice(article.prix || 0)}
+                        </span>
+                        <div className="product-card__stones">
+                          {Array.isArray(article.pierres) && article.pierres.slice(0, 2).map((p) => (
+                            <span key={p} className="badge badge--gold">{p}</span>
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </Link>
-            ))
+                  </Link>
+                );
+              } catch (e) {
+                console.error("Error rendering article card", article.id, e);
+                return null;
+              }
+            })
           )}
         </div>
       </div>

@@ -70,11 +70,11 @@ export function useScrollRevealGroup(
       { threshold, rootMargin }
     );
 
-    const scanAndObserve = () => {
-      const items = container.querySelectorAll('.reveal-item:not(.revealed)');
+    const scan = () => {
+      const items = container.querySelectorAll('.reveal-item');
       items.forEach((item) => {
         const rect = item.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
+        if (rect.top < window.innerHeight + 100) {
           item.classList.add('revealed');
         } else {
           observer.observe(item);
@@ -82,12 +82,12 @@ export function useScrollRevealGroup(
       });
     };
 
-    scanAndObserve();
-    const timer = setTimeout(scanAndObserve, 500);
+    scan();
+    const t = setTimeout(scan, 200);
 
     return () => {
-      clearTimeout(timer);
-      observer.disconnect();
+      clearTimeout(t);
+      if (observer) observer.disconnect();
     };
   }, [threshold, rootMargin, once, ...dependencies]);
 
