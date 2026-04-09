@@ -290,7 +290,7 @@ function ArticleForm({
                 checked={form.enVedette}
                 onChange={(e) => updateField('enVedette', e.target.checked)}
               />
-              <span className="beautiful-toggle__slider"></span>
+              <div className="beautiful-toggle__slider"></div>
               <span className="beautiful-toggle__label">
                 Mettre en vedette (Accueil)
               </span>
@@ -302,7 +302,7 @@ function ArticleForm({
                 checked={form.vendu}
                 onChange={(e) => updateField('vendu', e.target.checked)}
               />
-              <span className="beautiful-toggle__slider"></span>
+              <div className="beautiful-toggle__slider"></div>
               <span className="beautiful-toggle__label">
                 Marquer comme "VENDU"
               </span>

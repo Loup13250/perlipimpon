@@ -333,8 +333,10 @@
 }
 
 .beautiful-toggle__slider {
+  display: block;
   position: relative;
   width: 50px;
+  min-width: 50px;
   height: 28px;
   background-color: var(--color-gray-300);
   border-radius: 28px;

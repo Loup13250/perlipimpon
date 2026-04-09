@@ -47,7 +47,7 @@ export default function ProductDetailPage() {
               <div className="gallery">
                 <div className="gallery__main" style={{ position: 'relative' }}>
                   {article.vendu && (
-                    <div className="product-card__banner-vendu" style={{ fontSize: 'var(--text-3xl)', padding: '20px 0' }}>
+                    <div className="product-card__banner-vendu" style={{ top: '40px', right: '-65px', width: '280px', fontSize: 'var(--text-lg)', padding: '12px 0' }}>
                       <span>Vendu</span>
                     </div>
                   )}
