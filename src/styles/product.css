@@ -53,7 +53,7 @@
 
 .product-info__category {
   font-size: var(--text-sm);
-  color: var(--color-gold);
+  color: var(--color-gold-dark);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: 500;

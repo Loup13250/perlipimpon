@@ -11,16 +11,16 @@
   /* Couleurs principales */
   --color-gold: #D4AF37; /* Or riche et vibrant */
   --color-gold-light: #F3E5AB; /* Reflet doré (starlight) */
-  --color-gold-dark: #A67C00;
+  --color-gold-dark: #8A6500; /* Darker for better text contrast */
   --color-cream: #FAF6F0; /* Option : garder crème ou foncer un peu, restons sur une base douce */
   --color-cream-dark: #EAE0D5;
   --color-ivory: #FEFDF9;
   --color-black: #0B0C10; /* Nuit très profonde presque noire */
   --color-black-light: #1F2833; /* Gris sombre océan/nuit */
   --color-gray-900: #1A1A24;
-  --color-gray-700: #4B5267;
-  --color-gray-500: #7A8599;
-  --color-gray-300: #CBD2D9;
+  --color-gray-700: #3D4455; /* Darkened for higher contrast */
+  --color-gray-500: #5C677D; /* Darkened to pass WCAG AA on white (4.5:1) */
+  --color-gray-300: #A8B2BD; /* Darkened slightly */
   --color-gray-100: #F0F4F8;
   --color-rose: #EED7D1; /* Rose quartz doux */
   --color-rose-light: #F9EBE8;
