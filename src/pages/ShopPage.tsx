@@ -76,50 +76,61 @@ export default function ShopPage() {
           <>
             {/* Filtres Séparés & Modernisés */}
             <div className="shop-filters-container">
-              <div className="shop-filter-bar">
-                
-                {/* Filtre Catégorie */}
-                <div className="shop-filter-select-wrapper">
-                  <label htmlFor="cat-select" className="shop-filter-label">📂 Catégorie</label>
-                  <select 
-                    id="cat-select" 
-                    className="shop-select"
-                    value={activeCategory} 
-                    onChange={(e) => handleCategoryFilter(e.target.value)}
-                  >
-                    <option value="">Toutes les catégories</option>
-                    {config.categories.map((cat) => (
-                      <option key={cat.name} value={cat.name}>{cat.name}</option>
-                    ))}
-                  </select>
+              
+              <div className="shop-filters-row">
+                <div className="shop-filter-header">
+                  <span className="shop-filter-label">Catégories</span>
+                  {(activeCategory || activeStone) && (
+                    <span 
+                      className="shop-filter-clear-btn" 
+                      onClick={clearFilters}
+                    >
+                      Effacer les filtres
+                    </span>
+                  )}
                 </div>
-
-                {/* Filtre Pierres */}
-                <div className="shop-filter-select-wrapper">
-                  <label htmlFor="stone-select" className="shop-filter-label">💎 Pierre</label>
-                  <select 
-                    id="stone-select" 
-                    className="shop-select"
-                    value={activeStone} 
-                    onChange={(e) => handleStoneFilter(e.target.value)}
-                  >
-                    <option value="">Toutes les pierres</option>
-                    {(config.stones || []).map((stone) => (
-                      <option key={stone} value={stone}>{stone}</option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Vider les filtres quand au moins un est actif */}
-                {(activeCategory || activeStone) && (
+                <div className="shop-filter-chips">
                   <button 
-                    className="btn btn--outline btn--sm shop-filter-clear-btn" 
-                    onClick={clearFilters}
+                    className={`shop-chip ${activeCategory === '' ? 'active' : ''}`}
+                    onClick={() => handleCategoryFilter('')}
                   >
-                    ✕ Vider les filtres
+                    Toutes
                   </button>
-                )}
+                  {config.categories.map((cat) => (
+                    <button 
+                      key={cat.name}
+                      className={`shop-chip ${activeCategory === cat.name ? 'active' : ''}`}
+                      onClick={() => handleCategoryFilter(cat.name)}
+                    >
+                      {cat.name}
+                    </button>
+                  ))}
+                </div>
               </div>
+
+              {config.stones && config.stones.length > 0 && (
+                <div className="shop-filters-row">
+                  <span className="shop-filter-label">Pierres</span>
+                  <div className="shop-filter-chips">
+                    <button 
+                      className={`shop-chip ${activeStone === '' ? 'active' : ''}`}
+                      onClick={() => handleStoneFilter('')}
+                    >
+                      Toutes
+                    </button>
+                    {config.stones.map((stone) => (
+                      <button 
+                        key={stone}
+                        className={`shop-chip ${activeStone === stone ? 'active' : ''}`}
+                        onClick={() => handleStoneFilter(stone)}
+                      >
+                        {stone}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
             </div>
 
             {/* Compteur */}

@@ -51,7 +51,7 @@ export function useArticles() {
         return {
           id: docSnap.id,
           ...data,
-          pierres: Array.isArray(data.pierres) ? data.pierres : [], 
+          pierres: Array.isArray(data.pierres) ? data.pierres : [],
           photos: Array.isArray(data.photos) ? data.photos : []
         };
       }) as Article[];
@@ -108,8 +108,8 @@ export function useArticles() {
         });
         return true;
       } catch (e) {
-         console.error("Error updating article", e);
-         return false;
+        console.error("Error updating article", e);
+        return false;
       }
     },
     []
@@ -130,19 +130,19 @@ export function useArticles() {
         await setDoc(doc(db, ARTICLES_COLLECTION, article.id), article);
       }
     } catch (e) {
-       console.error("Error resetting", e);
+      console.error("Error resetting", e);
     }
   }, []);
 
   const replaceAll = useCallback(async (newArticles: Article[]): Promise<void> => {
-     try {
-       for (const article of newArticles) {
-         if (!article.id) article.id = generateId();
-         await setDoc(doc(db, ARTICLES_COLLECTION, article.id), article);
-       }
-     } catch(e) {
-       console.error("Error replacing items", e);
-     }
+    try {
+      for (const article of newArticles) {
+        if (!article.id) article.id = generateId();
+        await setDoc(doc(db, ARTICLES_COLLECTION, article.id), article);
+      }
+    } catch (e) {
+      console.error("Error replacing items", e);
+    }
   }, []);
 
   return {

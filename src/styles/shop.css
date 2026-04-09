@@ -24,68 +24,84 @@
   font-size: var(--text-lg);
 }
 
-/* Barre de filtres (nouveau design) */
+/* Barre de filtres (nouveau design premium chips) */
 .shop-filters-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: var(--space-2xl);
-  padding: var(--space-md);
-  background: var(--color-white);
-  border-radius: var(--radius-xl);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--color-gray-200);
+  flex-direction: column;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-3xl);
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
-.shop-filter-bar {
+.shop-filters-row {
   display: flex;
-  align-items: center;
-  gap: var(--space-lg);
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.shop-filter-select-wrapper {
-  display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: var(--space-sm);
-  flex: 1;
-  min-width: 250px;
+}
+
+.shop-filter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .shop-filter-label {
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gray-500);
   font-weight: 600;
-  color: var(--color-primary-dark);
-  white-space: nowrap;
+  padding-left: var(--space-xs);
 }
 
-.shop-select {
-  flex: 1;
-  padding: 0.75rem 1rem;
-  font-family: inherit;
-  font-size: var(--text-base);
+.shop-filter-chips {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.shop-chip {
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-full);
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
   color: var(--color-gray-700);
-  background-color: var(--color-cream);
-  border: 1px solid var(--color-gray-300);
-  border-radius: var(--radius-md);
-  outline: none;
+  font-size: var(--text-sm);
+  font-weight: 500;
   cursor: pointer;
-  appearance: none; /* cache la flèche par défaut pour la redéfinir si besoin, mais on va garder simple */
-  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23b59b56%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
-  background-repeat: no-repeat;
-  background-position: right 1rem top 50%;
-  background-size: 0.65rem auto;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
 }
 
-.shop-select:hover, .shop-select:focus {
+.shop-chip:hover {
   border-color: var(--color-gold);
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+  color: var(--color-gold-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
+.shop-chip.active {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-white);
+  box-shadow: var(--shadow-gold);
+}
+
+/* Clear btn in chips */
 .shop-filter-clear-btn {
   margin-left: auto;
-  white-space: nowrap;
+  font-size: var(--text-xs);
+  color: var(--color-gray-500);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.shop-filter-clear-btn:hover {
+  color: var(--color-gold-dark);
 }
 
 /* Compteur résultats */
@@ -126,25 +142,15 @@
 }
 
 @media (max-width: 768px) {
-  .shop-filter-bar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-md);
+  .shop-filter-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: var(--space-sm);
+    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none; /* Firefox */
   }
-
-  .shop-filter-select-wrapper {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .shop-select {
-    width: 100%;
-  }
-
-  .shop-filter-clear-btn {
-    margin-left: 0;
-    width: 100%;
-    text-align: center;
+  .shop-filter-chips::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
   }
 
   .shop-grid {

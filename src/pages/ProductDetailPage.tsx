@@ -112,7 +112,7 @@ export default function ProductDetailPage() {
                 {/* Actions */}
                 <div className="product-info__actions">
                   <Link to="/contact" className="btn btn--primary btn--lg">
-                    ✉ Me contacter pour cette pièce
+                    Prendre contact pour ce bijou
                   </Link>
                   <Link to="/creations" className="btn btn--outline">
                     ← Retour

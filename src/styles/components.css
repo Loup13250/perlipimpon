@@ -25,18 +25,39 @@
 }
 
 .btn--primary {
-  background: var(--color-gold);
-  color: var(--color-black); /* Contraste amélioré (WCAG AA) */
-  font-weight: 600;
-  border: 2px solid var(--color-gold);
+  background: var(--color-black);
+  color: var(--color-white);
+  font-weight: 500;
+  border: 1px solid var(--color-black);
+  letter-spacing: 0.08em;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.btn--primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: skewX(-20deg);
+  transition: all 0.6s ease;
 }
 
 .btn--primary:hover {
-  background: var(--color-gold-dark);
-  border-color: var(--color-gold-dark);
-  color: var(--color-white);
-  box-shadow: var(--shadow-gold);
-  transform: translateY(-1px);
+  background: var(--color-gray-900);
+  border-color: var(--color-gold);
+  color: var(--color-gold-light);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.btn--primary:hover::after {
+  left: 150%;
 }
 
 .btn--outline {
@@ -307,6 +328,7 @@
 .gallery__main {
   width: 100%;
   aspect-ratio: 1 / 1;
+  max-height: 70vh; /* Premium desktop max height so it's never absurdly huge */
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--color-cream-dark);
@@ -317,6 +339,12 @@
   height: 100%;
   object-fit: contain;
   padding: var(--space-md);
+}
+
+@media (max-width: 768px) {
+  .gallery__main {
+    max-height: 50vh; /* Limits image height drastically on mobile devices to save space */
+  }
 }
 
 .gallery__main-placeholder {
