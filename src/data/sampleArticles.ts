@@ -1,6 +1,5 @@
 /**
  * Données de démonstration pour peupler le site au premier lancement.
- * Ces articles seront insérés dans le localStorage s'il est vide.
  */
 
 import type { Article, Testimonial, SiteConfig } from '../types';
@@ -16,2529 +15,2385 @@ export const defaultSiteConfig: SiteConfig = {
   metaTitle: 'Perlipimpon — Créatrice de bijoux fantaisies, énergies et pierres naturelles',
   metaDescription: 'Perlipimpon vous propose des bijoux artisanaux faits main, inspirés par la lune et les énergies. Créations uniques en pierres naturelles.',
   categories: [
-    { name: 'Colliers', description: 'Colliers en pierres naturelles', image: '/images/moonstone_necklace.png' },
-    { name: 'Bracelets', description: 'Bracelets énergétiques', image: '/images/pearl_bracelet.png' },
-    { name: 'Bagues', description: 'Bagues serties et ajustables', image: '/images/rose_quartz_ring.png' },
-    { name: 'Boucles d\'oreilles', description: 'Boucles et puces', image: '/images/moonstone_necklace.png' },
-    { name: 'Pendentifs', description: 'Pendentifs en pierres brutes', image: '/images/moonstone_necklace.png' },
-    { name: 'Ensembles', description: 'Parures complètes', image: '/images/pearl_bracelet.png' }
+    { name: 'Colliers', description: 'Colliers en pierres naturelles' },
+    { name: 'Bracelets', description: 'Bracelets énergétiques' },
+    { name: 'Bagues', description: 'Bagues serties et ajustables' },
+    { name: "Boucles d'oreilles", description: 'Boucles et puces' },
+    { name: 'Pendentifs', description: 'Pendentifs en pierres brutes' },
+    { name: 'Ensembles', description: 'Parures complètes' }
   ],
   stones: [
     'Pierre de lune', 'Perle', 'Améthyste', 'Quartz rose',
     'Labradorite', 'Aigue-marine', 'Tourmaline', 'Opale',
-    'Nacre', 'Cristal de roche'
+    'Nacre', 'Cristal de roche', 'Aventurine', 'Malachite', 'Lapis-Lazuli', 'Turquoise', 'Oeil de tigre', 'Onyx', 'Amazonite', 'Cornaline', 'Topaze bleue', 'Grenat', 'Peridot', 'Citrine', 'Hematite', 'Jaspe rouge', 'Sodalite', 'Unakite', 'Obsidienne', 'Calcedoine', 'Rhodonite'
   ],
   stonesData: [],
   aboutTitle: 'Fait main, fait avec cœur',
-  aboutText1: 'Bienvenue chez Perlipimpon ! Chaque bijou est une création unique, façonnée à la main avec patience et passion. Des pierres de lune aux perles d\'eau douce, chaque matériau est choisi pour sa beauté et son énergie.',
+  aboutText1: 'Bienvenue chez Perlipimpon ! Chaque bijou est une création unique, façonnée à la main avec patience et passion.',
   aboutText2: 'Que ce soit pour vous faire plaisir ou pour offrir, nos bijoux fantaisies apportent une touche d\'élégance naturelle à chaque tenue.',
   aboutImage: '/images/moonstone_necklace.png',
-  
   heroSubtitle: '✦ bijoux artisanaux ✦',
   heroTitle1: 'L\'art de la ',
   heroTitle2: 'création',
-  heroDescription: 'Des bijoux fantaisies uniques, fabriqués à la main avec des pierres naturelles soigneusement sélectionnées. Chaque pièce raconte une histoire.',
+  heroDescription: 'Des bijoux fantaisies uniques, fabriqués à la main avec des pierres naturelles soigneusement sélectionnées.',
   heroImage: '/images/hero_bg.png',
-
   ctaTitle: 'Une pièce vous fait envie ?',
-  ctaDescription: 'Contactez-nous pour toute question ou commande personnalisée. Chaque bijou peut être adapté selon vos envies !',
-
-  testimonials: [
-    {
-      id: 't-1',
-      auteur: 'Sophie M.',
-      texte: "Des bijoux magnifiques ! On sent vraiment l'amour et la passion mis dans chaque création. Mon pendentif en labradorite ne me quitte plus.",
-      note: 5
-    },
-    {
-      id: 't-2',
-      auteur: 'Camille T.',
-      texte: "J'ai commandé une bague sur mesure, le résultat a dépassé mes espérances. Finitions parfaites et pierre magnifique.",
-      note: 5
-    },
-    {
-      id: 't-3',
-      auteur: 'Élodie L.',
-      texte: "Une très belle découverte locale. Les boucles d'oreilles sont légères et élégantes. Envoi rapide et soigné",
-      note: 4
-    }
-  ],
-
-  processSteps: [
-    { number: 1, title: 'Inspiration', description: 'Observer la nature, les pierres, imaginer la pièce finale.' },
-    { number: 2, title: 'Sélection', description: 'Choisir les pierres et matériaux avec attention.' },
-    { number: 3, title: 'Création', description: 'Assembler, tresser, sertir avec précision.' },
-    { number: 4, title: 'Finitions', description: 'Polir, ajuster chaque détail pour la perfection.' }
-  ]
+  ctaDescription: 'Contactez-nous pour toute question ou commande personnalisée.',
+  testimonials: [],
+  processSteps: []
 };
 
 export const sampleArticles: Article[] = [
-  {
-    id: "auto-001",
-    titre: "Boucles doreilles Festives",
-    description: "Boucles doreilles elegantes avec motifs de cours et triangles textures, parfaites pour vos soirees.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/472982678_122200623278158928_4769343512706442374_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: true
-  },
-  {
-    id: "auto-002",
-    titre: "Boucles doreilles Croisette",
-    description: "Modele Croisette arborant un motif leopard chic sur une monture doree arrondie.",
-    prix: 38,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473133716_122200623524158928_1134493933837433129_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: true
-  },
-  {
-    id: "auto-003",
-    titre: "Boucles doreilles Pepites Leopard",
-    description: "Design leopard moderne pour ces boucles doreilles originales et tendance.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473235429_122200623032158928_7900813755815264754_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: true
-  },
-  {
-    id: "auto-004",
-    titre: "Boucles doreilles Papyrus",
-    description: "Boucles doreilles ornees dune pierre fine verte facettee pour un look naturel.",
-    prix: 42,
-    categorie: "Boucles d'oreilles",
-    pierres: [
-      "Aventurine"
-    ],
-    photos: [
-      "/images/creations/473256849_122200623230158928_352825919811860710_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: true
-  },
-  {
-    id: "auto-005",
-    titre: "Boucles doreilles Ophelie",
-    description: "Alliance de la perle blanche a des anneaux dores ciseles pour un raffinement extreme.",
-    prix: 45,
-    categorie: "Boucles d'oreilles",
-    pierres: [
-      "Perle de culture"
-    ],
-    photos: [
-      "/images/creations/473340799_122201328548158928_2038345838962049893_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: true
-  },
-  {
-    id: "auto-006",
-    titre: "Bague Labradorite Royale",
-    description: "Bague majestueuse sertie dune Labradorite aux reflets bleutes envoutants.",
-    prix: 55,
-    categorie: "Bagues",
-    pierres: [
-      "Labradorite"
-    ],
-    photos: [
-      "/images/creations/473341420_122201328206158928_2828597019880718112_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: true
-  },
-  {
-    id: "auto-007",
-    titre: "Bague Malachite Profonde",
-    description: "Bague artisanale mettant en valeur une Malachite au vert profond et strie.",
-    prix: 52,
-    categorie: "Bagues",
-    pierres: [
-      "Malachite"
-    ],
-    photos: [
-      "/images/creations/473354677_122201328566158928_8956090328562457149_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: true
-  },
-  {
-    id: "auto-008",
-    titre: "Bague Lapis-Lazuli Stellaire",
-    description: "Une bague dexception ornee dun Lapis-Lazuli bleu nuit tachete de pyrite doree.",
-    prix: 58,
-    categorie: "Bagues",
-    pierres: [
-      "Lapis-Lazuli"
-    ],
-    photos: [
-      "/images/creations/473361588_122200622984158928_7222519572489594492_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: true
-  },
-  {
-    id: "auto-009",
-    titre: "Bague Ametheyste Mystique",
-    description: "Bague mystique sertie dune Ametheyste violette, symbole de serenite.",
-    prix: 54,
-    categorie: "Bagues",
-    pierres: [
-      "Amethyst"
-    ],
-    photos: [
-      "/images/creations/473372466_122201328656158928_2029604001262488220_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: true
-  },
-  {
-    id: "auto-010",
-    titre: "Bague Turquoise Boheme",
-    description: "Bague dexception ornee dune Turquoise naturelle au style boheme unique.",
-    prix: 60,
-    categorie: "Bagues",
-    pierres: [
-      "Turquoise"
-    ],
-    photos: [
-      "/images/creations/473416119_122200623500158928_2828826237480628351_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: true
-  },
-  {
-    id: "auto-011",
-    titre: "Boucles doreilles Izia Silver",
-    description: "Boucles doreilles en acier inoxydable avec coeurs marteles, un design chic et intemporel.",
-    prix: 32,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473446929_122201328674158928_9018583340865346271_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-012",
-    titre: "Boucles doreilles Cosmos Spring",
-    description: "Boucles doreilles fleuries d’inspiration cosmique, avec un petit detail de couleur vert emeraude au centre.",
-    prix: 42,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473451986_122201328692158928_6029920932440069154_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-013",
-    titre: "Création Perlipimpon 13",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473540051_122201328176158928_9044289977160164845_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-014",
-    titre: "Création Perlipimpon 14",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473548589_122201328956158928_8011913272615711629_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-015",
-    titre: "Création Perlipimpon 15",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473553972_122201340260158928_8520475929549074176_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-016",
-    titre: "Création Perlipimpon 16",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473578908_122201328644158928_1047448953646046309_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-017",
-    titre: "Création Perlipimpon 17",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473588856_122201328188158928_3169717433946904198_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-018",
-    titre: "Création Perlipimpon 18",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473621819_122201340230158928_1983232468118663258_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-019",
-    titre: "Création Perlipimpon 19",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473622828_122201328194158928_5025500798329435390_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-020",
-    titre: "Création Perlipimpon 20",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473622997_122201328170158928_5248674625730901904_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-021",
-    titre: "Création Perlipimpon 21",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473628139_122201328620158928_8135132925769878247_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-022",
-    titre: "Création Perlipimpon 22",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473807272_122202536282158928_6513503047436518843_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-023",
-    titre: "Création Perlipimpon 23",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473897990_122202536168158928_5467220022455649728_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-024",
-    titre: "Création Perlipimpon 24",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473992585_122202536324158928_1929385231506832589_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-025",
-    titre: "Création Perlipimpon 25",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/473999733_122202536810158928_6342491970675731491_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-026",
-    titre: "Création Perlipimpon 26",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474018545_122202536234158928_7108235809866976410_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-027",
-    titre: "Création Perlipimpon 27",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474025830_122202536408158928_2408782160577514405_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-028",
-    titre: "Création Perlipimpon 28",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474030815_122202536192158928_2266108943471238193_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-029",
-    titre: "Création Perlipimpon 29",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474030830_122202536852158928_2889122137508406518_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-030",
-    titre: "Création Perlipimpon 30",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474038531_122202536210158928_2393958096423151133_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-031",
-    titre: "Création Perlipimpon 31",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474038531_122202536816158928_3565357174295410012_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-032",
-    titre: "Création Perlipimpon 32",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474038694_122202536162158928_510954882395770702_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-033",
-    titre: "Création Perlipimpon 33",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474050030_122202536414158928_7623025863111960861_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-034",
-    titre: "Création Perlipimpon 34",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474067360_122202537008158928_7779281431957026996_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-035",
-    titre: "Création Perlipimpon 35",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474068627_122202536648158928_6168960549888235370_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-036",
-    titre: "Création Perlipimpon 36",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474073415_122202536762158928_5270765036021272470_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-037",
-    titre: "Création Perlipimpon 37",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474085302_122202536186158928_8177287603919219394_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-038",
-    titre: "Création Perlipimpon 38",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474105068_122202536888158928_260107995910757901_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-039",
-    titre: "Création Perlipimpon 39",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474135951_122202536144158928_5117788262173145538_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-040",
-    titre: "Création Perlipimpon 40",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474137838_122202536594158928_3276680666977018168_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-041",
-    titre: "Création Perlipimpon 41",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474139143_122202536378158928_7767449053865933548_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-042",
-    titre: "Création Perlipimpon 42",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474143934_122202536744158928_223690050841474990_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-043",
-    titre: "Création Perlipimpon 43",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474146896_122202536882158928_8214072194493370941_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:35Z",
-    enVedette: false
-  },
-  {
-    id: "auto-044",
-    titre: "Création Perlipimpon 44",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474162800_122202536720158928_5764662690346226503_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:35Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-045",
-    titre: "Création Perlipimpon 45",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474164566_122202536624158928_615655267435086183_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-046",
-    titre: "Création Perlipimpon 46",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474177940_122202536708158928_3484378336419254563_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-047",
-    titre: "Création Perlipimpon 47",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474188349_122202711638158928_307615407925336821_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-048",
-    titre: "Création Perlipimpon 48",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474189407_122202711626158928_2074019437738859462_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-049",
-    titre: "Création Perlipimpon 49",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474200707_122202711824158928_6827775833202492470_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-050",
-    titre: "Création Perlipimpon 50",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474209168_122202711770158928_1795518133227929054_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-051",
-    titre: "Création Perlipimpon 51",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474211911_122202536618158928_7699619905114157133_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-052",
-    titre: "Création Perlipimpon 52",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474218515_122202536750158928_1705393840365298888_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-053",
-    titre: "Création Perlipimpon 53",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474260268_122202536156158928_2976064703869993882_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-054",
-    titre: "Création Perlipimpon 54",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474464289_122202536822158928_5113777695171112149_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-055",
-    titre: "Création Perlipimpon 55",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474499822_122202536738158928_4502276689629583944_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-056",
-    titre: "Création Perlipimpon 56",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474570067_122202711764158928_1700959910982207423_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-057",
-    titre: "Création Perlipimpon 57",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474575038_122202536294158928_5560274228517849372_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-058",
-    titre: "Création Perlipimpon 58",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474580404_122202536276158928_7301223737236738952_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-059",
-    titre: "Création Perlipimpon 59",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474593457_122202536672158928_560971017112687282_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-060",
-    titre: "Création Perlipimpon 60",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/474682924_122202711806158928_5887604819901979726_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-061",
-    titre: "Création Perlipimpon 61",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/475792779_122205454262158928_4392485601190093575_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-062",
-    titre: "Création Perlipimpon 62",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/475833772_122205455330158928_6890281721117933657_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-063",
-    titre: "Création Perlipimpon 63",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/475842989_122205452444158928_7026588334588233101_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-064",
-    titre: "Création Perlipimpon 64",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/475844403_122205455696158928_5095584519978436033_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-065",
-    titre: "Création Perlipimpon 65",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/475852440_122205493292158928_1878443596923472272_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-066",
-    titre: "Création Perlipimpon 66",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/475896979_122205454184158928_7880303747293106360_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-067",
-    titre: "Création Perlipimpon 67",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/475917773_122205452414158928_4223767919081487094_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-068",
-    titre: "Création Perlipimpon 68",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/475988077_122205452258158928_8013560970040221753_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-069",
-    titre: "Création Perlipimpon 69",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/476028871_122205454172158928_380892160219695746_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-070",
-    titre: "Création Perlipimpon 70",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/476101419_122205451880158928_163339703215076222_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-071",
-    titre: "Création Perlipimpon 71",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/476120034_122205451856158928_1392643710365069367_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-072",
-    titre: "Création Perlipimpon 72",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/476153856_122205455048158928_246580277281319178_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-073",
-    titre: "Création Perlipimpon 73",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/476157746_122205455690158928_2565569315611225480_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-074",
-    titre: "Création Perlipimpon 74",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/476231212_122205455282158928_603955799660762957_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-075",
-    titre: "Création Perlipimpon 75",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/479545169_122207941058158928_5882336730041324964_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-076",
-    titre: "Création Perlipimpon 76",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/479663588_122207940272158928_442202707989127680_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-077",
-    titre: "Création Perlipimpon 77",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/480006737_122207941052158928_6336389513974830273_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-078",
-    titre: "Création Perlipimpon 78",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/480147821_122207937218158928_856680714342915214_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-079",
-    titre: "Création Perlipimpon 79",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/480176811_122207940218158928_6084411782485068577_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-080",
-    titre: "Création Perlipimpon 80",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/480180587_122207940278158928_8750108974363710315_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-081",
-    titre: "Création Perlipimpon 81",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/480197881_122207941088158928_7342788885261593435_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-082",
-    titre: "Création Perlipimpon 82",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/480219758_122207941070158928_1643034406908761599_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-083",
-    titre: "Création Perlipimpon 83",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/480228609_122207937212158928_2557060559219364630_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-084",
-    titre: "Création Perlipimpon 84",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/488909237_122219933126158928_9062594396015707977_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-085",
-    titre: "Création Perlipimpon 85",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/488931983_122219933162158928_2149307005829615898_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-086",
-    titre: "Création Perlipimpon 86",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/489217535_122219931566158928_5642581110280916422_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-087",
-    titre: "Création Perlipimpon 87",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/489296829_122219931560158928_377676067525746273_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-088",
-    titre: "Création Perlipimpon 88",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/489366367_122219931590158928_5996967393664615992_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-089",
-    titre: "Création Perlipimpon 89",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/489973296_122219933168158928_5554452189592556094_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-090",
-    titre: "Création Perlipimpon 90",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/504492060_122234256716158928_3325726018844043349_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-091",
-    titre: "Création Perlipimpon 91",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/504836504_122234256692158928_6407259415768471745_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-092",
-    titre: "Création Perlipimpon 92",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/515444884_122240601842158928_4830783519714844379_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-093",
-    titre: "Création Perlipimpon 93",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/515897626_122240601824158928_1140361245933143001_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-094",
-    titre: "Création Perlipimpon 94",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/515924422_122240601848158928_8893791267583805020_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-095",
-    titre: "Création Perlipimpon 95",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/516212704_122240601818158928_7707954779927153720_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-096",
-    titre: "Création Perlipimpon 96",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/517142916_122240601194158928_8577840113781041499_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-097",
-    titre: "Création Perlipimpon 97",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/517346168_122240601212158928_3433583168503618627_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-098",
-    titre: "Création Perlipimpon 98",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/517713477_122240601170158928_6691741241097337616_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-099",
-    titre: "Création Perlipimpon 99",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/523986510_122245075556158928_1783464202940461237_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-100",
-    titre: "Création Perlipimpon 100",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/524170638_122244967370158928_8240490495868507765_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-101",
-    titre: "Création Perlipimpon 101",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/524357206_122244967478158928_2471454483195953013_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-102",
-    titre: "Création Perlipimpon 102",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/524361063_122244967112158928_2959476294018360714_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-103",
-    titre: "Création Perlipimpon 103",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/524607200_122244967826158928_4842989027142288732_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-104",
-    titre: "Création Perlipimpon 104",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/524638023_122244967460158928_3370456410029017923_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-105",
-    titre: "Création Perlipimpon 105",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/524802322_122244967862158928_1381016193897336841_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-106",
-    titre: "Création Perlipimpon 106",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/524865534_122244967394158928_5694271062839659687_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-107",
-    titre: "Création Perlipimpon 107",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/524926387_122244967004158928_253378939249832152_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-108",
-    titre: "Création Perlipimpon 108",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/535200462_122250615032158928_6291381934681981496_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-109",
-    titre: "Création Perlipimpon 109",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/535477680_122250615038158928_2144102818353017705_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-110",
-    titre: "Création Perlipimpon 110",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/535565467_122250615056158928_5232918340786188156_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-111",
-    titre: "Création Perlipimpon 111",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/535635335_122250615050158928_8542593601079840015_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-112",
-    titre: "Création Perlipimpon 112",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/535867996_122250614948158928_8542972529404540831_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-113",
-    titre: "Création Perlipimpon 113",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/536267494_122251210742158928_5420888089490191428_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-114",
-    titre: "Création Perlipimpon 114",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/536267619_122251210316158928_4511735674485631199_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-115",
-    titre: "Création Perlipimpon 115",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/536268771_122251210310158928_5598475065474007205_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-116",
-    titre: "Création Perlipimpon 116",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/536271498_122250810200158928_6739296291491957246_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-117",
-    titre: "Création Perlipimpon 117",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/536275521_122250810188158928_6826984679593610059_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-118",
-    titre: "Création Perlipimpon 118",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/536279767_122251211636158928_9096844092227827202_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-119",
-    titre: "Création Perlipimpon 119",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/536280565_122250810176158928_8188389165928768314_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-120",
-    titre: "Création Perlipimpon 120",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/536280631_122251210250158928_6605179357285703924_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-121",
-    titre: "Création Perlipimpon 121",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/536285684_122250810182158928_6340383774307495081_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-122",
-    titre: "Création Perlipimpon 122",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/536287162_122250810194158928_6264500718947532909_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-123",
-    titre: "Création Perlipimpon 123",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/537761949_122251210700158928_5919296688798769878_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-124",
-    titre: "Création Perlipimpon 124",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/538079417_122251210322158928_2486635655819395243_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-125",
-    titre: "Création Perlipimpon 125",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/538227166_122251211642158928_6373943729257457622_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-126",
-    titre: "Création Perlipimpon 126",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/538317942_122251210748158928_188499857869169316_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-127",
-    titre: "Création Perlipimpon 127",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/538932950_122251211630158928_4807396148264464693_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-128",
-    titre: "Création Perlipimpon 128",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/539274374_122251210724158928_6549830901688547881_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-129",
-    titre: "Création Perlipimpon 129",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/539280589_122251211600158928_969106193127288810_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-130",
-    titre: "Création Perlipimpon 130",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/545146057_122254270736158928_3902231671913472255_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-131",
-    titre: "Création Perlipimpon 131",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/586347161_122266911608158928_5174920946232933399_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-132",
-    titre: "Création Perlipimpon 132",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/586495339_122266913210158928_3709816674315119370_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-133",
-    titre: "Création Perlipimpon 133",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/586535510_122266909580158928_1425521905801561954_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-134",
-    titre: "Création Perlipimpon 134",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/586552956_122266912346158928_7829199301740997197_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-135",
-    titre: "Création Perlipimpon 135",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/586554383_122266911530158928_4561396223125939201_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-136",
-    titre: "Création Perlipimpon 136",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/587004087_122266908950158928_646728110841121796_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-137",
-    titre: "Création Perlipimpon 137",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/587035722_122266909628158928_1754854741401279797_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-138",
-    titre: "Création Perlipimpon 138",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/587097047_122266913564158928_3678063840676335474_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-139",
-    titre: "Création Perlipimpon 139",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/587208416_122266912700158928_2839493765168402328_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-140",
-    titre: "Création Perlipimpon 140",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/587210086_122266911674158928_6483765783010495796_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-141",
-    titre: "Création Perlipimpon 141",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/587223209_122266911566158928_3662251006024779426_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-142",
-    titre: "Création Perlipimpon 142",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/587267776_122266908980158928_5499889703828089223_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-143",
-    titre: "Création Perlipimpon 143",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/587397286_122266911506158928_4552829848026117599_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-144",
-    titre: "Création Perlipimpon 144",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/587555833_122266912748158928_4271353421662349044_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-145",
-    titre: "Création Perlipimpon 145",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/587683282_122266908044158928_1591348994433530539_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-146",
-    titre: "Création Perlipimpon 146",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/587765138_122266912634158928_4847652521917717335_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-147",
-    titre: "Création Perlipimpon 147",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/587808432_122266913048158928_722249205096466298_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-148",
-    titre: "Création Perlipimpon 148",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/587963400_122266914098158928_7041508265830428950_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-149",
-    titre: "Création Perlipimpon 149",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/588151375_122266908908158928_1600919504458768346_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-150",
-    titre: "Création Perlipimpon 150",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/588388236_122266912382158928_1372839028429309641_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-151",
-    titre: "Création Perlipimpon 151",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/588412631_122266913192158928_3865398694131156982_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-152",
-    titre: "Création Perlipimpon 152",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/588467764_122266909586158928_9018128985369286769_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-153",
-    titre: "Création Perlipimpon 153",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/588584914_122266909688158928_4182269613179009615_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-154",
-    titre: "Création Perlipimpon 154",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/588613474_122266912670158928_4744549257101682092_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-155",
-    titre: "Création Perlipimpon 155",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/588642700_122266914140158928_7662741819401000657_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-156",
-    titre: "Création Perlipimpon 156",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/588715671_122266912604158928_2325812692607050982_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-157",
-    titre: "Création Perlipimpon 157",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/588871345_122266909040158928_5873391334485229421_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-158",
-    titre: "Création Perlipimpon 158",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/588871345_122266912316158928_546270698498742755_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-159",
-    titre: "Création Perlipimpon 159",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/589871160_122266912322158928_2072330111986984567_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-160",
-    titre: "Création Perlipimpon 160",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/601386080_122271767792158928_830075982304097283_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-161",
-    titre: "Création Perlipimpon 161",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/601440459_122271768194158928_4380165945269903263_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-162",
-    titre: "Création Perlipimpon 162",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/601860872_122271767864158928_1535019754223140655_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-163",
-    titre: "Création Perlipimpon 163",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/602408913_122271767834158928_6965396960271305337_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-164",
-    titre: "Création Perlipimpon 164",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/603770064_122271768200158928_3787013828563404666_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  },
-  {
-    id: "auto-165",
-    titre: "Création Perlipimpon 165",
-    description: "Magnifique création artisanale faite main dans notre atelier.",
-    prix: 35,
-    categorie: "Boucles d'oreilles",
-    pierres: [],
-    photos: [
-      "/images/creations/603782871_122271767744158928_5232161212841041013_n.jpg"
-    ],
-    dateCreation: "2026-04-10T02:18:36Z",
-    dateMaj: "2026-04-10T02:18:36Z",
-    enVedette: false
-  }
-,
-
-  {
-    id: 'demo-001',
-    titre: 'Collier Éclat de Lune',
-    description:
-      'Un collier délicat en argent 925 serti d\'une pierre de lune aux reflets bleutés. ' +
-      'La pierre, taillée en cabochon ovale, capte la lumière avec une douceur envoûtante. ' +
-      'Chaîne fine réglable de 40 à 45 cm. Pièce unique fabriquée entièrement à la main.',
-    prix: 89,
-    categorie: 'Colliers',
-    pierres: ['Pierre de lune'],
-    photos: ['/images/moonstone_necklace.png'],
-    dateCreation: '2026-01-15T10:00:00Z',
-    dateMaj: '2026-01-15T10:00:00Z',
-    enVedette: true,
-  },
-  {
-    id: 'demo-002',
-    titre: 'Bracelet Perles d\'Eau Douce',
-    description:
-      'Bracelet composé de perles d\'eau douce naturelles, montées sur un fil doré. ' +
-      'Chaque perle est unique par sa forme et son orient nacré. Fermoir en plaqué or. ' +
-      'Un bijou classique et intemporel, parfait pour toutes les occasions.',
-    prix: 65,
-    categorie: 'Bracelets',
-    pierres: ['Perle'],
-    photos: ['/images/pearl_bracelet.png'],
-    dateCreation: '2026-02-03T14:30:00Z',
-    dateMaj: '2026-02-03T14:30:00Z',
-    enVedette: true,
-    vendu: true,
-  },
-  {
-    id: 'demo-003',
-    titre: 'Boucles d\'oreilles Cascade Améthyste',
-    description:
-      'Boucles d\'oreilles pendantes ornées de petites améthystes taillées en gouttes. ' +
-      'Le violet profond de la pierre contraste élégamment avec la monture en argent. ' +
-      'Crochets hypoallergéniques. Longueur totale : 4 cm.',
-    prix: 52,
-    categorie: 'Boucles d\'oreilles',
-    pierres: ['Améthyste'],
-    photos: ['/images/moonstone_necklace.png'],
-    dateCreation: '2026-02-20T09:15:00Z',
-    dateMaj: '2026-02-20T09:15:00Z',
-    enVedette: false,
-  },
-  {
-    id: 'demo-004',
-    titre: 'Bague Quartz Rose Solitaire',
-    description:
-      'Bague solitaire en argent massif, couronnée d\'un quartz rose poli en cabochon rond. ' +
-      'La pierre de l\'amour par excellence, dans un écrin minimaliste et raffiné. ' +
-      'Taille ajustable grâce à l\'anneau ouvert.',
-    prix: 45,
-    categorie: 'Bagues',
-    pierres: ['Quartz rose'],
-    photos: ['/images/rose_quartz_ring.png'],
-    dateCreation: '2026-03-01T16:45:00Z',
-    dateMaj: '2026-03-01T16:45:00Z',
-    enVedette: true,
-  },
-  {
-    id: 'demo-005',
-    titre: 'Pendentif Labradorite Mystique',
-    description:
-      'Pendentif en forme de larme serti d\'une labradorite aux reflets irisés bleu-vert. ' +
-      'Chaque pierre est sélectionnée pour l\'intensité de sa labradorescence. ' +
-      'Monture enroulée en fil d\'argent. Livré avec une chaîne de 50 cm.',
-    prix: 72,
-    categorie: 'Pendentifs',
-    pierres: ['Labradorite'],
-    photos: ['/images/moonstone_necklace.png'],
-    dateCreation: '2026-03-10T11:20:00Z',
-    dateMaj: '2026-03-10T11:20:00Z',
-    enVedette: false,
-  },
-  {
-    id: 'demo-006',
-    titre: 'Ensemble Lune & Perle',
-    description:
-      'Parure assortie composée d\'un collier et de boucles d\'oreilles, associant pierre de lune ' +
-      'et perles d\'eau douce. Un duo harmonieux qui sublime chaque tenue. ' +
-      'Présentée dans un écrin cadeau en velours.',
-    prix: 135,
-    categorie: 'Ensembles',
-    pierres: ['Pierre de lune', 'Perle'],
-    photos: ['/images/pearl_bracelet.png'],
-    dateCreation: '2026-03-25T08:00:00Z',
-    dateMaj: '2026-03-25T08:00:00Z',
-    enVedette: true,
-  },
-  {
-    id: 'demo-007',
-    titre: 'Bague Lueur Stellaire',
-    description: 'Une bague majestueuse ornée d\'une opale arc-en-ciel. Idéale pour capter la lumière des étoiles.',
-    prix: 55,
-    categorie: 'Bagues',
-    pierres: ['Opale'],
-    photos: ['/images/rose_quartz_ring.png'],
-    dateCreation: '2026-03-26T08:00:00Z',
-    dateMaj: '2026-03-26T08:00:00Z',
-    enVedette: false,
-  },
-  {
-    id: 'demo-008',
-    titre: 'Collier Solstice',
-    description: 'Collier ras du cou avec une belle améthyste brute. Un bijou protecteur et apaisant.',
-    prix: 95,
-    categorie: 'Colliers',
-    pierres: ['Améthyste'],
-    photos: ['/images/moonstone_necklace.png'],
-    dateCreation: '2026-03-27T08:00:00Z',
-    dateMaj: '2026-03-27T08:00:00Z',
-    enVedette: false,
-  },
-  {
-    id: 'demo-009',
-    titre: 'Bracelet Énergie Douce',
-    description: 'Mélange de quartz rose et de nacre. Apporte douceur et réconfort au quotidien.',
-    prix: 60,
-    categorie: 'Bracelets',
-    pierres: ['Quartz rose', 'Nacre'],
-    photos: ['/images/pearl_bracelet.png'],
-    dateCreation: '2026-03-28T08:00:00Z',
-    dateMaj: '2026-03-28T08:00:00Z',
-    enVedette: false,
-  },
-  {
-    id: 'demo-010',
-    titre: 'Pendentif Cristal Protecteur',
-    description: 'Pendentif facetté en cristal de roche monté sur fil d\'argent. Élégant et pur.',
-    prix: 48,
-    categorie: 'Pendentifs',
-    pierres: ['Cristal de roche'],
-    photos: ['/images/moonstone_necklace.png'],
-    dateCreation: '2026-03-29T08:00:00Z',
-    dateMaj: '2026-03-29T08:00:00Z',
-    enVedette: false,
-  },
-
+{
+  "id": "auto-001",
+  "titre": "Boucles doreilles Festives",
+  "description": "Boucles doreilles elegantes avec motifs de cours et triangles textures, parfaites pour vos soirees.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/472982678_122200623278158928_4769343512706442374_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": true
+},
+{
+  "id": "auto-002",
+  "titre": "Boucles doreilles Croisette",
+  "description": "Modele Croisette arborant un motif leopard chic sur une monture doree arrondie.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473133716_122200623524158928_1134493933837433129_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": true
+},
+{
+  "id": "auto-003",
+  "titre": "Boucles doreilles Pepites Leopard",
+  "description": "Design leopard moderne pour ces boucles doreilles originales et tendance.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473235429_122200623032158928_7900813755815264754_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": true
+},
+{
+  "id": "auto-004",
+  "titre": "Boucles doreilles Papyrus",
+  "description": "Boucles doreilles ornees dune pierre fine verte facettee pour un look naturel.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [
+    "Aventurine"
+  ],
+  "photos": [
+    "/images/creations/473256849_122200623230158928_352825919811860710_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": true
+},
+{
+  "id": "auto-005",
+  "titre": "Boucles doreilles Ophelie",
+  "description": "Alliance de la perle blanche a des anneaux dores ciseles pour un raffinement extreme.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [
+    "Perle de culture"
+  ],
+  "photos": [
+    "/images/creations/473340799_122201328548158928_2038345838962049893_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": true
+},
+{
+  "id": "auto-006",
+  "titre": "Bague Labradorite Royale",
+  "description": "Bague majestueuse sertie dune Labradorite aux reflets bleutes envoutants.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [
+    "Labradorite"
+  ],
+  "photos": [
+    "/images/creations/473341420_122201328206158928_2828597019880718112_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": true
+},
+{
+  "id": "auto-007",
+  "titre": "Bague Malachite Profonde",
+  "description": "Bague artisanale mettant en valeur une Malachite au vert profond et strie.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [
+    "Malachite"
+  ],
+  "photos": [
+    "/images/creations/473354677_122201328566158928_8956090328562457149_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": true
+},
+{
+  "id": "auto-008",
+  "titre": "Bague Lapis-Lazuli Stellaire",
+  "description": "Une bague dexception ornee dun Lapis-Lazuli bleu nuit tachete de pyrite doree.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [
+    "Lapis-Lazuli"
+  ],
+  "photos": [
+    "/images/creations/473361588_122200622984158928_7222519572489594492_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": true
+},
+{
+  "id": "auto-009",
+  "titre": "Bague Ametheyste Mystique",
+  "description": "Bague mystique sertie dune Ametheyste violette, symbole de serenite.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [
+    "Améthyste"
+  ],
+  "photos": [
+    "/images/creations/473372466_122201328656158928_2029604001262488220_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": true
+},
+{
+  "id": "auto-010",
+  "titre": "Bague Turquoise Boheme",
+  "description": "Bague dexception ornee dune Turquoise naturelle au style boheme unique.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [
+    "Turquoise"
+  ],
+  "photos": [
+    "/images/creations/473416119_122200623500158928_2828826237480628351_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": true
+},
+{
+  "id": "auto-011",
+  "titre": "Boucles doreilles Izia Silver",
+  "description": "Boucles doreilles en acier inoxydable avec coeurs marteles, un design chic et intemporel.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473446929_122201328674158928_9018583340865346271_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": true
+},
+{
+  "id": "auto-012",
+  "titre": "Boucles doreilles Cosmos Spring",
+  "description": "Boucles doreilles fleuries d’inspiration cosmique, avec un petit detail vert emeraude.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473451986_122201328692158928_6029920932440069154_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": true
+},
+{
+  "id": "auto-013",
+  "titre": "Presentoir Boucles dEclat",
+  "description": "Une collection variee de boucles doreilles artisanales pour toutes les occasions.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473540051_122201328176158928_9044289977160164845_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-014",
+  "titre": "Boucles Gouttes dOr",
+  "description": "Boucles doreilles pendantes dorees avec un design fin et elegant.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473548589_122201328956158928_8011913272615711629_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-015",
+  "titre": "Boucles Disques Solaires",
+  "description": "Boucles doreilles en forme de disques rayonnants, captant la lumiere.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473553972_122201340260158928_8520475929549074176_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-016",
+  "titre": "Creoles Perles de Nuit",
+  "description": "Boucles doreilles creoles ornees de perles sombres et mysterieuses.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473578908_122201328644158928_1047448953646046309_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-017",
+  "titre": "Boucles Coeurs dArgent",
+  "description": "Delicates boucles doreilles en forme de coeur avec une finition argentee.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473588856_122201328188158928_3169717433946904198_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-018",
+  "titre": "Boucles Fleurs de Cristal",
+  "description": "Boucles doreilles florales ornees de cristaux etincelants.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473621819_122201340230158928_1983232468118663258_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-019",
+  "titre": "Boucles Losanges Ethniques",
+  "description": "Boucles doreilles au design geometrique et inspiration ethnique.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473622828_122201328194158928_5025500798329435390_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-020",
+  "titre": "Boucles Spirales dOrient",
+  "description": "Boucles doreilles en spirale evoquant les motifs orientaux traditionnels.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473622997_122201328170158928_5248674625730901904_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-021",
+  "titre": "Boucles Gouttes Perlees",
+  "description": "Boucles doreilles en forme de gouttes delicately perlees.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473628139_122201328620158928_8135132925769878247_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-022",
+  "titre": "Bague Ambre & Or",
+  "description": "Bague imposante avec une pierre dambre translucide montee sur or.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473807272_122202536282158928_6513503047436518843_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-023",
+  "titre": "Boucles Pastilles Dorees",
+  "description": "Petites boucles doreilles discretes en forme de pastilles martelees.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473897990_122202536168158928_5467220022455649728_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-024",
+  "titre": "Bague Oeil de Tigre",
+  "description": "Bague protectrice ornee dun magnifique Oeil de Tigre aux reflets chatoyants.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473992585_122202536324158928_1929385231506832589_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-025",
+  "titre": "Bague Pierre de Soleil",
+  "description": "Bague chaleureuse mettant en valeur leclat paillete de la Pierre de Soleil.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/473999733_122202536810158928_6342491970675731491_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-026",
+  "titre": "Bague Onyx Mystique",
+  "description": "Bague elegante sertie dun Onyx noir profond pour un look sophistique.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474018545_122202536234158928_7108235809866976410_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-027",
+  "titre": "Bague Nacre Douce",
+  "description": "Bague delicate ornee de nacre naturelle aux reflets irises.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474025830_122202536408158928_2408782160577514405_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-028",
+  "titre": "Bague Amazonite Givree",
+  "description": "Bague rafraichissante avec une Amazonite aux nuances vert deau.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474030815_122202536192158928_2266108943471238193_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-029",
+  "titre": "Boucles Gouttes Azur",
+  "description": "Boucles doreilles pendantes avec des gouttes bleues translucides.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474030830_122202536852158928_2889122137508406518_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-030",
+  "titre": "Bague Quartz Fume",
+  "description": "Bague sobre et mysterieuse avec un Quartz fume facette.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474038531_122202536210158928_2393958096423151133_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-031",
+  "titre": "Bague Cornaline Ardente",
+  "description": "Bague pleine denergie ornee dune Cornaline dun orange vibrant.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474038531_122202536816158928_3565357174295410012_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-032",
+  "titre": "Boucles Pampilles Argent",
+  "description": "Boucles doreilles avec de multiples pampilles argentees mobiles.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474038694_122202536162158928_510954882395770702_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-033",
+  "titre": "Bague Topaze Bleue",
+  "description": "Bague lumineuse sertie dune Topaze bleue claire et pure.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474050030_122202536414158928_7623025863111960861_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-034",
+  "titre": "Bague Grenat Passion",
+  "description": "Bague envoutante ornee dun Grenat rouge profond.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474067360_122202537008158928_7779281431957026996_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-035",
+  "titre": "Bague Peridot Printemps",
+  "description": "Bague fraiche avec un Peridot vert olive eclatant.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474068627_122202536648158928_6168960549888235370_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-036",
+  "titre": "Bague Citrine Solaire",
+  "description": "Bague rayonnante mettant en valeur une Citrine jaune dor.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474073415_122202536762158928_5270765036021272470_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-037",
+  "titre": "Bague Hematite Force",
+  "description": "Bague au design moderne avec une Hematite aux reflets metalliques.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474085302_122202536186158928_8177287603919219394_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-038",
+  "titre": "Bague Jaspe Rouge",
+  "description": "Bague ancree avec un Jaspe rouge aux tons terreux et naturels.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474105068_122202536888158928_260107995910757901_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-039",
+  "titre": "Bague Sodalite Sagesse",
+  "description": "Bague apaisante ornee dune Sodalite bleue veinee de blanc.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474135951_122202536144158928_5117788262173145538_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-040",
+  "titre": "Bague Unakite Nature",
+  "description": "Bague originale combinant le vert et le rose de lUnakite.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474137838_122202536594158928_3276680666977018168_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-041",
+  "titre": "Bague Obsidienne Noire",
+  "description": "Bague intense sertie dune Obsidienne noire protectrice.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474139143_122202536378158928_7767449053865933548_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-042",
+  "titre": "Bague Calcedoine Bleue",
+  "description": "Bague douce avec une Calcedoine dun bleu pastel delicat.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474143934_122202536744158928_223690050841474990_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-043",
+  "titre": "Bague Rhodonite Tendresse",
+  "description": "Bague rose tendre ornee dune Rhodonite veinee de noir.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474146896_122202536882158928_8214072194493370941_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-044",
+  "titre": "Bague Aventurine Prospere",
+  "description": "Bague au vert tendre, symbole de chance et de prosperite.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474162800_122202536720158928_5764662690346226503_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-045",
+  "titre": "Bague Jade Imperial",
+  "description": "Bague precieuse sertie dun Jade vert intense et symbolique.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474164566_122202536624158928_615655267435086183_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-046",
+  "titre": "Bague Fluorite Arc-en-ciel",
+  "description": "Bague coloree avec une Fluorite aux multiples nuances de violet et vert.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474177940_122202536708158928_3484378336419254563_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-047",
+  "titre": "Bracelet Maillons Leopard",
+  "description": "Bracelet tendance avec des maillons en acrylique au motif leopard.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474188349_122202711638158928_307615407925336821_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-048",
+  "titre": "Bracelet Maillons Ambre",
+  "description": "Bracelet chaleureux avec des maillons ambres et dores.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474189407_122202711626158928_2074019437738859462_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-049",
+  "titre": "Bracelet Maillons Nacre",
+  "description": "Bracelet raffine avec des maillons nacres et metallises.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474200707_122202711824158928_6827775833202492470_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-050",
+  "titre": "Bracelet Maillons Onyx",
+  "description": "Bracelet chic combinant des maillons noirs et argentes.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474209168_122202711770158928_1795518133227929054_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-051",
+  "titre": "Bracelet Jonc Dore",
+  "description": "Bracelet jonc rigide avec une texture martelee doree.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474211911_122202536618158928_7699619905114157133_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-052",
+  "titre": "Bracelet Jonc Argente",
+  "description": "Bracelet jonc rigide en argent avec un design epure.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474218515_122202536750158928_1705393840365298888_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-053",
+  "titre": "Collier Chaine Doree",
+  "description": "Collier chaine simple et elegant en plaque or.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474260268_122202536156158928_2976064703869993882_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-054",
+  "titre": "Collier Sautoir Perles",
+  "description": "Long collier sautoir orne de multiples perles colorees.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474464289_122202536822158928_5113777695171112149_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-055",
+  "titre": "Collier Pendentif Lune",
+  "description": "Collier avec un pendentif en forme de croissant de lune.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474499822_122202536738158928_4502276689629583944_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-056",
+  "titre": "Collier Pendentif Soleil",
+  "description": "Collier lumineux avec un pendentif soleil rayonnant.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474570067_122202711764158928_1700959910982207423_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-057",
+  "titre": "Bracelet Multi-rangs",
+  "description": "Bracelet compose de plusieurs rangs de chaines et perles.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474575038_122202536294158928_5560274228517849372_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-058",
+  "titre": "Bracelet Gourmette Chic",
+  "description": "Bracelet gourmette avec un design revisite et moderne.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474580404_122202536276158928_7301223737236738952_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-059",
+  "titre": "Collier Ras de cou",
+  "description": "Collier type choker avec des details fins et delicats.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474593457_122202536672158928_560971017112687282_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-060",
+  "titre": "Bracelet Charms Etoile",
+  "description": "Bracelet orne de petits pendentifs en forme detoiles.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/474682924_122202711806158928_5887604819901979726_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-061",
+  "titre": "Boucles doreilles Boheme",
+  "description": "Grandes boucles doreilles pendantes au style boheme affirme.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/475792779_122205454262158928_4392485601190093575_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-062",
+  "titre": "Bague Double Anneau",
+  "description": "Bague originale composee de deux anneaux croises.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/475833772_122205455330158928_6890281721117933657_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-063",
+  "titre": "Collier Perles dEau Douce",
+  "description": "Collier classique orne de veritables perles deau douce.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/475842989_122205452444158928_7026588334588233101_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-064",
+  "titre": "Bracelet Perles de Culture",
+  "description": "Bracelet elegante with des perles de culture selectionnees.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/475844403_122205455696158928_5095584519978436033_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-065",
+  "titre": "Boucles Creoles Grandes",
+  "description": "Grandes boucles doreilles creoles dorees a la finition lisse.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/475852440_122205493292158928_1878443596923472272_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-066",
+  "titre": "Bague Chevaliere Moderne",
+  "description": "Bague type chevaliere revisitee with un design epure.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/475896979_122205454184158928_7880303747293106360_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-067",
+  "titre": "Collier Medaille Gravee",
+  "description": "Collier with un pendentif medaille pret a etre personnalise.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/475917773_122205452414158928_4223767919081487094_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-068",
+  "titre": "Bracelet Elastique Pierres",
+  "description": "Bracelet elastique compose de diverses pierres naturelles.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/475988077_122205452258158928_8013560970040221753_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-069",
+  "titre": "Boucles doreilles Pendantes",
+  "description": "Boucles doreilles with de longs elements pendants gracieux.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/476028871_122205454172158928_380892160219695746_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-070",
+  "titre": "Bague Fine Empilable",
+  "description": "Bague tres fine ideale pour etre portee en accumulation.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/476101419_122205451880158928_163339703215076222_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-071",
+  "titre": "Collier Chaine Fine",
+  "description": "Collier delicat with une maille ultra fine et brillante.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/476120034_122205451856158928_1392643710365069367_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-072",
+  "titre": "Bracelet Jonc Martele",
+  "description": "Bracelet jonc with une texture martelee artisanale.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/476153856_122205455048158928_246580277281319178_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-073",
+  "titre": "Boucles doreilles Eventail",
+  "description": "Boucles doreilles en forme deventail cisele.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/476157746_122205455690158928_2565569315611225480_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-074",
+  "titre": "Bague Pierre Brute",
+  "description": "Bague mettant en valeur une pierre naturelle dans son etat brut.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/476231212_122205455282158928_603955799660762957_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-075",
+  "titre": "Collier Pendentif Coeur",
+  "description": "Collier romantique with un coeur en pierre ou metal.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/479545169_122207941058158928_5882336730041324964_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-076",
+  "titre": "Bracelet Lien Soie",
+  "description": "Bracelet minimaliste with un lien en soie de couleur.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/479663588_122207940272158928_442202707989127680_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-077",
+  "titre": "Boucles doreilles Geometriques",
+  "description": "Boucles doreilles aux formes geometriques modernes.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/480006737_122207941052158928_6336389513974830273_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-078",
+  "titre": "Bague Entrelacee",
+  "description": "Bague au design complexe simulant des liens entrelaces.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/480147821_122207937218158928_8566807143429152_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-079",
+  "titre": "Collier Multi-chaines",
+  "description": "Collier compose de plusieurs chaines de differentes mailles.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/480176811_122207940218158928_6084411782485068577_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-080",
+  "titre": "Bracelet Maillons Textures",
+  "description": "Bracelet imposant with des maillons travailles en relief.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/480180587_122207940278158928_8750108974363710315_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-081",
+  "titre": "Boucles doreilles Cascade",
+  "description": "Longeur et elegance pour ces boucles en cascade.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/480197881_122207941088158928_7342788885261593435_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-082",
+  "titre": "Bague Ajustable Fleur",
+  "description": "Bague ouverte en forme de fleur, sadaptant a tous les doigts.",
+  "prix": 35,
+  "categorie": "Bagues",
+  "pierres": [],
+  "photos": [
+    "/images/creations/480219758_122207941070158928_1643034406908761599_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-083",
+  "titre": "Collier Pendentif Goutte",
+  "description": "Collier simple with une goutte deau en cristal ou pierre.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/480228609_122207937212158928_2557060559219364630_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-084",
+  "titre": "Collier Chaine & Nacre",
+  "description": "Collier mariant la chaine doree et des elements en nacre blanche.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/488909237_122219933126158928_9062594396015707977_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-085",
+  "titre": "Collier Sautoir Cristal",
+  "description": "Grand sautoir orne de cristaux facettes et lumineux.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/488931983_122219933162158928_2149307005829615898_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-086",
+  "titre": "Collier Pendentif Oeil",
+  "description": "Collier protecteur with un pendentif oeil orne dune pierre centrale.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/489217535_122219931566158928_5642581110280916422_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-087",
+  "titre": "Collier Double Rang",
+  "description": "Collier a deux rangs superposes de differentes longueurs.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/489296829_122219931560158928_377676067525746273_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-088",
+  "titre": "Collier Chaine Grosse",
+  "description": "Collier a gros maillons pour un look affirme et moderne.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/489366367_122219931590158928_5996967393664615992_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-089",
+  "titre": "Collier Pendentif Etoile",
+  "description": "Collier delicat with une petite etoile brillante en pendentif.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/489973296_122219933168158928_5554452189592556094_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-090",
+  "titre": "Boucles doreilles Anneaux",
+  "description": "Boucles doreilles composees de plusieurs anneaux entremeles.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/504492060_122234256716158928_3325726018844043349_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-091",
+  "titre": "Boucles doreilles Puces",
+  "description": "Puces doreilles minimalistes with une petite pierre sertie.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/504836504_122234256692158928_6407259415768471745_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-092",
+  "titre": "Boucles doreilles Coeurs",
+  "description": "Boucles doreilles pendantes with des coeurs emailles.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/515444884_122240601842158928_4830783519714844379_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-093",
+  "titre": "Boucles doreilles Etoiles",
+  "description": "Boucles doreilles with des etoiles texturees et dorees.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/515897626_122240601824158928_1140361245933143001_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-094",
+  "titre": "Boucles doreilles Lunes",
+  "description": "Boucles doreilles illustrant les phases de la lune.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/515924422_122240601848158928_8893791267583805020_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-095",
+  "titre": "Boucles doreilles Coquillages",
+  "description": "Boucles doreilles aux inspirations marines with des coquillages.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/516212704_122240601818158928_7707954779927153720_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-096",
+  "titre": "Boucles doreilles Pompons",
+  "description": "Boucles doreilles legeres ornees de petits pompons en soie.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/517142916_122240601194158928_8577840113781041499_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-097",
+  "titre": "Boucles doreilles Plumes",
+  "description": "Boucles doreilles aeriennes with des plumes finement ciselees.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/517346168_122240601212158928_3433583168503618627_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-098",
+  "titre": "Boucles doreilles Cristaux",
+  "description": "Boucles doreilles with des cristaux de roche naturels.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/517713477_122240601170158928_6691741241097337616_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-099",
+  "titre": "Boucles Creoles Tressees",
+  "description": "Creoles artisanales with un travail de tissage dore.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/523986510_122245075556158928_1783464202940461237_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-100",
+  "titre": "Boucles Disques Martelees",
+  "description": "Disques dores marteles a la main pour un effet solaire.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/524170638_122244967370158928_8240490495868507765_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-101",
+  "titre": "Boucles Gouttes Cristallines",
+  "description": "Gouttes en verre facette suspendues a des crochets elegants.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/524357206_122244967478158928_2471454483195953013_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-102",
+  "titre": "Boucles Coeurs dAmour",
+  "description": "Boucles doreilles with des coeurs marteles et une petite pierre.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/524361063_122244967112158928_2959476294018360714_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-103",
+  "titre": "Boucles Spirales Magiques",
+  "description": "Motif spirale hypnotique pour ces boucles doreilles uniques.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/524607200_122244967826158928_4842989027142288732_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-104",
+  "titre": "Boucles Losanges Chic",
+  "description": "Losanges dores with des incrustations de motifs floraux.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/524638023_122244967460158928_3370456410029017923_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-105",
+  "titre": "Boucles Fleurs de Lys",
+  "description": "Boucles doreilles arborant une fleur de lys stylisee.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/524802322_122244967862158928_1381016193897336841_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-106",
+  "titre": "Boucles Eclat Solaire",
+  "description": "Rayonnement maximal pour ces boucles doreilles dorees.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/524865534_122244967394158928_5694271062839659687_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-107",
+  "titre": "Boucles Nacre Iridescente",
+  "description": "Douceur de la nacre pour ces boucles doreilles pendantes.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/524926387_122244967004158928_253378939249832152_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-108",
+  "titre": "Collier Scarabee dOr",
+  "description": "Collier with un imponerant pendentif scarabee aux finitions dorees.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/535200462_122250615032158928_6291381934681981496_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-109",
+  "titre": "Collier Scarabee Sacre",
+  "description": "Inspiration egyptienne pour ce collier scarabee tres detaille.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/535477680_122250615038158928_2144102818353017705_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-110",
+  "titre": "Collier Amulette Scarabee",
+  "description": "Collier protecteur orne dun scarabee aux ailes deployees.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/535565467_122250615056158928_5232918340786188156_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-111",
+  "titre": "Collier Talisman Scarabee",
+  "description": "Un bijou de caractere with un scarabee aux reflets dores mats.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/535635335_122250615050158928_8542593601079840015_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-112",
+  "titre": "Collier Pendentif Scarabee",
+  "description": "Collier fin with un petit pendentif scarabee discret.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/535867996_122250614948158928_8542972529404540831_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-113",
+  "titre": "Collier Chaine & Malachite",
+  "description": "Collier associant une chaine maille et une pierre de Malachite.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [
+    "Malachite"
+  ],
+  "photos": [
+    "/images/creations/536267494_122251210742158928_5420888089490191428_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-114",
+  "titre": "Collier Chaine & Labradorite",
+  "description": "Collier mariant elegance et mystere with sa Labradorite.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [
+    "Labradorite"
+  ],
+  "photos": [
+    "/images/creations/536267619_122251210316158928_4511735674485631199_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-115",
+  "titre": "Collier Chaine & Amethyste",
+  "description": "Collier with une pierre dAmethyste montee sur collier chaine.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [
+    "Améthyste"
+  ],
+  "photos": [
+    "/images/creations/536268771_122251210310158928_5598475065474007205_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-116",
+  "titre": "Collier Chaine & Lapis",
+  "description": "Collier orne de Lapis-Lazuli aux couleurs de la nuit etoilee.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [
+    "Lapis-Lazuli"
+  ],
+  "photos": [
+    "/images/creations/536271498_122250810200158928_6739296291491957246_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-117",
+  "titre": "Collier Chaine & Turquoise",
+  "description": "Collier with une Turquoise naturelle pour une touche de couleur.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [
+    "Turquoise"
+  ],
+  "photos": [
+    "/images/creations/536275521_122250810188158928_6826984679593610059_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-118",
+  "titre": "Boucles doreilles Evil Eye",
+  "description": "Boucles doreilles protectrices with le motif oeil emblematique.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/536279767_122251211636158928_9096844092227827202_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-119",
+  "titre": "Boucles doreilles Protection",
+  "description": "Boucles doreilles contre le mauvais oeil, montees sur or.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/536280565_122250810176158928_8188389165928768314_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-120",
+  "titre": "Boucles doreilles Oeil Divin",
+  "description": "Boucles doreilles with un dessin doeil stylise et protecteur.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/536280631_122251210250158928_6605179357285703924_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-121",
+  "titre": "Boucles doreilles Talisman Eye",
+  "description": "Boucles doreilles amulettes with le symbole de loeil.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/536285684_122250810182158928_6340383774307495081_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-122",
+  "titre": "Boucles doreilles Mystique Eye",
+  "description": "Boucles doreilles au regard mysterieux et protecteur.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/536287162_122250810194158928_6264500718947532909_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-123",
+  "titre": "Bracelet Jonc Oeil",
+  "description": "Bracelet jonc ouvert orne du symbole de loeil bienveillant.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/537761949_122251210700158928_5919296688798769878_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-124",
+  "titre": "Bracelet Jonc Protection",
+  "description": "Bracelet protecteur with motifs doeil et finitions dorees.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/538079417_122251210322158928_2486635655819395243_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-125",
+  "titre": "Bracelet Jonc Talisman",
+  "description": "Bracelet jonc rigide with medaillon oeil porte-bonheur.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/538227166_122251211642158928_6373943729257457622_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-126",
+  "titre": "Bracelet Jonc Mystique",
+  "description": "Bracelet jonc with un design mystique inspire des traditions.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/538317942_122251210748158928_188499857869169316_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-127",
+  "titre": "Bracelet Jonc Eclat",
+  "description": "Bracelet jonc dore apportant un eclat immediat a votre poignet.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/538932950_122251211630158928_4807396148264464693_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-128",
+  "titre": "Bracelet Jonc Solaire",
+  "description": "Bracelet jonc inspire par la lumiere du soleil de midi.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/539274374_122251210724158928_6549830901688547881_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-129",
+  "titre": "Bracelet Jonc Lunaire",
+  "description": "Bracelet jonc evoquant la douceur et le mystere de la lune.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/539280589_122251211600158928_969106193127288810_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-130",
+  "titre": "Bracelet Jonc Stellaire",
+  "description": "Bracelet jonc parseme de motifs evoquant le ciel etoile.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/545146057_122254270736158928_3902231671913472255_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-131",
+  "titre": "Bracelet Maillons Sauvages",
+  "description": "Bracelet a gros maillons acryliques au motif sauvage et ambre.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/586347161_122266911608158928_5174920946232933399_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-132",
+  "titre": "Collier Perles dOrient",
+  "description": "Collier de perles colorees aux teintes douces et apaisantes.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/586495339_122266913210158928_3709816674315119370_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-133",
+  "titre": "Bracelet Duo Maillons",
+  "description": "Ensemble de deux bracelets a maillons acryliques, rose et leopard.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/586535510_122266909580158928_1425521905801561954_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-134",
+  "titre": "Bracelet Maillons Glaces",
+  "description": "Bracelets a maillons aux tons bleu clair, gris et argente.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/586552956_122266912346158928_7829199301740997197_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-135",
+  "titre": "Bracelet Maillons Foret",
+  "description": "Bracelet a maillons acryliques aux nuances de brun et leopard.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/586554383_122266911530158928_4561396223125939201_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-136",
+  "titre": "Bracelet Maillons Terre",
+  "description": "Bracelets a maillons evoquant les couleurs de la terre et du sable.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/587004087_122266908950158928_646728110841121796_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-137",
+  "titre": "Bracelet Maillons Passion",
+  "description": "Bracelets a maillons audacieux aux couleurs rouge et verte marbrees.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/587035722_122266909628158928_1754854741401279797_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-138",
+  "titre": "Collection Colliers Bohemes",
+  "description": "Une selection de colliers fins ornes de pampilles et pierres naturelles.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/587097047_122266913564158928_3678063840676335474_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-139",
+  "titre": "Bracelet Maillons Sable",
+  "description": "Bracelets a maillons aux tons naturels de sable et leopard.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/587208416_122266912700158928_2839493765168402328_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-140",
+  "titre": "Bracelet Maillons Noir & Blanc",
+  "description": "Lelegance du noir et blanc pour ce bracelet a maillons acryliques.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/587210086_122266911674158928_6483765783010495796_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-141",
+  "titre": "Bracelet Maillons Jungle",
+  "description": "Bracelet maillons leopard pour une touche sauvage et chic.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/587223209_122266911566158928_3662251006024779426_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-142",
+  "titre": "Bracelet Maillons Emeraude",
+  "description": "Bracelets a maillons aux nuances de vert profond et marbre.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/587267776_122266908980158928_5499889703828089223_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-143",
+  "titre": "Bracelet Maillons Floral",
+  "description": "Bracelet maillons colorees with des touches florales delicates.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/587397286_122266911506158928_4552829848026117599_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-144",
+  "titre": "Bracelet Maillons Menthe",
+  "description": "Bracelets a maillons aux tons vert menthe, gris et argente.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/587555833_122266912748158928_4271353421662349044_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-145",
+  "titre": "Bracelet Maillons Cafe",
+  "description": "Bracelets a maillons acryliques aux nuances cafe et ambre.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/587683282_122266908044158928_1591348994433530539_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-146",
+  "titre": "Bracelet Maillons Olive",
+  "description": "Bracelets a maillons acryliques aux tons olive et beige marbre.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/587765138_122266912634158928_4847652521917717335_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-147",
+  "titre": "Trio Colliers Royaux",
+  "description": "Collection complete de colliers with pendentifs dores sacres.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/587808432_122266913048158928_722249205096466298_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-148",
+  "titre": "Collection Boucles dOr",
+  "description": "Lart de la dorure sur une collection de boucles doreilles variees.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/587963400_122266914098158928_7041508265830428950_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-149",
+  "titre": "Bracelet Maillons Rubis",
+  "description": "Bracelets a maillons aux tons rouges, noirs et marbrees.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/588151375_122266908908158928_1600919504458768346_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-150",
+  "titre": "Bracelet Maillons Automne",
+  "description": "Bracelets a maillons evoquant les teintes chaudes de lautomne.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/588388236_122266912382158928_1372839028429309641_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-151",
+  "titre": "Collier Fan & Rubis",
+  "description": "Collier raffine with pendentif eventail et pierre rouge centrale.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/588412631_122266913192158928_3865398694131156982_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-152",
+  "titre": "Bracelet Maillons Ivoire",
+  "description": "Bracelets a maillons acryliques aux tons ivoire, beige et marbre.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/588467764_122266909586158928_9018128985369286769_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-153",
+  "titre": "Bracelet Maillons Azur",
+  "description": "Bracelets a maillons acryliques aux tons bleus et naturels.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/588584914_122266909688158928_4182269613179009615_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-154",
+  "titre": "Bracelet Maillons Lagon",
+  "description": "Bracelets a maillons acryliques evoquant les eaux dun lagon tropical.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/588613474_122266912670158928_4744549257101682092_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-155",
+  "titre": "Collection Boucles dAmour",
+  "description": "Selection de boucles doreilles coeurs et fleurs pour les romantiques.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/588642700_122266914140158928_7662741819401000657_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-156",
+  "titre": "Bracelet Maillons Magenta",
+  "description": "Bracelets a maillons acryliques aux tons magenta et rose vibrants.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/588715671_122266912604158928_2325812692607050982_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-157",
+  "titre": "Bracelet Maillons Parme",
+  "description": "Bracelets a maillons acryliques aux tons parme et rose doux.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/588871345_122266909040158928_5873391334485229421_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-158",
+  "titre": "Bracelet Maillons Violette",
+  "description": "Bracelets a maillons acryliques aux tons violets et argentes.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/588871345_122266912316158928_546270698498742755_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-159",
+  "titre": "Bracelet Maillons Craie",
+  "description": "Bracelets a maillons acryliques aux tons blancs, craie et sable.",
+  "prix": 35,
+  "categorie": "Bracelets",
+  "pierres": [],
+  "photos": [
+    "/images/creations/589871160_122266912322158928_2072330111986984567_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-160",
+  "titre": "Boucles doreilles Saphir Royal",
+  "description": "Boucles doreilles with pierres bleues royales facettees et monture doree.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/601386080_122271767792158928_830075982304097283_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-161",
+  "titre": "Trio Colliers Talismans",
+  "description": "Combinaison de trois colliers porte-bonheur with pierres colorees.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/601440459_122271768194158928_4380165945269903263_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-162",
+  "titre": "Boucles doreilles Ailes de Papillon",
+  "description": "Grandes boucles doreilles en filigrane dore en forme dailes with pierre centrale.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/601860872_122271767864158928_1535019754223140655_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-163",
+  "titre": "Boucles doreilles Emeraude Royale",
+  "description": "Boucles doreilles elegantes with pierres vert emeraude et monture doree.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/602408913_122271767834158928_6965396960271305337_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-164",
+  "titre": "Collier Choker Scarabee",
+  "description": "Collier ras du cou en tissu emeraude with grand pendentif scarabee dore.",
+  "prix": 35,
+  "categorie": "Colliers",
+  "pierres": [],
+  "photos": [
+    "/images/creations/603770064_122271768200158928_3787013828563404666_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "auto-165",
+  "titre": "Boucles doreilles Evil Eye Tassel",
+  "description": "Boucles doreilles rectangulaires with medaillon oeil et pompon vert.",
+  "prix": 35,
+  "categorie": "Boucles d'oreilles",
+  "pierres": [],
+  "photos": [
+    "/images/creations/603782871_122271767744158928_5232161212841041013_n.jpg"
+  ],
+  "dateCreation": "2026-04-10T02:18:36Z",
+  "dateMaj": "2026-04-10T02:18:36Z",
+  "enVedette": false
+},
+{
+  "id": "demo-001",
+  "titre": "Collier Éclat de Lune",
+  "description": "Un collier délicat en argent 925 serti d'une pierre de lune aux reflets bleutés. Pièce unique fabriquée entièrement à la main.",
+  "prix": 89,
+  "categorie": "Colliers",
+  "pierres": [
+    "Pierre de lune"
+  ],
+  "photos": [
+    "/images/moonstone_necklace.png"
+  ],
+  "dateCreation": "2026-01-15T10:00:00Z",
+  "dateMaj": "2026-01-15T10:00:00Z",
+  "enVedette": true
+}
 ];
 
 export const sampleTestimonials: Testimonial[] = [];

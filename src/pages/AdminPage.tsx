@@ -4,7 +4,7 @@
  * Vue principale : liste + formulaire d'édition + gestion des données.
  */
 
-import { useState, useCallback, type FormEvent } from 'react';
+import { useState, useCallback, useEffect, type FormEvent } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useArticles } from '../hooks/useArticles';
 import { useConfig } from '../hooks/useConfig';
@@ -768,6 +768,7 @@ export default function AdminPage() {
       alert("Synchronisation terminée ! Les 165 articles ont été ajoutés.");
     }
   }, [forceSyncWithSamples]);
+
 
   // ──────────────────────────────────────────────
   // Rendu Unique (No Early Return)
