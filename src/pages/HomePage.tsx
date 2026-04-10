@@ -114,13 +114,6 @@ export default function HomePage() {
                         <span className="product-card__price">
                           {formatPrice(article.prix)}
                         </span>
-                        <div className="product-card__stones">
-                          {Array.isArray(article.pierres) && article.pierres.map((pierre) => (
-                            <span key={pierre} className="badge badge--gold">
-                              {pierre}
-                            </span>
-                          ))}
-                        </div>
                       </div>
                     </div>
                   </Link>

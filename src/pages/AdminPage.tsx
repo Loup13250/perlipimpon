@@ -9,7 +9,7 @@ import { useAuth } from '../hooks/useAuth';
 import { useArticles } from '../hooks/useArticles';
 import { useConfig } from '../hooks/useConfig';
 import { formatPrice, formatDate, fileToBase64 } from '../utils/helpers';
-import type { Article, ArticleFormData, Category, Stone, SiteConfig, CategoryData } from '../types';
+import type { Article, ArticleFormData, Category, SiteConfig, CategoryData } from '../types';
 
 // ──────────────────────────────────────────────
 // Composant Login
@@ -87,13 +87,11 @@ function AdminLogin({ onLogin }: { onLogin: (email: string, password: string) =>
 function ArticleForm({
   article,
   categories,
-  stones,
   onSave,
   onCancel,
 }: {
   article?: Article;
   categories: string[];
-  stones: string[];
   onSave: (data: ArticleFormData) => void;
   onCancel: () => void;
 }) {
@@ -104,7 +102,6 @@ function ArticleForm({
     description: article?.description || '',
     prix: article?.prix || 0,
     categorie: article?.categorie || 'Colliers',
-    pierres: article?.pierres || [],
     photos: article?.photos || [],
     enVedette: article?.enVedette || false,
     vendu: article?.vendu || false,
@@ -115,15 +112,6 @@ function ArticleForm({
     value: ArticleFormData[K]
   ) => {
     setForm((prev) => ({ ...prev, [key]: value }));
-  };
-
-  const toggleStone = (stone: Stone) => {
-    setForm((prev) => ({
-      ...prev,
-      pierres: prev.pierres.includes(stone)
-        ? prev.pierres.filter((s) => s !== stone)
-        : [...prev.pierres, stone],
-    }));
   };
 
   const handlePhotoUpload = async (files: FileList | null) => {
@@ -219,30 +207,6 @@ function ArticleForm({
             />
           </div>
 
-          {/* Pierres */}
-          <div className="form-group form-group--full">
-            <label>Pierre(s) utilisée(s)</label>
-            <div className="tags-input">
-              {form.pierres.map((stone) => (
-                <span key={stone} className="tag">
-                  {stone}
-                  <span className="tag__remove" onClick={() => toggleStone(stone)}>✕</span>
-                </span>
-              ))}
-            </div>
-            <div className="tags-dropdown">
-              {stones.map((stone) => (
-                <button
-                  key={stone}
-                  type="button"
-                  className={`tags-option ${form.pierres.includes(stone) ? 'selected' : ''}`}
-                  onClick={() => toggleStone(stone)}
-                >
-                  {stone}
-                </button>
-              ))}
-            </div>
-          </div>
 
           {/* Upload photos */}
           <div className="photo-upload">
@@ -621,71 +585,6 @@ function CategoriesForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
   );
 }
 
-// ──────────────────────────────────────────────
-// Formulaire Pierres (avec couleur)
-// ──────────────────────────────────────────────
-function StonesForm({ config, onSave }: { config: SiteConfig, onSave: (c: SiteConfig) => void }) {
-  // Fusion stonesData ↔ stones pour rétro-compatibilité
-  const initialData = (config.stonesData && config.stonesData.length > 0)
-    ? config.stonesData
-    : (config.stones || []).map(s => ({ name: s, color: '#b0a090' }));
-
-  const [items, setItems] = useState(initialData);
-
-  const updateItem = (index: number, field: 'name' | 'color', val: string) => {
-    setItems(prev => {
-      const copy = [...prev];
-      copy[index] = { ...copy[index], [field]: val };
-      return copy;
-    });
-  };
-  const removeItem = (index: number) => {
-    if (window.confirm("Voulez-vous vraiment supprimer cette pierre ?")) {
-      setItems(prev => prev.filter((_, i) => i !== index));
-    }
-  };
-  const addItem = () => {
-    setItems(prev => [...prev, { name: 'Nouvelle pierre', color: '#b0a090' }]);
-  };
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    // Sync les deux champs
-    const newConfig = {
-      ...config,
-      stones: items.map(i => i.name),
-      stonesData: items,
-    };
-    onSave(newConfig);
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="admin-form">
-      <h2>Gestion des Pierres et Propriétés (Filtres)</h2>
-      <p style={{ color: 'var(--color-gray-500)', marginBottom: 'var(--space-lg)' }}>
-        Chaque pierre a une couleur de perle pour le bracelet sur la page Créations.
-      </p>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
-        {items.map((item, index) => (
-          <div key={`stone-${item.name}-${index}`} style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', background: 'var(--color-white)', padding: '0.75rem', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)' }}>
-            <input
-              type="color"
-              value={item.color || '#b0a090'}
-              onChange={e => updateItem(index, 'color', e.target.value)}
-              title="Couleur de la perle"
-              style={{ width: '40px', height: '40px', border: '1px solid var(--color-gray-300)', borderRadius: 'var(--radius-md)', cursor: 'pointer', padding: '2px', backgroundColor: 'var(--color-white)', flexShrink: 0 }}
-            />
-            <input type="text" value={item.name} onChange={e => updateItem(index, 'name', e.target.value)} style={{ flex: 1, padding: '0.65rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-gray-300)' }} required />
-            <button type="button" className="btn btn--danger btn--sm" onClick={() => removeItem(index)}>✕</button>
-          </div>
-        ))}
-      </div>
-      <button type="button" className="btn btn--outline btn--sm" onClick={addItem}>+ Ajouter une pierre</button>
-      <div className="admin-form__actions" style={{ marginTop: '2rem' }}>
-        <button type="submit" className="btn btn--primary">Enregistrer les pierres</button>
-      </div>
-    </form>
-  );
-}
 
 // ──────────────────────────────────────────────
 // Page Admin principale
@@ -704,7 +603,7 @@ export default function AdminPage() {
   
   const [filterCategory, setFilterCategory] = useState<string>('all');
 
-  const [adminTab, setAdminTab] = useState<'articles' | 'categories' | 'pierres' | 'config'>('articles');
+  const [adminTab, setAdminTab] = useState<'articles' | 'categories' | 'config'>('articles');
   const [view, setView] = useState<'list' | 'create' | 'edit'>('list');
   const [editingArticle, setEditingArticle] = useState<Article | undefined>();
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
@@ -781,7 +680,6 @@ export default function AdminPage() {
           <ArticleForm
             article={editingArticle}
             categories={config.categories.map(c => c.name)}
-            stones={config.stones || []}
             onSave={handleSave}
             onCancel={() => { setView('list'); setEditingArticle(undefined); }}
           />
@@ -807,14 +705,12 @@ export default function AdminPage() {
           <div className="admin-tabs" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '2rem', background: 'var(--color-white)', padding: '0.5rem', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-sm)' }}>
             <button style={{ flex: 1, minWidth: '150px' }} className={`btn ${adminTab === 'articles' ? 'btn--primary' : 'btn--outline'}`} onClick={() => setAdminTab('articles')}>📦 Mes Créations</button>
             <button style={{ flex: 1, minWidth: '150px' }} className={`btn ${adminTab === 'categories' ? 'btn--primary' : 'btn--outline'}`} onClick={() => setAdminTab('categories')}>📂 Catégories</button>
-            <button style={{ flex: 1, minWidth: '150px' }} className={`btn ${adminTab === 'pierres' ? 'btn--primary' : 'btn--outline'}`} onClick={() => setAdminTab('pierres')}>💎 Pierres</button>
             <button style={{ flex: 1, minWidth: '150px' }} className={`btn ${adminTab === 'config' ? 'btn--primary' : 'btn--outline'}`} onClick={() => setAdminTab('config')}>⚙️ Design & Textes</button>
           </div>
 
           {/* Onglets */}
           {adminTab === 'config' && <SiteConfigForm config={config} onSave={onSaveConfigAndAlert} />}
           {adminTab === 'categories' && <CategoriesForm config={config} onSave={onSaveConfigAndAlert} />}
-          {adminTab === 'pierres' && <StonesForm config={config} onSave={onSaveConfigAndAlert} />}
 
           {adminTab === 'articles' && (
             <div className="admin-list">
@@ -915,11 +811,6 @@ export default function AdminPage() {
               <div className="stat-card__icon">📂</div>
               <div className="stat-card__value">{config.categories?.length || 0}</div>
               <div className="stat-card__label">Catégories</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-card__icon">💎</div>
-              <div className="stat-card__value">{config.stones?.length || 0}</div>
-              <div className="stat-card__label">Pierres référencées</div>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 /**
  * Page Boutique — grille filtrable de toutes les créations.
- * Filtres par catégorie (bracelet desktop) et par pierre.
- * Multi-sélection + toggle pour les deux.
+ * Filtres par catégorie (bracelet desktop).
+ * Multi-sélection + toggle.
  */
 
 import { useState, useMemo } from 'react';
@@ -22,7 +22,6 @@ export default function ShopPage() {
   const [activeCategories, setActiveCategories] = useState<string[]>(
     urlCategory ? [urlCategory] : []
   );
-  const [activeStones, setActiveStones] = useState<string[]>([]);
 
   const filteredArticles = useMemo(() => {
     let results = visibleArticles;
@@ -30,16 +29,9 @@ export default function ShopPage() {
     if (activeCategories.length > 0) {
       results = results.filter((a) => activeCategories.includes(a.categorie));
     }
-    if (activeStones.length > 0) {
-      results = results.filter(
-        (a) =>
-          Array.isArray(a.pierres) &&
-          a.pierres.some((p) => activeStones.includes(p))
-      );
-    }
 
     return results;
-  }, [visibleArticles, activeCategories, activeStones]);
+  }, [visibleArticles, activeCategories]);
 
   const gridRef = useScrollRevealGroup({}, [filteredArticles]);
 
@@ -61,29 +53,14 @@ export default function ShopPage() {
     });
   };
 
-  // Toggle pierre : clic = ajouter/retirer
-  const handleStoneToggle = (stone: string) => {
-    setActiveStones((prev) =>
-      prev.includes(stone)
-        ? prev.filter((s) => s !== stone)
-        : [...prev, stone]
-    );
-  };
-
   // "Tout" = réinitialiser les catégories
   const handleCategoryAll = () => {
     setActiveCategories([]);
     setSearchParams({});
   };
 
-  // "Toutes" pierres = réinitialiser
-  const handleStoneAll = () => {
-    setActiveStones([]);
-  };
-
   const clearFilters = () => {
     setActiveCategories([]);
-    setActiveStones([]);
     setSearchParams({});
   };
 
@@ -110,14 +87,9 @@ export default function ShopPage() {
             <div className="shop-filters-desktop-wrapper">
               <BraceletFilter
                 categories={config.categories}
-                stonesData={config.stonesData}
-                stones={config.stones || []}
                 activeCategories={activeCategories}
-                activeStones={activeStones}
                 onCategoryToggle={handleCategoryToggle}
                 onCategoryAll={handleCategoryAll}
-                onStoneToggle={handleStoneToggle}
-                onStoneAll={handleStoneAll}
                 onClearFilters={clearFilters}
               />
             </div>
@@ -149,30 +121,8 @@ export default function ShopPage() {
                   </select>
                 </div>
 
-                {/* Filtre Pierres */}
-                <div className="shop-filter-select-wrapper">
-                  <label htmlFor="stone-select-mob" className="shop-filter-label">Choisir une pierre</label>
-                  <select
-                    id="stone-select-mob"
-                    className="shop-select"
-                    value={activeStones.length === 1 ? activeStones[0] : ''}
-                    onChange={(e) => {
-                      if (e.target.value) {
-                        setActiveStones([e.target.value]);
-                      } else {
-                        handleStoneAll();
-                      }
-                    }}
-                  >
-                    <option value="">Toutes les pierres</option>
-                    {(config.stones || []).map((stone) => (
-                      <option key={stone} value={stone}>{stone}</option>
-                    ))}
-                  </select>
-                </div>
-
                 {/* Vider */}
-                {(activeCategories.length > 0 || activeStones.length > 0) && (
+                {(activeCategories.length > 0) && (
                   <button
                     className="btn btn--outline btn--sm shop-filter-clear-btn-mobile"
                     onClick={clearFilters}
@@ -187,7 +137,6 @@ export default function ShopPage() {
             <p className="shop-count">
               {filteredArticles.length} création{filteredArticles.length > 1 ? 's' : ''}
               {activeCategories.length > 0 && ` dans ${activeCategories.join(', ')}`}
-              {activeStones.length > 0 && ` avec ${activeStones.join(', ')}`}
             </p>
 
             {/* Grille */}
@@ -234,11 +183,6 @@ export default function ShopPage() {
                         <span className="product-card__price">
                           {formatPrice(article.prix || 0)}
                         </span>
-                        <div className="product-card__stones">
-                          {Array.isArray(article.pierres) && article.pierres.slice(0, 2).map((p) => (
-                            <span key={p} className="badge badge--gold">{p}</span>
-                          ))}
-                        </div>
                       </div>
                     </div>
                   </Link>

@@ -1,26 +1,14 @@
 /**
  * BraceletFilter — Bracelet joaillerie premium (desktop uniquement).
  * Transformé en système de pampilles (pendants) suspendus.
+ * Mise à jour : Filtrage uniquement par Catégories.
  */
 
 import { useEffect, useState } from 'react';
-import type { CategoryData, StoneData } from '../../types';
+import type { CategoryData } from '../../types';
 import './BraceletFilter.css';
 
-// ─── Couleurs par défaut des pierres ─────────────────────────────────────────
-const KNOWN_STONE_COLORS: Record<string, string> = {
-  'Pierre de lune':   '#7888b8', 
-  'Perle':            '#d8ceac', 
-  'Améthyste':        '#7b3fa0', 
-  'Quartz rose':      '#d4849a', 
-  'Labradorite':      '#3a6898', 
-  'Aigue-marine':     '#48a8b8', 
-  'Tourmaline':       '#8838a0', 
-  'Opale':            '#b888c8', 
-  'Nacre':            '#c8b890', 
-  'Cristal de roche': '#a0a8c8', 
-};
-
+// ─── Couleurs par défaut des catégories (élégantes et sobres) ────────────────
 const KNOWN_CAT_COLORS: Record<string, string> = {
   'Colliers':           '#b8986a', 
   'Bracelets':          '#c4887a', 
@@ -50,13 +38,12 @@ interface PendantProps {
   gemStyle: React.CSSProperties;
   index: number;
   isAll?: boolean;
-  type?: 'category' | 'stone';
 }
 
-function Pendant({ label, isActive, onClick, gemStyle, index, isAll, type = 'stone' }: PendantProps) {
+function Pendant({ label, isActive, onClick, gemStyle, index, isAll }: PendantProps) {
   return (
     <button
-      className={`pendant pendant--${type} ${isActive ? 'pendant--active' : ''} ${isAll ? 'pendant--all' : ''}`}
+      className={`pendant ${isActive ? 'pendant--active' : ''} ${isAll ? 'pendant--all' : ''}`}
       onClick={onClick}
       aria-pressed={isActive}
       style={{ 
@@ -83,44 +70,26 @@ function Pendant({ label, isActive, onClick, gemStyle, index, isAll, type = 'sto
 // ─── Composant principal ────────────────────────────────────────────────────
 interface BraceletFilterProps {
   categories: CategoryData[];
-  stonesData?: StoneData[];
-  stones: string[];
   activeCategories: string[];
-  activeStones: string[];
   onCategoryToggle: (cat: string) => void;
   onCategoryAll: () => void;
-  onStoneToggle: (stone: string) => void;
-  onStoneAll: () => void;
   onClearFilters: () => void;
 }
 
 export default function BraceletFilter({
   categories,
-  stonesData,
-  stones,
   activeCategories,
-  activeStones,
   onCategoryToggle,
   onCategoryAll,
-  onStoneToggle,
-  onStoneAll,
   onClearFilters,
 }: BraceletFilterProps) {
-  const hasFilter = activeCategories.length > 0 || activeStones.length > 0;
+  const hasFilter = activeCategories.length > 0;
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 100);
     return () => clearTimeout(t);
   }, []);
-
-  function getStoneColor(stoneName: string): string {
-    if (stonesData) {
-      const found = stonesData.find((s) => s.name === stoneName);
-      if (found?.color) return found.color;
-    }
-    return KNOWN_STONE_COLORS[stoneName] || DEFAULT_COLOR;
-  }
 
   function getCatColor(cat: CategoryData): string {
     if (cat.color) return cat.color;
@@ -143,7 +112,7 @@ export default function BraceletFilter({
           )}
         </header>
 
-        <div className="bracelet-row bracelet-row--category">
+        <div className="bracelet-row">
           <span className="clasp clasp--left" />
           <div className="wire">
             <div className="wire__core" />
@@ -157,7 +126,6 @@ export default function BraceletFilter({
               gemStyle={makeGemStyle(GOLD_COLOR)}
               index={0}
               isAll
-              type="category"
             />
             {categories.map((cat, i) => (
               <Pendant
@@ -167,7 +135,6 @@ export default function BraceletFilter({
                 onClick={() => onCategoryToggle(cat.name)}
                 gemStyle={makeGemStyle(getCatColor(cat))}
                 index={i + 1}
-                type="category"
               />
             ))}
           </div>
@@ -175,48 +142,6 @@ export default function BraceletFilter({
           <span className="clasp clasp--right" />
         </div>
       </section>
-
-      {/* ── Pierres ── */}
-      {stones && stones.length > 0 && (
-        <section className="bracelet-section">
-          <header className="bracelet-header">
-            <span className="bracelet-title">
-              <span className="bracelet-title__dot">◈</span>
-              Gemmes
-            </span>
-          </header>
-
-          <div className="bracelet-row bracelet-row--stone">
-            <span className="clasp clasp--left" />
-            <div className="wire">
-              <div className="wire__core" />
-            </div>
-
-            <div className="pendant-rail">
-              <Pendant
-                label="Toutes"
-                isActive={activeStones.length === 0}
-                onClick={onStoneAll}
-                gemStyle={makeGemStyle(GOLD_COLOR)}
-                index={0}
-                isAll
-              />
-              {stones.map((stone, i) => (
-                <Pendant
-                  key={stone}
-                  label={stone}
-                  isActive={activeStones.includes(stone)}
-                  onClick={() => onStoneToggle(stone)}
-                  gemStyle={makeGemStyle(getStoneColor(stone))}
-                  index={i + 1}
-                />
-              ))}
-            </div>
-
-            <span className="clasp clasp--right" />
-          </div>
-        </section>
-      )}
     </div>
   );
 }

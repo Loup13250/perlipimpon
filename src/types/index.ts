@@ -6,21 +6,6 @@
 // Catégories (désormais dynamiques)
 export type Category = string;
 
-// Pierres et matériaux
-export type Stone =
-  | 'Pierre de lune'
-  | 'Perle'
-  | 'Améthyste'
-  | 'Quartz rose'
-  | 'Labradorite'
-  | 'Aigue-marine'
-  | 'Tourmaline'
-  | 'Opale'
-  | 'Nacre'
-  | 'Cristal de roche'
-  | string;
-
-
 // Un article = un bijou dans la boutique
 export interface Article {
   id: string;
@@ -28,7 +13,6 @@ export interface Article {
   description: string;
   prix: number;
   categorie: Category;
-  pierres: Stone[];
   photos: string[];       // URLs en base64 ou chemins relatifs
   dateCreation: string;   // ISO string
   dateMaj: string;        // ISO string — dernière modification
@@ -42,7 +26,6 @@ export interface ArticleFormData {
   description: string;
   prix: number;
   categorie: Category;
-  pierres: Stone[];
   photos: string[];
   enVedette: boolean;
   vendu?: boolean;
@@ -52,12 +35,6 @@ export interface CategoryData {
   name: string;
   description?: string;
   image?: string;
-  color?: string;  // Couleur hex pour le bracelet filter
-}
-
-// Pierre avec couleur personnalisable
-export interface StoneData {
-  name: string;
   color?: string;  // Couleur hex pour le bracelet filter
 }
 
@@ -88,8 +65,6 @@ export interface SiteConfig {
   metaTitle: string;
   metaDescription: string;
   categories: CategoryData[];
-  stones: string[];           // Liste simple (rétro-compat)
-  stonesData?: StoneData[];   // Liste enrichie avec couleur
   
   // ABOUT Preview
   aboutTitle: string;

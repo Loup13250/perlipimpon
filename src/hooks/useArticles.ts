@@ -51,7 +51,6 @@ export function useArticles() {
         return {
           id: docSnap.id,
           ...data,
-          pierres: Array.isArray(data.pierres) ? data.pierres : [],
           photos: Array.isArray(data.photos) ? data.photos : []
         };
       }) as Article[];

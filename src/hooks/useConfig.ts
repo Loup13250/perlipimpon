@@ -18,8 +18,6 @@ export function useConfig() {
         const existing = docSnap.data() as Partial<SiteConfig>;
         const merged = { ...defaultSiteConfig, ...existing };
         merged.categories = existing.categories || defaultSiteConfig.categories;
-        merged.stones = existing.stones || defaultSiteConfig.stones;
-        merged.stonesData = existing.stonesData || defaultSiteConfig.stonesData || [];
         merged.testimonials = existing.testimonials || defaultSiteConfig.testimonials;
         merged.processSteps = existing.processSteps || defaultSiteConfig.processSteps;
         if (!existing.heroTitle2) merged.heroTitle2 = defaultSiteConfig.heroTitle2;

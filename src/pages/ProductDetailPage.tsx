@@ -97,14 +97,6 @@ export default function ProductDetailPage() {
                     </span>
                   </div>
 
-                  <div className="product-info__detail-row">
-                    <span className="product-info__detail-label">Pierre(s)</span>
-                    <span className="product-info__detail-value">
-                      {article.pierres.map((p) => (
-                        <span key={p} className="badge badge--gold">{p}</span>
-                      ))}
-                    </span>
-                  </div>
 
                   <div className="product-info__detail-row">
                     <span className="product-info__detail-label">Ajouté le</span>
