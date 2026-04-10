@@ -1,89 +1,81 @@
 /**
  * BraceletFilter — Bracelet joaillerie premium (desktop uniquement).
- * Multi-sélection, couleurs personnalisées depuis la config admin.
+ * Transformé en système de pampilles (pendants) suspendus.
  */
 
 import { useEffect, useState } from 'react';
 import type { CategoryData, StoneData } from '../../types';
 import './BraceletFilter.css';
 
-// ─── Couleurs par défaut des pierres (basées sur les vraies gemmes) ──────────
-// Utilisées si aucune couleur admin (stonesData) n'est configurée
+// ─── Couleurs par défaut des pierres ─────────────────────────────────────────
 const KNOWN_STONE_COLORS: Record<string, string> = {
-  'Pierre de lune':   '#7888b8', // Bleu lunaire nacré
-  'Perle':            '#d8ceac', // Ivoire crème chaud
-  'Améthyste':        '#7b3fa0', // Violet profond
-  'Quartz rose':      '#d4849a', // Rose tendre
-  'Labradorite':      '#3a6898', // Bleu-gris profond
-  'Aigue-marine':     '#48a8b8', // Bleu-vert limpide
-  'Tourmaline':       '#8838a0', // Violet-magenta (tourmaline rubellite)
-  'Opale':            '#b888c8', // Blanc irisé violet
-  'Nacre':            '#c8b890', // Crème nacré chaud
-  'Cristal de roche': '#a0a8c8', // Blanc cristallin bleuté
+  'Pierre de lune':   '#7888b8', 
+  'Perle':            '#d8ceac', 
+  'Améthyste':        '#7b3fa0', 
+  'Quartz rose':      '#d4849a', 
+  'Labradorite':      '#3a6898', 
+  'Aigue-marine':     '#48a8b8', 
+  'Tourmaline':       '#8838a0', 
+  'Opale':            '#b888c8', 
+  'Nacre':            '#c8b890', 
+  'Cristal de roche': '#a0a8c8', 
 };
 
-// ─── Couleurs par défaut des catégories (élégantes et sobres) ────────────────
 const KNOWN_CAT_COLORS: Record<string, string> = {
-  'Colliers':           '#b8986a', // Or antique
-  'Bracelets':          '#c4887a', // Or rose
-  'Bagues':             '#8888a8', // Argent mat
-  'Boucles d\'oreilles': '#a89060', // Bronze doré
-  'Pendentifs':         '#b07850', // Cuivre
-  'Ensembles':          '#9a80a0', // Améthyste pâle
+  'Colliers':           '#b8986a', 
+  'Bracelets':          '#c4887a', 
+  'Bagues':             '#8888a8', 
+  'Boucles d\'oreilles': '#a89060', 
+  'Pendentifs':         '#b07850', 
+  'Ensembles':          '#9a80a0', 
 };
 
-const DEFAULT_COLOR = '#a0a098'; // Gris neutre universel
+const DEFAULT_COLOR = '#a0a098';
 const GOLD_COLOR = '#d4af37';
 
 /**
- * Génère un gradient de sphère 3D à partir d'une couleur hex unique.
- * Les tons highlight / midtone / shadow sont calculés automatiquement.
+ * Génère un style de gemme facettée
  */
-function makeGemGradient(hex: string): React.CSSProperties {
-  // Convert hex to RGB
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-
-  // Highlight (plus clair + désaturé)
-  const hr = Math.min(255, r + 80);
-  const hg = Math.min(255, g + 80);
-  const hb = Math.min(255, b + 80);
-
-  // Shadow (plus sombre)
-  const sr = Math.max(0, Math.floor(r * 0.35));
-  const sg = Math.max(0, Math.floor(g * 0.35));
-  const sb = Math.max(0, Math.floor(b * 0.35));
-
+function makeGemStyle(hex: string): React.CSSProperties {
   return {
-    background: `radial-gradient(circle at 38% 32%, rgb(${hr},${hg},${hb}) 0%, rgb(${r},${g},${b}) 46%, rgb(${sr},${sg},${sb}) 100%)`,
-  };
+    '--pendant-color': hex,
+  } as React.CSSProperties;
 }
 
-// ─── Perle individuelle ─────────────────────────────────────────────────────
-interface BeadProps {
+// ─── Pampille individuelle (Pendant) ──────────────────────────────────────────
+interface PendantProps {
   label: string;
   isActive: boolean;
   onClick: () => void;
   gemStyle: React.CSSProperties;
   index: number;
   isAll?: boolean;
-  beadType?: 'category' | 'stone';
+  type?: 'category' | 'stone';
 }
 
-function Bead({ label, isActive, onClick, gemStyle, index, isAll, beadType = 'stone' }: BeadProps) {
+function Pendant({ label, isActive, onClick, gemStyle, index, isAll, type = 'stone' }: PendantProps) {
   return (
     <button
-      className={`bead bead--${beadType} ${isActive ? 'bead--active' : ''} ${isAll ? 'bead--all' : ''}`}
+      className={`pendant pendant--${type} ${isActive ? 'pendant--active' : ''} ${isAll ? 'pendant--all' : ''}`}
       onClick={onClick}
       aria-pressed={isActive}
-      title={label}
-      style={{ '--bead-delay': `${index * 0.055}s` } as React.CSSProperties}
+      style={{ 
+        ...gemStyle, 
+        '--pendant-delay': `${index * 0.04}s` 
+      } as React.CSSProperties}
     >
-      <span className="bead__sphere" style={gemStyle} />
-      <span className="bead__gloss" />
-      {isActive && <span className="bead__halo" />}
-      <span className="bead__label">{label}</span>
+      {/* Anneau de suspension */}
+      <span className="pendant__link" />
+      
+      {/* Corps du pendentif */}
+      <div className="pendant__body">
+        <span className="pendant__stone" />
+        <span className="pendant__shimmer" />
+        <span className="pendant__label">{label}</span>
+      </div>
+      
+      {/* Halo de sélection premium */}
+      {isActive && <span className="pendant__glow" />}
     </button>
   );
 }
@@ -118,11 +110,10 @@ export default function BraceletFilter({
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 60);
+    const t = setTimeout(() => setMounted(true), 100);
     return () => clearTimeout(t);
   }, []);
 
-  // Résoudre la couleur d’une pierre (admin → défaut connu → gris neutre)
   function getStoneColor(stoneName: string): string {
     if (stonesData) {
       const found = stonesData.find((s) => s.name === stoneName);
@@ -131,13 +122,10 @@ export default function BraceletFilter({
     return KNOWN_STONE_COLORS[stoneName] || DEFAULT_COLOR;
   }
 
-  // Résoudre la couleur d’une catégorie (admin → défaut connu → gris neutre)
   function getCatColor(cat: CategoryData): string {
     if (cat.color) return cat.color;
     return KNOWN_CAT_COLORS[cat.name] || DEFAULT_COLOR;
   }
-
-  const goldGem = makeGemGradient(GOLD_COLOR);
 
   return (
     <div className={`bracelet-filter ${mounted ? 'bracelet-filter--in' : ''}`}>
@@ -145,47 +133,46 @@ export default function BraceletFilter({
       <section className="bracelet-section">
         <header className="bracelet-header">
           <span className="bracelet-title">
-            <span className="bracelet-title__gem">◆</span>
-            Catégories
+            <span className="bracelet-title__dot">✦</span>
+            Sélections
           </span>
           {hasFilter && (
             <button className="bracelet-clear" onClick={onClearFilters}>
-              Réinitialiser
+              Effacer les filtres
             </button>
           )}
         </header>
 
         <div className="bracelet-row bracelet-row--category">
-          <span className="clasp clasp--left" aria-hidden="true" />
-          <span className="wire" aria-hidden="true">
-            <span className="wire__body" />
-            <span className="wire__shine" />
-          </span>
+          <span className="clasp clasp--left" />
+          <div className="wire">
+            <div className="wire__core" />
+          </div>
 
-          <div className="bead-rail" role="group" aria-label="Filtrer par catégorie">
-            <Bead
+          <div className="pendant-rail">
+            <Pendant
               label="Tout"
               isActive={activeCategories.length === 0}
               onClick={onCategoryAll}
-              gemStyle={goldGem}
+              gemStyle={makeGemStyle(GOLD_COLOR)}
               index={0}
               isAll
-              beadType="category"
+              type="category"
             />
             {categories.map((cat, i) => (
-              <Bead
+              <Pendant
                 key={cat.name}
                 label={cat.name}
                 isActive={activeCategories.includes(cat.name)}
                 onClick={() => onCategoryToggle(cat.name)}
-                gemStyle={makeGemGradient(getCatColor(cat))}
+                gemStyle={makeGemStyle(getCatColor(cat))}
                 index={i + 1}
-                beadType="category"
+                type="category"
               />
             ))}
           </div>
 
-          <span className="clasp clasp--right" aria-hidden="true" />
+          <span className="clasp clasp--right" />
         </div>
       </section>
 
@@ -194,40 +181,39 @@ export default function BraceletFilter({
         <section className="bracelet-section">
           <header className="bracelet-header">
             <span className="bracelet-title">
-              <span className="bracelet-title__gem">◈</span>
-              Pierres
+              <span className="bracelet-title__dot">◈</span>
+              Gemmes
             </span>
           </header>
 
           <div className="bracelet-row bracelet-row--stone">
-            <span className="clasp clasp--left" aria-hidden="true" />
-            <span className="wire" aria-hidden="true">
-              <span className="wire__body" />
-              <span className="wire__shine" />
-            </span>
+            <span className="clasp clasp--left" />
+            <div className="wire">
+              <div className="wire__core" />
+            </div>
 
-            <div className="bead-rail" role="group" aria-label="Filtrer par pierre">
-              <Bead
+            <div className="pendant-rail">
+              <Pendant
                 label="Toutes"
                 isActive={activeStones.length === 0}
                 onClick={onStoneAll}
-                gemStyle={goldGem}
+                gemStyle={makeGemStyle(GOLD_COLOR)}
                 index={0}
                 isAll
               />
               {stones.map((stone, i) => (
-                <Bead
+                <Pendant
                   key={stone}
                   label={stone}
                   isActive={activeStones.includes(stone)}
                   onClick={() => onStoneToggle(stone)}
-                  gemStyle={makeGemGradient(getStoneColor(stone))}
+                  gemStyle={makeGemStyle(getStoneColor(stone))}
                   index={i + 1}
                 />
               ))}
             </div>
 
-            <span className="clasp clasp--right" aria-hidden="true" />
+            <span className="clasp clasp--right" />
           </div>
         </section>
       )}
