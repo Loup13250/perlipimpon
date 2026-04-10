@@ -181,11 +181,11 @@
   position: relative;
   width: var(--pendant-w);
   height: var(--pendant-h);
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.6); /* Augmentation opacité de base */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 12px 12px 30px 30px; /* Forme goutte/cabochon moderne */
-  border: 1px solid rgba(255,255,255,0.4);
+  border: 1px solid rgba(212, 175, 55, 0.2); /* Bordure or légère */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -199,31 +199,55 @@
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* La pierre à l'intérieur (cabochon poli) */
+/* 💎 LA GEMME (Serti clos) ────────────────────────── */
 .pendant__stone {
   position: absolute;
-  top: 12px;
-  width: 28px;
-  height: 28px;
+  top: 14px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background: var(--pendant-color);
+  
+  /* Serti Griffe / Bordure Or */
   box-shadow: 
-    inset -3px -3px 8px rgba(0,0,0,0.2),
-    inset 3px 3px 8px rgba(255,255,255,0.3),
-    0 4px 10px rgba(0,0,0,0.1);
+    0 0 0 2px var(--gold-primary), /* Le sertissage or massif */
+    0 0 0 3px rgba(212, 175, 55, 0.3), /* Brillance extérieure */
+    inset -4px -4px 10px rgba(0,0,0,0.4), /* Ombre profonde pour volume */
+    inset 4px 4px 10px rgba(255,255,255,0.4); /* Reflets internes */
+    
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
-/* Brillance sur la pierre */
+/* Détails de facettage & profondeur cristalline */
+.pendant__stone::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%);
+    background-size: 200% 200%;
+    animation: gem-sparkle 4s linear infinite;
+}
+
+@keyframes gem-sparkle {
+    0% { background-position: -200% -200%; }
+    100% { background-position: 200% 200%; }
+}
+
+/* Brillance (Glisse sur la pierre) */
 .pendant__shimmer {
   position: absolute;
-  top: 15px;
-  left: 24px;
-  width: 10px;
-  height: 6px;
-  background: rgba(255,255,255,0.6);
+  top: 18px;
+  left: 32px;
+  width: 8px;
+  height: 4px;
+  background: rgba(255,255,255,0.8);
   border-radius: 50%;
-  filter: blur(1px);
+  filter: blur(1.5px);
+  z-index: 5;
+  transform: rotate(-45deg);
 }
 
 .pendant__label {
@@ -235,38 +259,44 @@
   padding: 0 4px;
   line-height: 1.1;
   z-index: 10;
+  transition: color 0.3s;
 }
 
 /* ═══════════════════════════════════════════════════════════════
    INTERACTIONS & ÉTATS
    ═══════════════════════════════════════════════════════════════ */
 
-/* Hover: Swing & Glow */
+/* Hover: Swing & Glow (Plus massif) */
 .pendant:hover {
-  animation: pendant-swing 1.5s ease-in-out infinite;
+  animation: pendant-swing 2.2s ease-in-out infinite; /* Balancement plus lent/lourd */
 }
 
 @keyframes pendant-swing {
   0% { transform: rotate(0); }
-  25% { transform: rotate(3deg); }
-  75% { transform: rotate(-3deg); }
+  25% { transform: rotate(3.5deg); }
+  75% { transform: rotate(-3.5deg); }
   100% { transform: rotate(0); }
 }
 
 .pendant:hover .pendant__body {
-  transform: translateY(2px) scale(1.05);
+  transform: translateY(2px) scale(1.08); /* Plus de zoom */
+  background: rgba(255, 255, 255, 0.85); /* Nettement plus visible sur hover */
   box-shadow: 
-    0 12px 25px rgba(140, 110, 40, 0.12),
+    0 12px 25px rgba(140, 110, 40, 0.15),
     inset 0 0 20px rgba(255,255,255,0.8);
   border-color: var(--gold-primary);
+}
+
+.pendant:hover .pendant__label {
+    color: #403010;
 }
 
 /* État Actif: Bordure or & Glow permanent */
 .pendant--active .pendant__body {
   border: 1.5px solid var(--gold-primary);
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.9);
   box-shadow: 
-    0 10px 20px rgba(212, 175, 55, 0.15),
+    0 10px 20px rgba(212, 175, 55, 0.2),
     inset 0 0 10px rgba(212, 175, 55, 0.1);
 }
 
@@ -287,6 +317,13 @@
 }
 
 /* Style spécial pour "TOUT" en or massif */
+.pendant--all .pendant__stone {
+    background: linear-gradient(135deg, var(--gold-primary), var(--gold-light), var(--gold-dark));
+    box-shadow: 
+        0 0 0 2px var(--gold-primary),
+        inset -2px -2px 6px rgba(0,0,0,0.3);
+}
+
 .pendant--all .pendant__body {
   background: linear-gradient(135deg, #ffffff 0%, #fff8e0 100%);
   border-color: rgba(212, 175, 55, 0.4);
@@ -297,7 +334,7 @@
   .pendant-rail {
     justify-content: flex-start;
     overflow-x: auto;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     scrollbar-width: thin;
     scrollbar-color: var(--gold-primary) transparent;
   }
@@ -305,4 +342,9 @@
 
 @media (max-width: 768px) {
   .bracelet-filter { display: none; }
+}
+
+@keyframes shine-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 2px var(--gold-primary)); }
+    50% { opacity: 0.7; transform: scale(0.9); filter: drop-shadow(0 0 8px var(--gold-primary)); }
 }
