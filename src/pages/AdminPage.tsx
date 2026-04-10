@@ -699,9 +699,10 @@ export default function AdminPage() {
     updateArticle,
     deleteArticle,
     replaceAll,
-    clearAndSync
   } = useArticles();
   const { config, configLoading, setConfig } = useConfig();
+  
+  const [filterCategory, setFilterCategory] = useState<string>('all');
 
   const [adminTab, setAdminTab] = useState<'articles' | 'categories' | 'pierres' | 'config'>('articles');
   const [view, setView] = useState<'list' | 'create' | 'edit'>('list');
@@ -762,17 +763,6 @@ export default function AdminPage() {
     alert('Modifications enregistrées avec succès !');
   }, [setConfig]);
 
-  const handleNuclearReset = useCallback(async () => {
-    if (window.confirm("🔴 ATTENTION : Voulez-vous vraiment supprimer TOUS les articles actuels et les remplacer par les 50 articles propres ? Cette action est irréversible.")) {
-      try {
-        await clearAndSync();
-        alert("Nettoyage réussi ! La base de données contient maintenant 50 articles propres.");
-      } catch (e) {
-        alert("Erreur lors du nettoyage. Veuillez réessayer.");
-      }
-    }
-  }, [clearAndSync]);
-
 
 
   // ──────────────────────────────────────────────
@@ -828,12 +818,34 @@ export default function AdminPage() {
 
           {adminTab === 'articles' && (
             <div className="admin-list">
-              <div className="admin-list__header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-                <h2>Vos Créations ({articles.length})</h2>
+              <div className="admin-list__header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                  <h2 style={{ margin: 0 }}>Vos Créations ({articles.length})</h2>
+                  
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <label htmlFor="admin-cat-filter" style={{ fontSize: 'var(--text-sm)', color: 'var(--color-gray-500)' }}>Filtrer par :</label>
+                    <select 
+                      id="admin-cat-filter"
+                      value={filterCategory}
+                      onChange={(e) => setFilterCategory(e.target.value)}
+                      style={{ 
+                        padding: '0.4rem 1rem', 
+                        borderRadius: 'var(--radius-md)', 
+                        border: '1px solid var(--color-gray-200)',
+                        fontSize: 'var(--text-sm)',
+                        background: 'var(--color-white)',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      <option value="all">Toutes les catégories</option>
+                      {config.categories.map(cat => (
+                        <option key={cat.name} value={cat.name}>{cat.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
-                  <button className="btn btn--outline btn--sm" onClick={handleNuclearReset} style={{ color: 'var(--color-red-500)', borderColor: 'var(--color-red-500)' }}>🧼 Nettoyage Complet</button>
-                  <button className="btn btn--outline btn--sm" onClick={handleExport}>📥 Backup JSON</button>
-                  <button className="btn btn--outline btn--sm" onClick={handleImport}>📤 Importer JSON</button>
                   <button className="btn btn--primary" onClick={() => setView('create')}>+ Nouvel article</button>
                 </div>
               </div>
@@ -845,9 +857,12 @@ export default function AdminPage() {
                   <button className="btn btn--primary" onClick={() => setView('create')}>Créer votre première pièce</button>
                 </div>
               ) : (
-                <div className="admin-table">
-                  {articles.map((article) => (
-                    <div key={article.id} className="article-row">
+                <>
+                  <div className="admin-table">
+                    {articles
+                      .filter(a => filterCategory === 'all' || a.categorie === filterCategory)
+                      .map((article) => (
+                        <div key={article.id} className="article-row">
                       <div className="article-row__thumb">
                         {Array.isArray(article.photos) && article.photos.length > 0 ? (
                           <img src={article.photos[0]} alt={article.titre} />
@@ -876,8 +891,15 @@ export default function AdminPage() {
                         )}
                       </div>
                     </div>
-                  ))}
+                      ))}
+                  </div>
+
+                {/* Section Gestion des données en bas */}
+                <div className="admin-data-footer" style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid var(--color-gray-100)', display: 'flex', justifyContent: 'center', gap: '1rem' }}>
+                  <button className="btn btn--outline btn--sm" onClick={handleExport}>📥 Sauvegarder (Backup JSON)</button>
+                  <button className="btn btn--outline btn--sm" onClick={handleImport}>📤 Importer une sauvegarde JSON</button>
                 </div>
+                </>
               )}
             </div>
           )}
