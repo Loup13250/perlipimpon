@@ -699,6 +699,7 @@ export default function AdminPage() {
     updateArticle,
     deleteArticle,
     replaceAll,
+    clearAndSync
   } = useArticles();
   const { config, configLoading, setConfig } = useConfig();
 
@@ -761,6 +762,17 @@ export default function AdminPage() {
     alert('Modifications enregistrées avec succès !');
   }, [setConfig]);
 
+  const handleNuclearReset = useCallback(async () => {
+    if (window.confirm("🔴 ATTENTION : Voulez-vous vraiment supprimer TOUS les articles actuels et les remplacer par les 50 articles propres ? Cette action est irréversible.")) {
+      try {
+        await clearAndSync();
+        alert("Nettoyage réussi ! La base de données contient maintenant 50 articles propres.");
+      } catch (e) {
+        alert("Erreur lors du nettoyage. Veuillez réessayer.");
+      }
+    }
+  }, [clearAndSync]);
+
 
 
   // ──────────────────────────────────────────────
@@ -819,6 +831,7 @@ export default function AdminPage() {
               <div className="admin-list__header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
                 <h2>Vos Créations ({articles.length})</h2>
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <button className="btn btn--outline btn--sm" onClick={handleNuclearReset} style={{ color: 'var(--color-red-500)', borderColor: 'var(--color-red-500)' }}>🧼 Nettoyage Complet</button>
                   <button className="btn btn--outline btn--sm" onClick={handleExport}>📥 Backup JSON</button>
                   <button className="btn btn--outline btn--sm" onClick={handleImport}>📤 Importer JSON</button>
                   <button className="btn btn--primary" onClick={() => setView('create')}>+ Nouvel article</button>

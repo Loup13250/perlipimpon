@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import type { Article, ArticleFormData } from '../types';
 import { db } from '../lib/firebase';
-import { collection, doc, onSnapshot, setDoc, deleteDoc, updateDoc, query } from 'firebase/firestore';
+import { collection, doc, onSnapshot, setDoc, deleteDoc, updateDoc, query, getDocs } from 'firebase/firestore';
 import { generateId } from '../utils/helpers';
 import { sampleArticles } from '../data/sampleArticles';
 
@@ -158,6 +158,24 @@ export function useArticles() {
     }
   }, []);
 
+  const clearAndSync = useCallback(async (): Promise<void> => {
+    try {
+      setArticlesLoading(true);
+      const snapshot = await getDocs(collection(db, ARTICLES_COLLECTION));
+      const deletePromises = snapshot.docs.map(document => deleteDoc(document.ref));
+      await Promise.all(deletePromises);
+      
+      for (const article of sampleArticles) {
+        await setDoc(doc(db, ARTICLES_COLLECTION, article.id), article);
+      }
+      setArticlesLoading(false);
+    } catch (e) {
+      console.error("Error during nuclear reset", e);
+      setArticlesLoading(false);
+      throw e;
+    }
+  }, []);
+
   return {
     articles,
     articlesLoading,
@@ -170,5 +188,6 @@ export function useArticles() {
     resetToSample,
     forceSyncWithSamples,
     replaceAll,
+    clearAndSync,
   };
 }

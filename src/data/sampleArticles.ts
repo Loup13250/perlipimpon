@@ -44,596 +44,618 @@ export const defaultSiteConfig: SiteConfig = {
 };
 
 export const sampleArticles: Article[] = [
-{
-  "id": "auto-001",
-  "titre": "Boucles doreilles Festives",
-  "description": "Boucles doreilles elegantes avec motifs de cours et triangles textures, parfaites pour vos soirees.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/472982678_122200623278158928_4769343512706442374_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": true
-},
-{
-  "id": "auto-002",
-  "titre": "Boucles doreilles Croisette",
-  "description": "Modele Croisette arborant un motif leopard chic sur une monture doree arrondie.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473133716_122200623524158928_1134493933837433129_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": true
-},
-{
-  "id": "auto-003",
-  "titre": "Boucles doreilles Pepites Leopard",
-  "description": "Design leopard moderne pour ces boucles doreilles originales et tendance.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473235429_122200623032158928_7900813755815264754_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": true
-},
-{
-  "id": "auto-004",
-  "titre": "Boucles doreilles Papyrus",
-  "description": "Boucles doreilles ornees dune pierre fine verte facettee pour un look naturel.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [
-    "Aventurine"
-  ],
-  "photos": [
-    "/images/creations/473256849_122200623230158928_352825919811860710_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": true
-},
-{
-  "id": "auto-005",
-  "titre": "Boucles doreilles Ophelie",
-  "description": "Alliance de la perle blanche a des anneaux dores ciseles pour un raffinement extreme.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [
-    "Perle de culture"
-  ],
-  "photos": [
-    "/images/creations/473340799_122201328548158928_2038345838962049893_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": true
-},
-{
-  "id": "auto-006",
-  "titre": "Bague Labradorite Royale",
-  "description": "Bague majestueuse sertie dune Labradorite aux reflets bleutes envoutants.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [
-    "Labradorite"
-  ],
-  "photos": [
-    "/images/creations/473341420_122201328206158928_2828597019880718112_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": true
-},
-{
-  "id": "auto-007",
-  "titre": "Bague Malachite Profonde",
-  "description": "Bague artisanale mettant en valeur une Malachite au vert profond et strie.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [
-    "Malachite"
-  ],
-  "photos": [
-    "/images/creations/473354677_122201328566158928_8956090328562457149_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": true
-},
-{
-  "id": "auto-008",
-  "titre": "Bague Lapis-Lazuli Stellaire",
-  "description": "Une bague dexception ornee dun Lapis-Lazuli bleu nuit tachete de pyrite doree.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [
-    "Lapis-Lazuli"
-  ],
-  "photos": [
-    "/images/creations/473361588_122200622984158928_7222519572489594492_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": true
-},
-{
-  "id": "auto-009",
-  "titre": "Bague Ametheyste Mystique",
-  "description": "Bague mystique sertie dune Ametheyste violette, symbole de serenite.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [
-    "Améthyste"
-  ],
-  "photos": [
-    "/images/creations/473372466_122201328656158928_2029604001262488220_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": true
-},
-{
-  "id": "auto-010",
-  "titre": "Bague Turquoise Boheme",
-  "description": "Bague dexception ornee dune Turquoise naturelle au style boheme unique.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [
-    "Turquoise"
-  ],
-  "photos": [
-    "/images/creations/473416119_122200623500158928_2828826237480628351_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": true
-},
-{
-  "id": "auto-011",
-  "titre": "Boucles doreilles Izia Silver",
-  "description": "Boucles doreilles en acier inoxydable avec coeurs marteles, un design chic et intemporel.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473446929_122201328674158928_9018583340865346271_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": true
-},
-{
-  "id": "auto-012",
-  "titre": "Boucles doreilles Cosmos Spring",
-  "description": "Boucles doreilles fleuries d’inspiration cosmique, avec un petit detail vert emeraude.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473451986_122201328692158928_6029920932440069154_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": true
-},
-{
-  "id": "auto-013",
-  "titre": "Presentoir Boucles dEclat",
-  "description": "Une collection variee de boucles doreilles artisanales pour toutes les occasions.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473540051_122201328176158928_9044289977160164845_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-014",
-  "titre": "Boucles Gouttes dOr",
-  "description": "Boucles doreilles pendantes dorees avec un design fin et elegant.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473548589_122201328956158928_8011913272615711629_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-015",
-  "titre": "Boucles Disques Solaires",
-  "description": "Boucles doreilles en forme de disques rayonnants, captant la lumiere.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473553972_122201340260158928_8520475929549074176_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-016",
-  "titre": "Creoles Perles de Nuit",
-  "description": "Boucles doreilles creoles ornees de perles sombres et mysterieuses.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473578908_122201328644158928_1047448953646046309_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-017",
-  "titre": "Boucles Coeurs dArgent",
-  "description": "Delicates boucles doreilles en forme de coeur avec une finition argentee.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473588856_122201328188158928_3169717433946904198_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-018",
-  "titre": "Boucles Fleurs de Cristal",
-  "description": "Boucles doreilles florales ornees de cristaux etincelants.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473621819_122201340230158928_1983232468118663258_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-019",
-  "titre": "Boucles Losanges Ethniques",
-  "description": "Boucles doreilles au design geometrique et inspiration ethnique.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473622828_122201328194158928_5025500798329435390_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-020",
-  "titre": "Boucles Spirales dOrient",
-  "description": "Boucles doreilles en spirale evoquant les motifs orientaux traditionnels.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473622997_122201328170158928_5248674625730901904_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-021",
-  "titre": "Boucles Gouttes Perlees",
-  "description": "Boucles doreilles en forme de gouttes delicately perlees.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473628139_122201328620158928_8135132925769878247_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-022",
-  "titre": "Bague Ambre & Or",
-  "description": "Bague imposante avec une pierre dambre translucide montee sur or.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473807272_122202536282158928_6513503047436518843_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-023",
-  "titre": "Boucles Pastilles Dorees",
-  "description": "Petites boucles doreilles discretes en forme de pastilles martelees.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473897990_122202536168158928_5467220022455649728_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-024",
-  "titre": "Bague Oeil de Tigre",
-  "description": "Bague protectrice ornee dun magnifique Oeil de Tigre aux reflets chatoyants.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473992585_122202536324158928_1929385231506832589_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-025",
-  "titre": "Bague Pierre de Soleil",
-  "description": "Bague chaleureuse mettant en valeur leclat paillete de la Pierre de Soleil.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [],
-  "photos": [
-    "/images/creations/473999733_122202536810158928_6342491970675731491_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-026",
-  "titre": "Bague Onyx Mystique",
-  "description": "Bague elegante sertie dun Onyx noir profond pour un look sophistique.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [],
-  "photos": [
-    "/images/creations/474018545_122202536234158928_7108235809866976410_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-027",
-  "titre": "Bague Nacre Douce",
-  "description": "Bague delicate ornee de nacre naturelle aux reflets irises.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [],
-  "photos": [
-    "/images/creations/474025830_122202536408158928_2408782160577514405_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-028",
-  "titre": "Bague Amazonite Givree",
-  "description": "Bague rafraichissante avec une Amazonite aux nuances vert deau.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [],
-  "photos": [
-    "/images/creations/474030815_122202536192158928_2266108943471238193_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-029",
-  "titre": "Boucles Gouttes Azur",
-  "description": "Boucles doreilles pendantes avec des gouttes bleues translucides.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/474030830_122202536852158928_2889122137508406518_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-030",
-  "titre": "Bague Quartz Fume",
-  "description": "Bague sobre et mysterieuse avec un Quartz fume facette.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [],
-  "photos": [
-    "/images/creations/474038531_122202536210158928_2393958096423151133_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-031",
-  "titre": "Bague Cornaline Ardente",
-  "description": "Bague pleine denergie ornee dune Cornaline dun orange vibrant.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [],
-  "photos": [
-    "/images/creations/474038531_122202536816158928_3565357174295410012_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-032",
-  "titre": "Boucles Pampilles Argent",
-  "description": "Boucles doreilles avec de multiples pampilles argentees mobiles.",
-  "prix": 35,
-  "categorie": "Boucles d'oreilles",
-  "pierres": [],
-  "photos": [
-    "/images/creations/474038694_122202536162158928_510954882395770702_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-033",
-  "titre": "Bague Topaze Bleue",
-  "description": "Bague lumineuse sertie dune Topaze bleue claire et pure.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [],
-  "photos": [
-    "/images/creations/474050030_122202536414158928_7623025863111960861_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-034",
-  "titre": "Bague Grenat Passion",
-  "description": "Bague envoutante ornee dun Grenat rouge profond.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [],
-  "photos": [
-    "/images/creations/474067360_122202537008158928_7779281431957026996_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-035",
-  "titre": "Bague Peridot Printemps",
-  "description": "Bague fraiche avec un Peridot vert olive eclatant.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [],
-  "photos": [
-    "/images/creations/474068627_122202536648158928_6168960549888235370_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-036",
-  "titre": "Bague Citrine Solaire",
-  "description": "Bague rayonnante mettant en valeur une Citrine jaune dor.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [],
-  "photos": [
-    "/images/creations/474073415_122202536762158928_5270765036021272470_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-037",
-  "titre": "Bague Hematite Force",
-  "description": "Bague au design moderne avec une Hematite aux reflets metalliques.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [],
-  "photos": [
-    "/images/creations/474085302_122202536186158928_8177287603919219394_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-038",
-  "titre": "Bague Jaspe Rouge",
-  "description": "Bague ancree avec un Jaspe rouge aux tons terreux et naturels.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [],
-  "photos": [
-    "/images/creations/474105068_122202536888158928_260107995910757901_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-039",
-  "titre": "Bague Sodalite Sagesse",
-  "description": "Bague apaisante ornee dune Sodalite bleue veinee de blanc.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [],
-  "photos": [
-    "/images/creations/474135951_122202536144158928_5117788262173145538_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "auto-040",
-  "titre": "Bague Unakite Nature",
-  "description": "Bague originale combinant le vert et le rose de lUnakite.",
-  "prix": 35,
-  "categorie": "Bagues",
-  "pierres": [],
-  "photos": [
-    "/images/creations/474137838_122202536594158928_3276680666977018168_n.jpg"
-  ],
-  "dateCreation": "2026-04-10T02:18:36Z",
-  "dateMaj": "2026-04-10T02:18:36Z",
-  "enVedette": false
-},
-{
-  "id": "demo-001",
-  "titre": "Collier Éclat de Lune",
-  "description": "Un collier délicat en argent 925 serti d'une pierre de lune aux reflets bleutés. Pièce unique fabriquée entièrement à la main.",
-  "prix": 89,
-  "categorie": "Colliers",
-  "pierres": [
-    "Pierre de lune"
-  ],
-  "photos": [
-    "/images/moonstone_necklace.png"
-  ],
-  "dateCreation": "2026-01-15T10:00:00Z",
-  "dateMaj": "2026-01-15T10:00:00Z",
-  "enVedette": true
-}
+  {
+    "id": "auto-001",
+    "titre": "Boucles doreilles Festives",
+    "description": "Boucles doreilles elegantes avec motifs de cours et triangles textures, parfaites pour vos soirees.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/472982678_122200623278158928_4769343512706442374_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-002",
+    "titre": "Boucles doreilles Croisette",
+    "description": "Modele Croisette arborant un motif leopard chic sur une monture doree arrondie.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/473133716_122200623524158928_1134493933837433129_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-003",
+    "titre": "Boucles doreilles Pepites Leopard",
+    "description": "Design leopard moderne pour ces boucles doreilles originales et tendance.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/473235429_122200623032158928_7900813755815264754_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-004",
+    "titre": "Boucles doreilles Papyrus",
+    "description": "Boucles doreilles ornees dune pierre fine verte facettee pour un look naturel.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": ["Aventurine"],
+    "photos": ["/images/creations/473256849_122200623230158928_352825919811860710_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-005",
+    "titre": "Boucles doreilles Ophelie",
+    "description": "Alliance de la perle blanche a des anneaux dores ciseles pour un raffinement extreme.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": ["Perle de culture"],
+    "photos": ["/images/creations/473340799_122201328548158928_2038345838962049893_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-006",
+    "titre": "Bague Labradorite Royale",
+    "description": "Bague majestueuse sertie dune Labradorite aux reflets bleutes envoutants.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": ["Labradorite"],
+    "photos": ["/images/creations/473341420_122201328206158928_2828597019880718112_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-007",
+    "titre": "Bague Malachite Profonde",
+    "description": "Bague artisanale mettant en valeur une Malachite au vert profond et strie.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": ["Malachite"],
+    "photos": ["/images/creations/473354677_122201328566158928_8956090328562457149_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-008",
+    "titre": "Bague Lapis-Lazuli Stellaire",
+    "description": "Une bague dexception ornee dun Lapis-Lazuli bleu nuit tachete de pyrite doree.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": ["Lapis-Lazuli"],
+    "photos": ["/images/creations/473361588_122200622984158928_7222519572489594492_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-009",
+    "titre": "Bague Ametheyste Mystique",
+    "description": "Bague mystique sertie dune Ametheyste violette, symbole de serenite.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": ["Améthyste"],
+    "photos": ["/images/creations/473372466_122201328656158928_2029604001262488220_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-010",
+    "titre": "Bague Turquoise Boheme",
+    "description": "Bague dexception ornee dune Turquoise naturelle au style boheme unique.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": ["Turquoise"],
+    "photos": ["/images/creations/473416119_122200623500158928_2828826237480628351_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-011",
+    "titre": "Boucles doreilles Izia Silver",
+    "description": "Boucles doreilles en acier inoxydable avec coeurs marteles, un design chic et intemporel.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/473446929_122201328674158928_9018583340865346271_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-012",
+    "titre": "Boucles doreilles Cosmos Spring",
+    "description": "Boucles doreilles fleuries d'inspiration cosmique, avec un petit detail vert emeraude.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/473451986_122201328692158928_6029920932440069154_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-013",
+    "titre": "Presentoir Boucles dEclat",
+    "description": "Une collection variee de boucles doreilles artisanales pour toutes les occasions.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/473540051_122201328176158928_9044289977160164845_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-014",
+    "titre": "Boucles Gouttes dOr",
+    "description": "Boucles doreilles pendantes dorees avec un design fin et elegant.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/473548589_122201328956158928_8011913272615711629_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-015",
+    "titre": "Boucles Disques Solaires",
+    "description": "Boucles doreilles en forme de disques rayonnants, captant la lumiere.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/473553972_122201340260158928_8520475929549074176_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-016",
+    "titre": "Creoles Perles de Nuit",
+    "description": "Boucles doreilles creoles ornees de perles sombres et mysterieuses.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/473578908_122201328644158928_1047448953646046309_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-017",
+    "titre": "Boucles Coeurs dArgent",
+    "description": "Delicates boucles doreilles en forme de coeur avec une finition argentee.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/473588856_122201328188158928_3169717433946904198_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-018",
+    "titre": "Boucles Fleurs de Cristal",
+    "description": "Boucles doreilles florales ornees de cristaux etincelants.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/473621819_122201340230158928_1983232468118663258_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-019",
+    "titre": "Boucles Losanges Ethniques",
+    "description": "Boucles doreilles au design geometrique et inspiration ethnique.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/473622828_122201328194158928_5025500798329435390_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-020",
+    "titre": "Boucles Spirales dOrient",
+    "description": "Boucles doreilles en spirale evoquant les motifs orientaux traditionnels.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/473622997_122201328170158928_5248674625730901904_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-021",
+    "titre": "Boucles Gouttes Perlees",
+    "description": "Boucles doreilles en forme de gouttes delicately perlees.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/473628139_122201328620158928_8135132925769878247_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-022",
+    "titre": "Bague Ambre & Or",
+    "description": "Bague imposante avec une pierre dambre translucide montee sur or.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/473807272_122202536282158928_6513503047436518843_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-023",
+    "titre": "Boucles Pastilles Dorees",
+    "description": "Petites boucles doreilles discretes en forme de pastilles martelees.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/473897990_122202536168158928_5467220022455649728_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-024",
+    "titre": "Bague Oeil de Tigre",
+    "description": "Bague protectrice ornee dun magnifique Oeil de Tigre aux reflets chatoyants.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/473992585_122202536324158928_1929385231506832589_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-025",
+    "titre": "Bague Pierre de Soleil",
+    "description": "Bague chaleureuse mettant en valeur leclat paillete de la Pierre de Soleil.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/473999733_122202536810158928_6342491970675731491_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-026",
+    "titre": "Bague Onyx Mystique",
+    "description": "Bague elegante sertie dun Onyx noir profond pour un look sophistique.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474018545_122202536234158928_7108235809866976410_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-027",
+    "titre": "Bague Nacre Douce",
+    "description": "Bague delicate ornee de nacre naturelle aux reflets irises.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474025830_122202536408158928_2408782160577514405_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-028",
+    "titre": "Bague Amazonite Givree",
+    "description": "Bague rafraichissante avec une Amazonite aux nuances vert deau.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474030815_122202536192158928_2266108943471238193_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-029",
+    "titre": "Boucles Gouttes Azur",
+    "description": "Boucles doreilles pendantes avec des gouttes bleues translucides.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/474030830_122202536852158928_2889122137508406518_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-030",
+    "titre": "Bague Quartz Fume",
+    "description": "Bague sobre et mysterieuse avec un Quartz fume facette.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474038531_122202536210158928_2393958096423151133_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-031",
+    "titre": "Bague Cornaline Ardente",
+    "description": "Bague pleine denergie ornee dune Cornaline dun orange vibrant.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474038531_122202536816158928_3565357174295410012_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-032",
+    "titre": "Boucles Pampilles Argent",
+    "description": "Boucles doreilles avec de multiples pampilles argentees mobiles.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "pierres": [],
+    "photos": ["/images/creations/474038694_122202536162158928_510954882395770702_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-033",
+    "titre": "Bague Topaze Bleue",
+    "description": "Bague lumineuse sertie dune Topaze bleue claire et pure.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474050030_122202536414158928_7623025863111960861_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-034",
+    "titre": "Bague Grenat Passion",
+    "description": "Bague envoutante ornee dun Grenat rouge profond.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474067360_122202537008158928_7779281431957026996_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-035",
+    "titre": "Bague Peridot Printemps",
+    "description": "Bague fraiche avec un Peridot vert olive eclatant.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474068627_122202536648158928_6168960549888235370_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-036",
+    "titre": "Bague Citrine Solaire",
+    "description": "Bague rayonnante mettant en valeur une Citrine jaune dor.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474073415_122202536762158928_5270765036021272470_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-037",
+    "titre": "Bague Hematite Force",
+    "description": "Bague au design moderne avec une Hematite aux reflets metalliques.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474085302_122202536186158928_8177287603919219394_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-038",
+    "titre": "Bague Jaspe Rouge",
+    "description": "Bague ancree avec un Jaspe rouge aux tons terreux et naturels.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474105068_122202536888158928_260107995910757901_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-039",
+    "titre": "Bague Sodalite Sagesse",
+    "description": "Bague apaisante ornee dune Sodalite bleue veinee de blanc.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474135951_122202536144158928_5117788262173145538_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-040",
+    "titre": "Bague Unakite Nature",
+    "description": "Bague originale combinant le vert et le rose de lUnakite.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474137838_122202536594158928_3276680666977018168_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-041",
+    "titre": "Bague Obsidienne Noire",
+    "description": "Bague intense sertie dune Obsidienne noire protectrice.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474139143_122202536378158928_7767449053865933548_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-042",
+    "titre": "Bague Calcedoine Bleue",
+    "description": "Bague douce avec une Calcedoine dun bleu pastel delicat.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474143934_122202536744158928_223690050841474990_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-043",
+    "titre": "Bague Rhodonite Tendresse",
+    "description": "Bague rose tendre ornee dune Rhodonite veinee de noir.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474146896_122202536882158928_8214072194493370941_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-044",
+    "titre": "Bague Aventurine Prospere",
+    "description": "Bague au vert tendre, symbole de chance et de prosperite.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474162800_122202536720158928_5764662690346226503_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-045",
+    "titre": "Bague Jade Imperial",
+    "description": "Bague precieuse sertie dun Jade vert intense et symbolique.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474164566_122202536624158928_615655267435086183_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-046",
+    "titre": "Bague Fluorite Arc-en-ciel",
+    "description": "Bague coloree avec une Fluorite aux multiples nuances de violet et vert.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "pierres": [],
+    "photos": ["/images/creations/474177940_122202536708158928_3484378336419254563_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-047",
+    "titre": "Bracelet Maillons Leopard",
+    "description": "Bracelet tendance avec des maillons en acrylique au motif leopard.",
+    "prix": 35,
+    "categorie": "Bracelets",
+    "pierres": [],
+    "photos": ["/images/creations/474188349_122202711638158928_307615407925336821_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-048",
+    "titre": "Bracelet Maillons Ambre",
+    "description": "Bracelet chaleureux avec des maillons ambres et dores.",
+    "prix": 35,
+    "categorie": "Bracelets",
+    "pierres": [],
+    "photos": ["/images/creations/474189407_122202711626158928_2074019437738859462_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-049",
+    "titre": "Bracelet Maillons Nacre",
+    "description": "Bracelet raffine avec des maillons nacres et metallises.",
+    "prix": 35,
+    "categorie": "Bracelets",
+    "pierres": [],
+    "photos": ["/images/creations/474200707_122202711824158928_6827775833202492470_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-050",
+    "titre": "Bracelet Maillons Onyx",
+    "description": "Bracelet chic combinant des maillons noirs et argentes.",
+    "prix": 35,
+    "categorie": "Bracelets",
+    "pierres": [],
+    "photos": ["/images/creations/474209168_122202711770158928_1795518133227929054_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "demo-001",
+    "titre": "Collier Éclat de Lune",
+    "description": "Un collier délicat en argent 925 serti d'une pierre de lune aux reflets bleutés. Pièce unique fabriquée entièrement à la main.",
+    "prix": 89,
+    "categorie": "Colliers",
+    "pierres": ["Pierre de lune"],
+    "photos": ["/images/moonstone_necklace.png"],
+    "dateCreation": "2026-01-15T10:00:00Z",
+    "dateMaj": "2026-01-15T10:00:00Z",
+    "enVedette": true
+  }
 ];
 
 export const sampleTestimonials: Testimonial[] = [];
