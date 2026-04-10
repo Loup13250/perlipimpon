@@ -125,12 +125,25 @@ export function useArticles() {
 
   const resetToSample = useCallback(async (): Promise<void> => {
     try {
-      // Supprimer tous les articles actuels d'abord (simplifié pour cet exemple : on ajoute juste par dessus)
       for (const article of sampleArticles) {
         await setDoc(doc(db, ARTICLES_COLLECTION, article.id), article);
       }
     } catch (e) {
       console.error("Error resetting", e);
+    }
+  }, []);
+
+  const forceSyncWithSamples = useCallback(async (): Promise<void> => {
+    try {
+      setArticlesLoading(true);
+      // On injecte les nouveaux samples
+      for (const article of sampleArticles) {
+        await setDoc(doc(db, ARTICLES_COLLECTION, article.id), article);
+      }
+      setArticlesLoading(false);
+    } catch (e) {
+      console.error("Error force syncing", e);
+      setArticlesLoading(false);
     }
   }, []);
 
@@ -155,6 +168,7 @@ export function useArticles() {
     updateArticle,
     deleteArticle,
     resetToSample,
+    forceSyncWithSamples,
     replaceAll,
   };
 }

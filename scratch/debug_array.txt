@@ -1,0 +1,2466 @@
+[
+  {
+    "id": "auto-001",
+    "titre": "Boucles doreilles Festives",
+    "description": "Boucles doreilles elegantes avec motifs de cours et triangles textures, parfaites pour vos soirees.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/472982678_122200623278158928_4769343512706442374_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-002",
+    "titre": "Boucles doreilles Croisette",
+    "description": "Modele Croisette arborant un motif leopard chic sur une monture doree arrondie.",
+    "prix": 38,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473133716_122200623524158928_1134493933837433129_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-003",
+    "titre": "Boucles doreilles Pepites Leopard",
+    "description": "Design leopard moderne pour ces boucles doreilles originales et tendance.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473235429_122200623032158928_7900813755815264754_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-004",
+    "titre": "Boucles doreilles Papyrus",
+    "description": "Boucles doreilles ornees dune pierre fine verte facettee pour un look naturel.",
+    "prix": 42,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [
+      "Aventurine"
+    ],
+    "photos": [
+      "/images/creations/473256849_122200623230158928_352825919811860710_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-005",
+    "titre": "Boucles doreilles Ophelie",
+    "description": "Alliance de la perle blanche a des anneaux dores ciseles pour un raffinement extreme.",
+    "prix": 45,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [
+      "Perle de culture"
+    ],
+    "photos": [
+      "/images/creations/473340799_122201328548158928_2038345838962049893_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-006",
+    "titre": "Bague Labradorite Royale",
+    "description": "Bague majestueuse sertie dune Labradorite aux reflets bleutes envoutants.",
+    "prix": 55,
+    "categorie": "Bagues",
+    "pierres": [
+      "Labradorite"
+    ],
+    "photos": [
+      "/images/creations/473341420_122201328206158928_2828597019880718112_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-007",
+    "titre": "Bague Malachite Profonde",
+    "description": "Bague artisanale mettant en valeur une Malachite au vert profond et strie.",
+    "prix": 52,
+    "categorie": "Bagues",
+    "pierres": [
+      "Malachite"
+    ],
+    "photos": [
+      "/images/creations/473354677_122201328566158928_8956090328562457149_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-008",
+    "titre": "Bague Lapis-Lazuli Stellaire",
+    "description": "Une bague dexception ornee dun Lapis-Lazuli bleu nuit tachete de pyrite doree.",
+    "prix": 58,
+    "categorie": "Bagues",
+    "pierres": [
+      "Lapis-Lazuli"
+    ],
+    "photos": [
+      "/images/creations/473361588_122200622984158928_7222519572489594492_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-009",
+    "titre": "Bague Ametheyste Mystique",
+    "description": "Bague mystique sertie dune Ametheyste violette, symbole de serenite.",
+    "prix": 54,
+    "categorie": "Bagues",
+    "pierres": [
+      "Amethyst"
+    ],
+    "photos": [
+      "/images/creations/473372466_122201328656158928_2029604001262488220_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-010",
+    "titre": "Bague Turquoise Boheme",
+    "description": "Bague dexception ornee dune Turquoise naturelle au style boheme unique.",
+    "prix": 60,
+    "categorie": "Bagues",
+    "pierres": [
+      "Turquoise"
+    ],
+    "photos": [
+      "/images/creations/473416119_122200623500158928_2828826237480628351_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-011",
+    "titre": "Boucles doreilles Izia Silver",
+    "description": "Boucles doreilles en acier inoxydable avec coeurs marteles, un design chic et intemporel.",
+    "prix": 32,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473446929_122201328674158928_9018583340865346271_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-012",
+    "titre": "Boucles doreilles Cosmos Spring",
+    "description": "Boucles doreilles fleuries d’inspiration cosmique, avec un petit detail de couleur vert emeraude au centre.",
+    "prix": 42,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473451986_122201328692158928_6029920932440069154_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-013",
+    "titre": "Création Perlipimpon 13",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473540051_122201328176158928_9044289977160164845_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-014",
+    "titre": "Création Perlipimpon 14",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473548589_122201328956158928_8011913272615711629_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-015",
+    "titre": "Création Perlipimpon 15",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473553972_122201340260158928_8520475929549074176_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-016",
+    "titre": "Création Perlipimpon 16",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473578908_122201328644158928_1047448953646046309_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-017",
+    "titre": "Création Perlipimpon 17",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473588856_122201328188158928_3169717433946904198_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-018",
+    "titre": "Création Perlipimpon 18",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473621819_122201340230158928_1983232468118663258_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-019",
+    "titre": "Création Perlipimpon 19",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473622828_122201328194158928_5025500798329435390_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-020",
+    "titre": "Création Perlipimpon 20",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473622997_122201328170158928_5248674625730901904_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-021",
+    "titre": "Création Perlipimpon 21",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473628139_122201328620158928_8135132925769878247_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-022",
+    "titre": "Création Perlipimpon 22",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473807272_122202536282158928_6513503047436518843_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-023",
+    "titre": "Création Perlipimpon 23",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473897990_122202536168158928_5467220022455649728_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-024",
+    "titre": "Création Perlipimpon 24",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473992585_122202536324158928_1929385231506832589_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-025",
+    "titre": "Création Perlipimpon 25",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/473999733_122202536810158928_6342491970675731491_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-026",
+    "titre": "Création Perlipimpon 26",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474018545_122202536234158928_7108235809866976410_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-027",
+    "titre": "Création Perlipimpon 27",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474025830_122202536408158928_2408782160577514405_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-028",
+    "titre": "Création Perlipimpon 28",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474030815_122202536192158928_2266108943471238193_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-029",
+    "titre": "Création Perlipimpon 29",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474030830_122202536852158928_2889122137508406518_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-030",
+    "titre": "Création Perlipimpon 30",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474038531_122202536210158928_2393958096423151133_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-031",
+    "titre": "Création Perlipimpon 31",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474038531_122202536816158928_3565357174295410012_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-032",
+    "titre": "Création Perlipimpon 32",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474038694_122202536162158928_510954882395770702_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-033",
+    "titre": "Création Perlipimpon 33",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474050030_122202536414158928_7623025863111960861_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-034",
+    "titre": "Création Perlipimpon 34",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474067360_122202537008158928_7779281431957026996_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-035",
+    "titre": "Création Perlipimpon 35",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474068627_122202536648158928_6168960549888235370_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-036",
+    "titre": "Création Perlipimpon 36",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474073415_122202536762158928_5270765036021272470_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-037",
+    "titre": "Création Perlipimpon 37",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474085302_122202536186158928_8177287603919219394_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-038",
+    "titre": "Création Perlipimpon 38",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474105068_122202536888158928_260107995910757901_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-039",
+    "titre": "Création Perlipimpon 39",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474135951_122202536144158928_5117788262173145538_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-040",
+    "titre": "Création Perlipimpon 40",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474137838_122202536594158928_3276680666977018168_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-041",
+    "titre": "Création Perlipimpon 41",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474139143_122202536378158928_7767449053865933548_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-042",
+    "titre": "Création Perlipimpon 42",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474143934_122202536744158928_223690050841474990_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-043",
+    "titre": "Création Perlipimpon 43",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474146896_122202536882158928_8214072194493370941_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:35Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-044",
+    "titre": "Création Perlipimpon 44",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474162800_122202536720158928_5764662690346226503_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:35Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-045",
+    "titre": "Création Perlipimpon 45",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474164566_122202536624158928_615655267435086183_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-046",
+    "titre": "Création Perlipimpon 46",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474177940_122202536708158928_3484378336419254563_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-047",
+    "titre": "Création Perlipimpon 47",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474188349_122202711638158928_307615407925336821_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-048",
+    "titre": "Création Perlipimpon 48",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474189407_122202711626158928_2074019437738859462_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-049",
+    "titre": "Création Perlipimpon 49",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474200707_122202711824158928_6827775833202492470_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-050",
+    "titre": "Création Perlipimpon 50",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474209168_122202711770158928_1795518133227929054_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-051",
+    "titre": "Création Perlipimpon 51",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474211911_122202536618158928_7699619905114157133_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-052",
+    "titre": "Création Perlipimpon 52",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474218515_122202536750158928_1705393840365298888_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-053",
+    "titre": "Création Perlipimpon 53",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474260268_122202536156158928_2976064703869993882_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-054",
+    "titre": "Création Perlipimpon 54",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474464289_122202536822158928_5113777695171112149_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-055",
+    "titre": "Création Perlipimpon 55",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474499822_122202536738158928_4502276689629583944_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-056",
+    "titre": "Création Perlipimpon 56",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474570067_122202711764158928_1700959910982207423_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-057",
+    "titre": "Création Perlipimpon 57",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474575038_122202536294158928_5560274228517849372_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-058",
+    "titre": "Création Perlipimpon 58",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474580404_122202536276158928_7301223737236738952_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-059",
+    "titre": "Création Perlipimpon 59",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474593457_122202536672158928_560971017112687282_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-060",
+    "titre": "Création Perlipimpon 60",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/474682924_122202711806158928_5887604819901979726_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-061",
+    "titre": "Création Perlipimpon 61",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/475792779_122205454262158928_4392485601190093575_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-062",
+    "titre": "Création Perlipimpon 62",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/475833772_122205455330158928_6890281721117933657_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-063",
+    "titre": "Création Perlipimpon 63",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/475842989_122205452444158928_7026588334588233101_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-064",
+    "titre": "Création Perlipimpon 64",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/475844403_122205455696158928_5095584519978436033_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-065",
+    "titre": "Création Perlipimpon 65",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/475852440_122205493292158928_1878443596923472272_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-066",
+    "titre": "Création Perlipimpon 66",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/475896979_122205454184158928_7880303747293106360_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-067",
+    "titre": "Création Perlipimpon 67",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/475917773_122205452414158928_4223767919081487094_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-068",
+    "titre": "Création Perlipimpon 68",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/475988077_122205452258158928_8013560970040221753_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-069",
+    "titre": "Création Perlipimpon 69",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/476028871_122205454172158928_380892160219695746_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-070",
+    "titre": "Création Perlipimpon 70",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/476101419_122205451880158928_163339703215076222_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-071",
+    "titre": "Création Perlipimpon 71",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/476120034_122205451856158928_1392643710365069367_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-072",
+    "titre": "Création Perlipimpon 72",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/476153856_122205455048158928_246580277281319178_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-073",
+    "titre": "Création Perlipimpon 73",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/476157746_122205455690158928_2565569315611225480_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-074",
+    "titre": "Création Perlipimpon 74",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/476231212_122205455282158928_603955799660762957_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-075",
+    "titre": "Création Perlipimpon 75",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/479545169_122207941058158928_5882336730041324964_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-076",
+    "titre": "Création Perlipimpon 76",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/479663588_122207940272158928_442202707989127680_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-077",
+    "titre": "Création Perlipimpon 77",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/480006737_122207941052158928_6336389513974830273_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-078",
+    "titre": "Création Perlipimpon 78",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/480147821_122207937218158928_856680714342915214_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-079",
+    "titre": "Création Perlipimpon 79",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/480176811_122207940218158928_6084411782485068577_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-080",
+    "titre": "Création Perlipimpon 80",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/480180587_122207940278158928_8750108974363710315_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-081",
+    "titre": "Création Perlipimpon 81",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/480197881_122207941088158928_7342788885261593435_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-082",
+    "titre": "Création Perlipimpon 82",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/480219758_122207941070158928_1643034406908761599_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-083",
+    "titre": "Création Perlipimpon 83",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/480228609_122207937212158928_2557060559219364630_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-084",
+    "titre": "Création Perlipimpon 84",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/488909237_122219933126158928_9062594396015707977_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-085",
+    "titre": "Création Perlipimpon 85",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/488931983_122219933162158928_2149307005829615898_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-086",
+    "titre": "Création Perlipimpon 86",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/489217535_122219931566158928_5642581110280916422_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-087",
+    "titre": "Création Perlipimpon 87",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/489296829_122219931560158928_377676067525746273_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-088",
+    "titre": "Création Perlipimpon 88",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/489366367_122219931590158928_5996967393664615992_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-089",
+    "titre": "Création Perlipimpon 89",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/489973296_122219933168158928_5554452189592556094_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-090",
+    "titre": "Création Perlipimpon 90",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/504492060_122234256716158928_3325726018844043349_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-091",
+    "titre": "Création Perlipimpon 91",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/504836504_122234256692158928_6407259415768471745_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-092",
+    "titre": "Création Perlipimpon 92",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/515444884_122240601842158928_4830783519714844379_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-093",
+    "titre": "Création Perlipimpon 93",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/515897626_122240601824158928_1140361245933143001_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-094",
+    "titre": "Création Perlipimpon 94",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/515924422_122240601848158928_8893791267583805020_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-095",
+    "titre": "Création Perlipimpon 95",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/516212704_122240601818158928_7707954779927153720_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-096",
+    "titre": "Création Perlipimpon 96",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/517142916_122240601194158928_8577840113781041499_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-097",
+    "titre": "Création Perlipimpon 97",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/517346168_122240601212158928_3433583168503618627_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-098",
+    "titre": "Création Perlipimpon 98",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/517713477_122240601170158928_6691741241097337616_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-099",
+    "titre": "Création Perlipimpon 99",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/523986510_122245075556158928_1783464202940461237_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-100",
+    "titre": "Création Perlipimpon 100",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/524170638_122244967370158928_8240490495868507765_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-101",
+    "titre": "Création Perlipimpon 101",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/524357206_122244967478158928_2471454483195953013_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-102",
+    "titre": "Création Perlipimpon 102",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/524361063_122244967112158928_2959476294018360714_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-103",
+    "titre": "Création Perlipimpon 103",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/524607200_122244967826158928_4842989027142288732_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-104",
+    "titre": "Création Perlipimpon 104",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/524638023_122244967460158928_3370456410029017923_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-105",
+    "titre": "Création Perlipimpon 105",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/524802322_122244967862158928_1381016193897336841_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-106",
+    "titre": "Création Perlipimpon 106",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/524865534_122244967394158928_5694271062839659687_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-107",
+    "titre": "Création Perlipimpon 107",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/524926387_122244967004158928_253378939249832152_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-108",
+    "titre": "Création Perlipimpon 108",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/535200462_122250615032158928_6291381934681981496_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-109",
+    "titre": "Création Perlipimpon 109",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/535477680_122250615038158928_2144102818353017705_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-110",
+    "titre": "Création Perlipimpon 110",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/535565467_122250615056158928_5232918340786188156_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-111",
+    "titre": "Création Perlipimpon 111",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/535635335_122250615050158928_8542593601079840015_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-112",
+    "titre": "Création Perlipimpon 112",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/535867996_122250614948158928_8542972529404540831_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-113",
+    "titre": "Création Perlipimpon 113",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/536267494_122251210742158928_5420888089490191428_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-114",
+    "titre": "Création Perlipimpon 114",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/536267619_122251210316158928_4511735674485631199_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-115",
+    "titre": "Création Perlipimpon 115",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/536268771_122251210310158928_5598475065474007205_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-116",
+    "titre": "Création Perlipimpon 116",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/536271498_122250810200158928_6739296291491957246_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-117",
+    "titre": "Création Perlipimpon 117",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/536275521_122250810188158928_6826984679593610059_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-118",
+    "titre": "Création Perlipimpon 118",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/536279767_122251211636158928_9096844092227827202_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-119",
+    "titre": "Création Perlipimpon 119",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/536280565_122250810176158928_8188389165928768314_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-120",
+    "titre": "Création Perlipimpon 120",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/536280631_122251210250158928_6605179357285703924_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-121",
+    "titre": "Création Perlipimpon 121",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/536285684_122250810182158928_6340383774307495081_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-122",
+    "titre": "Création Perlipimpon 122",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/536287162_122250810194158928_6264500718947532909_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-123",
+    "titre": "Création Perlipimpon 123",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/537761949_122251210700158928_5919296688798769878_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-124",
+    "titre": "Création Perlipimpon 124",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/538079417_122251210322158928_2486635655819395243_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-125",
+    "titre": "Création Perlipimpon 125",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/538227166_122251211642158928_6373943729257457622_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-126",
+    "titre": "Création Perlipimpon 126",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/538317942_122251210748158928_188499857869169316_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-127",
+    "titre": "Création Perlipimpon 127",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/538932950_122251211630158928_4807396148264464693_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-128",
+    "titre": "Création Perlipimpon 128",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/539274374_122251210724158928_6549830901688547881_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-129",
+    "titre": "Création Perlipimpon 129",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/539280589_122251211600158928_969106193127288810_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-130",
+    "titre": "Création Perlipimpon 130",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/545146057_122254270736158928_3902231671913472255_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-131",
+    "titre": "Création Perlipimpon 131",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/586347161_122266911608158928_5174920946232933399_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-132",
+    "titre": "Création Perlipimpon 132",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/586495339_122266913210158928_3709816674315119370_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-133",
+    "titre": "Création Perlipimpon 133",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/586535510_122266909580158928_1425521905801561954_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-134",
+    "titre": "Création Perlipimpon 134",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/586552956_122266912346158928_7829199301740997197_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-135",
+    "titre": "Création Perlipimpon 135",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/586554383_122266911530158928_4561396223125939201_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-136",
+    "titre": "Création Perlipimpon 136",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/587004087_122266908950158928_646728110841121796_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-137",
+    "titre": "Création Perlipimpon 137",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/587035722_122266909628158928_1754854741401279797_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-138",
+    "titre": "Création Perlipimpon 138",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/587097047_122266913564158928_3678063840676335474_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-139",
+    "titre": "Création Perlipimpon 139",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/587208416_122266912700158928_2839493765168402328_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-140",
+    "titre": "Création Perlipimpon 140",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/587210086_122266911674158928_6483765783010495796_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-141",
+    "titre": "Création Perlipimpon 141",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/587223209_122266911566158928_3662251006024779426_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-142",
+    "titre": "Création Perlipimpon 142",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/587267776_122266908980158928_5499889703828089223_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-143",
+    "titre": "Création Perlipimpon 143",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/587397286_122266911506158928_4552829848026117599_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-144",
+    "titre": "Création Perlipimpon 144",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/587555833_122266912748158928_4271353421662349044_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-145",
+    "titre": "Création Perlipimpon 145",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/587683282_122266908044158928_1591348994433530539_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-146",
+    "titre": "Création Perlipimpon 146",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/587765138_122266912634158928_4847652521917717335_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-147",
+    "titre": "Création Perlipimpon 147",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/587808432_122266913048158928_722249205096466298_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-148",
+    "titre": "Création Perlipimpon 148",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/587963400_122266914098158928_7041508265830428950_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-149",
+    "titre": "Création Perlipimpon 149",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/588151375_122266908908158928_1600919504458768346_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-150",
+    "titre": "Création Perlipimpon 150",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/588388236_122266912382158928_1372839028429309641_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-151",
+    "titre": "Création Perlipimpon 151",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/588412631_122266913192158928_3865398694131156982_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-152",
+    "titre": "Création Perlipimpon 152",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/588467764_122266909586158928_9018128985369286769_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-153",
+    "titre": "Création Perlipimpon 153",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/588584914_122266909688158928_4182269613179009615_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-154",
+    "titre": "Création Perlipimpon 154",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/588613474_122266912670158928_4744549257101682092_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-155",
+    "titre": "Création Perlipimpon 155",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/588642700_122266914140158928_7662741819401000657_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-156",
+    "titre": "Création Perlipimpon 156",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/588715671_122266912604158928_2325812692607050982_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-157",
+    "titre": "Création Perlipimpon 157",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/588871345_122266909040158928_5873391334485229421_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-158",
+    "titre": "Création Perlipimpon 158",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/588871345_122266912316158928_546270698498742755_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-159",
+    "titre": "Création Perlipimpon 159",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/589871160_122266912322158928_2072330111986984567_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-160",
+    "titre": "Création Perlipimpon 160",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/601386080_122271767792158928_830075982304097283_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-161",
+    "titre": "Création Perlipimpon 161",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/601440459_122271768194158928_4380165945269903263_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-162",
+    "titre": "Création Perlipimpon 162",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/601860872_122271767864158928_1535019754223140655_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-163",
+    "titre": "Création Perlipimpon 163",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/602408913_122271767834158928_6965396960271305337_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-164",
+    "titre": "Création Perlipimpon 164",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/603770064_122271768200158928_3787013828563404666_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-165",
+    "titre": "Création Perlipimpon 165",
+    "description": "Magnifique création artisanale faite main dans notre atelier.",
+    "prix": 35,
+    "categorie": "Boucles d"oreilles",
+    "pierres": [],
+    "photos": [
+      "/images/creations/603782871_122271767744158928_5232161212841041013_n.jpg"
+    ],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  }
+,
+
+  {
+    "id": "demo-001",
+    "titre": "Collier Éclat de Lune",
+    "description":
+      "Un collier délicat en argent 925 serti d\"une pierre de lune aux reflets bleutés. " +
+      "La pierre, taillée en cabochon ovale, capte la lumière avec une douceur envoûtante. " +
+      "Chaîne fine réglable de 40 à 45 cm. Pièce unique fabriquée entièrement à la main.",
+    "prix": 89,
+    "categorie": "Colliers",
+    "pierres": ["Pierre de lune"],
+    "photos": ["/images/moonstone_necklace.png"],
+    "dateCreation": "2026-01-15T10:00:00Z",
+    "dateMaj": "2026-01-15T10:00:00Z",
+    "enVedette": true,
+  },
+  {
+    "id": "demo-002",
+    "titre": "Bracelet Perles d\"Eau Douce",
+    "description":
+      "Bracelet composé de perles d\"eau douce naturelles, montées sur un fil doré. " +
+      "Chaque perle est unique par sa forme et son orient nacré. Fermoir en plaqué or. " +
+      "Un bijou classique et intemporel, parfait pour toutes les occasions.",
+    "prix": 65,
+    "categorie": "Bracelets",
+    "pierres": ["Perle"],
+    "photos": ["/images/pearl_bracelet.png"],
+    "dateCreation": "2026-02-03T14:30:00Z",
+    "dateMaj": "2026-02-03T14:30:00Z",
+    "enVedette": true,
+    "vendu": true,
+  },
+  {
+    "id": "demo-003",
+    "titre": "Boucles d\"oreilles Cascade Améthyste",
+    "description":
+      "Boucles d\"oreilles pendantes ornées de petites améthystes taillées en gouttes. " +
+      "Le violet profond de la pierre contraste élégamment avec la monture en argent. " +
+      "Crochets hypoallergéniques. Longueur totale : 4 cm.",
+    "prix": 52,
+    "categorie": "Boucles d\"oreilles",
+    "pierres": ["Améthyste"],
+    "photos": ["/images/moonstone_necklace.png"],
+    "dateCreation": "2026-02-20T09:15:00Z",
+    "dateMaj": "2026-02-20T09:15:00Z",
+    "enVedette": false,
+  },
+  {
+    "id": "demo-004",
+    "titre": "Bague Quartz Rose Solitaire",
+    "description":
+      "Bague solitaire en argent massif, couronnée d\"un quartz rose poli en cabochon rond. " +
+      "La pierre de l\"amour par excellence, dans un écrin minimaliste et raffiné. " +
+      "Taille ajustable grâce à l\"anneau ouvert.",
+    "prix": 45,
+    "categorie": "Bagues",
+    "pierres": ["Quartz rose"],
+    "photos": ["/images/rose_quartz_ring.png"],
+    "dateCreation": "2026-03-01T16:45:00Z",
+    "dateMaj": "2026-03-01T16:45:00Z",
+    "enVedette": true,
+  },
+  {
+    "id": "demo-005",
+    "titre": "Pendentif Labradorite Mystique",
+    "description":
+      "Pendentif en forme de larme serti d\"une labradorite aux reflets irisés bleu-vert. " +
+      "Chaque pierre est sélectionnée pour l\"intensité de sa labradorescence. " +
+      "Monture enroulée en fil d\"argent. Livré avec une chaîne de 50 cm.",
+    "prix": 72,
+    "categorie": "Pendentifs",
+    "pierres": ["Labradorite"],
+    "photos": ["/images/moonstone_necklace.png"],
+    "dateCreation": "2026-03-10T11:20:00Z",
+    "dateMaj": "2026-03-10T11:20:00Z",
+    "enVedette": false,
+  },
+  {
+    "id": "demo-006",
+    "titre": "Ensemble Lune & Perle",
+    "description":
+      "Parure assortie composée d\"un collier et de boucles d\"oreilles, associant pierre de lune " +
+      "et perles d\"eau douce. Un duo harmonieux qui sublime chaque tenue. " +
+      "Présentée dans un écrin cadeau en velours.",
+    "prix": 135,
+    "categorie": "Ensembles",
+    "pierres": ["Pierre de lune", "Perle"],
+    "photos": ["/images/pearl_bracelet.png"],
+    "dateCreation": "2026-03-25T08:00:00Z",
+    "dateMaj": "2026-03-25T08:00:00Z",
+    "enVedette": true,
+  },
+  {
+    "id": "demo-007",
+    "titre": "Bague Lueur Stellaire",
+    "description": "Une bague majestueuse ornée d\"une opale arc-en-ciel. Idéale pour capter la lumière des étoiles.",
+    "prix": 55,
+    "categorie": "Bagues",
+    "pierres": ["Opale"],
+    "photos": ["/images/rose_quartz_ring.png"],
+    "dateCreation": "2026-03-26T08:00:00Z",
+    "dateMaj": "2026-03-26T08:00:00Z",
+    "enVedette": false,
+  },
+  {
+    "id": "demo-008",
+    "titre": "Collier Solstice",
+    "description": "Collier ras du cou avec une belle améthyste brute. Un bijou protecteur et apaisant.",
+    "prix": 95,
+    "categorie": "Colliers",
+    "pierres": ["Améthyste"],
+    "photos": ["/images/moonstone_necklace.png"],
+    "dateCreation": "2026-03-27T08:00:00Z",
+    "dateMaj": "2026-03-27T08:00:00Z",
+    "enVedette": false,
+  },
+  {
+    "id": "demo-009",
+    "titre": "Bracelet Énergie Douce",
+    "description": "Mélange de quartz rose et de nacre. Apporte douceur et réconfort au quotidien.",
+    "prix": 60,
+    "categorie": "Bracelets",
+    "pierres": ["Quartz rose", "Nacre"],
+    "photos": ["/images/pearl_bracelet.png"],
+    "dateCreation": "2026-03-28T08:00:00Z",
+    "dateMaj": "2026-03-28T08:00:00Z",
+    "enVedette": false,
+  },
+  {
+    "id": "demo-010",
+    "titre": "Pendentif Cristal Protecteur",
+    "description": "Pendentif facetté en cristal de roche monté sur fil d\"argent. Élégant et pur.",
+    "prix": 48,
+    "categorie": "Pendentifs",
+    "pierres": ["Cristal de roche"],
+    "photos": ["/images/moonstone_necklace.png"],
+    "dateCreation": "2026-03-29T08:00:00Z",
+    "dateMaj": "2026-03-29T08:00:00Z",
+    "enVedette": false,
+  }]

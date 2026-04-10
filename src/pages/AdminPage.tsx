@@ -698,6 +698,7 @@ export default function AdminPage() {
     addArticle,
     updateArticle,
     deleteArticle,
+    forceSyncWithSamples,
     replaceAll,
   } = useArticles();
   const { config, configLoading, setConfig } = useConfig();
@@ -761,6 +762,13 @@ export default function AdminPage() {
     alert('Modifications enregistrées avec succès !');
   }, [setConfig]);
 
+  const handleForceSync = useCallback(async () => {
+    if (window.confirm("Voulez-vous vraiment importer les 165 nouveaux articles ? Cela ajoutera les pièces manquantes à votre collection actuelle.")) {
+      await forceSyncWithSamples();
+      alert("Synchronisation terminée ! Les 165 articles ont été ajoutés.");
+    }
+  }, [forceSyncWithSamples]);
+
   // ──────────────────────────────────────────────
   // Rendu Unique (No Early Return)
   // ──────────────────────────────────────────────
@@ -819,6 +827,7 @@ export default function AdminPage() {
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
                   <button className="btn btn--outline btn--sm" onClick={handleExport}>📥 Backup JSON</button>
                   <button className="btn btn--outline btn--sm" onClick={handleImport}>📤 Importer JSON</button>
+                  <button className="btn btn--primary btn--sm" onClick={handleForceSync} style={{ background: 'var(--color-gold)', borderColor: 'var(--color-gold)', color: 'var(--color-black)', fontWeight: 'bold' }}>🚀 Sync 165 Items</button>
                   <button className="btn btn--primary" onClick={() => setView('create')}>+ Nouvel article</button>
                 </div>
               </div>
