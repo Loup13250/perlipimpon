@@ -1,53 +1,73 @@
 /*
  * ── FloralBorders ──────────────────────────────────────────
- * Décorations botaniques fixes sur les côtés.
+ * Traînées botaniques continues sur les côtés.
  */
 
 .floral-frame {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 5; /* Positive z-index to stay above background but below most content */
+  z-index: 5; /* Au-dessus du fond mais derrière le contenu interactif */
   display: flex;
   justify-content: space-between;
-  mix-blend-mode: multiply;
+  mix-blend-mode: multiply; /* Fusion parfaite sur fond clair */
   opacity: 0;
-  animation: floral-fade-in 2s ease forwards;
-  animation-delay: 0.5s;
+  animation: floral-fade-in 2.5s ease forwards;
+  animation-delay: 0.3s;
 }
 
 @keyframes floral-fade-in {
   from { opacity: 0; }
-  to { opacity: 0.4; } /* Increased opacity for better visibility */
+  to { opacity: 0.45; }
 }
 
 .floral-border {
   height: 100vh;
-  width: 250px; /* Largeur généreuse pour les bords */
+  width: 180px; /* Plus fin et élégant */
   display: flex;
-  align-items: center;
+  position: relative;
+  
+  /* Dégradé doux en haut et en bas pour éviter les coupures nettes */
+  mask-image: linear-gradient(to bottom, 
+    transparent 0%, 
+    black 15%, 
+    black 85%, 
+    transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, 
+    transparent 0%, 
+    black 15%, 
+    black 85%, 
+    transparent 100%);
 }
 
-.floral-border img {
+.floral-border-inner {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  filter: sepia(30%) contrast(90%); /* Un peu plus chaud pour l'aspect "âme" */
+  background-repeat: repeat-y;
+  background-position: center top;
+  background-size: 100% auto;
+  
+  /* CRITIQUE : Filtres pour blanchir le fond et supprimer les "carrés" */
+  filter: brightness(1.15) contrast(1.1);
 }
 
-.floral-border--left {
-  justify-content: flex-start;
-  transform: translateX(-5%); /* Less hidden for better initial visibility */
+.floral-border--left .floral-border-inner {
+  background-image: url('/images/decorations/floral-left.png');
+  transform: translateX(-15%); /* Légèrement déporté vers le bord */
 }
 
-.floral-border--right {
-  justify-content: flex-end;
-  transform: translateX(5%);
+.floral-border--right .floral-border-inner {
+  background-image: url('/images/decorations/floral-right.png');
+  transform: translateX(15%);
 }
 
-/* ── Masquage sur mobile pour éviter la surcharge ─────────── */
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .floral-border { width: 140px; }
+}
+
 @media (max-width: 1024px) {
   .floral-frame {
-    display: none;
+    display: none; /* Toujours masqué sur mobile pour la clarté */
   }
 }
