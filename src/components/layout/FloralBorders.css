@@ -23,7 +23,7 @@
 
 .floral-border {
   height: 100vh;
-  width: 160px; /* Plus fin et élégant comme demandé */
+  width: 180px; /* Taille harmonisée */
   display: flex;
   position: relative;
   
@@ -45,7 +45,7 @@
   height: 100%;
   background-repeat: repeat-y;
   background-position: center top;
-  background-size: contain; /* Utilise 'contain' pour ne pas couper les motifs */
+  background-size: 110% auto; /* Légèrement zoomé pour supprimer les bords blancs */
   
   /* Filtres pour sublimer les nouvelles illustrations */
   filter: contrast(1.05) saturate(1.1);
@@ -54,11 +54,13 @@
 .floral-border--left .floral-border-inner {
   background-image: url('/images/decorations/floral-left-v2.png');
   background-position: left top;
+  transform: translateX(-12%); /* Colle parfaitement à gauche */
 }
 
 .floral-border--right .floral-border-inner {
   background-image: url('/images/decorations/floral-right-v2.png');
   background-position: right top;
+  transform: translateX(12%); /* Colle parfaitement à droite */
 }
 
 /* ── Cas particulier de la Page d'Accueil ───── */
