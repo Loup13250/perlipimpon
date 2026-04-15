@@ -44,11 +44,11 @@
 .floral-border-inner {
   position: absolute;
   top: 0;
-  width: 300px; /* On utilise une largeur massive pour avoir de la marge de rognage */
+  width: 165px; /* Un peu plus large que le cadre pour rognage léger */
   height: 100%;
   background-repeat: repeat-y;
   background-position: center top;
-  background-size: cover; /* On force le motif à remplir la zone */
+  background-size: 100% auto; /* Retour à la taille normale */
   
   /* Filtres pour sublimer les nouvelles illustrations */
   filter: contrast(1.05) saturate(1.1);
@@ -56,12 +56,12 @@
 
 .floral-border--left .floral-border-inner {
   background-image: url('/images/decorations/floral-left-v2.png');
-  left: -80px; /* Rognage puissant des marges gauches */
+  left: -25px; /* Rognage léger du bord blanc gauche */
 }
 
 .floral-border--right .floral-border-inner {
   background-image: url('/images/decorations/floral-right-v2.png');
-  right: -80px; /* Rognage puissant des marges droites */
+  right: -25px; /* Rognage léger du bord blanc droit */
 }
 
 /* ── Cas particulier de la Page d'Accueil ───── */
