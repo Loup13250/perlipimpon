@@ -21,6 +21,7 @@
   to { opacity: 0.85; } /* Beaucoup plus visible */
 }
 
+.floral-border {
   height: 100vh;
   width: 180px; /* Largeur harmonisée et naturelle */
   display: flex;
