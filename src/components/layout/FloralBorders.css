@@ -1,0 +1,53 @@
+/*
+ * ── FloralBorders ──────────────────────────────────────────
+ * Décorations botaniques fixes sur les côtés.
+ */
+
+.floral-frame {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1; /* Derrière tout le contenu */
+  display: flex;
+  justify-content: space-between;
+  mix-blend-mode: multiply; /* Fusion naturelle avec le fond crème */
+  opacity: 0;
+  animation: floral-fade-in 2s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes floral-fade-in {
+  from { opacity: 0; }
+  to { opacity: 0.15; } /* Très discret comme demandé */
+}
+
+.floral-border {
+  height: 100vh;
+  width: 250px; /* Largeur généreuse pour les bords */
+  display: flex;
+  align-items: center;
+}
+
+.floral-border img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: sepia(30%) contrast(90%); /* Un peu plus chaud pour l'aspect "âme" */
+}
+
+.floral-border--left {
+  justify-content: flex-start;
+  transform: translateX(-10%); /* Un peu caché sur le bord */
+}
+
+.floral-border--right {
+  justify-content: flex-end;
+  transform: translateX(10%);
+}
+
+/* ── Masquage sur mobile pour éviter la surcharge ─────────── */
+@media (max-width: 1024px) {
+  .floral-frame {
+    display: none;
+  }
+}

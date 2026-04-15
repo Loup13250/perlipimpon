@@ -1,11 +1,7 @@
-/**
- * Layout wrapper — Header + contenu + Footer.
- * Utilisé comme élément parent dans le routeur.
- */
-
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import FloralBorders from './FloralBorders';
 
 export default function Layout() {
   const location = useLocation();
@@ -14,6 +10,7 @@ export default function Layout() {
   return (
     <div className="site-layout">
       {!isAdmin && <Header />}
+      {!isAdmin && <FloralBorders />}
       <main className="site-main" style={isAdmin ? { paddingTop: 0 } : {}}>
         <Outlet />
       </main>
