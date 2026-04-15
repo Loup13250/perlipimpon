@@ -1,40 +1,27 @@
 /*
- * ── BraceletFilter Atelier ────────────────────────────────────
- * Style "Pampilles" suspendues - Look ultra-premium joaillerie.
+ * ── L'Encolure Organique ───────────────────────────────────
+ * Refonte complète : système de perles 3D sur fil d'or.
  */
 
 :root {
-  --pendant-w: 70px;       /* Larger, more substantial */
-  --pendant-h: 92px;       
-  --pendant-gap: 16px;     
-  --wire-y: 20px;          
-  --link-size: 12px;       
-  --gold-primary: #d4af37;
-  --gold-light: #f9e698;
-  --gold-dark: #8c6d12;
-  --gold-specular: #ffffff;
+  --bead-size: 38px;
+  --bead-gap: 24px;
+  --necklace-curve: 60px;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   CONTENEUR PRINCIPAL
+   CONTENEUR & STRUCTURE
    ═══════════════════════════════════════════════════════════════ */
 .bracelet-filter {
-  padding: 2.2rem 3rem;
-  background: 
-    radial-gradient(circle at 0% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
-    linear-gradient(135deg, #ffffff 0%, #fefcf8 100%);
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(212, 175, 55, 0.15);
-  box-shadow: 
-    0 8px 32px rgba(160, 120, 40, 0.08),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  padding: 2.5rem 0;
+  background: transparent;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  align-items: center;
   overflow: visible;
 
   opacity: 0;
-  transform: translateY(15px);
+  transform: translateY(20px);
   transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -43,332 +30,254 @@
   transform: translateY(0);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   STRUCTURE DU BRACELET (FIL & FERMOIRS)
-   ═══════════════════════════════════════════════════════════════ */
-.bracelet-section {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.necklace-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
 }
 
-.bracelet-header {
+.necklace-header {
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
-.bracelet-title {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.necklace-title {
   font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #8c7d5c;
-}
-
-.bracelet-title__dot {
-  color: var(--gold-primary);
-  font-size: 0.9rem;
-  animation: shine-pulse 3s infinite;
-}
-
-.bracelet-clear {
-  background: none;
-  border: none;
   font-size: 0.7rem;
-  color: #b0a085;
-  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #a09070;
+  position: relative;
+}
+
+.necklace-reset {
+  position: absolute;
+  right: 0;
+  font-size: 0.65rem;
+  color: var(--color-gold-dark);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  opacity: 0.7;
-  transition: all 0.3s;
-}
-.bracelet-clear:hover { 
-  color: var(--gold-dark);
-  opacity: 1;
-  text-decoration: underline;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: opacity 0.3s;
 }
 
-.bracelet-row {
+.necklace-row {
   position: relative;
-  height: 140px; /* Space for larger tags */
+  height: 180px; /* Espace pour la courbure */
   display: flex;
   align-items: flex-start;
-  padding-top: var(--wire-y);
+  justify-content: center;
 }
 
-/* Fil doré poli - Riche et robuste */
-.wire {
+/* Le Fil d'Or */
+.necklace-wire {
   position: absolute;
-  top: var(--wire-y);
+  top: 0;
   left: 0;
-  right: 0;
-  height: 3px;
-  z-index: 1;
-}
-
-.wire__core {
-  height: 100%;
   width: 100%;
-  background: linear-gradient(90deg, 
-    var(--gold-dark) 0%, 
-    var(--gold-primary) 15%, 
-    var(--gold-light) 50%, 
-    var(--gold-primary) 85%, 
-    var(--gold-dark) 100%);
-  border-radius: 3px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
-
-/* Fermoirs massifs polis */
-.clasp {
-  position: absolute;
-  top: calc(var(--wire-y) - 7px);
-  width: 18px;
-  height: 18px;
-  background: radial-gradient(circle at 35% 35%, #fff, #d4af37 40%, #8c6d12);
-  border-radius: 50%;
-  z-index: 5;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-}
-.clasp--left { left: -9px; }
-.clasp--right { right: -9px; }
 
 /* ═══════════════════════════════════════════════════════════════
-   SYSTÈME DE PAMPILLES (EMERALD-CUT TAGS)
+   LES PERLES (BEADS)
    ═══════════════════════════════════════════════════════════════ */
-.pendant-rail {
+.bead-rail {
   display: flex;
   justify-content: center;
-  gap: var(--pendant-gap);
-  flex: 1;
-  padding: 0 15px;
+  gap: var(--bead-gap);
+  padding: 10px 40px;
   z-index: 2;
+  width: 100%;
 }
 
-.pendant {
+.bead-wrapper {
   position: relative;
-  background: none;
-  border: none;
-  padding: 0;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: bead-float 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: var(--bead-delay);
+  opacity: 0;
+}
+
+@keyframes bead-float {
+  from { opacity: 0; margin-top: -10px; }
+  to { opacity: 1; margin-top: 0; }
+}
+
+.bead {
+  position: relative;
+  width: var(--bead-size);
+  height: var(--bead-size);
+  border-radius: 50%;
+  background: #fff;
   cursor: pointer;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform-origin: top center;
-  
-  opacity: 0; 
-  animation: pendant-entry 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  animation-delay: var(--pendant-delay);
-}
-
-@keyframes pendant-entry {
-  from { opacity: 0; transform: rotate(-12deg) translateY(-10px); }
-  to { opacity: 1; transform: rotate(0) translateY(0); }
-}
-
-/* L'anneau de suspension */
-.pendant__link {
-  width: var(--link-size);
-  height: var(--link-size);
-  border: 2px solid var(--gold-primary);
-  border-radius: 50%;
-  position: relative;
-  z-index: 3;
-  margin-bottom: -4px;
-  background: linear-gradient(135deg, #fff, var(--gold-primary));
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-/* Corps de la pampille - EMERALD CUT (OCTAGONAL) */
-.pendant__body {
-  position: relative;
-  width: var(--pendant-w);
-  height: var(--pendant-h);
-  background: var(--gold-primary); /* The Gold Frame */
-  padding: 2px; /* Frame thickness */
-  
-  /* Octagonal Shape using Clip-Path */
-  clip-path: polygon(15% 0%, 85% 0%, 100% 12%, 100% 88%, 85% 100%, 15% 100%, 0% 88%, 0% 12%);
-  -webkit-clip-path: polygon(15% 0%, 85% 0%, 100% 12%, 100% 88%, 85% 100%, 15% 100%, 0% 88%, 0% 12%);
-  
-  display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
+  padding: 0;
   
-  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-/* Inner Glass Panel */
-.pendant__body::after {
-    content: '';
-    position: absolute;
-    inset: 2px;
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    clip-path: inherit;
-    z-index: 1;
-}
-
-.pendant__stone, .pendant__label, .pendant__shimmer {
-    z-index: 2;
-}
-
-/* 💎 LA GEMME (Serti Griffe Central) ────────────────────────── */
-.pendant__stone {
-  position: absolute;
-  top: 15px;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--pendant-color);
-  
-  /* Serti Or Massif */
+  /* Volume 3D initial */
   box-shadow: 
-    0 0 0 2px var(--gold-primary), 
-    0 4px 10px rgba(0,0,0,0.2), 
-    inset -4px -4px 10px rgba(0,0,0,0.3), 
+    0 4px 10px rgba(0,0,0,0.15),
+    inset -4px -4px 10px rgba(0,0,0,0.2),
     inset 4px 4px 10px rgba(255,255,255,0.4);
     
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* Sparkle Deluxe */
-.pendant__stone::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%);
-    background-size: 200% 200%;
-    animation: gem-sparkle 4s linear infinite;
-}
-
-@keyframes gem-sparkle {
-    0% { background-position: -200% -200%; }
-    100% { background-position: 200% 200%; }
-}
-
-/* Reflet de surface */
-.pendant__shimmer {
+/* Étiquette flottante */
+.bead__label {
   position: absolute;
-  top: 18px;
-  left: 36px;
-  width: 8px;
-  height: 4px;
-  background: rgba(255,255,255,0.8);
-  border-radius: 50%;
-  filter: blur(1.5px);
-  z-index: 5;
-  transform: rotate(-45deg);
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #6a5a4a;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.4s ease;
 }
 
-.pendant__label {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
+.bead:hover .bead__label,
+.bead--active .bead__label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.bead--active .bead__label {
+  color: var(--color-black);
   font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #5c4c3c;
-  text-align: center;
-  padding: 0 6px;
-  line-height: 1.1;
-  margin-top: 35px; /* Offset from stone */
-  transition: all 0.3s;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MATÉRIAUX (GRADIENTS 3D)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* PERLE (White Pearl) */
+.material--pearl {
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #f9f4eb 40%, #e0d5c0 100%);
+}
+
+/* OR (Polished Gold) */
+.material--gold {
+  background: radial-gradient(circle at 35% 35%, #fff9e0 0%, #D4AF37 40%, #8A6500 100%);
+}
+
+/* MOONSTONE (Blueish glow) */
+.material--moonstone {
+  background: radial-gradient(circle at 35% 35%, #e6f0ff 0%, #b0c9ff 40%, #6e84b5 100%);
+  box-shadow: 
+    0 4px 15px rgba(110, 132, 181, 0.3),
+    inset -4px -4px 10px rgba(0,0,0,0.1),
+    inset 4px 4px 15px rgba(255,255,255,0.5);
+}
+
+/* ONYX (Deep Black) */
+.material--onyx {
+  background: radial-gradient(circle at 35% 35%, #444 0%, #111 60%, #000 100%);
+}
+
+/* QUARTZ (Pink) */
+.material--quartz {
+  background: radial-gradient(circle at 35% 35%, #fff0f0 0%, #eeccd1 50%, #c499a0 100%);
+}
+
+/* EMERALD (Translucent Green) */
+.material--emerald {
+  background: radial-gradient(circle at 35% 35%, #e0fff0 0%, #27AE60 50%, #1e8449 100%);
+}
+
+/* TOPAZ (Amber) */
+.material--topaz {
+  background: radial-gradient(circle at 35% 35%, #fff5e0 0%, #e67e22 50%, #a04000 100%);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SURFACE & REFLETS
+   ═══════════════════════════════════════════════════════════════ */
+.bead__surface {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bead__reflection {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 30%;
+  height: 30%;
+  background: rgba(255,255,255,0.4);
+  filter: blur(2px);
+  border-radius: 50%;
+  transform: rotate(-45deg);
 }
 
 /* ═══════════════════════════════════════════════════════════════
    INTERACTIONS & ÉTATS
    ═══════════════════════════════════════════════════════════════ */
 
-/* Hover: Royal Swing */
-.pendant:hover {
-  animation: pendant-swing 4s ease-in-out infinite;
+/* Hover effet Waouh : Attraction & Brillance */
+.bead:hover {
+  transform: scale(1.2);
+  filter: brightness(1.1);
+  z-index: 10;
 }
 
-@keyframes pendant-swing {
-  0% { transform: rotate(0); }
-  25% { transform: rotate(2.5deg); }
-  75% { transform: rotate(-2.5deg); }
-  100% { transform: rotate(0); }
+/* Aura Premium pour le mode actif */
+.bead--active {
+  transform: scale(1.1);
+  outline: 2px solid rgba(212, 175, 55, 0.5);
+  outline-offset: 4px;
 }
 
-.pendant:hover .pendant__body {
-  transform: translateY(3px) scale(1.05);
-  background: var(--gold-light);
-  box-shadow: 0 15px 30px rgba(140, 110, 40, 0.15);
-}
-
-.pendant:hover .pendant__label {
-    color: var(--color-black);
-    transform: scale(1.05);
-}
-
-/* État Actif: Gold Glow & Bold Typography */
-.pendant--active .pendant__body {
-  background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
-  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
-}
-
-.pendant--active .pendant__body::after {
-    background: rgba(255, 255, 255, 0.6);
-}
-
-.pendant--active .pendant__glow {
+.bead__aura {
   position: absolute;
-  bottom: -6px;
-  width: 40px;
-  height: 8px;
-  background: var(--gold-primary);
-  filter: blur(10px);
-  opacity: 0.5;
+  inset: -10px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
   border-radius: 50%;
+  z-index: -1;
+  animation: aura-pulse 2s infinite;
 }
 
-.pendant--active .pendant__label {
-  color: var(--color-black);
-  text-decoration: underline;
-  text-underline-offset: 4px;
+@keyframes aura-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 0.8; }
 }
 
-/* "TOUT" en Gold Frame massif */
-.pendant--all .pendant__stone {
-    background: linear-gradient(135deg, #f9e698, #d4af37, #8c6d12);
-    box-shadow: 
-        0 0 0 2px var(--gold-primary),
-        inset -2px -2px 6px rgba(0,0,0,0.3),
-        inset 2px 2px 6px rgba(255,255,255,0.4);
-}
+/* Fix du bug "blanc" : s'assurer que le background-color n'écrase pas le gradient */
+.bead:hover { background-color: transparent !important; }
 
-.pendant--all .pendant__body {
-  background: linear-gradient(135deg, var(--gold-dark), var(--gold-primary));
-}
-
-/* Responsive */
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  .pendant-rail {
+  .bead-rail {
     justify-content: flex-start;
     overflow-x: auto;
-    padding-bottom: 15px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--gold-primary) transparent;
+    padding-bottom: 30px;
+    gap: 15px;
   }
+  .necklace-wire { display: none; }
+  .bead-wrapper { transform: none !important; }
 }
 
 @media (max-width: 768px) {
   .bracelet-filter { display: none; }
-}
-
-@keyframes shine-pulse {
-    0%, 100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 2px var(--gold-primary)); }
-    50% { opacity: 0.7; transform: scale(0.9); filter: drop-shadow(0 0 8px var(--gold-primary)); }
 }

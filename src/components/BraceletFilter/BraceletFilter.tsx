@@ -1,69 +1,62 @@
 /**
- * BraceletFilter — Bracelet joaillerie premium (desktop uniquement).
- * Transformé en système de pampilles (pendants) suspendus.
- * Mise à jour : Filtrage uniquement par Catégories.
+ * BraceletFilter — L'Encolure Organique (Premium Redesign)
+ * Système de perles 3D suspendues sur un fil d'or courbe.
  */
 
 import { useEffect, useState } from 'react';
 import type { CategoryData } from '../../types';
 import './BraceletFilter.css';
 
-// ─── Couleurs par défaut des catégories (élégantes et sobres) ────────────────
-const KNOWN_CAT_COLORS: Record<string, string> = {
-  'Colliers':           '#b8986a', 
-  'Bracelets':          '#c4887a', 
-  'Bagues':             '#8888a8', 
-  'Boucles d\'oreilles': '#a89060', 
-  'Pendentifs':         '#b07850', 
-  'Ensembles':          '#9a80a0', 
+// ─── Matériaux Premium ──────────────────────────────────────────────────────
+const BEAD_MATERIALS: Record<string, string> = {
+  'Tout':               'material--pearl',
+  'Colliers':           'material--gold', 
+  'Bracelets':          'material--moonstone', 
+  'Bagues':             'material--onyx', 
+  'Boucles d\'oreilles': 'material--quartz', 
+  'Pendentifs':         'material--emerald', 
+  'Ensembles':          'material--topaz', 
 };
 
-const DEFAULT_COLOR = '#a0a098';
-const GOLD_COLOR = '#d4af37';
-
 /**
- * Génère un style de gemme facettée
+ * Perle de joaillerie individuelle
  */
-function makeGemStyle(hex: string): React.CSSProperties {
-  return {
-    '--pendant-color': hex,
-  } as React.CSSProperties;
-}
-
-// ─── Pampille individuelle (Pendant) ──────────────────────────────────────────
-interface PendantProps {
+interface JewelBeadProps {
   label: string;
   isActive: boolean;
   onClick: () => void;
-  gemStyle: React.CSSProperties;
+  materialClass: string;
   index: number;
-  isAll?: boolean;
+  total: number;
 }
 
-function Pendant({ label, isActive, onClick, gemStyle, index, isAll }: PendantProps) {
+function JewelBead({ label, isActive, onClick, materialClass, index, total }: JewelBeadProps) {
+  // Calcul de la courbure (parabole simple pour l'effet "collier porté")
+  const midpoint = (total - 1) / 2;
+  const distanceFromCenter = index - midpoint;
+  const curveIntensity = 18; // Intensité du pendage
+  const translateY = Math.pow(distanceFromCenter, 2) * (curveIntensity / Math.pow(midpoint || 1, 2));
+
   return (
-    <button
-      className={`pendant ${isActive ? 'pendant--active' : ''} ${isAll ? 'pendant--all' : ''}`}
-      onClick={onClick}
-      aria-pressed={isActive}
+    <div 
+      className="bead-wrapper"
       style={{ 
-        ...gemStyle, 
-        '--pendant-delay': `${index * 0.04}s` 
+        transform: `translateY(${translateY}px)`,
+        '--bead-delay': `${index * 0.08}s`
       } as React.CSSProperties}
     >
-      {/* Anneau de suspension */}
-      <span className="pendant__link" />
-      
-      {/* Corps du pendentif */}
-      <div className="pendant__body">
-        <span className="pendant__stone" />
-        <span className="pendant__shimmer" />
-        <span className="pendant__label">{label}</span>
-      </div>
-      
-      {/* Halo de sélection premium */}
-      {isActive && <span className="pendant__glow" />}
-    </button>
+      <button
+        className={`bead ${materialClass} ${isActive ? 'bead--active' : ''}`}
+        onClick={onClick}
+        aria-pressed={isActive}
+      >
+        <span className="bead__label">{label}</span>
+        <div className="bead__surface">
+          <div className="bead__reflection" />
+        </div>
+        {isActive && <div className="bead__aura" />}
+      </button>
+    </div>
   );
 }
 
@@ -83,63 +76,68 @@ export default function BraceletFilter({
   onCategoryAll,
   onClearFilters,
 }: BraceletFilterProps) {
-  const hasFilter = activeCategories.length > 0;
   const [mounted, setMounted] = useState(false);
+  const items = [{ name: 'Tout' }, ...categories];
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 100);
     return () => clearTimeout(t);
   }, []);
 
-  function getCatColor(cat: CategoryData): string {
-    if (cat.color) return cat.color;
-    return KNOWN_CAT_COLORS[cat.name] || DEFAULT_COLOR;
-  }
-
   return (
     <div className={`bracelet-filter ${mounted ? 'bracelet-filter--in' : ''}`}>
-      {/* ── Catégories ── */}
-      <section className="bracelet-section">
-        <header className="bracelet-header">
-          <span className="bracelet-title">
-            <span className="bracelet-title__dot">✦</span>
-            Sélections
-          </span>
-          {hasFilter && (
-            <button className="bracelet-clear" onClick={onClearFilters}>
-              Effacer les filtres
+      <section className="necklace-container">
+        <header className="necklace-header">
+          <h3 className="necklace-title">
+            <span className="necklace-title__glint" />
+            Collection
+          </h3>
+          {activeCategories.length > 0 && (
+            <button className="necklace-reset" onClick={onClearFilters}>
+              Réinitialiser
             </button>
           )}
         </header>
 
-        <div className="bracelet-row">
-          <span className="clasp clasp--left" />
-          <div className="wire">
-            <div className="wire__core" />
-          </div>
-
-          <div className="pendant-rail">
-            <Pendant
-              label="Tout"
-              isActive={activeCategories.length === 0}
-              onClick={onCategoryAll}
-              gemStyle={makeGemStyle(GOLD_COLOR)}
-              index={0}
-              isAll
+        <div className="necklace-row">
+          {/* Fil d'or courbe (SVG) */}
+          <svg className="necklace-wire" viewBox="0 0 1000 120" preserveAspectRatio="none">
+            <path 
+              d="M0,10 Q500,120 1000,10" 
+              fill="none" 
+              stroke="url(#goldGradient)" 
+              strokeWidth="1.5"
             />
-            {categories.map((cat, i) => (
-              <Pendant
-                key={cat.name}
-                label={cat.name}
-                isActive={activeCategories.includes(cat.name)}
-                onClick={() => onCategoryToggle(cat.name)}
-                gemStyle={makeGemStyle(getCatColor(cat))}
-                index={i + 1}
-              />
-            ))}
-          </div>
+            <defs>
+              <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style={{ stopColor: '#8A6500' }} />
+                <stop offset="20%" style={{ stopColor: '#D4AF37' }} />
+                <stop offset="50%" style={{ stopColor: '#F3E5AB' }} />
+                <stop offset="80%" style={{ stopColor: '#D4AF37' }} />
+                <stop offset="100%" style={{ stopColor: '#8A6500' }} />
+              </linearGradient>
+            </defs>
+          </svg>
 
-          <span className="clasp clasp--right" />
+          {/* Perles positionnées sur le fil */}
+          <div className="bead-rail">
+            {items.map((item, i) => {
+              const isAll = item.name === 'Tout';
+              const isActive = isAll ? activeCategories.length === 0 : activeCategories.includes(item.name);
+              
+              return (
+                <JewelBead
+                  key={item.name}
+                  label={item.name}
+                  isActive={isActive}
+                  onClick={isAll ? onCategoryAll : () => onCategoryToggle(item.name)}
+                  materialClass={BEAD_MATERIALS[item.name] || 'material--stone'}
+                  index={i}
+                  total={items.length}
+                />
+              );
+            })}
+          </div>
         </div>
       </section>
     </div>
