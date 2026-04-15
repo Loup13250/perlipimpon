@@ -20,7 +20,7 @@ export default function HomePage() {
   return (
     <>
       {articlesLoading || configLoading ? (
-        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--color-black)', color: 'var(--color-gold)' }}>
+        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--color-charcoal, #544a42)', color: 'var(--color-gold)' }}>
           <p>Chargement des collections...</p>
         </div>
       ) : (

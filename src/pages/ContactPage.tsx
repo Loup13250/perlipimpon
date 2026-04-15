@@ -18,7 +18,9 @@ export default function ContactPage() {
         <div className="contact-card">
           <div className="contact-info">
             <div className="contact-info__card">
-              <div className="contact-info__icon">📞</div>
+              <div className="contact-info__icon">
+                <img src="/images/icons/contact-phone.png" alt="Téléphone" />
+              </div>
               <div className="contact-info__text">
                 <h3>Téléphone</h3>
                 <p>
@@ -30,7 +32,9 @@ export default function ContactPage() {
             </div>
 
             <div className="contact-info__card">
-              <div className="contact-info__icon">✉️</div>
+              <div className="contact-info__icon">
+                <img src="/images/icons/contact-mail.png" alt="Email" />
+              </div>
               <div className="contact-info__text">
                 <h3>Email</h3>
                 <p>
@@ -40,7 +44,9 @@ export default function ContactPage() {
             </div>
 
             <div className="contact-info__card">
-              <div className="contact-info__icon">🕐</div>
+              <div className="contact-info__icon">
+                <img src="/images/icons/contact-clock.png" alt="Disponibilité" />
+              </div>
               <div className="contact-info__text">
                 <h3>Disponibilité</h3>
                 <p>Du lundi au samedi, 9h – 19h</p>

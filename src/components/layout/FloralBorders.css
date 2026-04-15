@@ -1,16 +1,15 @@
 /*
  * ── FloralBorders ──────────────────────────────────────────
- * Traînées botaniques continues sur les côtés.
+ * Décorations botaniques en bordure d'écran (Edge-to-Edge).
  */
 
 .floral-frame {
   position: fixed;
-  inset: 0;
+  inset: 0; /* Retour au mode Edge-to-Edge (collé au bord) */
   pointer-events: none;
-  z-index: 2000; /* Passe devant absolument tout, y compris le header */
+  z-index: 2000;
   display: flex;
   justify-content: space-between;
-  /* Retrait de multiply pour garder les couleurs vibrantes et les dorures */
   opacity: 0;
   animation: floral-fade-in 2.5s ease forwards;
   animation-delay: 0.3s;
@@ -18,17 +17,18 @@
 
 @keyframes floral-fade-in {
   from { opacity: 0; }
-  to { opacity: 0.85; } /* Beaucoup plus visible */
+  to { opacity: 0.6; } /* Opacité claire et nette avec le filtre de transparence */
 }
 
 .floral-border {
   height: 100vh;
-  width: 180px; /* Largeur harmonisée et naturelle */
+  width: 100px;
   display: flex;
   overflow: hidden;
   position: relative;
+  background-color: transparent;
   
-  /* Dégradé doux en haut et en bas pour éviter les coupures nettes */
+  /* Masquage doux vertical */
   mask-image: linear-gradient(to bottom, 
     transparent 0%, 
     black 15%, 
@@ -44,32 +44,33 @@
 .floral-border-inner {
   position: absolute;
   top: 0;
-  width: 200px; /* Légèrement plus large que le parent pour le micro-rognage */
+  width: 120px;
   height: 100%;
   background-repeat: repeat-y;
-  background-position: left top;
-  background-size: 100% auto; /* Retour à la taille naturelle sans zoom */
+  background-size: 100% auto;
   
-  /* Filtres pour sublimer les nouvelles illustrations */
-  filter: contrast(1.05) saturate(1.1);
+  /* SOLUTION TECHNIQUE ULTIME :
+     Utilisation du filtre SVG pour transformer le blanc en transparence réelle.
+     Contrairement au 'blend-mode', cela ne crée pas d'ombres sur les bords. */
+  filter: url(#remove-white-filter);
+  
+  /* Retour à l'image originale de haute qualité */
+  background-image: url('/images/decorations/floral-left-v2.png');
 }
 
 .floral-border--left .floral-border-inner {
-  background-image: url('/images/decorations/floral-left-v2.png');
-  left: -15px; /* On cache juste le liseré blanc technique */
+  left: -15px; /* On retire le bord technique blanc */
 }
 
 .floral-border--right .floral-border-inner {
-  background-image: url('/images/decorations/floral-right-v2.png');
-  transform: scaleX(-1); /* EFFET MIROIR : les fleurs se retrouvent à droite */
-  left: auto;
-  right: -15px; /* On cache le liseré blanc qui est maintenant à droite */
+  transform: scaleX(-1); /* Miroir parfait */
+  right: -15px; /* Rognage symétrique droit */
 }
 
 /* ── Cas particulier de la Page d'Accueil ───── */
 .is-home .floral-frame {
-  position: absolute; /* Devient défilant avec la page sur l'accueil */
-  top: 100vh; /* Commence juste après le Hero */
+  position: absolute;
+  top: 100vh;
   height: calc(100% - 100vh);
   min-height: 1000px;
 }
@@ -78,13 +79,26 @@
   height: 100%;
 }
 
-/* ── Responsive ────────────────────────────────────────────── */
-@media (max-width: 1200px) {
-  .floral-border { width: 140px; }
+/* ── Responsive ───────────────────────────── */
+@media (max-width: 1400px) {
+  .floral-border { width: 80px; }
+  .floral-border-inner { width: 100px; }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .floral-frame {
-    display: none; /* Toujours masqué sur mobile pour la clarté */
+    opacity: 0 !important;
+    transition: opacity 0.5s ease;
   }
 }
+
+@media (max-width: 1301px) {
+  .floral-frame {
+    display: none; /* Désactivé en dessous de 1301px pour éviter les chevauchements */
+  }
+}
+
+
+
+
+

@@ -14,9 +14,14 @@
   --color-gold-dark: #8A6500; /* Darker for better text contrast */
   --color-cream: #FAF6F0; /* Option : garder crème ou foncer un peu, restons sur une base douce */
   --color-cream-dark: #EAE0D5;
-  --color-ivory: #FEFDF9;
-  --color-black: #2D2926; /* Charbon chaud plus doux */
-  --color-black-light: #4A443F; /* Gris-brun chaud */
+  --color-ivory: #FAF6F0; /* Harmonisé avec le crème */
+  --color-black: #1a1a1a;
+  --color-charcoal: #544a42; /* Taupe profond plus chaud que le charbon */
+  --color-bronze-dark: #7c6b5b; /* Bronze sablé */
+  --color-sand-deep: #b5a48b; /* Sable doré profond */
+  --color-rose-poudre: #f9ebe8; /* Rose doux pour le footer et accents "gais" */
+  --color-gold-deep: #b08d57; /* Or bruni heritier */
+  --color-black-light: #5d544b; /* Gris-brun chaud */
   --color-gray-900: #1A1A24;
   --color-gray-700: #3D4455; /* Darkened for higher contrast */
   --color-gray-500: #5C677D; /* Darkened to pass WCAG AA on white (4.5:1) */

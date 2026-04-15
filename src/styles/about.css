@@ -94,6 +94,14 @@
 .value-card__icon {
   font-size: 2.5rem;
   margin-bottom: var(--space-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.value-card__icon img {
+  mix-blend-mode: multiply; /* Fusionne le blanc de l'icône avec le fond de la carte */
+  filter: contrast(1.1); /* Renforce le tracé pour une netteté maximale */
 }
 
 .value-card h3 {
@@ -107,19 +115,22 @@
 }
 
 /* Processus de création */
-.about-process {
+.about-page .about-process {
   margin-bottom: var(--space-4xl);
-  padding: var(--space-3xl);
-  background: var(--color-black);
+  padding: var(--space-4xl);
+  background: var(--color-charcoal, #544a42); /* Nouveau Taupe chaud */
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(212, 175, 55, 0.1);
 }
 
-.about-process .section-title h2 {
-  color: var(--color-cream);
+.about-page .about-process .section-title h2 {
+  color: var(--color-gold-light, #F3E5AB);
 }
 
-.about-process .section-title p {
-  color: var(--color-gray-500);
+.about-page .about-process .section-title p {
+  color: var(--color-cream, #FAF6F0);
+  opacity: 0.9;
 }
 
 .process-steps {
@@ -139,22 +150,25 @@
   width: 48px;
   height: 48px;
   border-radius: var(--radius-full);
-  border: 2px solid var(--color-gold);
-  color: var(--color-gold);
+  border: 2px solid var(--color-gold-deep, #b08d57);
+  color: var(--color-gold-deep, #b08d57);
   font-family: var(--font-display);
   font-size: var(--text-xl);
   font-weight: 600;
   margin-bottom: var(--space-md);
+  background: rgba(176, 141, 87, 0.1);
 }
 
 .process-step h4 {
-  color: var(--color-cream);
+  color: var(--color-white, #ffffff);
   font-size: var(--text-base);
   margin-bottom: var(--space-sm);
+  letter-spacing: 0.05em;
 }
 
 .process-step p {
-  color: var(--color-gray-500);
+  color: var(--color-cream, #FAF6F0);
+  opacity: 0.8;
   font-size: var(--text-sm);
 }
 

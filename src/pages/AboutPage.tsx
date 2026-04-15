@@ -8,17 +8,17 @@ import { useConfig } from '../hooks/useConfig';
 
 const values = [
   {
-    icon: '✋',
+    icon: '/images/icons/value-hand.png',
     title: 'Fait main',
     description: 'Chaque bijou est entièrement façonné à la main, avec soin et patience. Aucune production en série.',
   },
   {
-    icon: '💎',
+    icon: '/images/icons/value-gem.png',
     title: 'Pierres naturelles',
     description: 'Nous sélectionnons des pierres naturelles de qualité : pierre de lune, perles, améthyste et bien d\'autres.',
   },
   {
-    icon: '🌿',
+    icon: '/images/icons/value-leaf.png',
     title: 'Pièces uniques',
     description: 'Chaque création est unique. Deux bijoux ne sont jamais exactement identiques, c\'est la magie de l\'artisanat.',
   },
@@ -72,7 +72,9 @@ export default function AboutPage() {
           <div className="values-grid" ref={valuesRef}>
             {values.map((v) => (
               <div key={v.title} className="value-card reveal-item">
-                <div className="value-card__icon">{v.icon}</div>
+                <div className="value-card__icon">
+                  <img src={v.icon} alt={v.title} style={{ width: '60px', height: '60px', objectFit: 'contain' }} />
+                </div>
                 <h3>{v.title}</h3>
                 <p>{v.description}</p>
               </div>

@@ -130,7 +130,7 @@
   aspect-ratio: 4 / 5;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: linear-gradient(135deg, var(--color-black-light), var(--color-black));
+  background: linear-gradient(135deg, var(--color-black-light), var(--color-charcoal));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -172,7 +172,7 @@
 
 .featured {
   padding: var(--space-4xl) 0;
-  background: var(--color-ivory);
+  background: var(--color-cream);
 }
 
 .featured__grid {
@@ -276,7 +276,7 @@
 
 .testimonials {
   padding: var(--space-4xl) 0;
-  background: #F3EBDD; /* Même beige que le footer */
+  background: var(--color-rose-poudre); /* Plus de gaité comme demandé */
 }
 
 .testimonials .section-title h2 {
