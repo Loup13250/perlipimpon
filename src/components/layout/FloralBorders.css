@@ -23,8 +23,9 @@
 
 .floral-border {
   height: 100vh;
-  width: 180px; /* Taille harmonisée */
+  width: 220px; /* Plus large pour compenser le rognage des bords blancs */
   display: flex;
+  overflow: hidden;
   position: relative;
   
   /* Dégradé doux en haut et en bas pour éviter les coupures nettes */
@@ -54,13 +55,13 @@
 .floral-border--left .floral-border-inner {
   background-image: url('/images/decorations/floral-left-v2.png');
   background-position: left top;
-  transform: translateX(-12%); /* Colle parfaitement à gauche */
+  transform: translateX(-22%); /* Rognage plus fort de la marge blanche gauche */
 }
 
 .floral-border--right .floral-border-inner {
   background-image: url('/images/decorations/floral-right-v2.png');
   background-position: right top;
-  transform: translateX(12%); /* Colle parfaitement à droite */
+  transform: translateX(22%); /* Rognage plus fort de la marge blanche droite */
 }
 
 /* ── Cas particulier de la Page d'Accueil ───── */
