@@ -7,7 +7,7 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 5; /* Au-dessus du fond mais derrière le contenu interactif */
+  z-index: 2000; /* Passe devant absolument tout, y compris le header */
   display: flex;
   justify-content: space-between;
   /* Retrait de multiply pour garder les couleurs vibrantes et les dorures */
@@ -23,7 +23,7 @@
 
 .floral-border {
   height: 100vh;
-  width: 200px; /* Réduit pour être moins imposant */
+  width: 160px; /* Plus fin et élégant comme demandé */
   display: flex;
   position: relative;
   
@@ -45,7 +45,7 @@
   height: 100%;
   background-repeat: repeat-y;
   background-position: center top;
-  background-size: 100% auto;
+  background-size: contain; /* Utilise 'contain' pour ne pas couper les motifs */
   
   /* Filtres pour sublimer les nouvelles illustrations */
   filter: contrast(1.05) saturate(1.1);
@@ -53,12 +53,24 @@
 
 .floral-border--left .floral-border-inner {
   background-image: url('/images/decorations/floral-left-v2.png');
-  transform: translateX(-15%); /* Repoussé vers le bord */
+  background-position: left top;
 }
 
 .floral-border--right .floral-border-inner {
   background-image: url('/images/decorations/floral-right-v2.png');
-  transform: translateX(15%); /* Repoussé vers le bord de façon symétrique */
+  background-position: right top;
+}
+
+/* ── Cas particulier de la Page d'Accueil ───── */
+.is-home .floral-frame {
+  position: absolute; /* Devient défilant avec la page sur l'accueil */
+  top: 100vh; /* Commence juste après le Hero */
+  height: calc(100% - 100vh);
+  min-height: 1000px;
+}
+
+.is-home .floral-border {
+  height: 100%;
 }
 
 /* ── Responsive ────────────────────────────────────────────── */
