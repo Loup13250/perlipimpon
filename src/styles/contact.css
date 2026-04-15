@@ -10,8 +10,8 @@
 /* Hero contact */
 .contact-hero {
   text-align: center;
-  padding: var(--space-3xl) 0;
-  margin-bottom: var(--space-3xl);
+  padding: var(--space-xl) 0;
+  margin-bottom: var(--space-xl);
   background: linear-gradient(135deg, var(--color-rose-light), var(--color-cream));
   border-radius: var(--radius-lg);
 }

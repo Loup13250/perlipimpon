@@ -256,7 +256,7 @@ function ArticleForm({
               />
               <div className="beautiful-toggle__slider"></div>
               <span className="beautiful-toggle__label">
-                Mettre en vedette (Accueil)
+                Marquer comme "Coup de Cœur"
               </span>
             </label>
 
@@ -602,6 +602,7 @@ export default function AdminPage() {
   const { config, configLoading, setConfig } = useConfig();
   
   const [filterCategory, setFilterCategory] = useState<string>('all');
+  const [filterStatus, setFilterStatus] = useState<'all' | 'vendu' | 'enVedette'>('all');
 
   const [adminTab, setAdminTab] = useState<'articles' | 'categories' | 'config'>('articles');
   const [view, setView] = useState<'list' | 'create' | 'edit'>('list');
@@ -718,27 +719,48 @@ export default function AdminPage() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                   <h2 style={{ margin: 0 }}>Vos Créations ({articles.length})</h2>
                   
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <label htmlFor="admin-cat-filter" style={{ fontSize: 'var(--text-sm)', color: 'var(--color-gray-500)' }}>Filtrer par :</label>
-                    <select 
-                      id="admin-cat-filter"
-                      value={filterCategory}
-                      onChange={(e) => setFilterCategory(e.target.value)}
-                      style={{ 
-                        padding: '0.4rem 1rem', 
-                        borderRadius: 'var(--radius-md)', 
-                        border: '1px solid var(--color-gray-200)',
-                        fontSize: 'var(--text-sm)',
-                        background: 'var(--color-white)',
-                        cursor: 'pointer'
-                      }}
-                    >
-                      <option value="all">Toutes les catégories</option>
-                      {config.categories.map(cat => (
-                        <option key={cat.name} value={cat.name}>{cat.name}</option>
-                      ))}
-                    </select>
-                  </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <label htmlFor="admin-cat-filter" style={{ fontSize: 'var(--text-sm)', color: 'var(--color-gray-500)' }}>Catégorie :</label>
+                      <select 
+                        id="admin-cat-filter"
+                        value={filterCategory}
+                        onChange={(e) => setFilterCategory(e.target.value)}
+                        style={{ 
+                          padding: '0.4rem 1rem', 
+                          borderRadius: 'var(--radius-md)', 
+                          border: '1px solid var(--color-gray-200)',
+                          fontSize: 'var(--text-sm)',
+                          background: 'var(--color-white)',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <option value="all">Toutes</option>
+                        {config.categories.map(cat => (
+                          <option key={cat.name} value={cat.name}>{cat.name}</option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <label htmlFor="admin-status-filter" style={{ fontSize: 'var(--text-sm)', color: 'var(--color-gray-500)' }}>Statut :</label>
+                      <select 
+                        id="admin-status-filter"
+                        value={filterStatus}
+                        onChange={(e) => setFilterStatus(e.target.value as any)}
+                        style={{ 
+                          padding: '0.4rem 1rem', 
+                          borderRadius: 'var(--radius-md)', 
+                          border: '1px solid var(--color-gray-200)',
+                          fontSize: 'var(--text-sm)',
+                          background: 'var(--color-white)',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <option value="all">Tous</option>
+                        <option value="vendu">Vendus</option>
+                        <option value="enVedette">Coups de Coeur</option>
+                      </select>
+                    </div>
                 </div>
 
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -757,6 +779,12 @@ export default function AdminPage() {
                   <div className="admin-table">
                     {articles
                       .filter(a => filterCategory === 'all' || a.categorie === filterCategory)
+                      .filter(a => {
+                        if (filterStatus === 'all') return true;
+                        if (filterStatus === 'vendu') return a.vendu;
+                        if (filterStatus === 'enVedette') return a.enVedette;
+                        return true;
+                      })
                       .map((article) => (
                         <div key={article.id} className="article-row">
                       <div className="article-row__thumb">
@@ -771,6 +799,9 @@ export default function AdminPage() {
                       <div className="article-row__category">
                         {article.vendu ? (
                           <span className="badge badge--danger" style={{ marginRight: '0.5rem' }}>Vendu</span>
+                        ) : null}
+                        {article.enVedette ? (
+                          <span className="badge" style={{ marginRight: '0.5rem', background: 'var(--color-gold-light)', color: 'var(--color-black)', border: '1px solid var(--color-gold)' }}>Coup de Coeur</span>
                         ) : null}
                         <span className="badge badge--dark">{article.categorie}</span>
                       </div>

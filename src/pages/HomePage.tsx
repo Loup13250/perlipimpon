@@ -77,7 +77,7 @@ export default function HomePage() {
           <section className="featured">
             <div className="container">
               <div className="section-title">
-                <h2>Nos pièces vedettes</h2>
+                <h2>Nos Coups de Cœur</h2>
                 <p>Découvrez nos créations les plus appréciées</p>
               </div>
 
@@ -101,7 +101,7 @@ export default function HomePage() {
                         <div className="product-card__banner-vendu"><span>Vendu</span></div>
                       )}
                       {!article.vendu && (
-                        <div className="product-card__badge">Vedette</div>
+                        <div className="product-card__badge">Coup de Cœur</div>
                       )}
                     </div>
                     <div className="product-card__body">
