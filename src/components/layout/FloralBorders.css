@@ -21,9 +21,8 @@
   to { opacity: 0.85; } /* Beaucoup plus visible */
 }
 
-.floral-border {
   height: 100vh;
-  width: 220px; /* Plus large pour compenser le rognage des bords blancs */
+  width: 140px; /* Largeur visuelle fixe et symétrique */
   display: flex;
   overflow: hidden;
   position: relative;
@@ -42,11 +41,13 @@
 }
 
 .floral-border-inner {
-  width: 100%;
+  position: absolute;
+  top: 0;
+  width: 200px; /* On travaille avec une image plus large que le conteneur */
   height: 100%;
   background-repeat: repeat-y;
   background-position: center top;
-  background-size: 110% auto; /* Légèrement zoomé pour supprimer les bords blancs */
+  background-size: 100% auto;
   
   /* Filtres pour sublimer les nouvelles illustrations */
   filter: contrast(1.05) saturate(1.1);
@@ -54,14 +55,12 @@
 
 .floral-border--left .floral-border-inner {
   background-image: url('/images/decorations/floral-left-v2.png');
-  background-position: left top;
-  transform: translateX(-22%); /* Rognage plus fort de la marge blanche gauche */
+  left: -40px; /* On pousse l'image vers la gauche pour cacher le blanc */
 }
 
 .floral-border--right .floral-border-inner {
   background-image: url('/images/decorations/floral-right-v2.png');
-  background-position: right top;
-  transform: translateX(22%); /* Rognage plus fort de la marge blanche droite */
+  right: -40px; /* On pousse l'image vers la droite pour cacher le blanc */
 }
 
 /* ── Cas particulier de la Page d'Accueil ───── */
