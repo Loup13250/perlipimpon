@@ -5,12 +5,13 @@ import FloralBorders from './FloralBorders';
 
 export default function Layout() {
   const location = useLocation();
+  const isHome = location.pathname === '/';
   const isAdmin = location.pathname.startsWith('/admin');
 
   return (
     <div className="site-layout">
       {!isAdmin && <Header />}
-      {!isAdmin && <FloralBorders />}
+      {!isAdmin && !isHome && <FloralBorders />}
       <main className="site-main" style={isAdmin ? { paddingTop: 0 } : {}}>
         <Outlet />
       </main>
