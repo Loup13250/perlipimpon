@@ -7,10 +7,10 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: -1; /* Derrière tout le contenu */
+  z-index: 5; /* Positive z-index to stay above background but below most content */
   display: flex;
   justify-content: space-between;
-  mix-blend-mode: multiply; /* Fusion naturelle avec le fond crème */
+  mix-blend-mode: multiply;
   opacity: 0;
   animation: floral-fade-in 2s ease forwards;
   animation-delay: 0.5s;
@@ -18,7 +18,7 @@
 
 @keyframes floral-fade-in {
   from { opacity: 0; }
-  to { opacity: 0.15; } /* Très discret comme demandé */
+  to { opacity: 0.4; } /* Increased opacity for better visibility */
 }
 
 .floral-border {
@@ -37,12 +37,12 @@
 
 .floral-border--left {
   justify-content: flex-start;
-  transform: translateX(-10%); /* Un peu caché sur le bord */
+  transform: translateX(-5%); /* Less hidden for better initial visibility */
 }
 
 .floral-border--right {
   justify-content: flex-end;
-  transform: translateX(10%);
+  transform: translateX(5%);
 }
 
 /* ── Masquage sur mobile pour éviter la surcharge ─────────── */
