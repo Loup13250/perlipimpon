@@ -69,10 +69,11 @@
 
 .necklace-row {
   position: relative;
-  height: 180px; /* Espace pour la courbure */
+  height: 240px; /* Increased height to accommodate deep curve and labels */
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  overflow: visible; /* CRITICAL: Allow labels to be seen */
 }
 
 /* Le Fil d'Or */
@@ -83,8 +84,9 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 1;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  z-index: 10; /* Above the container background but below beads labels */
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+  overflow: visible;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -94,9 +96,10 @@
   display: flex;
   justify-content: center;
   gap: var(--bead-gap);
-  padding: 10px 40px;
-  z-index: 2;
+  padding: 0 60px;
+  z-index: 20; /* Above the wire */
   width: 100%;
+  overflow: visible;
 }
 
 .bead-wrapper {
@@ -105,11 +108,12 @@
   animation: bead-float 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   animation-delay: var(--bead-delay);
   opacity: 0;
+  overflow: visible;
 }
 
 @keyframes bead-float {
-  from { opacity: 0; margin-top: -10px; }
-  to { opacity: 1; margin-top: 0; }
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; }
 }
 
 .bead {
@@ -124,38 +128,53 @@
   justify-content: center;
   border: none;
   padding: 0;
+  overflow: visible;
   
   /* Volume 3D initial */
   box-shadow: 
-    0 4px 10px rgba(0,0,0,0.15),
+    0 6px 12px rgba(0,0,0,0.12),
     inset -4px -4px 10px rgba(0,0,0,0.2),
     inset 4px 4px 10px rgba(255,255,255,0.4);
     
   transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* Étiquette flottante */
+/* Étiquette flottante - Amélioration visibilité */
+.bead__label-container {
+    position: absolute;
+    top: -45px; /* Higher up */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 30; /* Highest z-index */
+    overflow: visible;
+}
+
 .bead__label {
-  position: absolute;
-  top: -32px;
-  left: 50%;
-  transform: translateX(-50%) translateY(5px);
   font-family: var(--font-display);
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: #6a5a4a;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #5c4c3c;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   white-space: nowrap;
-  pointer-events: none;
   opacity: 0;
-  transition: all 0.4s ease;
+  transform: translateY(10px);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 2px 8px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .bead:hover .bead__label,
 .bead--active .bead__label {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
 }
 
 .bead--active .bead__label {

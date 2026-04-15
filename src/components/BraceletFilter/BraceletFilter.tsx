@@ -18,6 +18,12 @@ const BEAD_MATERIALS: Record<string, string> = {
   'Ensembles':          'material--topaz', 
 };
 
+// Constantes de la courbe (Partagées entre SVG et Math)
+const P0_Y = 15;
+const P1_Y = 180; // Control point deeper for better "WAOUW" effect
+const P2_Y = 15;
+const VIEWBOX_W = 1000;
+
 /**
  * Perle de joaillerie individuelle
  */
@@ -26,23 +32,20 @@ interface JewelBeadProps {
   isActive: boolean;
   onClick: () => void;
   materialClass: string;
-  index: number;
-  total: number;
+  t: number; // Position normalisée [0, 1] le long du fil
 }
 
-function JewelBead({ label, isActive, onClick, materialClass, index, total }: JewelBeadProps) {
-  // Calcul de la courbure (parabole simple pour l'effet "collier porté")
-  const midpoint = (total - 1) / 2;
-  const distanceFromCenter = index - midpoint;
-  const curveIntensity = 18; // Intensité du pendage
-  const translateY = Math.pow(distanceFromCenter, 2) * (curveIntensity / Math.pow(midpoint || 1, 2));
+function JewelBead({ label, isActive, onClick, materialClass, t }: JewelBeadProps) {
+  // Calcul exact du point sur la courbe de Bézier quadratique
+  // y(t) = (1-t)^2 * P0 + 2(1-t)t * P1 + t^2 * P2
+  const y = Math.pow(1 - t, 2) * P0_Y + 2 * (1 - t) * t * P1_Y + Math.pow(t, 2) * P2_Y;
 
   return (
     <div 
       className="bead-wrapper"
       style={{ 
-        transform: `translateY(${translateY}px)`,
-        '--bead-delay': `${index * 0.08}s`
+        transform: `translateY(${y}px)`,
+        '--bead-delay': `${t * 0.8}s`
       } as React.CSSProperties}
     >
       <button
@@ -50,7 +53,9 @@ function JewelBead({ label, isActive, onClick, materialClass, index, total }: Je
         onClick={onClick}
         aria-pressed={isActive}
       >
-        <span className="bead__label">{label}</span>
+        <div className="bead__label-container">
+            <span className="bead__label">{label}</span>
+        </div>
         <div className="bead__surface">
           <div className="bead__reflection" />
         </div>
@@ -89,34 +94,40 @@ export default function BraceletFilter({
       <section className="necklace-container">
         <header className="necklace-header">
           <h3 className="necklace-title">
-            <span className="necklace-title__glint" />
-            Collection
+            Collection Perlimpimpon
           </h3>
           {activeCategories.length > 0 && (
             <button className="necklace-reset" onClick={onClearFilters}>
-              Réinitialiser
+              Effacer
             </button>
           )}
         </header>
 
         <div className="necklace-row">
           {/* Fil d'or courbe (SVG) */}
-          <svg className="necklace-wire" viewBox="0 0 1000 120" preserveAspectRatio="none">
-            <path 
-              d="M0,10 Q500,120 1000,10" 
-              fill="none" 
-              stroke="url(#goldGradient)" 
-              strokeWidth="1.5"
-            />
+          <svg className="necklace-wire" viewBox={`0 0 ${VIEWBOX_W} 130`} preserveAspectRatio="none">
+            {/* Définitions des matériaux */}
             <defs>
               <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" style={{ stopColor: '#8A6500' }} />
-                <stop offset="20%" style={{ stopColor: '#D4AF37' }} />
+                <stop offset="25%" style={{ stopColor: '#D4AF37' }} />
                 <stop offset="50%" style={{ stopColor: '#F3E5AB' }} />
-                <stop offset="80%" style={{ stopColor: '#D4AF37' }} />
+                <stop offset="75%" style={{ stopColor: '#D4AF37' }} />
                 <stop offset="100%" style={{ stopColor: '#8A6500' }} />
               </linearGradient>
             </defs>
+
+            {/* Le Fil principal */}
+            <path 
+              d={`M0,${P0_Y} Q${VIEWBOX_W / 2},${P1_Y} ${VIEWBOX_W},${P2_Y}`} 
+              fill="none" 
+              stroke="url(#goldGradient)" 
+              strokeWidth="2"
+            />
+
+            {/* Points d'ancrage (Hardware Joaillerie) */}
+            <circle cx="2" cy={P0_Y} r="4" fill="#D4AF37" />
+            <circle cx={VIEWBOX_W - 2} cy={P2_Y} r="4" fill="#D4AF37" />
           </svg>
 
           {/* Perles positionnées sur le fil */}
@@ -125,6 +136,11 @@ export default function BraceletFilter({
               const isAll = item.name === 'Tout';
               const isActive = isAll ? activeCategories.length === 0 : activeCategories.includes(item.name);
               
+              // On utilise un léger rembourrage (padding) sur les bords pour que les perles 
+              // ne se chevauchent pas avec les ancrages SVG
+              const edgePadding = 0.08;
+              const t = edgePadding + (i / (items.length - 1)) * (1 - 2 * edgePadding);
+              
               return (
                 <JewelBead
                   key={item.name}
@@ -132,8 +148,7 @@ export default function BraceletFilter({
                   isActive={isActive}
                   onClick={isAll ? onCategoryAll : () => onCategoryToggle(item.name)}
                   materialClass={BEAD_MATERIALS[item.name] || 'material--stone'}
-                  index={i}
-                  total={items.length}
+                  t={t}
                 />
               );
             })}
