@@ -276,15 +276,15 @@
 
 .testimonials {
   padding: var(--space-4xl) 0;
-  background: var(--color-black);
+  background: #F3EBDD; /* Même beige que le footer */
 }
 
 .testimonials .section-title h2 {
-  color: var(--color-cream);
+  color: var(--color-black);
 }
 
 .testimonials .section-title p {
-  color: var(--color-gray-500);
+  color: var(--color-gray-700);
 }
 
 .testimonials__grid {
@@ -294,11 +294,12 @@
 }
 
 .testimonial-card {
-  background: var(--color-black-light);
+  background: var(--color-white);
   border-radius: var(--radius-lg);
   padding: var(--space-2xl);
-  border: 1px solid rgba(201, 169, 110, 0.1);
-  transition: border-color var(--transition-base), transform var(--transition-base);
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
 }
 
 .testimonial-card:hover {
@@ -314,7 +315,7 @@
 }
 
 .testimonial-card__text {
-  color: var(--color-gray-300);
+  color: var(--color-gray-700);
   font-size: var(--text-base);
   font-style: italic;
   line-height: 1.7;
@@ -332,8 +333,8 @@
 }
 
 .testimonial-card__author {
-  font-weight: 500;
-  color: var(--color-cream);
+  font-weight: 600;
+  color: var(--color-black);
   font-size: var(--text-sm);
 }
 
