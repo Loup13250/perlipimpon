@@ -9,9 +9,9 @@ export default function Layout() {
   const isAdmin = location.pathname.startsWith('/admin');
 
   return (
-    <div className="site-layout">
+    <div className={`site-layout ${isHome ? 'is-home' : ''}`}>
       {!isAdmin && <Header />}
-      {!isAdmin && !isHome && <FloralBorders />}
+      {!isAdmin && <FloralBorders />}
       <main className="site-main" style={isAdmin ? { paddingTop: 0 } : {}}>
         <Outlet />
       </main>
