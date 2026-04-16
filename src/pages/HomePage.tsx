@@ -150,9 +150,12 @@ export default function HomePage() {
                       {cat.image ? (
                         <img src={cat.image} alt={cat.name} />
                       ) : (
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-                        </svg>
+                        <img src={
+                          cat.name.toLowerCase().includes('collier') ? '/images/moonstone_necklace.png' :
+                          cat.name.toLowerCase().includes('bracelet') ? '/images/pearl_bracelet.png' :
+                          cat.name.toLowerCase().includes('bague') ? '/images/rose_quartz_ring.png' :
+                          '/images/hero_bg.png'
+                        } alt={cat.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       )}
                     </div>
                     <div className="category-card__content">

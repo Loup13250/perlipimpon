@@ -554,6 +554,11 @@ function CategoriesForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
 
             <input type="text" value={cat.name} onChange={e => updateCategory(index, 'name', e.target.value)} placeholder="Nom de la catégorie" style={{ flex: '1 1 150px', padding: '0.75rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-gray-300)' }} required />
             
+            {cat.image && (
+              <div style={{ flexShrink: 0, width: '40px', height: '40px', borderRadius: 'var(--radius-md)', overflow: 'hidden', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--color-gray-200)' }}>
+                <img src={cat.image} alt={cat.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+            )}
 
             <label className="btn btn--outline btn--sm" style={{ cursor: 'pointer', margin: 0 }}>
               Modifier l'image
