@@ -33,8 +33,50 @@ export const defaultSiteConfig: SiteConfig = {
   heroImage: '/images/hero_bg.png',
   ctaTitle: 'Une pièce vous fait envie ?',
   ctaDescription: 'Contactez-nous pour toute question ou commande personnalisée.',
-  testimonials: [],
-  processSteps: []
+  testimonials: [
+    {
+      id: 't-001',
+      auteur: 'Sophie M.',
+      note: 5,
+      texte: 'J\'ai reçu mon bracelet et je suis sous le charme. Le travail est d\'une finesse remarquable, chaque perle est soigneusement choisie. On sent vraiment le soin et la passion mis dans chaque création. Je reviendrai avec plaisir !'
+    },
+    {
+      id: 't-002',
+      auteur: 'Élise R.',
+      note: 5,
+      texte: 'Un cadeau pour ma mère qui a fait fondre toute la famille. La bague est magnifique, la pierre de lune est envoûtante. Emballage soigné, livraison rapide. Une artisane talentueuse et à l\'écoute, je recommande vivement !'
+    },
+    {
+      id: 't-003',
+      auteur: 'Marie-Claire B.',
+      note: 5,
+      texte: 'Je cherchais quelque chose d\'unique pour mes fiançailles — j\'ai trouvé bien plus que ça. Ce collier en améthyste est une œuvre d\'art. Chaque fois que je le porte, je reçois des compliments. Merci du fond du cœur !'
+    },
+    {
+      id: 't-004',
+      auteur: 'Thomas L.',
+      note: 5,
+      texte: 'J\'ai offert une parure pour l\'anniversaire de ma compagne et elle n\'en revenait pas. La qualité est exceptionnelle pour ce prix. On voit immédiatement que c\'est fait main, avec amour. Une vraie découverte !'
+    },
+    {
+      id: 't-005',
+      auteur: 'Nathalie P.',
+      note: 5,
+      texte: 'Ces boucles d\'oreilles sont devenues mes préférées. Légères, élégantes, elles s\'accordent à tout. J\'ai aussi commandé un bracelet sur mesure et le résultat était parfait. Service client adorable et très réactif.'
+    },
+    {
+      id: 't-006',
+      auteur: 'Camille D.',
+      note: 5,
+      texte: 'Un vrai coup de cœur pour cette boutique ! Je suis fidèle depuis deux ans maintenant. Chaque nouvelle création est une surprise magnifique. La créatrice est passionnée et ça se ressent dans chacune de ses pièces.'
+    }
+  ],
+  processSteps: [
+    { number: 1, title: 'L\'inspiration', description: 'Chaque pièce naît d\'une rencontre : une pierre, une couleur, une émotion. Je m\'inspire de la nature, des saisons et de mes voyages.' },
+    { number: 2, title: 'La sélection des matières', description: 'Je choisis avec soin chaque perle, pierre naturelle et apprêt. Qualité et authenticité sont mes priorités absolues.' },
+    { number: 3, title: 'La création à la main', description: 'Fil par fil, perle par perle, chaque bijou prend vie entre mes mains. Pas de machine, pas de série — juste du savoir-faire artisanal.' },
+    { number: 4, title: 'Les finitions & contrôle', description: 'Avant de vous parvenir, chaque pièce est soigneusement inspectée, nettoyée et emballée avec amour dans son écrin.' }
+  ]
 };
 
 export const sampleArticles: Article[] = [

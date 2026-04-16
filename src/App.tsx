@@ -14,16 +14,15 @@ import AdminPage from './pages/AdminPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { useConfig } from './hooks/useConfig';
 import { useEffect } from 'react';
+import { ToastProvider } from './components/Toast';
 
 function SEOInjector() {
   const { config } = useConfig();
 
   useEffect(() => {
-    // MAJ Titre
     if (config.metaTitle) {
       document.title = config.metaTitle;
     }
-    // MAJ Meta Description
     if (config.metaDescription) {
       let metaDesc = document.querySelector('meta[name="description"]');
       if (!metaDesc) {
@@ -40,19 +39,21 @@ function SEOInjector() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <SEOInjector />
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/creations" element={<ShopPage />} />
-          <Route path="/creations/:id" element={<ProductDetailPage />} />
-          <Route path="/a-propos" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/admin" element={<AdminPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <ToastProvider>
+      <BrowserRouter>
+        <SEOInjector />
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/creations" element={<ShopPage />} />
+            <Route path="/creations/:id" element={<ProductDetailPage />} />
+            <Route path="/a-propos" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ToastProvider>
   );
 }
