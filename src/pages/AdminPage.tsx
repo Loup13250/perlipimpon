@@ -8,8 +8,10 @@ import { useState, useCallback, type FormEvent } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useArticles } from '../hooks/useArticles';
 import { useConfig } from '../hooks/useConfig';
+import { useLogs } from '../hooks/useLogs';
 import { formatPrice, formatDate, fileToBase64 } from '../utils/helpers';
 import { useToast } from '../components/Toast';
+import { defaultSiteConfig } from '../data/sampleArticles';
 import type { Article, ArticleFormData, Category, SiteConfig, CategoryData } from '../types';
 
 // ──────────────────────────────────────────────
@@ -505,43 +507,70 @@ function SiteConfigForm({ config, onSave, onInjectSamples }: { config: SiteConfi
         {activeTab === 'maintenance' && (
           <>
             <h2>Maintenance & Données</h2>
-            <div className="maintenance-section" style={{ background: 'rgba(201,169,110,0.05)', padding: '1.5rem', borderRadius: '16px', border: '1px dashed rgba(201,169,110,0.3)' }}>
-              <h3>🧪 Données de démonstration</h3>
-              <p style={{ color: 'var(--color-gray-600)', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
-                Si votre site est vide (ou si vous voulez simplement voir le rendu "Haute Joaillerie"), vous pouvez injecter les 12 articles et les 6 avis clients que j'ai préparés pour vous.
+            <div className="maintenance-section" style={{ background: 'rgba(201,169,110,0.05)', padding: '1.5rem', borderRadius: '16px', border: '1px dashed rgba(201,169,110,0.3)', marginBottom: '1.5rem' }}>
+              <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-deep)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                Articles de démonstration
+              </h3>
+              <p style={{ color: 'var(--color-gray-600)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+                Si votre boutique est vide, injectez les 12 créations de démonstration pour voir le rendu complet.
               </p>
-              
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <button 
-                  type="button" 
-                  className="btn btn--outline" 
-                  style={{ color: 'var(--color-gold-deep)', borderColor: 'var(--color-gold-deep)' }}
-                  onClick={() => {
-                    if (window.confirm("Voulez-vous injecter les 12 articles démo dans votre boutique ? (Vos articles actuels ne seront pas supprimés, mais les doublons seront fusionnés)")) {
-                      onInjectSamples();
-                    }
-                  }}
-                >
-                  🚀 Injecter 12 articles démo
-                </button>
-              </div>
+              <button 
+                type="button" 
+                className="btn btn--outline btn--sm" 
+                style={{ color: 'var(--color-gold-deep)', borderColor: 'var(--color-gold-deep)' }}
+                onClick={() => {
+                  if (window.confirm("Injecter les 12 articles démo ? (Vos articles actuels ne seront pas supprimés)")) {
+                    onInjectSamples();
+                  }
+                }}
+              >
+                Injecter 12 articles démo
+              </button>
+            </div>
 
-              <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(201,169,110,0.15)' }}>
-                <h3>📦 État de la Synchronisation</h3>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-success)', fontSize: '0.9rem', fontWeight: 600 }}>
-                  <span style={{ display: 'inline-block', width: '10px', height: '10px', borderRadius: '50%', background: 'currentColor' }}></span>
-                  Base de données Cloud (Firestore) connectée
-                </div>
-                <p style={{ color: 'var(--color-gray-500)', fontSize: '0.8rem', marginTop: '0.5rem' }}>
-                  Vos modifications sont sauvegardées en temps réel sur le cloud et visibles 24h/24 partout.
-                </p>
+            <div className="maintenance-section" style={{ background: 'rgba(201,169,110,0.05)', padding: '1.5rem', borderRadius: '16px', border: '1px dashed rgba(201,169,110,0.3)', marginBottom: '1.5rem' }}>
+              <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-deep)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                Réinitialiser les Avis Clients
+              </h3>
+              <p style={{ color: 'var(--color-gray-600)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+                Remplace tous les avis actuels par les 6 témoignages modèles pré-écrits. Utile si vous voulez repartir de bases professionnelles.
+              </p>
+              <button 
+                type="button" 
+                className="btn btn--outline btn--sm" 
+                style={{ color: 'var(--color-charcoal)', borderColor: 'rgba(84,74,66,0.4)' }}
+                onClick={() => {
+                  if (window.confirm("Réinitialiser les avis clients avec les 6 modèles ? Les avis actuels seront remplacés.")) {
+                    handleChange('testimonials', defaultSiteConfig.testimonials);
+                    alert('Avis réinitialisés ! Cliquez sur Enregistrer pour les sauvegarder.');
+                  }
+                }}
+              >
+                Réinitialiser avec les avis modèles
+              </button>
+            </div>
+
+            <div style={{ background: 'rgba(22, 163, 74, 0.05)', padding: '1.25rem 1.5rem', borderRadius: '16px', border: '1px solid rgba(22, 163, 74, 0.15)', display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-success)', fontWeight: 600, fontSize: '0.9rem', flexShrink: 0, paddingTop: '2px' }}>
+                <span style={{ display: 'inline-block', width: '10px', height: '10px', borderRadius: '50%', background: 'currentColor', flexShrink: 0 }}></span>
+                Cloud actif
               </div>
+              <p style={{ color: 'var(--color-gray-500)', fontSize: '0.8rem', margin: 0 }}>
+                Vos modifications sont sauvegardées instantanément sur Firestore et visibles 24h/24.
+              </p>
             </div>
           </>
         )}
 
         <div className="admin-form__actions" style={{ marginTop: '2rem', borderTop: '1px solid rgba(201,169,110,0.15)', paddingTop: '1.5rem' }}>
-          <button type="submit" className="btn btn--primary btn--lg">💾 Enregistrer</button>
+          {activeTab !== 'maintenance' && (
+            <button type="submit" className="btn btn--primary btn--lg">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              Enregistrer
+            </button>
+          )}
         </div>
       </form>
     </div>
@@ -627,13 +656,14 @@ export default function AdminPage() {
   const { isAuthenticated, authLoading, login, logout } = useAuth();
   const { articles, articlesLoading, addArticle, updateArticle, deleteArticle, replaceAll, forceInjectSamples } = useArticles();
   const { config, configLoading, setConfig } = useConfig();
+  const { logs, logsLoading, addLog } = useLogs();
   const toast = useToast();
 
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [filterStatus, setFilterStatus] = useState<'all' | 'vendu' | 'enVedette'>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const [adminTab, setAdminTab] = useState<'articles' | 'categories' | 'config'>('articles');
+  const [adminTab, setAdminTab] = useState<'articles' | 'categories' | 'config' | 'logs'>('articles');
   const [view, setView] = useState<'list' | 'create' | 'edit'>('list');
   const [editingArticle, setEditingArticle] = useState<Article | undefined>();
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
@@ -645,15 +675,20 @@ export default function AdminPage() {
   // ── Hooks ──────────────────────────────────
   const handleSave = useCallback(async (data: ArticleFormData) => {
     try {
-      if (view === 'edit' && editingArticle) await updateArticle(editingArticle.id, data);
-      else await addArticle(data);
+      if (view === 'edit' && editingArticle) {
+        await updateArticle(editingArticle.id, data);
+        addLog('ARTICLE_UPDATED', `"${data.titre}" modifié`);
+      } else {
+        await addArticle(data);
+        addLog('ARTICLE_CREATED', `"${data.titre}" créé`);
+      }
       toast.success('Enregistré !', view === 'edit' ? 'L\'article a été mis à jour.' : 'Le nouvel article a été créé.');
     } catch {
       toast.error('Erreur', 'Une erreur est survenue lors de la sauvegarde.');
     }
     setView('list');
     setEditingArticle(undefined);
-  }, [view, editingArticle, updateArticle, addArticle, toast]);
+  }, [view, editingArticle, updateArticle, addArticle, addLog, toast]);
 
   const handleEdit = useCallback((article: Article) => {
     setEditingArticle(article);
@@ -661,27 +696,31 @@ export default function AdminPage() {
   }, []);
 
   const handleDelete = useCallback(async (id: string) => {
+    const article = articles.find(a => a.id === id);
     try {
       await deleteArticle(id);
+      addLog('ARTICLE_DELETED', `"${article?.titre ?? id}" supprimé`);
       toast.success('Supprimé', 'L\'article a été supprimé avec succès.');
     } catch {
       toast.error('Erreur', 'Impossible de supprimer cet article.');
     }
     setDeleteConfirm(null);
-  }, [deleteArticle, toast]);
+  }, [deleteArticle, addLog, articles, toast]);
 
   const handleBulkDelete = useCallback(async () => {
+    const count = selectedIds.size;
     try {
       for (const id of selectedIds) {
         await deleteArticle(id);
       }
-      toast.success(`${selectedIds.size} article(s) supprimé(s)`, 'La sélection a été supprimée.');
+      addLog('BULK_DELETE', `${count} article(s) supprimé(s) en masse`);
+      toast.success(`${count} article(s) supprimé(s)`, 'La sélection a été supprimée.');
       setSelectedIds(new Set());
     } catch {
       toast.error('Erreur', 'Une erreur est survenue lors de la suppression groupée.');
     }
     setBulkDeleteConfirm(false);
-  }, [selectedIds, deleteArticle, toast]);
+  }, [selectedIds, deleteArticle, addLog, toast]);
 
   const toggleSelect = useCallback((id: string) => {
     setSelectedIds(prev => {
@@ -735,20 +774,32 @@ export default function AdminPage() {
   const handleInjectSamples = useCallback(async () => {
     try {
       await forceInjectSamples();
+      addLog('DEMO_INJECTED', '12 articles de démonstration injectés');
       toast.success('Démos injectées', 'Les modèles de créations ont fait leur apparition !');
     } catch {
       toast.error('Erreur', 'Impossible d\'injecter les démos.');
     }
-  }, [forceInjectSamples, toast]);
+  }, [forceInjectSamples, addLog, toast]);
 
   const onSaveConfig = useCallback(async (newConfig: SiteConfig) => {
     try {
       await setConfig(newConfig);
+      addLog('CONFIG_SAVED', 'Paramètres du site enregistrés');
       toast.success('Paramètres sauvegardés !', 'Les modifications sont en ligne.');
     } catch {
       toast.error('Erreur', 'Impossible d\'enregistrer les paramètres.');
     }
-  }, [setConfig, toast]);
+  }, [setConfig, addLog, toast]);
+
+  const onSaveCategories = useCallback(async (newConfig: SiteConfig) => {
+    try {
+      await setConfig(newConfig);
+      addLog('CATEGORIES_SAVED', `${newConfig.categories.length} catégorie(s) sauvegardées`);
+      toast.success('Catégories sauvegardées !', 'Les modifications sont en ligne.');
+    } catch {
+      toast.error('Erreur', 'Impossible d\'enregistrer les catégories.');
+    }
+  }, [setConfig, addLog, toast]);
 
   // Articles filtrés
   const filteredArticles = articles
@@ -798,7 +849,7 @@ export default function AdminPage() {
               </div>
             </div>
             <div className="admin-header__actions">
-              <a href="/" className="btn--admin-ghost">
+              <a href="/" target="_blank" rel="noopener noreferrer" className="btn--admin-ghost">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                 Voir le site
               </a>
@@ -809,28 +860,52 @@ export default function AdminPage() {
             </div>
           </div>
 
-          {/* Statistiques rapides */}
+          {/* Statistiques rapides — cliquables pour filtrer rapidement */}
           <div className="admin-stats">
-            <div className="stat-card">
-              <div className="stat-card__icon">💎</div>
+            <button
+              className="stat-card stat-card--clickable"
+              onClick={() => { setAdminTab('articles'); setFilterStatus('all'); setFilterCategory('all'); }}
+              title="Voir toutes les créations"
+            >
+              <div className="stat-card__icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
               <div className="stat-card__value">{articles.length}</div>
               <div className="stat-card__label">Créations</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-card__icon">⭐</div>
+            </button>
+            <button
+              className="stat-card stat-card--clickable"
+              onClick={() => { setAdminTab('articles'); setFilterStatus('enVedette'); setFilterCategory('all'); }}
+              title="Voir les coups de cœur"
+            >
+              <div className="stat-card__icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
               <div className="stat-card__value">{featuredCount}</div>
               <div className="stat-card__label">Coups de Cœur</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-card__icon">🛍️</div>
+            </button>
+            <button
+              className="stat-card stat-card--clickable"
+              onClick={() => { setAdminTab('articles'); setFilterStatus('vendu'); setFilterCategory('all'); }}
+              title="Voir les articles vendus"
+            >
+              <div className="stat-card__icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              </div>
               <div className="stat-card__value">{soldCount}</div>
               <div className="stat-card__label">Vendus</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-card__icon">📂</div>
+            </button>
+            <button
+              className="stat-card stat-card--clickable"
+              onClick={() => setAdminTab('categories')}
+              title="Gérer les catégories"
+            >
+              <div className="stat-card__icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              </div>
               <div className="stat-card__value">{config.categories?.length || 0}</div>
               <div className="stat-card__label">Catégories</div>
-            </div>
+            </button>
           </div>
 
           {/* Navigation Admin */}
@@ -856,11 +931,18 @@ export default function AdminPage() {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M4.93 19.07l1.41-1.41M19.07 19.07l-1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
               Design & Textes
             </button>
+            <button
+              className={`admin-nav__btn ${adminTab === 'logs' ? 'active' : ''}`}
+              onClick={() => setAdminTab('logs')}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              Activité
+            </button>
           </div>
 
           {/* Onglets */}
           {adminTab === 'config' && <SiteConfigForm config={config} onSave={onSaveConfig} onInjectSamples={handleInjectSamples} />}
-          {adminTab === 'categories' && <CategoriesForm config={config} onSave={onSaveConfig} />}
+          {adminTab === 'categories' && <CategoriesForm config={config} onSave={onSaveCategories} />}
 
           {adminTab === 'articles' && (
             <div className="admin-list">
@@ -991,7 +1073,7 @@ export default function AdminPage() {
 
                         <div className="article-row__category">
                           {article.vendu && <span className="badge badge--danger">Vendu</span>}
-                          {article.enVedette && <span className="badge" style={{ background: 'rgba(201,169,110,0.12)', color: 'var(--color-gold-deep)', border: '1px solid rgba(201,169,110,0.3)' }}>⭐ Coup de Cœur</span>}
+                          {article.enVedette && <span className="badge" style={{ background: 'rgba(201,169,110,0.12)', color: 'var(--color-gold-deep)', border: '1px solid rgba(201,169,110,0.3)' }}>Coup de Cœur</span>}
                           <span className="badge badge--dark">{article.categorie}</span>
                         </div>
 
@@ -1020,17 +1102,82 @@ export default function AdminPage() {
 
                   {filteredArticles.length === 0 && (
                     <div className="admin-empty">
-                      <div className="admin-empty__icon">🔍</div>
+                      <div className="admin-empty__icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-light)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="11" cy="11" r="8"/>
+                          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                      </div>
                       <p>Aucun article ne correspond à votre recherche.</p>
                     </div>
                   )}
 
                   {/* Gestion des données */}
                   <div className="admin-data-footer">
-                    <button className="btn btn--outline btn--sm" onClick={handleExport}>📥 Sauvegarder (Backup JSON)</button>
-                    <button className="btn btn--outline btn--sm" onClick={handleImport}>📤 Importer une sauvegarde JSON</button>
+                    <button className="btn btn--outline btn--sm" onClick={handleExport}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      Sauvegarder (Backup JSON)
+                    </button>
+                    <button className="btn btn--outline btn--sm" onClick={handleImport}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                      Importer une sauvegarde JSON
+                    </button>
                   </div>
                 </>
+              )}
+            </div>
+          )}
+
+          {/* Onglet Activité / Logs */}
+          {adminTab === 'logs' && (
+            <div className="admin-form">
+              <h2>Historique des Activités</h2>
+              <p style={{ color: 'var(--color-gray-500)', fontSize: '0.85rem', marginBottom: '1.5rem' }}>
+                Les 50 dernières actions effectuées sur votre site, en temps réel.
+              </p>
+              {logsLoading ? (
+                <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--color-gold-deep)', fontStyle: 'italic' }}>Chargement des logs...</div>
+              ) : logs.length === 0 ? (
+                <div className="admin-empty">
+                  <div className="admin-empty__icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-light)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                      <polyline points="14 2 14 8 20 8"/>
+                      <line x1="16" y1="13" x2="8" y2="13"/>
+                      <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+                  </div>
+                  <p>Aucune activité enregistrée pour le moment.</p>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--color-gray-400)', marginTop: '0.5rem' }}>Les actions (création, modification, suppression) s'afficheront ici automatiquement.</p>
+                </div>
+              ) : (
+                <div className="admin-table">
+                  {logs.map((log) => (
+                    <div key={log.id} className="log-row">
+                      <div className="log-row__icon">
+                        {log.action === 'ARTICLE_CREATED' && (
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                        )}
+                        {(log.action === 'ARTICLE_UPDATED' || log.action === 'CONFIG_SAVED' || log.action === 'CATEGORIES_SAVED') && (
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-deep)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                        )}
+                        {(log.action === 'ARTICLE_DELETED' || log.action === 'BULK_DELETE') && (
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-danger)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+                        )}
+                        {log.action === 'DEMO_INJECTED' && (
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        )}
+                        {(log.action === 'LOGIN' || log.action === 'LOGOUT') && (
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-charcoal)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+                        )}
+                      </div>
+                      <div className="log-row__content">
+                        <span className="log-row__action">{log.detail}</span>
+                        <span className="log-row__date">{new Date(log.date).toLocaleString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               )}
             </div>
           )}

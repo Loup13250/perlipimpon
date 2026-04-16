@@ -269,6 +269,23 @@
   box-shadow: 0 4px 16px rgba(0,0,0,0.05);
   border: 1px solid rgba(201, 169, 110, 0.12);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
+  text-align: left;
+}
+
+.stat-card--clickable {
+  cursor: pointer;
+  border: none;
+  font: inherit;
+  background: rgba(255, 255, 255, 0.85);
+  width: 100%;
+  text-align: left;
+}
+
+.stat-card--clickable:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(201, 169, 110, 0.18);
+  border-color: rgba(201, 169, 110, 0.3);
+  background: rgba(255, 255, 255, 0.97);
 }
 
 .stat-card:hover {
@@ -277,9 +294,16 @@
 }
 
 .stat-card__icon {
-  font-size: 1.8rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: var(--space-sm);
-  filter: drop-shadow(0 2px 4px rgba(201,169,110,0.3));
+  color: var(--color-gold-deep);
+  background: rgba(201, 169, 110, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(201, 169, 110, 0.15);
 }
 
 .stat-card__value {
@@ -297,6 +321,58 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════
+   LOGS / ACTIVITÉ
+   ═══════════════════════════════════════════ */
+
+.log-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-xl);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.08);
+  transition: background var(--transition-fast);
+}
+
+.log-row:last-child {
+  border-bottom: none;
+}
+
+.log-row:hover {
+  background: rgba(201, 169, 110, 0.04);
+}
+
+.log-row__icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(250, 246, 240, 0.8);
+  flex-shrink: 0;
+  border: 1px solid rgba(201, 169, 110, 0.1);
+}
+
+.log-row__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.log-row__action {
+  font-size: var(--text-sm);
+  color: var(--color-charcoal);
+  font-weight: 500;
+}
+
+.log-row__date {
+  font-size: var(--text-xs);
+  color: var(--color-gray-400);
+  font-family: var(--font-mono, monospace);
 }
 
 /* ═══════════════════════════════════════════

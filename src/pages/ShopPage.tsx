@@ -93,43 +93,15 @@ export default function ShopPage() {
               />
             </div>
 
-            {/* ── FILTRES MOBILE : Menus déroulants ── */}
+            {/* ── FILTRES MOBILE : Accordéon pill ── */}
             <div className="shop-filters-mobile">
-              <div className="shop-filter-bar">
-
-                {/* Filtre Catégorie */}
-                <div className="shop-filter-select-wrapper">
-                  <label htmlFor="cat-select-mob" className="shop-filter-label">Sélectionner une catégorie</label>
-                  <select
-                    id="cat-select-mob"
-                    className="shop-select"
-                    value={activeCategories.length === 1 ? activeCategories[0] : ''}
-                    onChange={(e) => {
-                      if (e.target.value) {
-                        setActiveCategories([e.target.value]);
-                        setSearchParams({ cat: e.target.value });
-                      } else {
-                        handleCategoryAll();
-                      }
-                    }}
-                  >
-                    <option value="">Toutes les catégories</option>
-                    {config.categories.map((cat) => (
-                      <option key={cat.name} value={cat.name}>{cat.name}</option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Vider */}
-                {(activeCategories.length > 0) && (
-                  <button
-                    className="btn btn--outline btn--sm shop-filter-clear-btn-mobile"
-                    onClick={clearFilters}
-                  >
-                    Vider les filtres
-                  </button>
-                )}
-              </div>
+              <CategoryFilter
+                categories={config.categories}
+                activeCategories={activeCategories}
+                onCategoryToggle={handleCategoryToggle}
+                onCategoryAll={handleCategoryAll}
+                onClearFilters={clearFilters}
+              />
             </div>
 
             {/* Compteur */}
@@ -142,11 +114,16 @@ export default function ShopPage() {
             <div className="shop-grid" ref={gridRef}>
               {filteredArticles.length === 0 ? (
                 <div className="shop-empty">
-                  <div className="shop-empty__icon">🔍</div>
+                  <div className="shop-empty__icon">
+                    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-light)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="11" cy="11" r="8"/>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                  </div>
                   <h3>Aucune création trouvée</h3>
                   <p>Essayez de modifier vos filtres ou retirez les restrictions pour voir plus de résultats.</p>
                   <button className="btn btn--primary" style={{ marginTop: '1.5rem' }} onClick={clearFilters}>
-                    Vider les filtres
+                    Voir toutes les créations
                   </button>
                 </div>
               ) : (
@@ -161,7 +138,9 @@ export default function ShopPage() {
                         <img src={article.photos[0]} alt={article.titre} />
                       ) : (
                         <div className="product-card__placeholder">
-                          <span role="img" aria-label="placeholder" style={{ fontSize: '3rem', color: 'var(--color-gold)' }}>🌙</span>
+                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                          </svg>
                           <span>{article.categorie}</span>
                         </div>
                       )}

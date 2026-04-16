@@ -26,13 +26,13 @@
 
 /* ── Wrappers filtres ── */
 .shop-filters-desktop-wrapper {
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-2xl);
   display: block;
 }
 
 .shop-filters-mobile {
   display: none;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
 }
 
 /* --- FILTRE CATEGORIES MODERN (Desktop) --- */
@@ -41,93 +41,134 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: var(--space-md) var(--space-xl);
-  margin-bottom: var(--space-xl);
-  padding-bottom: var(--space-md);
-  border-bottom: 1px solid var(--color-gray-200);
+  gap: var(--space-sm) var(--space-md);
+  padding: var(--space-md) var(--space-xl);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  box-shadow: 0 2px 16px rgba(201, 169, 110, 0.08);
 }
 
 .category-filter__btn {
   background: transparent;
-  border: none;
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  color: var(--color-gray-500);
-  padding: var(--space-xs) var(--space-md);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-charcoal);
+  padding: var(--space-sm) var(--space-lg);
   cursor: pointer;
   position: relative;
-  transition: all var(--transition-base);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.category-filter__btn::before {
-  content: '';
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: transparent;
-  transition: background-color var(--transition-base);
+  transition: all 0.22s ease;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .category-filter__btn:hover {
-  color: var(--color-gold-dark);
+  background: rgba(201, 169, 110, 0.1);
+  border-color: rgba(201, 169, 110, 0.4);
+  color: var(--color-gold-deep);
+  transform: translateY(-1px);
 }
 
 .category-filter__btn.active {
+  background: var(--color-charcoal);
+  color: var(--color-cream);
+  border-color: var(--color-charcoal);
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(84, 74, 66, 0.25);
+}
+
+.category-filter__btn.active:hover {
+  background: var(--color-gold-deep);
+  border-color: var(--color-gold-deep);
+  color: white;
+}
+
+/* --- FILTRE MOBILE : Accordéon pill --- */
+.shop-filter-mobile-container {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(201, 169, 110, 0.25);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(201, 169, 110, 0.1);
+}
+
+.shop-filter-mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-xl);
+  cursor: pointer;
+  user-select: none;
+  gap: var(--space-md);
+}
+
+.shop-filter-mobile-label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-charcoal);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.shop-filter-mobile-active {
+  font-size: var(--text-xs);
   color: var(--color-gold-deep);
   font-weight: 500;
+  background: rgba(201, 169, 110, 0.12);
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 169, 110, 0.3);
 }
 
-.category-filter__btn.active::before {
-  background-color: var(--color-gold);
+.shop-filter-mobile-chevron {
+  color: var(--color-gold-deep);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
 }
 
-/* --- MENUS DEROULEMENT (MOBILE) PREMIUM --- */
-.shop-filter-bar {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-  width: 100%;
+.shop-filter-mobile-chevron.open {
+  transform: rotate(180deg);
 }
-.shop-filter-select-wrapper {
+
+.shop-filter-mobile-pills {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-  width: 100%;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  padding: 0 var(--space-xl) var(--space-lg);
+  border-top: 1px solid rgba(201, 169, 110, 0.1);
+  padding-top: var(--space-md);
 }
-.shop-select {
-  width: 100%;
-  padding: 1rem 1.25rem;
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  color: var(--color-black);
-  background-color: var(--color-white);
-  border: 1px solid var(--color-gray-200);
-  border-radius: var(--radius-sm);
-  outline: none;
+
+.filter-pill {
+  padding: var(--space-xs) var(--space-md);
+  border-radius: 999px;
+  font-size: var(--text-sm);
+  font-weight: 500;
   cursor: pointer;
-  appearance: none; 
-  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%230B0C10%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E');
-  background-repeat: no-repeat;
-  background-position: right 1.25rem top 50%;
-  background-size: 1rem auto;
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-fast);
+  border: 1.5px solid rgba(201, 169, 110, 0.3);
+  background: transparent;
+  color: var(--color-charcoal);
+  transition: all 0.18s ease;
+  white-space: nowrap;
 }
 
-.shop-select:hover, .shop-select:focus {
+.filter-pill:hover {
+  background: rgba(201, 169, 110, 0.1);
   border-color: var(--color-gold);
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+  color: var(--color-gold-deep);
 }
 
-.shop-filter-clear-btn-mobile {
-  width: 100%;
-  margin-top: var(--space-sm);
+.filter-pill.active {
+  background: var(--color-charcoal);
+  color: var(--color-cream);
+  border-color: var(--color-charcoal);
+  font-weight: 600;
 }
 
 /* Compteur résultats */
@@ -152,9 +193,10 @@
   padding: var(--space-4xl) var(--space-xl);
 }
 .shop-empty__icon {
-  font-size: 4rem;
   margin-bottom: var(--space-lg);
   opacity: 0.4;
+  display: flex;
+  justify-content: center;
 }
 .shop-empty h3 {
   margin-bottom: var(--space-md);
@@ -170,7 +212,7 @@
   }
   .shop-filters-mobile {
     display: block;
-    margin-bottom: var(--space-2xl);
+    margin-bottom: var(--space-xl);
   }
 
   .shop-grid {

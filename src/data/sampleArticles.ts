@@ -26,7 +26,7 @@ export const defaultSiteConfig: SiteConfig = {
   aboutText1: 'Bienvenue chez Perlipimpon ! Chaque bijou est une création unique, façonnée à la main avec patience et passion.',
   aboutText2: 'Que ce soit pour vous faire plaisir ou pour offrir, nos bijoux fantaisie apportent une touche d\'élégance naturelle à chaque tenue.',
   aboutImage: '/images/moonstone_necklace.png',
-  heroSubtitle: '✦ bijoux artisanaux ✦',
+  heroSubtitle: '— bijoux artisanaux —',
   heroTitle1: 'L\'art de la ',
   heroTitle2: 'création',
   heroDescription: 'Des bijoux fantaisie uniques, fabriqués à la main avec des pierres naturelles soigneusement sélectionnées.',
