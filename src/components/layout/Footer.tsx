@@ -5,6 +5,7 @@
 import { Link } from 'react-router-dom';
 import { useConfig } from '../../hooks/useConfig';
 
+
 export default function Footer() {
   const { config } = useConfig();
   const year = new Date().getFullYear();
@@ -12,12 +13,16 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="container">
+
+
         <div className="footer-grid">
           {/* Marque */}
           <div className="footer-brand">
-            <h3>✦ {config.nomMarque || 'Perlipimpon'}</h3>
+            <h3 style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              {config.nomMarque || 'Perlipimpon'}
+            </h3>
             <p>
-              {config.tagline || 'Création de bijoux fantaisies & co. Chaque pièce est unique, fabriquée à la main avec amour.'}
+              {config.tagline || 'Création de bijoux fantaisie & co. Chaque pièce est unique, fabriquée à la main avec amour.'}
             </p>
           </div>
 
@@ -81,9 +86,7 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <p>© {year} Perlipimpon — Tous droits réservés</p>
-          <p>
-            Bijoux artisanaux faits main avec ♥
-          </p>
+          <p>Bijoux artisanaux faits main avec amour</p>
         </div>
       </div>
     </footer>

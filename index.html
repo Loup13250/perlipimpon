@@ -2,22 +2,35 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SEO -->
-    <title>Perlipimpon — Créatrice de bijoux fantaisies, énergies et pierres naturelles</title>
+    <title>Perlipimpon — Créatrice de bijoux fantaisie, énergies et pierres naturelles</title>
     <meta name="description" content="Perlipimpon vous propose des bijoux artisanaux faits main, inspirés par la lune et les énergies. Créations uniques en pierres naturelles : pierre de lune, perles, améthyste. Fabrication artisanale." />
     <meta name="keywords" content="bijoux artisanaux, bijoux fantaisie, lithothérapie, pierre de lune, lune, énergie, perles, fait main, créatrice bijoux" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Perlipimpon — Créatrice de bijoux énergétiques & fantaisies" />
+    <meta property="og:title" content="Perlipimpon — Créatrice de bijoux énergétiques & fantaisie" />
     <meta property="og:description" content="Découvrez une collection unique de bijoux artisanaux imprégnés d'énergies célestes. Fait main." />
     <meta property="og:type" content="website" />
-
-    <!-- Favicon (emoji en attendant un vrai favicon) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>" />
   </head>
   <body>
+    <!-- Filtre Chirurgical (Branding) — Permanent dans le DOM pour éviter tout artefact noir -->
+    <svg style="position: absolute; width: 0; height: 0; pointer-events: none;" aria-hidden="true">
+      <defs>
+        <filter id="logo-transparency" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+          <feColorMatrix 
+            type="matrix" 
+            values="1 0 0 0 0
+                    0 1 0 0 0
+                    0 0 1 0 0
+                  -100 -100 -100 300 0" 
+          />
+        </filter>
+      </defs>
+    </svg>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

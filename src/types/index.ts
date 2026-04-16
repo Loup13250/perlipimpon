@@ -35,7 +35,6 @@ export interface CategoryData {
   name: string;
   description?: string;
   image?: string;
-  color?: string;  // Couleur hex pour le bracelet filter
 }
 
 // Témoignage client

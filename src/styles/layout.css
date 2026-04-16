@@ -34,7 +34,6 @@
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--space-xl);
-  overflow: hidden; /* Sécurité anti-débordement */
 }
 
 /* Logo / Marque */
@@ -59,7 +58,18 @@
 }
 
 .brand-icon {
-  font-size: var(--text-2xl);
+  width: auto;
+  height: 40px;
+  transition: all var(--transition-base);
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.header-brand:hover .brand-icon {
+  transform: scale(1.05) rotate(-2deg);
 }
 
 /* Navigation principale */
@@ -149,20 +159,23 @@
   position: relative;
 }
 
-/* Frise décorative en haut du footer */
+/* Ornement artisanal en haut du footer (remplace les emojis) */
 .site-footer::before {
-  content: '🌿 ───── ✨ ───── 🌿';
+  content: '';
   position: absolute;
-  top: -15px;
+  top: 0;
   left: 50%;
-  transform: translateX(-50%);
-  background: var(--color-cream);
-  padding: 0 var(--space-lg);
-  color: var(--color-gold-deep);
-  font-size: var(--text-sm);
-  letter-spacing: 0.3em;
-  white-space: nowrap;
-  border-radius: var(--radius-full);
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 30px;
+  background-color: var(--color-cream, #faf6f0);
+  background-image: url("data:image/svg+xml,%3Csvg width='300' height='30' viewBox='0 0 300 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 15H130M170 15H290' stroke='%23c9a96e' stroke-width='1' stroke-linecap='round'/%3E%3Cpath d='M150 8L154 15L150 22L146 15L150 8Z' fill='%23c9a96e'/%3E%3Cpath d='M142 15A8 8 0 0 1 158 15A8 8 0 0 1 142 15' stroke='%23c9a96e' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 40px;
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  z-index: 10;
 }
 
 .footer-grid {
@@ -326,9 +339,52 @@
     text-align: center;
     padding-bottom: var(--space-lg);
   }
+}
 
-  .site-header {
-    width: 100%;
-    overflow: hidden;
+/* Fix mobile collision pour iPhone SE / petits mobiles */
+@media (max-width: 400px) {
+  .header-inner {
+    padding: 0 var(--space-md);
+  }
+  
+  .header-brand h1 {
+    font-size: 1.15rem;
+    letter-spacing: 0;
+  }
+  
+  .brand-icon {
+    height: 30px;
+  }
+}
+
+/* Fix mobile collision pour iPhone SE / petits mobiles */
+@media (max-width: 400px) {
+  .header-inner {
+    padding: 0 var(--space-md);
+  }
+  
+  .header-brand h1 {
+    font-size: 1.15rem;
+    letter-spacing: 0;
+  }
+  
+  .brand-icon {
+    height: 30px;
+  }
+}
+
+/* Fix mobile collision pour écrans < 400px (iPhone SE, etc.) */
+@media (max-width: 400px) {
+  .header-inner {
+    padding: 0 var(--space-md);
+  }
+  
+  .header-brand h1 {
+    font-size: var(--text-lg);
+    letter-spacing: 0.01em;
+  }
+  
+  .brand-icon {
+    height: 32px;
   }
 }

@@ -184,9 +184,9 @@
   font-style: italic;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: var(--text-base);
-  padding: 10px 0;
+  letter-spacing: 0.12em;
+  font-size: var(--text-xs);
+  padding: 8px 0;
   transform: rotate(-45deg);
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   z-index: 10;
@@ -209,9 +209,9 @@
   font-style: italic;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: var(--text-base);
-  padding: 10px 0;
+  letter-spacing: 0.12em;
+  font-size: var(--text-xs);
+  padding: 8px 0;
   transform: rotate(45deg);
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   z-index: 10;

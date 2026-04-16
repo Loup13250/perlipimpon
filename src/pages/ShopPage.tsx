@@ -10,7 +10,7 @@ import { useArticles } from '../hooks/useArticles';
 import { useConfig } from '../hooks/useConfig';
 import { useScrollRevealGroup } from '../hooks/useScrollReveal';
 import { formatPrice, truncateText } from '../utils/helpers';
-import BraceletFilter from '../components/BraceletFilter';
+import CategoryFilter from '../components/CategoryFilter';
 
 export default function ShopPage() {
   const { visibleArticles, articlesLoading } = useArticles();
@@ -35,22 +35,21 @@ export default function ShopPage() {
 
   const gridRef = useScrollRevealGroup({}, [filteredArticles]);
 
-  // Toggle catégorie : clic = ajouter/retirer de la sélection
   const handleCategoryToggle = (cat: string) => {
-    setActiveCategories((prev) => {
-      const next = prev.includes(cat)
-        ? prev.filter((c) => c !== cat)
-        : [...prev, cat];
-      // Sync URL
-      if (next.length === 1) {
-        setSearchParams({ cat: next[0] });
-      } else if (next.length === 0) {
-        setSearchParams({});
-      } else {
-        setSearchParams({ cat: next.join(',') });
-      }
-      return next;
-    });
+    const nextCategories = activeCategories.includes(cat)
+      ? activeCategories.filter((c) => c !== cat)
+      : [...activeCategories, cat];
+
+    setActiveCategories(nextCategories);
+
+    // Sync URL
+    if (nextCategories.length === 1) {
+      setSearchParams({ cat: nextCategories[0] });
+    } else if (nextCategories.length === 0) {
+      setSearchParams({});
+    } else {
+      setSearchParams({ cat: nextCategories.join(',') });
+    }
   };
 
   // "Tout" = réinitialiser les catégories
@@ -73,7 +72,7 @@ export default function ShopPage() {
         {/* En-tête (toujours visible) */}
         <div className="shop-header">
           <h1>Nos Créations</h1>
-          <p>Bijoux fantaisies artisanaux, pièces uniques faites main</p>
+          <p>Bijoux fantaisie artisanaux, pièces uniques faites main</p>
         </div>
 
         {articlesLoading || configLoading ? (
@@ -85,7 +84,7 @@ export default function ShopPage() {
           <>
             {/* ── BRACELET FILTRES (Desktop) ── */}
             <div className="shop-filters-desktop-wrapper">
-              <BraceletFilter
+              <CategoryFilter
                 categories={config.categories}
                 activeCategories={activeCategories}
                 onCategoryToggle={handleCategoryToggle}

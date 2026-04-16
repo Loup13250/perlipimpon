@@ -6,13 +6,13 @@ import type { Article, Testimonial, SiteConfig } from '../types';
 
 export const defaultSiteConfig: SiteConfig = {
   nomMarque: 'Perlipimpon',
-  tagline: 'Créatrice de bijoux fantaisies & co — Pièces uniques faites main',
+  tagline: 'Créatrice de bijoux fantaisie & co — Pièces uniques faites main',
   email: 'contact@perlipimpon.fr',
   telephone: '06 65 74 90 80',
   instagram: 'https://instagram.com/perlipimpon',
   facebook: 'https://www.facebook.com/profile.php?id=61554767849530',
   adresse: '',
-  metaTitle: 'Perlipimpon — Créatrice de bijoux fantaisies, énergies et pierres naturelles',
+  metaTitle: 'Perlipimpon — Créatrice de bijoux fantaisie, énergies et pierres naturelles',
   metaDescription: 'Perlipimpon vous propose des bijoux artisanaux faits main, inspirés par la lune et les énergies. Créations uniques en pierres naturelles.',
   categories: [
     { name: 'Colliers', description: 'Colliers en pierres naturelles' },
@@ -24,12 +24,12 @@ export const defaultSiteConfig: SiteConfig = {
   ],
   aboutTitle: 'Fait main, fait avec cœur',
   aboutText1: 'Bienvenue chez Perlipimpon ! Chaque bijou est une création unique, façonnée à la main avec patience et passion.',
-  aboutText2: 'Que ce soit pour vous faire plaisir ou pour offrir, nos bijoux fantaisies apportent une touche d\'élégance naturelle à chaque tenue.',
+  aboutText2: 'Que ce soit pour vous faire plaisir ou pour offrir, nos bijoux fantaisie apportent une touche d\'élégance naturelle à chaque tenue.',
   aboutImage: '/images/moonstone_necklace.png',
   heroSubtitle: '✦ bijoux artisanaux ✦',
   heroTitle1: 'L\'art de la ',
   heroTitle2: 'création',
-  heroDescription: 'Des bijoux fantaisies uniques, fabriqués à la main avec des pierres naturelles soigneusement sélectionnées.',
+  heroDescription: 'Des bijoux fantaisie uniques, fabriqués à la main avec des pierres naturelles soigneusement sélectionnées.',
   heroImage: '/images/hero_bg.png',
   ctaTitle: 'Une pièce vous fait envie ?',
   ctaDescription: 'Contactez-nous pour toute question ou commande personnalisée.',
@@ -40,8 +40,8 @@ export const defaultSiteConfig: SiteConfig = {
 export const sampleArticles: Article[] = [
   {
     "id": "auto-001",
-    "titre": "Boucles doreilles Festives",
-    "description": "Boucles doreilles elegantes avec motifs de cours et triangles textures, parfaites pour vos soirees.",
+    "titre": "Boucles d'oreilles Festives",
+    "description": "Boucles d'oreilles élégantes avec motifs de cœurs et triangles texturés, parfaites pour vos soirées.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/472982678_122200623278158928_4769343512706442374_n.jpg"],
@@ -51,8 +51,8 @@ export const sampleArticles: Article[] = [
   },
   {
     "id": "auto-002",
-    "titre": "Boucles doreilles Croisette",
-    "description": "Modele Croisette arborant un motif leopard chic sur une monture doree arrondie.",
+    "titre": "Boucles d'oreilles Croisette",
+    "description": "Modèle Croisette arborant un motif léopard chic sur une monture dorée arrondie.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/473133716_122200623524158928_1134493933837433129_n.jpg"],
@@ -62,8 +62,8 @@ export const sampleArticles: Article[] = [
   },
   {
     "id": "auto-003",
-    "titre": "Boucles doreilles Pepites Leopard",
-    "description": "Design leopard moderne pour ces boucles doreilles originales et tendance.",
+    "titre": "Boucles d'oreilles Pépites Léopard",
+    "description": "Design léopard moderne pour ces Boucles d'oreilles originales et tendance.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/473235429_122200623032158928_7900813755815264754_n.jpg"],
@@ -73,8 +73,8 @@ export const sampleArticles: Article[] = [
   },
   {
     "id": "auto-004",
-    "titre": "Boucles doreilles Papyrus",
-    "description": "Boucles doreilles ornees dune pierre fine verte facettee pour un look naturel.",
+    "titre": "Boucles d'oreilles Papyrus",
+    "description": "Boucles d'oreilles ornées d'une pierre fine verte facettée pour un look naturel.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/473256849_122200623230158928_352825919811860710_n.jpg"],
@@ -84,8 +84,8 @@ export const sampleArticles: Article[] = [
   },
   {
     "id": "auto-005",
-    "titre": "Boucles doreilles Ophelie",
-    "description": "Alliance de la perle blanche a des anneaux dores ciseles pour un raffinement extreme.",
+    "titre": "Boucles d'oreilles Ophélie",
+    "description": "Alliance de la perle blanche à des anneaux dorés ciselés pour un raffinement extrême.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/473340799_122201328548158928_2038345838962049893_n.jpg"],
@@ -96,7 +96,18 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-006",
     "titre": "Bague Labradorite Royale",
-    "description": "Bague majestueuse sertie dune Labradorite aux reflets bleutes envoutants.",
+    "description": "Bague majestueuse sertie d'une Labradorite aux reflets bleutés envoûtants.",
+    "prix": 35,
+ "categorie": "Boucles d'oreilles",
+    "photos": ["/images/creations/473340799_122201328548158928_2038345838962049893_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": true
+  },
+  {
+    "id": "auto-006",
+    "titre": "Bague Labrad'Orite Royale",
+    "description": "Bague majestueuse sertie dune Labrad'Orite aux reflets bleutés envoûtants.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/473341420_122201328206158928_2828597019880718112_n.jpg"],
@@ -118,7 +129,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-008",
     "titre": "Bague Lapis-Lazuli Stellaire",
-    "description": "Une bague dexception ornee dun Lapis-Lazuli bleu nuit tachete de pyrite doree.",
+    "description": "Une bague dexception ornée dun Lapis-Lazuli bleu nuit tacheté de pyrite d'Orée.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/473361588_122200622984158928_7222519572489594492_n.jpg"],
@@ -128,8 +139,8 @@ export const sampleArticles: Article[] = [
   },
   {
     "id": "auto-009",
-    "titre": "Bague Ametheyste Mystique",
-    "description": "Bague mystique sertie dune Ametheyste violette, symbole de serenite.",
+    "titre": "Bague Améthyste Mystique",
+    "description": "Bague mystique sertie dune Améthyste violette, symbole de serenite.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/473372466_122201328656158928_2029604001262488220_n.jpg"],
@@ -139,8 +150,8 @@ export const sampleArticles: Article[] = [
   },
   {
     "id": "auto-010",
-    "titre": "Bague Turquoise Boheme",
-    "description": "Bague dexception ornee dune Turquoise naturelle au style boheme unique.",
+    "titre": "Bague Turquoise bohème",
+    "description": "Bague dexception ornée dune Turquoise naturelle au style bohème unique.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/473416119_122200623500158928_2828826237480628351_n.jpg"],
@@ -150,8 +161,8 @@ export const sampleArticles: Article[] = [
   },
   {
     "id": "auto-011",
-    "titre": "Boucles doreilles Izia Silver",
-    "description": "Boucles doreilles en acier inoxydable avec coeurs marteles, un design chic et intemporel.",
+    "titre": "Boucles d'oreilles Izia Silver",
+    "description": "Boucles d'oreilles en acier inoxydable avec coeurs martelés, un design chic et intemporel.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/473446929_122201328674158928_9018583340865346271_n.jpg"],
@@ -161,8 +172,8 @@ export const sampleArticles: Article[] = [
   },
   {
     "id": "auto-012",
-    "titre": "Boucles doreilles Cosmos Spring",
-    "description": "Boucles doreilles fleuries d'inspiration cosmique, avec un petit detail vert emeraude.",
+    "titre": "Boucles d'oreilles Cosmos Spring",
+    "description": "Boucles d'oreilles fleuries d'inspiration cosmique, avec un petit detail vert émeraude.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/473451986_122201328692158928_6029920932440069154_n.jpg"],
@@ -173,7 +184,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-013",
     "titre": "Presentoir Boucles dEclat",
-    "description": "Une collection variee de boucles doreilles artisanales pour toutes les occasions.",
+    "description": "Une collection variée de Boucles d'oreilles artisanales pour toutes les occasions.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/473540051_122201328176158928_9044289977160164845_n.jpg"],
@@ -183,8 +194,8 @@ export const sampleArticles: Article[] = [
   },
   {
     "id": "auto-014",
-    "titre": "Boucles Gouttes dOr",
-    "description": "Boucles doreilles pendantes dorees avec un design fin et elegant.",
+    "titre": "Boucles Gouttes d'Or",
+    "description": "Boucles d'oreilles pendantes d'Orées avec un design fin et elegant.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/473548589_122201328956158928_8011913272615711629_n.jpg"],
@@ -195,7 +206,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-015",
     "titre": "Boucles Disques Solaires",
-    "description": "Boucles doreilles en forme de disques rayonnants, captant la lumiere.",
+    "description": "Boucles d'oreilles en forme de disques rayonnants, captant la lumière.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/473553972_122201340260158928_8520475929549074176_n.jpg"],
@@ -205,8 +216,8 @@ export const sampleArticles: Article[] = [
   },
   {
     "id": "auto-016",
-    "titre": "Creoles Perles de Nuit",
-    "description": "Boucles doreilles creoles ornees de perles sombres et mysterieuses.",
+    "titre": "créoles Perles de Nuit",
+    "description": "Boucles d'oreilles créoles ornées de perles sombres et mystérieuses.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/473578908_122201328644158928_1047448953646046309_n.jpg"],
@@ -217,7 +228,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-017",
     "titre": "Boucles Coeurs dArgent",
-    "description": "Delicates boucles doreilles en forme de coeur avec une finition argentee.",
+    "description": "Delicates Boucles d'oreilles en forme de coeur avec une finition argentée.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/473588856_122201328188158928_3169717433946904198_n.jpg"],
@@ -228,7 +239,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-018",
     "titre": "Boucles Fleurs de Cristal",
-    "description": "Boucles doreilles florales ornees de cristaux etincelants.",
+    "description": "Boucles d'oreilles florales ornées de cristaux étincelants.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/473621819_122201340230158928_1983232468118663258_n.jpg"],
@@ -239,7 +250,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-019",
     "titre": "Boucles Losanges Ethniques",
-    "description": "Boucles doreilles au design geometrique et inspiration ethnique.",
+    "description": "Boucles d'oreilles au design géométrique et inspiration ethnique.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/473622828_122201328194158928_5025500798329435390_n.jpg"],
@@ -249,8 +260,8 @@ export const sampleArticles: Article[] = [
   },
   {
     "id": "auto-020",
-    "titre": "Boucles Spirales dOrient",
-    "description": "Boucles doreilles en spirale evoquant les motifs orientaux traditionnels.",
+    "titre": "Boucles Spirales d'Orient",
+    "description": "Boucles d'oreilles en spirale evoquant les motifs orientaux traditionnels.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/473622997_122201328170158928_5248674625730901904_n.jpg"],
@@ -260,8 +271,8 @@ export const sampleArticles: Article[] = [
   },
   {
     "id": "auto-021",
-    "titre": "Boucles Gouttes Perlees",
-    "description": "Boucles doreilles en forme de gouttes delicately perlees.",
+    "titre": "Boucles Gouttes perlées",
+    "description": "Boucles d'oreilles en forme de gouttes délicatement perlées.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/473628139_122201328620158928_8135132925769878247_n.jpg"],
@@ -272,7 +283,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-022",
     "titre": "Bague Ambre & Or",
-    "description": "Bague imposante avec une pierre dambre translucide montee sur or.",
+    "description": "Bague imposante avec une pierre d'ambre translucide montée sur or.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/473807272_122202536282158928_6513503047436518843_n.jpg"],
@@ -282,8 +293,8 @@ export const sampleArticles: Article[] = [
   },
   {
     "id": "auto-023",
-    "titre": "Boucles Pastilles Dorees",
-    "description": "Petites boucles doreilles discretes en forme de pastilles martelees.",
+    "titre": "Boucles Pastilles d'Orées",
+    "description": "Petites Boucles d'oreilles discrètes en forme de pastilles martelées.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/473897990_122202536168158928_5467220022455649728_n.jpg"],
@@ -294,7 +305,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-024",
     "titre": "Bague Oeil de Tigre",
-    "description": "Bague protectrice ornee dun magnifique Oeil de Tigre aux reflets chatoyants.",
+    "description": "Bague protectrice ornée dun magnifique Oeil de Tigre aux reflets chatoyants.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/473992585_122202536324158928_1929385231506832589_n.jpg"],
@@ -305,7 +316,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-025",
     "titre": "Bague Pierre de Soleil",
-    "description": "Bague chaleureuse mettant en valeur leclat paillete de la Pierre de Soleil.",
+    "description": "Bague chaleureuse mettant en valeur l'éclat pailleté de la Pierre de Soleil.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/473999733_122202536810158928_6342491970675731491_n.jpg"],
@@ -316,7 +327,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-026",
     "titre": "Bague Onyx Mystique",
-    "description": "Bague elegante sertie dun Onyx noir profond pour un look sophistique.",
+    "description": "Bague élégante sertie dun Onyx noir profond pour un look sophistiquée.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/474018545_122202536234158928_7108235809866976410_n.jpg"],
@@ -327,7 +338,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-027",
     "titre": "Bague Nacre Douce",
-    "description": "Bague delicate ornee de nacre naturelle aux reflets irises.",
+    "description": "Bague delicate ornée de nacre naturelle aux reflets irisés.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/474025830_122202536408158928_2408782160577514405_n.jpg"],
@@ -338,7 +349,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-028",
     "titre": "Bague Amazonite Givree",
-    "description": "Bague rafraichissante avec une Amazonite aux nuances vert deau.",
+    "description": "Bague rafraîchissante avec une Amazonite aux nuances vert deau.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/474030815_122202536192158928_2266108943471238193_n.jpg"],
@@ -349,7 +360,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-029",
     "titre": "Boucles Gouttes Azur",
-    "description": "Boucles doreilles pendantes avec des gouttes bleues translucides.",
+    "description": "Boucles d'oreilles pendantes avec des gouttes bleues translucides.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/474030830_122202536852158928_2889122137508406518_n.jpg"],
@@ -360,7 +371,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-030",
     "titre": "Bague Quartz Fume",
-    "description": "Bague sobre et mysterieuse avec un Quartz fume facette.",
+    "description": "Bague sobre et mystérieuse avec un Quartz fume facette.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/474038531_122202536210158928_2393958096423151133_n.jpg"],
@@ -370,8 +381,8 @@ export const sampleArticles: Article[] = [
   },
   {
     "id": "auto-031",
-    "titre": "Bague Cornaline Ardente",
-    "description": "Bague pleine denergie ornee dune Cornaline dun orange vibrant.",
+    "titre": "Bague Cornaline ardente",
+    "description": "Bague pleine denergie ornée dune Cornaline dun orange vibrant.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/474038531_122202536816158928_3565357174295410012_n.jpg"],
@@ -382,7 +393,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-032",
     "titre": "Boucles Pampilles Argent",
-    "description": "Boucles doreilles avec de multiples pampilles argentees mobiles.",
+    "description": "Boucles d'oreilles avec de multiples pampilles argentées mobiles.",
     "prix": 35,
     "categorie": "Boucles d'oreilles",
     "photos": ["/images/creations/474038694_122202536162158928_510954882395770702_n.jpg"],
@@ -403,8 +414,8 @@ export const sampleArticles: Article[] = [
   },
   {
     "id": "auto-034",
-    "titre": "Bague Grenat Passion",
-    "description": "Bague envoutante ornee dun Grenat rouge profond.",
+    "titre": "Bague Grenat passion",
+    "description": "Bague envoutante ornée dun Grenat rouge profond.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/474067360_122202537008158928_7779281431957026996_n.jpg"],
@@ -426,7 +437,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-036",
     "titre": "Bague Citrine Solaire",
-    "description": "Bague rayonnante mettant en valeur une Citrine jaune dor.",
+    "description": "Bague rayonnante mettant en valeur une Citrine jaune d'Or.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/474073415_122202536762158928_5270765036021272470_n.jpg"],
@@ -459,7 +470,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-039",
     "titre": "Bague Sodalite Sagesse",
-    "description": "Bague apaisante ornee dune Sodalite bleue veinee de blanc.",
+    "description": "Bague apaisante ornée dune Sodalite bleue veinee de blanc.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/474135951_122202536144158928_5117788262173145538_n.jpg"],
@@ -503,7 +514,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-043",
     "titre": "Bague Rhodonite Tendresse",
-    "description": "Bague rose tendre ornee dune Rhodonite veinee de noir.",
+    "description": "Bague rose tendre ornée dune Rhodonite veinee de noir.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/474146896_122202536882158928_8214072194493370941_n.jpg"],
@@ -525,7 +536,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-045",
     "titre": "Bague Jade Imperial",
-    "description": "Bague precieuse sertie dun Jade vert intense et symbolique.",
+    "description": "Bague précieuse sertie dun Jade vert intense et symbolique.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/474164566_122202536624158928_615655267435086183_n.jpg"],
@@ -536,7 +547,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-046",
     "titre": "Bague Fluorite Arc-en-ciel",
-    "description": "Bague coloree avec une Fluorite aux multiples nuances de violet et vert.",
+    "description": "Bague colorée avec une Fluorite aux multiples nuances de violet et vert.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/474177940_122202536708158928_3484378336419254563_n.jpg"],
@@ -558,7 +569,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-048",
     "titre": "Bracelet Maillons Ambre",
-    "description": "Bracelet chaleureux avec des maillons ambres et dores.",
+    "description": "Bracelet chaleureux avec des maillons ambres et d'Orés.",
     "prix": 35,
     "categorie": "Bracelets",
     "photos": ["/images/creations/474189407_122202711626158928_2074019437738859462_n.jpg"],
@@ -569,7 +580,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-049",
     "titre": "Bracelet Maillons Nacre",
-    "description": "Bracelet raffine avec des maillons nacres et metallises.",
+    "description": "Bracelet raffine avec des maillons nacres et métallisés.",
     "prix": 35,
     "categorie": "Bracelets",
     "photos": ["/images/creations/474200707_122202711824158928_6827775833202492470_n.jpg"],
@@ -580,7 +591,7 @@ export const sampleArticles: Article[] = [
   {
     "id": "auto-050",
     "titre": "Bracelet Maillons Onyx",
-    "description": "Bracelet chic combinant des maillons noirs et argentes.",
+    "description": "Bracelet chic combinant des maillons noirs et argentés.",
     "prix": 35,
     "categorie": "Bracelets",
     "photos": ["/images/creations/474209168_122202711770158928_1795518133227929054_n.jpg"],
@@ -590,7 +601,7 @@ export const sampleArticles: Article[] = [
   },
   {
     "id": "demo-001",
-    "titre": "Collier Éclat de Lune",
+    "titre": "Collier ÃƒÆ’ââ‚¬Â°clat de Lune",
     "description": "Un collier délicat en argent 925 serti d'une pierre de lune aux reflets bleutés. Pièce unique fabriquée entièrement à la main.",
     "prix": 89,
     "categorie": "Colliers",

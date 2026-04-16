@@ -6,6 +6,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -36,11 +37,28 @@ export default function Header() {
     return location.pathname.startsWith(path);
   };
 
+  const handleBrandClick = (e: React.MouseEvent) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
       <div className="header-inner">
-        <Link to="/" className="header-brand">
-          <span className="brand-icon">✦</span>
+        <Link to="/" className="header-brand" onClick={handleBrandClick}>
+          <img 
+            src="/images/logo-jewelry-transparent.png" 
+            alt="Perlipimpon" 
+            className="brand-icon" 
+            style={{ 
+              width: '42px', 
+              height: '42px', 
+              objectFit: 'contain',
+              transition: 'all 0.3s ease'
+            }} 
+          />
           <h1>
             Perli<span>pimpon</span>
           </h1>

@@ -12,47 +12,47 @@ import { formatPrice, truncateText } from '../utils/helpers';
 
 export default function HomePage() {
   const { featuredArticles, articlesLoading } = useArticles();
-  const { config, configLoading } = useConfig();
+  const { config } = useConfig();
   const featuredRef = useScrollRevealGroup({}, [featuredArticles]);
   const categoriesRef = useScrollRevealGroup({}, [config.categories]);
   const testimonialsRef = useScrollRevealGroup({}, [config.testimonials]);
 
   return (
     <>
-      {articlesLoading || configLoading ? (
-        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--color-charcoal, #544a42)', color: 'var(--color-gold)' }}>
+      <section className="hero" style={{ backgroundImage: `url('${config.heroImage}')` }}>
+        <div className="hero__glow-1" />
+        <div className="hero__glow-2" />
+
+        <div className="hero__content">
+          <p className="hero__subtitle">{config.heroSubtitle}</p>
+          <h1 className="hero__title">
+            {config.heroTitle1} <span>{config.heroTitle2}</span>
+          </h1>
+          <p className="hero__description">
+            {config.heroDescription}
+          </p>
+          <div className="hero__actions">
+            <Link to="/creations" className="btn btn--primary btn--lg">
+              Découvrir les créations
+            </Link>
+            <Link to="/a-propos" className="btn btn--outline btn--lg" style={{ borderColor: 'var(--color-gold-light)', color: 'var(--color-gold-light)' }}>
+              Notre histoire
+            </Link>
+          </div>
+        </div>
+
+        <div className="hero__scroll-hint">
+          <span>Défiler</span>
+          <span className="arrow">↓</span>
+        </div>
+      </section>
+
+      {articlesLoading ? (
+        <div style={{ padding: 'var(--space-4xl) 0', textAlign: 'center', background: 'var(--color-cream)', color: 'var(--color-gold)' }}>
           <p>Chargement des collections...</p>
         </div>
       ) : (
         <>
-          {/* ── HERO ──────────────────────────── */}
-          <section className="hero" style={{ backgroundImage: `url('${config.heroImage}')` }}>
-            <div className="hero__glow-1" />
-            <div className="hero__glow-2" />
-
-            <div className="hero__content">
-              <p className="hero__subtitle">{config.heroSubtitle}</p>
-              <h1 className="hero__title">
-                {config.heroTitle1} <span>{config.heroTitle2}</span>
-              </h1>
-              <p className="hero__description">
-                {config.heroDescription}
-              </p>
-              <div className="hero__actions">
-                <Link to="/creations" className="btn btn--primary btn--lg">
-                  Découvrir les créations
-                </Link>
-                <Link to="/a-propos" className="btn btn--outline btn--lg" style={{ borderColor: 'var(--color-gold-light)', color: 'var(--color-gold-light)' }}>
-                  Notre histoire
-                </Link>
-              </div>
-            </div>
-
-            <div className="hero__scroll-hint">
-              <span>Défiler</span>
-              <span className="arrow">↓</span>
-            </div>
-          </section>
 
           {/* ── ABOUT PREVIEW ─────────────────── */}
           <section className="about-preview">
@@ -93,7 +93,9 @@ export default function HomePage() {
                         <img src={article.photos[0]} alt={article.titre} />
                       ) : (
                         <div className="product-card__placeholder">
-                          <span role="img" aria-label="placeholder" style={{ fontSize: '3rem', color: 'var(--color-gold)' }}>🌙</span>
+                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                          </svg>
                           <span>{article.categorie}</span>
                         </div>
                       )}
@@ -148,7 +150,9 @@ export default function HomePage() {
                       {cat.image ? (
                         <img src={cat.image} alt={cat.name} />
                       ) : (
-                        '🌙'
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                        </svg>
                       )}
                     </div>
                     <div className="category-card__content">
@@ -173,7 +177,20 @@ export default function HomePage() {
                 {(config.testimonials || []).map((t) => (
                   <div key={t.id} className="testimonial-card reveal-item">
                     <div className="testimonial-card__stars">
-                      {'★'.repeat(t.note)}{'☆'.repeat(5 - t.note)}
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <svg 
+                          key={i} 
+                          width="16" 
+                          height="16" 
+                          viewBox="0 0 24 24" 
+                          fill={i < t.note ? "var(--color-gold)" : "none"} 
+                          stroke="var(--color-gold)" 
+                          strokeWidth="1"
+                          style={{ marginRight: '2px' }}
+                        >
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                      ))}
                     </div>
                     <p className="testimonial-card__text">{t.texte}</p>
                     <p className="testimonial-card__author">{t.auteur}</p>

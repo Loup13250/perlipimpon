@@ -114,21 +114,28 @@ function ArticleForm({
     setForm((prev) => ({ ...prev, [key]: value }));
   };
 
-  const handlePhotoUpload = async (files: FileList | null) => {
+  const handlePhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
     if (!files) return;
-    const newPhotos = [...form.photos];
+
+    const newPhotosBase64: string[] = [];
 
     for (const file of Array.from(files)) {
-      if (newPhotos.length >= 4) break; // Max 4 photos
       try {
         const base64 = await fileToBase64(file);
-        newPhotos.push(base64);
+        newPhotosBase64.push(base64);
       } catch (err) {
         console.error('Erreur upload photo:', err);
       }
     }
 
-    updateField('photos', newPhotos);
+    setForm((prev) => {
+      const updatedPhotos = [...prev.photos, ...newPhotosBase64].slice(0, 4);
+      return { ...prev, photos: updatedPhotos };
+    });
+
+    // Réinitialise l'input pour permettre de sélectionner les mêmes fichiers si besoin
+    e.target.value = '';
   };
 
   const removePhoto = (index: number) => {
@@ -223,7 +230,7 @@ function ArticleForm({
               type="file"
               accept="image/*"
               multiple
-              onChange={(e) => handlePhotoUpload(e.target.files)}
+              onChange={handlePhotoUpload}
               style={{ display: 'none' }}
             />
 
@@ -444,11 +451,11 @@ function SiteConfigForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
             <p style={{ color: 'var(--color-gray-500)', fontSize: '0.8rem', marginBottom: '1rem' }}>Les étapes de fabrication affichées sur la page À propos.</p>
             {(form.processSteps || []).map((step, index) => (
               <div key={index} style={{ border: '1px solid var(--color-gray-200)', padding: '1rem', borderRadius: 'var(--radius-md)', marginBottom: '1rem', position: 'relative' }}>
-                <button type="button" className="btn btn--danger btn--sm" style={{ position: 'absolute', top: '10px', right: '10px', padding: '4px 8px' }} onClick={() => {
+                <button type="button" className="btn btn--outline btn--sm" style={{ position: 'absolute', top: '10px', right: '10px', padding: '6px 10px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)', background: 'transparent' }} title="Supprimer cette étape" onClick={() => {
                   if (window.confirm("Êtes-vous sûr de vouloir supprimer cette étape ?")) {
                     const arr = [...form.processSteps]; arr.splice(index, 1); handleChange('processSteps', arr);
                   }
-                }}>✕</button>
+                }}>🗑️</button>
                 <div className="admin-form__grid">
                   <div className="form-group">
                     <label>Étape N° {index + 1} - Titre</label>
@@ -476,11 +483,11 @@ function SiteConfigForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
             <p style={{ color: 'var(--color-gray-500)', fontSize: '0.8rem', marginBottom: '1rem' }}>Saisissez ici les meilleurs retours de vos clients affichés en page Héraut.</p>
             {(form.testimonials || []).map((t, index) => (
               <div key={t.id} style={{ border: '1px solid var(--color-gray-200)', padding: '1rem', borderRadius: 'var(--radius-md)', marginBottom: '1rem', position: 'relative' }}>
-                <button type="button" className="btn btn--danger btn--sm" style={{ position: 'absolute', top: '10px', right: '10px', padding: '4px 8px' }} onClick={() => {
+                <button type="button" className="btn btn--outline btn--sm" style={{ position: 'absolute', top: '10px', right: '10px', padding: '6px 10px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)', background: 'transparent' }} title="Supprimer ce témoignage" onClick={() => {
                   if (window.confirm("Êtes-vous sûr de vouloir supprimer ce témoignage ?")) {
                     const arr = [...form.testimonials]; arr.splice(index, 1); handleChange('testimonials', arr);
                   }
-                }}>✕</button>
+                }}>🗑️</button>
                 <div className="admin-form__grid">
                   <div className="form-group">
                     <label>Auteur</label>
@@ -531,7 +538,7 @@ function CategoriesForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
     }
   };
   const addCategory = () => {
-    setForm(prev => ({ ...prev, categories: [...prev.categories, { name: 'Nouvelle', image: '', color: '#c8a07a' }] }));
+    setForm(prev => ({ ...prev, categories: [...prev.categories, { name: 'Nouvelle', image: '' }] }));
   };
   const handleSubmit = (e: FormEvent) => { e.preventDefault(); onSave(form); };
 
@@ -544,22 +551,9 @@ function CategoriesForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
       <div className="config-categories">
         {form.categories.map((cat, index) => (
           <div key={`cat-${cat.name}-${index}`} className="category-edit-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem', alignItems: 'center', background: 'var(--color-white)', padding: '1rem', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)' }}>
-            <div style={{ flexShrink: 0, width: '64px', height: '64px', borderRadius: 'var(--radius-sm)', overflow: 'hidden', background: 'var(--color-black)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem' }}>
-              {cat.image ? <img src={cat.image} alt="cat" style={{width: '100%', height:'100%', objectFit:'cover'}} /> : '🌙'}
-            </div>
+
             <input type="text" value={cat.name} onChange={e => updateCategory(index, 'name', e.target.value)} placeholder="Nom de la catégorie" style={{ flex: '1 1 150px', padding: '0.75rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-gray-300)' }} required />
             
-            {/* Color picker pour le bracelet */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '.4rem', flexShrink: 0 }}>
-              <input
-                type="color"
-                value={cat.color || '#c8a07a'}
-                onChange={e => updateCategory(index, 'color', e.target.value)}
-                title="Couleur de la perle"
-                style={{ width: '40px', height: '40px', border: '1px solid var(--color-gray-300)', borderRadius: 'var(--radius-md)', cursor: 'pointer', padding: '2px', backgroundColor: 'var(--color-white)' }}
-              />
-              <span style={{ fontSize: '.7rem', color: 'var(--color-gray-500)' }}>Perle</span>
-            </div>
 
             <label className="btn btn--outline btn--sm" style={{ cursor: 'pointer', margin: 0 }}>
               Modifier l'image
@@ -573,7 +567,7 @@ function CategoriesForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
                 }
               }} />
             </label>
-            <button type="button" className="btn btn--danger btn--sm" style={{ flexShrink: 0 }} onClick={() => removeCategory(index)}>✕</button>
+            <button type="button" className="btn btn--outline btn--sm" style={{ flexShrink: 0, borderColor: 'var(--color-danger)', color: 'var(--color-danger)' }} title="Supprimer cette catégorie" onClick={() => removeCategory(index)}>🗑️</button>
           </div>
         ))}
         <button type="button" className="btn btn--outline btn--sm" onClick={addCategory}>+ Ajouter une catégorie</button>
@@ -669,7 +663,12 @@ export default function AdminPage() {
   // Rendu Unique (No Early Return)
   // ──────────────────────────────────────────────
   return (
-    <div className="admin-page">
+    <div className="admin-page" style={{ position: 'relative', overflowX: 'hidden' }}>
+      {/* Décorations Florales */}
+      <div style={{ position: 'absolute', top: '15%', left: '-20px', fontSize: '8rem', opacity: 0.1, pointerEvents: 'none', transform: 'rotate(15deg)' }}>🌸</div>
+      <div style={{ position: 'absolute', top: '45%', right: '-30px', fontSize: '10rem', opacity: 0.08, pointerEvents: 'none', transform: 'rotate(-20deg)' }}>🌿</div>
+      <div style={{ position: 'absolute', bottom: '10%', left: '-10px', fontSize: '7rem', opacity: 0.1, pointerEvents: 'none', transform: 'rotate(45deg)' }}>🌺</div>
+
       {authLoading || configLoading || articlesLoading ? (
         <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <p>Chargement de l'atelier...</p>
@@ -716,7 +715,7 @@ export default function AdminPage() {
           {adminTab === 'articles' && (
             <div className="admin-list">
               <div className="admin-list__header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
                   <h2 style={{ margin: 0 }}>Vos Créations ({articles.length})</h2>
                   
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -798,10 +797,10 @@ export default function AdminPage() {
                       </div>
                       <div className="article-row__category">
                         {article.vendu ? (
-                          <span className="badge badge--danger" style={{ marginRight: '0.5rem' }}>Vendu</span>
+                          <span className="badge badge--danger">Vendu</span>
                         ) : null}
                         {article.enVedette ? (
-                          <span className="badge" style={{ marginRight: '0.5rem', background: 'var(--color-gold-light)', color: 'var(--color-black)', border: '1px solid var(--color-gold)' }}>Coup de Coeur</span>
+                          <span className="badge" style={{ background: 'var(--color-gold-light)', color: 'var(--color-black)', border: '1px solid var(--color-gold)' }}>Coup de Coeur</span>
                         ) : null}
                         <span className="badge badge--dark">{article.categorie}</span>
                       </div>

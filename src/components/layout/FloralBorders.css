@@ -5,7 +5,8 @@
 
 .floral-frame {
   position: fixed;
-  inset: 0; /* Retour au mode Edge-to-Edge (collé au bord) */
+  inset: 0;
+  /* Retour au mode Edge-to-Edge (collé au bord) */
   pointer-events: none;
   z-index: 2000;
   display: flex;
@@ -16,8 +17,15 @@
 }
 
 @keyframes floral-fade-in {
-  from { opacity: 0; }
-  to { opacity: 0.6; } /* Opacité claire et nette avec le filtre de transparence */
+  from {
+    opacity: 0.2;
+  }
+
+  to {
+    opacity: 0.8;
+  }
+
+  /* Opacité claire et nette avec le filtre de transparence */
 }
 
 .floral-border {
@@ -27,18 +35,18 @@
   overflow: hidden;
   position: relative;
   background-color: transparent;
-  
+
   /* Masquage doux vertical */
-  mask-image: linear-gradient(to bottom, 
-    transparent 0%, 
-    black 15%, 
-    black 85%, 
-    transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, 
-    transparent 0%, 
-    black 15%, 
-    black 85%, 
-    transparent 100%);
+  mask-image: linear-gradient(to bottom,
+      transparent 0%,
+      black 15%,
+      black 85%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom,
+      transparent 0%,
+      black 15%,
+      black 85%,
+      transparent 100%);
 }
 
 .floral-border-inner {
@@ -48,23 +56,26 @@
   height: 100%;
   background-repeat: repeat-y;
   background-size: 100% auto;
-  
+
   /* SOLUTION TECHNIQUE ULTIME :
      Utilisation du filtre SVG pour transformer le blanc en transparence réelle.
      Contrairement au 'blend-mode', cela ne crée pas d'ombres sur les bords. */
   filter: url(#remove-white-filter);
-  
+
   /* Retour à l'image originale de haute qualité */
   background-image: url('/images/decorations/floral-left-v2.png');
 }
 
 .floral-border--left .floral-border-inner {
-  left: -15px; /* On retire le bord technique blanc */
+  left: -15px;
+  /* On retire le bord technique blanc */
 }
 
 .floral-border--right .floral-border-inner {
-  transform: scaleX(-1); /* Miroir parfait */
-  right: -15px; /* Rognage symétrique droit */
+  transform: scaleX(-1);
+  /* Miroir parfait */
+  right: -15px;
+  /* Rognage symétrique droit */
 }
 
 /* ── Cas particulier de la Page d'Accueil ───── */
@@ -81,8 +92,13 @@
 
 /* ── Responsive ───────────────────────────── */
 @media (max-width: 1400px) {
-  .floral-border { width: 80px; }
-  .floral-border-inner { width: 100px; }
+  .floral-border {
+    width: 80px;
+  }
+
+  .floral-border-inner {
+    width: 100px;
+  }
 }
 
 @media (max-width: 1100px) {
@@ -94,11 +110,7 @@
 
 @media (max-width: 1301px) {
   .floral-frame {
-    display: none; /* Désactivé en dessous de 1301px pour éviter les chevauchements */
+    display: none;
+    /* Désactivé en dessous de 1301px pour éviter les chevauchements */
   }
 }
-
-
-
-
-
