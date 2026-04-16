@@ -18,14 +18,7 @@ export function useConfig() {
         const existing = docSnap.data() as Partial<SiteConfig>;
         const merged = { ...defaultSiteConfig, ...existing };
         merged.categories = existing.categories?.length ? existing.categories : defaultSiteConfig.categories;
-        // Si le tableau de témoignages Firestore est vide ou contient des anciens tests (<=2 entrées courtes),
-        // on force les témoignages par défaut bien rédigés
-        const firestoreTests = existing.testimonials || [];
-        const allShort = firestoreTests.every(t => !t.texte || t.texte.length < 30);
-        merged.testimonials = (firestoreTests.length === 0 || (firestoreTests.length <= 2 && allShort))
-          ? defaultSiteConfig.testimonials
-          : firestoreTests;
-        // Même logique pour les étapes de processus
+        merged.testimonials = existing.testimonials?.length ? existing.testimonials : defaultSiteConfig.testimonials;
         merged.processSteps = existing.processSteps?.length ? existing.processSteps : defaultSiteConfig.processSteps;
         if (!existing.heroTitle2) merged.heroTitle2 = defaultSiteConfig.heroTitle2;
         if (!existing.heroImage) merged.heroImage = defaultSiteConfig.heroImage;

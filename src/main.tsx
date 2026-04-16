@@ -18,10 +18,8 @@ import './styles/admin.css';
 
 import App from './App';
 
-// Force reset local storage to load new sample media
-localStorage.removeItem('articles');
-localStorage.removeItem('perlipimpon_articles_v2');
-localStorage.removeItem('perlipimpon_config_v2');
+// Le chargement des données se fait désormais via Firestore avec migration automatique.
+
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
