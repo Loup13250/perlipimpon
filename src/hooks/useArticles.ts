@@ -1,48 +1,30 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
-import type { Article, ArticleFormData } from '../types';
 import { db } from '../lib/firebase';
 import { collection, doc, onSnapshot, setDoc, deleteDoc, updateDoc, query } from 'firebase/firestore';
 import { generateId } from '../utils/helpers';
 import { sampleArticles } from '../data/sampleArticles';
+import type { Article, ArticleFormData } from '../types';
 
 const ARTICLES_COLLECTION = 'articles';
 
+/**
+ * Hook useArticles — Gestion 100% cloud des créations.
+ * Plus de migration localStorage ni d'injection automatique.
+ * La base de données est l'unique source de vérité.
+ */
 export function useArticles() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [articlesLoading, setArticlesLoading] = useState(true);
 
   useEffect(() => {
     const q = query(collection(db, ARTICLES_COLLECTION));
-    const unsubscribe = onSnapshot(q, async (snapshot) => {
-      // Auto-migration: si Firestore est vide et qu'il y a des données en localStorage, on les migre
+    
+    // Écoute en temps réel des articles
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      // Si vide, on ne fait rien d'automatique. L'utilisateur a le contrôle.
       if (snapshot.empty) {
-        const LOCAL_KEY = 'perlipimpon_articles_v2';
-        try {
-          const localData = localStorage.getItem(LOCAL_KEY);
-          if (localData) {
-            const localArticles: Article[] = JSON.parse(localData);
-            if (localArticles.length > 0) {
-              console.info(`[Migration] ${localArticles.length} articles trouvés en localStorage. Migration vers Firestore...`);
-              for (const article of localArticles) {
-                if (!article.id) article.id = generateId();
-                await setDoc(doc(db, ARTICLES_COLLECTION, article.id), article);
-              }
-              console.info('[Migration] Articles migrés avec succès !');
-              return; // onSnapshot se rechargera automatiquement
-            }
-          }
-          // Si localStorage vide aussi → injecter données de démo
-          for (const article of sampleArticles) {
-            await setDoc(doc(db, ARTICLES_COLLECTION, article.id), article);
-          }
-        } catch (e) {
-          console.warn('[Migration] Erreur lors de la migration locale:', e);
-          // Si erreur JSON, injecter les samples quand même
-          for (const article of sampleArticles) {
-            await setDoc(doc(db, ARTICLES_COLLECTION, article.id), article);
-          }
-        }
-        setTimeout(() => setArticlesLoading(false), 2000);
+        setArticles([]);
+        setArticlesLoading(false);
         return;
       }
 
@@ -55,13 +37,14 @@ export function useArticles() {
         };
       }) as Article[];
 
+      // Tri par date de création (plus récent en premier)
       const getTime = (iso: string) => iso ? new Date(iso).getTime() : 0;
       updatedArticles.sort((a, b) => getTime(b.dateCreation) - getTime(a.dateCreation));
 
       setArticles(updatedArticles);
       setArticlesLoading(false);
     }, (error) => {
-      console.error('Firebase Articles Error', error);
+      console.error('[Firebase] Erreur Articles Sync:', error);
       setArticlesLoading(false);
     });
 
@@ -72,10 +55,7 @@ export function useArticles() {
   const featuredArticles = useMemo(() => articles.filter((a) => a.enVedette), [articles]);
 
   const getArticle = useCallback(
-    (id: string): Article | undefined => {
-      // S'assurer que les articles sont chargés et forcés en array
-      return (articles || []).find((a) => a.id === id);
-    },
+    (id: string): Article | undefined => (articles || []).find((a) => a.id === id),
     [articles]
   );
 
@@ -93,7 +73,7 @@ export function useArticles() {
       await setDoc(doc(db, ARTICLES_COLLECTION, newId), newArticle);
       return newArticle;
     } catch (e) {
-      console.error("Error adding article", e);
+      console.error("[Firebase] Erreur ajout article:", e);
       return null;
     }
   }, []);
@@ -107,7 +87,7 @@ export function useArticles() {
         });
         return true;
       } catch (e) {
-        console.error("Error updating article", e);
+        console.error("[Firebase] Erreur modification article:", e);
         return false;
       }
     },
@@ -118,42 +98,39 @@ export function useArticles() {
     try {
       await deleteDoc(doc(db, ARTICLES_COLLECTION, id));
     } catch (e) {
-      console.error("Error deleting article", e);
+      console.error("[Firebase] Erreur suppression article:", e);
     }
   }, []);
 
-  const resetToSample = useCallback(async (): Promise<void> => {
-    try {
-      for (const article of sampleArticles) {
-        await setDoc(doc(db, ARTICLES_COLLECTION, article.id), article);
-      }
-    } catch (e) {
-      console.error("Error resetting", e);
-    }
-  }, []);
-
-  const forceSyncWithSamples = useCallback(async (): Promise<void> => {
+  /**
+   * Injecte les données de démonstration dans Firestore
+   */
+  const forceInjectSamples = useCallback(async (): Promise<void> => {
     try {
       setArticlesLoading(true);
-      // On injecte les nouveaux samples
       for (const article of sampleArticles) {
         await setDoc(doc(db, ARTICLES_COLLECTION, article.id), article);
       }
       setArticlesLoading(false);
     } catch (e) {
-      console.error("Error force syncing", e);
+      console.error("[Firebase] Erreur injection démos:", e);
       setArticlesLoading(false);
     }
   }, []);
 
+  /**
+   * Remplace tous les articles par une nouvelle liste
+   */
   const replaceAll = useCallback(async (newArticles: Article[]): Promise<void> => {
     try {
+      // Note: Pour une vraie sécurité, on devrait supprimer les anciens avant.
+      // Mais ici on fait de l'upsert/merge par ID.
       for (const article of newArticles) {
-        if (!article.id) article.id = generateId();
-        await setDoc(doc(db, ARTICLES_COLLECTION, article.id), article);
+        const id = article.id || generateId();
+        await setDoc(doc(db, ARTICLES_COLLECTION, id), { ...article, id });
       }
     } catch (e) {
-      console.error("Error replacing items", e);
+      console.error("[Firebase] Erreur remplacement global:", e);
     }
   }, []);
 
@@ -166,8 +143,7 @@ export function useArticles() {
     addArticle,
     updateArticle,
     deleteArticle,
-    resetToSample,
-    forceSyncWithSamples,
+    forceInjectSamples,
     replaceAll,
   };
 }

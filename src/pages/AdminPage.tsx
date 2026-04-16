@@ -271,9 +271,9 @@ function ArticleForm({
 // ──────────────────────────────────────────────
 // Formulaire Paramètres Généraux
 // ──────────────────────────────────────────────
-function SiteConfigForm({ config, onSave }: { config: SiteConfig, onSave: (c: SiteConfig) => void }) {
+function SiteConfigForm({ config, onSave, onInjectSamples }: { config: SiteConfig, onSave: (c: SiteConfig) => void, onInjectSamples: () => void }) {
   const [form, setForm] = useState<SiteConfig>(config);
-  const [activeTab, setActiveTab] = useState<'general' | 'hero' | 'about' | 'testimonials'>('general');
+  const [activeTab, setActiveTab] = useState<'general' | 'hero' | 'about' | 'testimonials' | 'maintenance'>('general');
   const handleChange = (field: keyof SiteConfig, value: any) => setForm(prev => ({ ...prev, [field]: value }));
   const handleSubmit = (e: FormEvent) => { e.preventDefault(); onSave(form); };
 
@@ -294,6 +294,7 @@ function SiteConfigForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
     { id: 'hero', label: 'Accueil & CTA', icon: '🏠' },
     { id: 'about', label: 'À Propos', icon: '📖' },
     { id: 'testimonials', label: 'Avis Clients', icon: '⭐' },
+    { id: 'maintenance', label: 'Maintenance', icon: '🛠️' },
   ] as const;
 
   return (
@@ -500,6 +501,45 @@ function SiteConfigForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
           </>
         )}
 
+        {/* TAB 5: MAINTENANCE */}
+        {activeTab === 'maintenance' && (
+          <>
+            <h2>Maintenance & Données</h2>
+            <div className="maintenance-section" style={{ background: 'rgba(201,169,110,0.05)', padding: '1.5rem', borderRadius: '16px', border: '1px dashed rgba(201,169,110,0.3)' }}>
+              <h3>🧪 Données de démonstration</h3>
+              <p style={{ color: 'var(--color-gray-600)', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
+                Si votre site est vide (ou si vous voulez simplement voir le rendu "Haute Joaillerie"), vous pouvez injecter les 12 articles et les 6 avis clients que j'ai préparés pour vous.
+              </p>
+              
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <button 
+                  type="button" 
+                  className="btn btn--outline" 
+                  style={{ color: 'var(--color-gold-deep)', borderColor: 'var(--color-gold-deep)' }}
+                  onClick={() => {
+                    if (window.confirm("Voulez-vous injecter les 12 articles démo dans votre boutique ? (Vos articles actuels ne seront pas supprimés, mais les doublons seront fusionnés)")) {
+                      onInjectSamples();
+                    }
+                  }}
+                >
+                  🚀 Injecter 12 articles démo
+                </button>
+              </div>
+
+              <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(201,169,110,0.15)' }}>
+                <h3>📦 État de la Synchronisation</h3>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-success)', fontSize: '0.9rem', fontWeight: 600 }}>
+                  <span style={{ display: 'inline-block', width: '10px', height: '10px', borderRadius: '50%', background: 'currentColor' }}></span>
+                  Base de données Cloud (Firestore) connectée
+                </div>
+                <p style={{ color: 'var(--color-gray-500)', fontSize: '0.8rem', marginTop: '0.5rem' }}>
+                  Vos modifications sont sauvegardées en temps réel sur le cloud et visibles 24h/24 partout.
+                </p>
+              </div>
+            </div>
+          </>
+        )}
+
         <div className="admin-form__actions" style={{ marginTop: '2rem', borderTop: '1px solid rgba(201,169,110,0.15)', paddingTop: '1.5rem' }}>
           <button type="submit" className="btn btn--primary btn--lg">💾 Enregistrer</button>
         </div>
@@ -585,7 +625,7 @@ function CategoriesForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
 // ──────────────────────────────────────────────
 export default function AdminPage() {
   const { isAuthenticated, authLoading, login, logout } = useAuth();
-  const { articles, articlesLoading, addArticle, updateArticle, deleteArticle, replaceAll } = useArticles();
+  const { articles, articlesLoading, addArticle, updateArticle, deleteArticle, replaceAll, forceInjectSamples } = useArticles();
   const { config, configLoading, setConfig } = useConfig();
   const toast = useToast();
 
@@ -691,6 +731,15 @@ export default function AdminPage() {
     };
     input.click();
   }, [replaceAll, setConfig, toast]);
+
+  const handleInjectSamples = useCallback(async () => {
+    try {
+      await forceInjectSamples();
+      toast.success('Démos injectées', 'Les modèles de créations ont fait leur apparition !');
+    } catch {
+      toast.error('Erreur', 'Impossible d\'injecter les démos.');
+    }
+  }, [forceInjectSamples, toast]);
 
   const onSaveConfig = useCallback(async (newConfig: SiteConfig) => {
     try {
@@ -810,7 +859,7 @@ export default function AdminPage() {
           </div>
 
           {/* Onglets */}
-          {adminTab === 'config' && <SiteConfigForm config={config} onSave={onSaveConfig} />}
+          {adminTab === 'config' && <SiteConfigForm config={config} onSave={onSaveConfig} onInjectSamples={handleInjectSamples} />}
           {adminTab === 'categories' && <CategoriesForm config={config} onSave={onSaveConfig} />}
 
           {adminTab === 'articles' && (

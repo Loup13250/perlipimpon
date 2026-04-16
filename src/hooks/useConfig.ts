@@ -1,74 +1,65 @@
 import { useState, useCallback, useEffect } from 'react';
-import type { SiteConfig } from '../types';
-import { defaultSiteConfig } from '../data/sampleArticles';
 import { db } from '../lib/firebase';
 import { doc, onSnapshot, setDoc } from 'firebase/firestore';
 import { removeUndefined } from '../utils/sanitize';
+import { defaultSiteConfig } from '../data/sampleArticles';
+import type { SiteConfig } from '../types';
 
 const CONFIG_DOC = 'main';
 
+/**
+ * Hook useConfig — Gestion de la configuration du site.
+ * Supprime les automatismes et migrations pour une synchro 100% cloud.
+ */
 export function useConfig() {
   const [config, setConfigState] = useState<SiteConfig>(defaultSiteConfig);
   const [configLoading, setConfigLoading] = useState(true);
 
   useEffect(() => {
     const docRef = doc(db, 'config', CONFIG_DOC);
-    const unsubscribe = onSnapshot(docRef, async (docSnap) => {
+    
+    // Écoute en temps réel de la configuration
+    const unsubscribe = onSnapshot(docRef, (docSnap) => {
       if (docSnap.exists()) {
-        const existing = docSnap.data() as Partial<SiteConfig>;
-        const merged = { ...defaultSiteConfig, ...existing };
-        merged.categories = existing.categories?.length ? existing.categories : defaultSiteConfig.categories;
-        merged.testimonials = existing.testimonials?.length ? existing.testimonials : defaultSiteConfig.testimonials;
-        merged.processSteps = existing.processSteps?.length ? existing.processSteps : defaultSiteConfig.processSteps;
-        if (!existing.heroTitle2) merged.heroTitle2 = defaultSiteConfig.heroTitle2;
-        if (!existing.heroImage) merged.heroImage = defaultSiteConfig.heroImage;
-        if (!existing.ctaTitle) merged.ctaTitle = defaultSiteConfig.ctaTitle;
-        setConfigState(merged as SiteConfig);
+        const data = docSnap.data() as Partial<SiteConfig>;
+        
+        // Merge avec les valeurs par défaut pour éviter les erreurs sur les nouveaux champs
+        const merged: SiteConfig = {
+          ...defaultSiteConfig,
+          ...data,
+          // Fallbacks pour les tableaux pour éviter les erreurs de mapping
+          categories: data.categories?.length ? data.categories : defaultSiteConfig.categories,
+          testimonials: data.testimonials || [],
+          processSteps: data.processSteps || [],
+        };
+        
+        setConfigState(merged);
       } else {
-        // Auto-migration: essayer de récupérer la config depuis localStorage
-        const LOCAL_KEY = 'perlipimpon_config_v2';
-        try {
-          const localData = localStorage.getItem(LOCAL_KEY);
-          if (localData) {
-            const localConfig: Partial<SiteConfig> = JSON.parse(localData);
-            const merged = { ...defaultSiteConfig, ...localConfig };
-            console.info('[Migration] Config trouvée en localStorage. Migration vers Firestore...');
-            await saveToFirestore(merged as SiteConfig);
-            setConfigState(merged as SiteConfig);
-          } else {
-            await saveToFirestore(defaultSiteConfig);
-            setConfigState(defaultSiteConfig);
-          }
-        } catch (e) {
-          console.warn('[Migration] Erreur config migration:', e);
-          await saveToFirestore(defaultSiteConfig);
-          setConfigState(defaultSiteConfig);
-        }
-        // Sécurité : débloquer le loading après le déclenchement de la migration
-        setTimeout(() => setConfigLoading(false), 2000);
+        // Le document n'existe pas encore (premier lancement après reset base)
+        console.warn('[Firebase] Config "main" introuvable. Utilisation des valeurs par défaut.');
+        setConfigState(defaultSiteConfig);
       }
       setConfigLoading(false);
     }, (error) => {
-      console.error('Firebase Config Error', error);
+      console.error('[Firebase] Erreur Config Sync:', error);
       setConfigLoading(false);
     });
 
     return unsubscribe;
   }, []);
 
-  const saveToFirestore = useCallback(async (data: SiteConfig) => {
+  /**
+   * Enregistre la configuration dans Firestore
+   */
+  const setConfig = useCallback(async (newConfig: SiteConfig) => {
     try {
-      const sanitized = removeUndefined(data);
+      const sanitized = removeUndefined(newConfig);
       const docRef = doc(db, 'config', CONFIG_DOC);
       await setDoc(docRef, sanitized);
     } catch (e) {
-      console.error("Error saving config to Firestore", e);
+      console.error("[Firebase] Erreur sauvegarde config:", e);
     }
   }, []);
-
-  const setConfig = useCallback(async (newConfig: SiteConfig) => {
-    await saveToFirestore(newConfig);
-  }, [saveToFirestore]);
 
   return {
     config,

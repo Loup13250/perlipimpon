@@ -81,53 +81,62 @@ export default function HomePage() {
                 <p>Découvrez nos créations les plus appréciées</p>
               </div>
 
-              <div className="featured__grid" ref={featuredRef}>
-                {featuredArticles.slice(0, 6).map((article) => (
-                  <Link
-                    to={`/creations/${article.id}`}
-                    key={article.id}
-                    className="product-card reveal-item"
-                  >
-                    <div className="product-card__image">
-                      {article.photos && article.photos.length > 0 ? (
-                        <img src={article.photos[0]} alt={article.titre} />
-                      ) : (
-                        <div className="product-card__placeholder">
-                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-                          </svg>
-                          <span>{article.categorie}</span>
+              {featuredArticles.length > 0 ? (
+                <>
+                  <div className="featured__grid" ref={featuredRef}>
+                    {featuredArticles.slice(0, 6).map((article) => (
+                      <Link
+                        to={`/creations/${article.id}`}
+                        key={article.id}
+                        className="product-card reveal-item"
+                      >
+                        <div className="product-card__image">
+                          {article.photos && article.photos.length > 0 ? (
+                            <img src={article.photos[0]} alt={article.titre} />
+                          ) : (
+                            <div className="product-card__placeholder">
+                              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                              </svg>
+                              <span>{article.categorie}</span>
+                            </div>
+                          )}
+                          {article.vendu && (
+                            <div className="product-card__banner-vendu"><span>Vendu</span></div>
+                          )}
+                          {!article.vendu && (
+                            <div className="product-card__badge">Coup de Cœur</div>
+                          )}
                         </div>
-                      )}
-                      {article.vendu && (
-                        <div className="product-card__banner-vendu"><span>Vendu</span></div>
-                      )}
-                      {!article.vendu && (
-                        <div className="product-card__badge">Coup de Cœur</div>
-                      )}
-                    </div>
-                    <div className="product-card__body">
-                      <p className="product-card__category">{article.categorie}</p>
-                      <h3 className="product-card__title">{article.titre}</h3>
-                      <p className="product-card__description">
-                        {truncateText(article.description, 90)}
-                      </p>
-                      <div className="product-card__footer">
-                        <span className="product-card__price">
-                          {formatPrice(article.prix)}
-                        </span>
-                        <span className="product-card__cta-hint">Voir le détail →</span>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+                        <div className="product-card__body">
+                          <p className="product-card__category">{article.categorie}</p>
+                          <h3 className="product-card__title">{article.titre}</h3>
+                          <p className="product-card__description">
+                            {truncateText(article.description, 90)}
+                          </p>
+                          <div className="product-card__footer">
+                            <span className="product-card__price">
+                              {formatPrice(article.prix)}
+                            </span>
+                            <span className="product-card__cta-hint">Voir le détail →</span>
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
 
-              <div className="featured__cta">
-                <Link to="/creations" className="btn btn--dark btn--lg">
-                  Voir toutes les créations
-                </Link>
-              </div>
+                  <div className="featured__cta">
+                    <Link to="/creations" className="btn btn--dark btn--lg">
+                      Voir toutes les créations
+                    </Link>
+                  </div>
+                </>
+              ) : (
+                <div style={{ textAlign: 'center', padding: 'var(--space-2xl) 0', color: 'var(--color-gray-500)', fontStyle: 'italic' }}>
+                  <p>Une nouvelle collection "Coup de Cœur" est en cours de préparation... ✨</p>
+                  <Link to="/creations" className="btn btn--outline" style={{ marginTop: 'var(--space-md)' }}>Explorer la boutique</Link>
+                </div>
+              )}
             </div>
           </section>
 
