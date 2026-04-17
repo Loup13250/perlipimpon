@@ -45,7 +45,8 @@
   min-width: 0;
 }
 
-.header-brand h1 {
+/* Nom de la marque — utilise un span (pas h1) pour éviter le conflit SEO avec les h1 de pages */
+.header-brand__name {
   font-family: var(--font-display);
   font-size: var(--text-xl);
   font-weight: 600;
@@ -53,7 +54,7 @@
   letter-spacing: 0.02em;
 }
 
-.header-brand h1 span {
+.header-brand__name span {
   color: var(--color-gold);
 }
 
@@ -159,7 +160,7 @@
   position: relative;
 }
 
-/* Ornement artisanal en haut du footer (remplace les emojis) */
+/* Ornement artisanal en haut du footer */
 .site-footer::before {
   content: '';
   position: absolute;
@@ -275,7 +276,7 @@
 
 /* ── Layout wrapper ───────────────────────── */
 .site-layout {
-  position: relative; /* Nécessaire pour les fleurs absolues sur l'accueil */
+  position: relative;
   padding-top: var(--header-height);
   min-height: 100vh;
   display: flex;
@@ -341,49 +342,17 @@
   }
 }
 
-/* Fix mobile collision pour iPhone SE / petits mobiles */
+/* Petits mobiles (iPhone SE, < 400px) */
 @media (max-width: 400px) {
   .header-inner {
     padding: 0 var(--space-md);
   }
-  
-  .header-brand h1 {
-    font-size: 1.15rem;
-    letter-spacing: 0;
-  }
-  
-  .brand-icon {
-    height: 30px;
-  }
-}
 
-/* Fix mobile collision pour iPhone SE / petits mobiles */
-@media (max-width: 400px) {
-  .header-inner {
-    padding: 0 var(--space-md);
-  }
-  
-  .header-brand h1 {
-    font-size: 1.15rem;
-    letter-spacing: 0;
-  }
-  
-  .brand-icon {
-    height: 30px;
-  }
-}
-
-/* Fix mobile collision pour écrans < 400px (iPhone SE, etc.) */
-@media (max-width: 400px) {
-  .header-inner {
-    padding: 0 var(--space-md);
-  }
-  
-  .header-brand h1 {
+  .header-brand__name {
     font-size: var(--text-lg);
     letter-spacing: 0.01em;
   }
-  
+
   .brand-icon {
     height: 32px;
   }

@@ -4,7 +4,6 @@
 
 /**
  * Génère un ID unique basé sur le timestamp + random.
- * Suffisant pour du localStorage, pas besoin d'UUID externe.
  */
 export function generateId(): string {
   const timestamp = Date.now().toString(36);
@@ -35,7 +34,7 @@ export function formatDate(isoString: string): string {
 }
 
 /**
- * Tronque un texte à la longueur donnée, ajoute "..." si nécessaire.
+ * Tronque un texte à la longueur donnée, ajoute "…" si nécessaire.
  */
 export function truncateText(text: string, maxLength: number): string {
   if (text.length <= maxLength) return text;
@@ -53,28 +52,4 @@ export function fileToBase64(file: File): Promise<string> {
     reader.onerror = reject;
     reader.readAsDataURL(file);
   });
-}
-
-/**
- * Crée un slug à partir d'un titre (pour les URLs propres).
- */
-export function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '') // supprime les accents
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
-}
-
-/**
- * Mélange un tableau (Fisher-Yates) — utile pour afficher des articles aléatoires.
- */
-export function shuffleArray<T>(arr: T[]): T[] {
-  const shuffled = [...arr];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
 }

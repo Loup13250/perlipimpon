@@ -43,13 +43,11 @@ export function useScrollReveal<T extends HTMLElement>(
 }
 
 /**
- * Version pour plusieurs éléments à la fois.
- * Applique l'observation sur tous les enfants d'un conteneur
- * ayant la classe `.reveal-item`.
+ * Version pour plusieurs éléments enfants ayant la classe `.reveal-item`.
  */
 export function useScrollRevealGroup(
   options: ScrollRevealOptions = {},
-  dependencies: any[] = []
+  dependencies: unknown[] = []
 ) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { threshold = 0.1, rootMargin = '0px 0px -50px 0px', once = true } = options;
@@ -87,9 +85,9 @@ export function useScrollRevealGroup(
 
     return () => {
       clearTimeout(t);
-      if (observer) observer.disconnect();
+      observer.disconnect();
     };
-  }, [threshold, rootMargin, once, dependencies]);
+  }, [threshold, rootMargin, once, ...dependencies]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return containerRef;
 }

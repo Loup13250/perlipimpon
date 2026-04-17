@@ -3,7 +3,6 @@ import {
   signInWithEmailAndPassword,
   signOut as firebaseSignOut,
   onAuthStateChanged,
-  updatePassword,
   type User,
 } from 'firebase/auth';
 import { auth } from '../lib/firebase';
@@ -34,25 +33,10 @@ export function useAuth() {
     await firebaseSignOut(auth);
   }, []);
 
-  const changePassword = useCallback(
-    async (_currentPassword: string, newPassword: string): Promise<boolean> => {
-      if (!user) return false;
-      try {
-        await updatePassword(user, newPassword);
-        return true;
-      } catch (e) {
-        console.error('Password change error', e);
-        return false;
-      }
-    },
-    [user]
-  );
-
   return {
     isAuthenticated: !!user,
     authLoading,
     login,
     logout,
-    changePassword,
   };
 }

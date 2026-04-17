@@ -1,6 +1,6 @@
 /**
  * Page Boutique — grille filtrable de toutes les créations.
- * Filtres par catégorie (bracelet desktop).
+ * Filtres par catégorie (desktop pill + mobile accordéon).
  * Multi-sélection + toggle.
  */
 
@@ -13,25 +13,20 @@ import { formatPrice, truncateText } from '../utils/helpers';
 import CategoryFilter from '../components/CategoryFilter';
 
 export default function ShopPage() {
-  const { visibleArticles, articlesLoading } = useArticles();
+  const { articles, articlesLoading } = useArticles();
   const { config, configLoading } = useConfig();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // On récupère le filtre catégorie depuis l'URL si on vient de la page d'accueil
+  // Récupère le filtre catégorie depuis l'URL si on vient de la page d'accueil
   const urlCategory = searchParams.get('cat') || '';
   const [activeCategories, setActiveCategories] = useState<string[]>(
     urlCategory ? [urlCategory] : []
   );
 
   const filteredArticles = useMemo(() => {
-    let results = visibleArticles;
-
-    if (activeCategories.length > 0) {
-      results = results.filter((a) => activeCategories.includes(a.categorie));
-    }
-
-    return results;
-  }, [visibleArticles, activeCategories]);
+    if (activeCategories.length === 0) return articles;
+    return articles.filter((a) => activeCategories.includes(a.categorie));
+  }, [articles, activeCategories]);
 
   const gridRef = useScrollRevealGroup({}, [filteredArticles]);
 
@@ -42,7 +37,6 @@ export default function ShopPage() {
 
     setActiveCategories(nextCategories);
 
-    // Sync URL
     if (nextCategories.length === 1) {
       setSearchParams({ cat: nextCategories[0] });
     } else if (nextCategories.length === 0) {
@@ -52,20 +46,11 @@ export default function ShopPage() {
     }
   };
 
-  // "Tout" = réinitialiser les catégories
   const handleCategoryAll = () => {
     setActiveCategories([]);
     setSearchParams({});
   };
 
-  const clearFilters = () => {
-    setActiveCategories([]);
-    setSearchParams({});
-  };
-
-  // ──────────────────────────────────────────────
-  // Rendu Unique (Safe Hooks)
-  // ──────────────────────────────────────────────
   return (
     <div className="shop-page">
       <div className="container">
@@ -82,27 +67,13 @@ export default function ShopPage() {
           </div>
         ) : (
           <>
-            {/* ── BRACELET FILTRES (Desktop) ── */}
-            <div className="shop-filters-desktop-wrapper">
-              <CategoryFilter
-                categories={config.categories}
-                activeCategories={activeCategories}
-                onCategoryToggle={handleCategoryToggle}
-                onCategoryAll={handleCategoryAll}
-                onClearFilters={clearFilters}
-              />
-            </div>
-
-            {/* ── FILTRES MOBILE : Accordéon pill ── */}
-            <div className="shop-filters-mobile">
-              <CategoryFilter
-                categories={config.categories}
-                activeCategories={activeCategories}
-                onCategoryToggle={handleCategoryToggle}
-                onCategoryAll={handleCategoryAll}
-                onClearFilters={clearFilters}
-              />
-            </div>
+            {/* Filtres — le composant gère lui-même desktop et mobile */}
+            <CategoryFilter
+              categories={config.categories}
+              activeCategories={activeCategories}
+              onCategoryToggle={handleCategoryToggle}
+              onCategoryAll={handleCategoryAll}
+            />
 
             {/* Compteur */}
             <p className="shop-count">
@@ -122,7 +93,7 @@ export default function ShopPage() {
                   </div>
                   <h3>Aucune création trouvée</h3>
                   <p>Essayez de modifier vos filtres ou retirez les restrictions pour voir plus de résultats.</p>
-                  <button className="btn btn--primary" style={{ marginTop: '1.5rem' }} onClick={clearFilters}>
+                  <button className="btn btn--primary" style={{ marginTop: '1.5rem' }} onClick={handleCategoryAll}>
                     Voir toutes les créations
                   </button>
                 </div>
@@ -147,7 +118,7 @@ export default function ShopPage() {
                       {article.vendu && (
                         <div className="product-card__banner-vendu"><span>Vendu</span></div>
                       )}
-                      {article.enVedette && (
+                      {article.enVedette && !article.vendu && (
                         <div className="product-card__badge">Coup de Cœur</div>
                       )}
                     </div>
@@ -155,12 +126,13 @@ export default function ShopPage() {
                       <p className="product-card__category">{article.categorie}</p>
                       <h3 className="product-card__title">{article.titre}</h3>
                       <p className="product-card__description">
-                        {truncateText(article.description || "", 100)}
+                        {truncateText(article.description || '', 100)}
                       </p>
                       <div className="product-card__footer">
                         <span className="product-card__price">
                           {formatPrice(article.prix || 0)}
                         </span>
+                        <span className="product-card__cta-hint">Voir le détail →</span>
                       </div>
                     </div>
                   </Link>

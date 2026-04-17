@@ -9,8 +9,7 @@ const ARTICLES_COLLECTION = 'articles';
 
 /**
  * Hook useArticles — Gestion 100% cloud des créations.
- * Plus de migration localStorage ni d'injection automatique.
- * La base de données est l'unique source de vérité.
+ * La base de données Firestore est l'unique source de vérité.
  */
 export function useArticles() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -18,10 +17,8 @@ export function useArticles() {
 
   useEffect(() => {
     const q = query(collection(db, ARTICLES_COLLECTION));
-    
-    // Écoute en temps réel des articles
+
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      // Si vide, on ne fait rien d'automatique. L'utilisateur a le contrôle.
       if (snapshot.empty) {
         setArticles([]);
         setArticlesLoading(false);
@@ -51,11 +48,10 @@ export function useArticles() {
     return unsubscribe;
   }, []);
 
-  const visibleArticles = useMemo(() => articles, [articles]);
   const featuredArticles = useMemo(() => articles.filter((a) => a.enVedette), [articles]);
 
   const getArticle = useCallback(
-    (id: string): Article | undefined => (articles || []).find((a) => a.id === id),
+    (id: string): Article | undefined => articles.find((a) => a.id === id),
     [articles]
   );
 
@@ -73,7 +69,7 @@ export function useArticles() {
       await setDoc(doc(db, ARTICLES_COLLECTION, newId), newArticle);
       return newArticle;
     } catch (e) {
-      console.error("[Firebase] Erreur ajout article:", e);
+      console.error('[Firebase] Erreur ajout article:', e);
       return null;
     }
   }, []);
@@ -87,7 +83,7 @@ export function useArticles() {
         });
         return true;
       } catch (e) {
-        console.error("[Firebase] Erreur modification article:", e);
+        console.error('[Firebase] Erreur modification article:', e);
         return false;
       }
     },
@@ -98,7 +94,7 @@ export function useArticles() {
     try {
       await deleteDoc(doc(db, ARTICLES_COLLECTION, id));
     } catch (e) {
-      console.error("[Firebase] Erreur suppression article:", e);
+      console.error('[Firebase] Erreur suppression article:', e);
     }
   }, []);
 
@@ -113,31 +109,28 @@ export function useArticles() {
       }
       setArticlesLoading(false);
     } catch (e) {
-      console.error("[Firebase] Erreur injection démos:", e);
+      console.error('[Firebase] Erreur injection démos:', e);
       setArticlesLoading(false);
     }
   }, []);
 
   /**
-   * Remplace tous les articles par une nouvelle liste
+   * Remplace tous les articles par une nouvelle liste (upsert par ID)
    */
   const replaceAll = useCallback(async (newArticles: Article[]): Promise<void> => {
     try {
-      // Note: Pour une vraie sécurité, on devrait supprimer les anciens avant.
-      // Mais ici on fait de l'upsert/merge par ID.
       for (const article of newArticles) {
         const id = article.id || generateId();
         await setDoc(doc(db, ARTICLES_COLLECTION, id), { ...article, id });
       }
     } catch (e) {
-      console.error("[Firebase] Erreur remplacement global:", e);
+      console.error('[Firebase] Erreur remplacement global:', e);
     }
   }, []);
 
   return {
     articles,
     articlesLoading,
-    visibleArticles,
     featuredArticles,
     getArticle,
     addArticle,

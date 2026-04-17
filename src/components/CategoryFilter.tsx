@@ -11,7 +11,6 @@ interface CategoryFilterProps {
   activeCategories: string[];
   onCategoryToggle: (cat: string) => void;
   onCategoryAll: () => void;
-  onClearFilters: () => void;
 }
 
 export default function CategoryFilter({
