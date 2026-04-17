@@ -71,7 +71,7 @@ export default function Footer() {
             <a href={`mailto:${config.email}`}>{config.email}</a>
             <div style={{ marginTop: 'var(--space-sm)' }}>
               {config.categories.slice(0, 4).map(cat => (
-                <Link key={cat.name} to={`/creations?cat=${encodeURIComponent(cat.name)}`} style={{ display: 'block', fontSize: 'var(--text-xs)', padding: '2px 0' }}>{cat.name}</Link>
+                <Link key={cat.name} to={`/creations?cat=${encodeURIComponent(cat.name)}`} style={{ display: 'block', fontSize: 'var(--text-xs)', padding: '12px 0', margin: '-10px 0' }}>{cat.name}</Link>
               ))}
             </div>
           </div>
