@@ -53,3 +53,57 @@ export function fileToBase64(file: File): Promise<string> {
     reader.readAsDataURL(file);
   });
 }
+
+/**
+ * Compresse et redimensionne une image via canvas avant stockage Firestore.
+ * Réduit drastiquement la taille base64 (ex: 800 Ko → ~25 Ko).
+ * @param file - Le fichier image d'origine
+ * @param maxSizePx - Largeur/hauteur max en pixels (défaut 800)
+ * @param quality - Qualité JPEG 0-1 (défaut 0.75)
+ */
+export function compressImageToBase64(
+  file: File,
+  maxSizePx = 800,
+  quality = 0.75
+): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = reject;
+    reader.onload = (readerEvent) => {
+      const img = new Image();
+      img.onerror = reject;
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        let { width, height } = img;
+
+        // Redimensionner si nécessaire (garde les proportions)
+        if (width > maxSizePx || height > maxSizePx) {
+          if (width > height) {
+            height = Math.round((height * maxSizePx) / width);
+            width = maxSizePx;
+          } else {
+            width = Math.round((width * maxSizePx) / height);
+            height = maxSizePx;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) { reject(new Error('Canvas context unavailable')); return; }
+        ctx.drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.src = readerEvent.target?.result as string;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+/**
+ * Compresse une image pour les catégories (plus petit, 400px max).
+ * Priorité à la taille mini pour respecter la limite 1 Mo Firestore.
+ */
+export function compressCategoryImage(file: File): Promise<string> {
+  return compressImageToBase64(file, 400, 0.70);
+}

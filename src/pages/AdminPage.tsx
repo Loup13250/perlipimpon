@@ -9,7 +9,7 @@ import { useAuth } from '../hooks/useAuth';
 import { useArticles } from '../hooks/useArticles';
 import { useConfig } from '../hooks/useConfig';
 import { useLogs } from '../hooks/useLogs';
-import { formatPrice, formatDate, fileToBase64 } from '../utils/helpers';
+import { formatPrice, formatDate, compressImageToBase64, compressCategoryImage } from '../utils/helpers';
 import { useToast } from '../components/Toast';
 import { defaultSiteConfig } from '../data/sampleArticles';
 import type { Article, ArticleFormData, Category, SiteConfig, CategoryData } from '../types';
@@ -150,7 +150,8 @@ function ArticleForm({
     const newPhotosBase64: string[] = [];
     for (const file of Array.from(files)) {
       try {
-        const base64 = await fileToBase64(file);
+        // Compression avant stockage Firestore (limite 1 Mo/document)
+        const base64 = await compressImageToBase64(file, 800, 0.75);
         newPhotosBase64.push(base64);
       } catch (err) {
         console.error('Erreur upload photo:', err);
@@ -248,14 +249,26 @@ function ArticleForm({
           <div className="photo-upload">
             <label>Photos ({form.photos.length}/4)</label>
 
-            {/* Zone cliquable pour ajouter des photos — label séparé de l'input */}
-            {form.photos.length < 4 && (
-              <label className="photo-upload__area" htmlFor="photo-input-field" style={{ cursor: 'pointer' }}>
-                <div className="photo-upload__area-icon">📷</div>
-                <p><span>Cliquez pour ajouter</span> des photos (max 4)</p>
-                <p>JPG, PNG — 5 Mo max par image</p>
-              </label>
-            )}
+            {/* Zone cliquable pour ajouter des photos */}
+            <label
+              className="photo-upload__area"
+              htmlFor="photo-input-field"
+              style={{
+                cursor: form.photos.length < 4 ? 'pointer' : 'not-allowed',
+                opacity: form.photos.length < 4 ? 1 : 0.55,
+                pointerEvents: form.photos.length < 4 ? 'auto' : 'none',
+              }}
+            >
+              <div className="photo-upload__area-icon">📷</div>
+              {form.photos.length < 4 ? (
+                <>
+                  <p><span>Cliquez pour ajouter</span> des photos (max 4)</p>
+                  <p>JPG, PNG — 5 Mo max par image</p>
+                </>
+              ) : (
+                <p style={{ color: 'var(--color-gold-deep)', fontWeight: 600 }}>Limite de 4 photos atteinte</p>
+              )}
+            </label>
             <input
               id="photo-input-field"
               type="file"
@@ -364,7 +377,7 @@ function SiteConfigForm({
     const file = e.target.files?.[0];
     if (file) {
       try {
-        const b64 = await fileToBase64(file);
+        const b64 = await compressImageToBase64(file, 1200, 0.80);
         handleChange(field, b64);
       } catch {
         alert('Erreur de chargement d\'image');
@@ -762,7 +775,8 @@ function CategoriesForm({
                 const file = e.target.files?.[0];
                 if (file) {
                   try {
-                    const b64 = await fileToBase64(file);
+                    // Compression agressive pour catégories (400px, qualité 0.7)
+                    const b64 = await compressCategoryImage(file);
                     updateCategory(index, 'image', b64);
                   } catch { /* ignore */ }
                 }
