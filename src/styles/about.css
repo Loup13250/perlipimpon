@@ -18,7 +18,11 @@
 
 .about-hero h1 {
   font-size: var(--text-3xl);
-  margin-bottom: var(--space-sm);
+  margin-bottom: 0;
+}
+
+.about-page .section-title {
+  margin-bottom: var(--space-lg);
 }
 
 .about-hero p {
@@ -34,7 +38,7 @@
   grid-template-columns: 1fr 1fr;
   gap: var(--space-3xl);
   align-items: center;
-  margin-bottom: var(--space-3xl); /* Réduit le blanc */
+  margin-bottom: var(--space-xl); /* Réduit le blanc */
 }
 
 .about-story__image {
@@ -64,9 +68,9 @@
 
 /* Valeurs / Lithothérapie */
 .about-values {
-  margin-bottom: var(--space-3xl); /* Réduit le blanc */
+  margin-bottom: var(--space-xl); /* Réduit le blanc */
   background: rgba(255, 255, 255, 0.4);
-  padding: var(--space-2xl);
+  padding: var(--space-xl);
   border-radius: var(--radius-xl);
 }
 
@@ -95,8 +99,8 @@
    ────────────────────────────────────────────────── */
 
 .about-process {
-  margin-bottom: var(--space-3xl);
-  padding: var(--space-3xl) var(--space-xl);
+  margin-bottom: var(--space-2xl);
+  padding: var(--space-2xl) var(--space-xl);
   background: var(--color-white);
   border-radius: var(--radius-xl);
   border: 1px solid rgba(212, 175, 55, 0.15);
