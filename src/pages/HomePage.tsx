@@ -1,7 +1,6 @@
 /**
  * Page d'accueil — vitrine du site Perlipimpon.
- * Sections : Hero, À propos preview, Produits vedette,
- * Catégories, Témoignages, CTA.
+ * Ordre e-commerce : Hero compact → Coups de Cœur → Catégories → À Propos → Témoignages → CTA
  */
 
 import { Link } from 'react-router-dom';
@@ -19,6 +18,7 @@ export default function HomePage() {
 
   return (
     <>
+      {/* ── HERO COMPACT ─────────────────────── */}
       <section className="hero">
         <picture>
           <source media="(max-width: 768px)" srcSet={config.heroImageMobile || config.heroImage} />
@@ -57,25 +57,6 @@ export default function HomePage() {
         </div>
       ) : (
         <>
-
-          {/* ── ABOUT PREVIEW ─────────────────── */}
-          <section className="about-preview">
-            <div className="container">
-              <div className="about-preview__grid">
-                <div className="about-preview__image" style={{ padding: 0, overflow: 'hidden' }}>
-                  <img src={config.aboutImage || "/images/moonstone_necklace.png"} alt="Création artisanale" loading="lazy" decoding="async" width="800" height="800" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                </div>
-                <div className="about-preview__text">
-                  <h2>
-                    {config.aboutTitle || 'Fait main, fait avec cœur'}
-                  </h2>
-                  <p>{config.aboutText1}</p>
-                  {config.aboutText2 && <p>{config.aboutText2}</p>}
-                  <p className="about-preview__signature">— {config.nomMarque || 'Perlipimpon'}</p>
-                </div>
-              </div>
-            </div>
-          </section>
 
           {/* ── PRODUITS VEDETTE ──────────────── */}
           <section className="featured">
@@ -144,40 +125,6 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* ── CONFIANCE E-COMMERCE ──────────────── */}
-          {/* ── VALEURS ARTISANALES (EX-TRUST SECTION) ──────────────── */}
-          <section className="brand-values">
-            <div className="container">
-              <div className="section-title">
-                <h2>L'Âme de l'Atelier</h2>
-                <div className="floral-divider" aria-hidden="true" style={{ marginBottom: '0' }}>❧ ❦ ☙</div>
-              </div>
-              <div className="brand-values__grid">
-                
-                <div className="brand-value-card">
-                  <h4>Atelier Artisanal</h4>
-                  <p>Chaque parure prend vie minutieusement à la main, guidée par une passion authentique.</p>
-                </div>
-
-                <div className="brand-value-card">
-                  <h4>Gemmes Sélectionnées</h4>
-                  <p>Des pierres fines sourcées avec exigence pour leurs vertus énergétiques et leur éclat naturel.</p>
-                </div>
-
-                <div className="brand-value-card">
-                  <h4>Édition Singulière</h4>
-                  <p>Aucune copie. Vous adoptez une création qui n'existe qu'en un seul et unique exemplaire.</p>
-                </div>
-
-                <div className="brand-value-card">
-                  <h4>Envois Soignés</h4>
-                  <p>Toutes nos petites merveilles voyagent délicatement emballées, partout en France.</p>
-                </div>
-
-              </div>
-            </div>
-          </section>
-
           {/* ── CATÉGORIES ────────────────────── */}
           <section className="categories">
             <div className="container">
@@ -212,6 +159,58 @@ export default function HomePage() {
                     </div>
                   </Link>
                 ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ── ABOUT PREVIEW ─────────────────── */}
+          <section className="about-preview">
+            <div className="container">
+              <div className="about-preview__grid">
+                <div className="about-preview__image" style={{ padding: 0, overflow: 'hidden' }}>
+                  <img src={config.aboutImage || "/images/moonstone_necklace.png"} alt="Création artisanale" loading="lazy" decoding="async" width="800" height="800" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+                <div className="about-preview__text">
+                  <h2>
+                    {config.aboutTitle || 'Fait main, fait avec cœur'}
+                  </h2>
+                  <p>{config.aboutText1}</p>
+                  {config.aboutText2 && <p>{config.aboutText2}</p>}
+                  <p className="about-preview__signature">— {config.nomMarque || 'Perlipimpon'}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ── VALEURS ARTISANALES ──────────────── */}
+          <section className="brand-values">
+            <div className="container">
+              <div className="section-title">
+                <h2>L'Âme de l'Atelier</h2>
+                <div className="floral-divider" aria-hidden="true" style={{ marginBottom: '0' }}>❧ ❦ ☙</div>
+              </div>
+              <div className="brand-values__grid">
+                
+                <div className="brand-value-card">
+                  <h4>Atelier Artisanal</h4>
+                  <p>Chaque parure prend vie minutieusement à la main, guidée par une passion authentique.</p>
+                </div>
+
+                <div className="brand-value-card">
+                  <h4>Gemmes Sélectionnées</h4>
+                  <p>Des pierres fines sourcées avec exigence pour leurs vertus énergétiques et leur éclat naturel.</p>
+                </div>
+
+                <div className="brand-value-card">
+                  <h4>Édition Singulière</h4>
+                  <p>Aucune copie. Vous adoptez une création qui n'existe qu'en un seul et unique exemplaire.</p>
+                </div>
+
+                <div className="brand-value-card">
+                  <h4>Envois Soignés</h4>
+                  <p>Toutes nos petites merveilles voyagent délicatement emballées, partout en France.</p>
+                </div>
+
               </div>
             </div>
           </section>

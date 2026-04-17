@@ -14,16 +14,16 @@
   right: 0;
   z-index: 1000;
   height: var(--header-height);
-  background: rgba(250, 246, 240, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+  background: rgba(250, 246, 240, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.18);
   transition: background var(--transition-base), box-shadow var(--transition-base);
 }
 
 .site-header.scrolled {
-  background: rgba(250, 246, 240, 0.95);
-  box-shadow: var(--shadow-md);
+  background: rgba(250, 246, 240, 0.99);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.07);
 }
 
 .header-inner {
@@ -45,13 +45,13 @@
   min-width: 0;
 }
 
-/* Nom de la marque — utilise un span (pas h1) pour éviter le conflit SEO avec les h1 de pages */
+/* Nom de la marque compact */
 .header-brand__name {
   font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: 600;
+  font-size: var(--text-lg);
+  font-weight: 700;
   color: var(--color-black);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .header-brand__name span {
@@ -63,22 +63,22 @@
 .header-nav {
   display: flex;
   align-items: center;
-  gap: var(--space-2xl);
+  gap: var(--space-xl);
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: var(--space-xl);
+  gap: var(--space-lg);
 }
 
 .nav-link {
   position: relative;
-  font-size: var(--text-sm);
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--color-gray-700);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   padding: var(--space-xs) 0;
   transition: color var(--transition-fast);
 }
@@ -89,7 +89,7 @@
   bottom: -2px;
   left: 0;
   width: 0;
-  height: 2px;
+  height: 1.5px;
   background: var(--color-gold);
   transition: width var(--transition-base);
 }
@@ -110,17 +110,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
-  min-width: 48px;
-  min-height: 48px;
+  gap: 4px;
+  min-width: 40px;
+  min-height: 40px;
   padding: var(--space-sm);
   cursor: pointer;
 }
 
 .menu-toggle span {
   display: block;
-  width: 24px;
-  height: 2px;
+  width: 20px;
+  height: 1.5px;
   background: var(--color-black);
   border-radius: 2px;
   transition: transform var(--transition-base), opacity var(--transition-fast);

@@ -276,13 +276,13 @@
 
 @media (max-width: 768px) {
   .shop-filters-desktop-wrapper {
-    display: block; /* Keep desktop filters visible */
+    display: block;
   }
   .shop-filters-mobile {
-    display: none; /* Hide old mobile filter wrapper if any */
+    display: none;
   }
   .category-filter-modern {
-    padding: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
     gap: var(--space-xs);
   }
   .category-filter__btn {
@@ -293,7 +293,17 @@
     display: none;
   }
 
+  /* Grille 2 colonnes sur mobile */
   .shop-grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 360px) {
+  /* Très petits écrans : rester sur 2 col mais plus compact */
+  .shop-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xs);
   }
 }

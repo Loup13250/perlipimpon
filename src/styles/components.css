@@ -645,6 +645,54 @@
   transform: translateX(0);
 }
 
+/* Cartes produit compactes pour grille 2 colonnes sur mobile */
+@media (max-width: 768px) {
+  .product-card__body {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .product-card__title {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-xs);
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .product-card__description {
+    display: none;
+  }
+
+  .product-card__price {
+    font-size: var(--text-base);
+  }
+
+  .product-card__cta-hint {
+    display: none;
+  }
+
+  .product-card__footer {
+    justify-content: flex-start;
+  }
+
+  /* Badge + banner adaptés au petit format */
+  .product-card__badge,
+  .product-card__banner-vendu {
+    width: 160px;
+    font-size: 0.6rem;
+    padding: 5px 0;
+  }
+  .product-card__badge {
+    top: 16px;
+    left: -40px;
+  }
+  .product-card__banner-vendu {
+    top: 16px;
+    right: -40px;
+  }
+}
+
 /* ═══════════════════════════════════════════
    SECTION CONFIANCE (TRUST) E-COMMERCE
 /* ═══════════════════════════════════════════
