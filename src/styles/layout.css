@@ -58,20 +58,6 @@
   color: var(--color-gold);
 }
 
-.brand-icon {
-  width: auto;
-  height: 40px;
-  transition: all var(--transition-base);
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.header-brand:hover .brand-icon {
-  transform: scale(1.05) rotate(-2deg);
-}
 
 /* Navigation principale */
 .header-nav {
@@ -252,6 +238,7 @@
   background: rgba(255, 255, 255, 0.4);
   box-sizing: border-box;
   flex-shrink: 0;
+  forced-color-adjust: none;
 }
 
 .social-link:hover {

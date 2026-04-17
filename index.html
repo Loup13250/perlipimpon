@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#FAF6F0">
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,20 +23,6 @@
     <meta property="og:type" content="website" />
   </head>
   <body style="margin: 0; background-color: #FAF6F0;">
-    <!-- Filtre Chirurgical (Branding) — Permanent dans le DOM pour éviter tout artefact noir -->
-    <svg style="position: absolute; width: 0; height: 0; pointer-events: none;" aria-hidden="true">
-      <defs>
-        <filter id="logo-transparency" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
-          <feColorMatrix 
-            type="matrix" 
-            values="1 0 0 0 0
-                    0 1 0 0 0
-                    0 0 1 0 0
-                  -100 -100 -100 300 0" 
-          />
-        </filter>
-      </defs>
-    </svg>
 
     <!-- INVISIBLE SVG LOGO REMAINS IN BODY FOR CACHING -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">

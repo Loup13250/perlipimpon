@@ -48,19 +48,6 @@ export default function Header() {
     <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
       <div className="header-inner">
         <Link to="/" className="header-brand" onClick={handleBrandClick}>
-          <img
-            src="/images/logo-jewelry-transparent.png"
-            alt="Perlipimpon"
-            className="brand-icon"
-            width="42"
-            height="42"
-            style={{
-              width: '42px',
-              height: '42px',
-              objectFit: 'contain',
-              transition: 'all 0.3s ease'
-            }}
-          />
           <span className="header-brand__name">
             Perli<span>pimpon</span>
           </span>

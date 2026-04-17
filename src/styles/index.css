@@ -8,6 +8,7 @@
 
 /* ── Tokens de design ─────────────────────── */
 :root {
+  color-scheme: light;
   /* Couleurs principales */
   --color-gold: #D4AF37; /* Or riche et vibrant */
   --color-gold-light: #F3E5AB; /* Reflet doré (starlight) */
