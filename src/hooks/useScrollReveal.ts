@@ -71,7 +71,10 @@ export function useScrollRevealGroup(
     const scan = () => {
       const items = container.querySelectorAll('.reveal-item');
       items.forEach((item) => {
+        if (item.classList.contains('revealed')) return;
+        
         const rect = item.getBoundingClientRect();
+        // Déclencher si déjà visible ou proche du viewport
         if (rect.top < window.innerHeight + 100) {
           item.classList.add('revealed');
         } else {
@@ -81,10 +84,15 @@ export function useScrollRevealGroup(
     };
 
     scan();
-    const t = setTimeout(scan, 200);
+    // Plusieurs scans de sécurité pour les chargements asynchrones (Firestore)
+    const t1 = setTimeout(scan, 100);
+    const t2 = setTimeout(scan, 500);
+    const t3 = setTimeout(scan, 1500);
 
     return () => {
-      clearTimeout(t);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
       observer.disconnect();
     };
   }, [threshold, rootMargin, once, ...dependencies]); // eslint-disable-line react-hooks/exhaustive-deps

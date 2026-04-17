@@ -68,7 +68,7 @@ export default function HomePage() {
                       <Link
                         to={`/creations/${article.id}`}
                         key={article.id}
-                        className="product-card reveal-item"
+                        className="product-card"
                       >
                         <div className="product-card__image">
                           {article.photos && article.photos.length > 0 ? (
@@ -133,7 +133,7 @@ export default function HomePage() {
                   <Link
                     to={`/creations?cat=${encodeURIComponent(cat.name)}`}
                     key={cat.name}
-                    className="category-card reveal-item"
+                    className="category-card"
                     style={{ overflow: 'hidden' }}
                   >
                     <div className="category-card__icon">
