@@ -182,7 +182,14 @@ export default function HomePage() {
             <div className="container">
               <div className="section-title">
                 <h2>L'Âme de l'Atelier</h2>
-                <div className="floral-divider" aria-hidden="true" style={{ marginBottom: '0' }}>❧ ❦ ☙</div>
+                <div className="floral-divider" aria-hidden="true">
+                  <span className="floral-divider__line"></span>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" className="floral-divider__icon">
+                    <path d="M12 2L15 8L22 9L17 14L18.5 21L12 17.5L5.5 21L7 14L2 9L9 8L12 2Z" />
+                    <path d="M12 22V17" />
+                  </svg>
+                  <span className="floral-divider__line"></span>
+                </div>
               </div>
               <div className="brand-values__grid">
                 

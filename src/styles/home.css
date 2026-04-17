@@ -352,6 +352,26 @@
   font-size: var(--text-lg);
 }
 
+.floral-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin: var(--space-md) auto var(--space-xl);
+  color: var(--color-gold);
+}
+
+.floral-divider__line {
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+}
+
+.floral-divider__icon {
+  opacity: 0.8;
+  stroke-width: 1.5px;
+}
+
 /* ═══════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════ */

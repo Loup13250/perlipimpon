@@ -81,8 +81,8 @@
 /* ── Cas particulier de la Page d'Accueil ───── */
 .is-home .floral-frame {
   position: absolute;
-  top: 100vh;
-  height: calc(100% - 100vh);
+  top: 40vh;
+  height: calc(100% - 40vh);
   min-height: 1000px;
 }
 
