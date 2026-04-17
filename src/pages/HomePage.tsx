@@ -36,10 +36,10 @@ export default function HomePage() {
             {config.heroDescription}
           </p>
           <div className="hero__actions">
-            <Link to="/creations" className="btn btn--primary btn--lg">
+            <Link to="/creations" className="btn btn--primary">
               Découvrir les créations
             </Link>
-            <Link to="/a-propos" className="btn btn--outline btn--lg" style={{ borderColor: 'var(--color-gold-light)', color: 'var(--color-gold-light)' }}>
+            <Link to="/a-propos" className="btn btn--outline" style={{ borderColor: 'var(--color-gold-light)', color: 'var(--color-gold-light)' }}>
               Notre histoire
             </Link>
           </div>
