@@ -19,9 +19,8 @@ async function processDirectory(dir) {
       await processDirectory(fullPath);
     } else {
       const isJpeg = file.match(/\.(jpg|jpeg)$/i);
-      const isPng = file.match(/\.png$/i);
       
-      if ((isJpeg || isPng) && stat.size > 100 * 1024) {
+      if (isJpeg && stat.size > 100 * 1024) {
         console.log(`Compressing: ${file} (${Math.round(stat.size / 1024)} KB)`);
         const tempPath = fullPath + '.tmp';
         
