@@ -145,45 +145,63 @@ export default function HomePage() {
           </section>
 
           {/* ── CONFIANCE E-COMMERCE ──────────────── */}
-          <section className="trust-section">
+          {/* ── VALEURS ARTISANALES (EX-TRUST SECTION) ──────────────── */}
+          <section className="brand-values">
             <div className="container">
-              <div className="trust-grid">
-                <div className="trust-item">
-                  <div className="trust-item__icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              <div className="section-title">
+                <h2>L'Âme de l'Atelier</h2>
+                <div className="floral-divider" aria-hidden="true" style={{ marginBottom: '0' }}>❧ ❦ ☙</div>
+              </div>
+              <div className="brand-values__grid">
+                
+                <div className="brand-value-card">
+                  <div className="brand-value-card__icon">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/>
+                      <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/>
+                      <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/>
+                      <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82l2.76 2.76V15"/>
                     </svg>
                   </div>
-                  <h4>Fait main avec amour</h4>
-                  <p>Chaque bijou est une pièce unique, façonnée à la main dans mon atelier.</p>
+                  <h4>Atelier Artisanal</h4>
+                  <p>Chaque parure prend vie minutieusement à la main, guidée par une passion authentique.</p>
                 </div>
-                <div className="trust-item">
-                  <div className="trust-item__icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+
+                <div className="brand-value-card">
+                  <div className="brand-value-card__icon">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                      <polyline points="2 17 12 22 22 17"/>
+                      <polyline points="2 12 12 17 22 12"/>
                     </svg>
                   </div>
-                  <h4>Pièces uniques</h4>
-                  <p>Aucune création n'est identique — vous portez une pièce qui n'existe qu'en un seul exemplaire.</p>
+                  <h4>Gemmes Sélectionnées</h4>
+                  <p>Des pierres fines sourcées avec exigence pour leurs vertus énergétiques et leur éclat naturel.</p>
                 </div>
-                <div className="trust-item">
-                  <div className="trust-item__icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+
+                <div className="brand-value-card">
+                  <div className="brand-value-card__icon">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
                     </svg>
                   </div>
-                  <h4>Livraison partout en France</h4>
-                  <p>Vos créations sont soigneusement emballées et expédiées avec soin dans toute la France.</p>
+                  <h4>Édition Singulière</h4>
+                  <p>Aucune copie. Vous adoptez une création qui n'existe qu'en un seul et unique exemplaire.</p>
                 </div>
-                <div className="trust-item">
-                  <div className="trust-item__icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9c1.06 1.844 2.386 3.497 3.92 4.92L12.34 12.7a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+
+                <div className="brand-value-card">
+                  <div className="brand-value-card__icon">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/>
+                      <path d="M7 3.34V5a3 3 0 0 0 3 3v0a2 2 0 0 1 2 2v0c0 1.1.9 2 2 2v0a2 2 0 0 0 2-2v0c0-1.1.9-2 2-2h1.66"/>
+                      <path d="M11 21.95V18a2 2 0 0 0-2-2v0c-1.1 0-2-.9-2-2v0c0-1.1-.9-2-2-2H2.05"/>
+                      <circle cx="12" cy="12" r="10"/>
                     </svg>
                   </div>
-                  <h4>Commande personnalisée</h4>
-                  <p>Vous avez un projet spécial ? Contactez-moi pour créer la pièce de vos rêves sur mesure.</p>
+                  <h4>Envois Soignés</h4>
+                  <p>Toutes nos petites merveilles voyagent délicatement emballées, partout en France.</p>
                 </div>
+
               </div>
             </div>
           </section>

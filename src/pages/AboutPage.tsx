@@ -6,23 +6,6 @@ import { Link } from 'react-router-dom';
 import { useScrollRevealGroup } from '../hooks/useScrollReveal';
 import { useConfig } from '../hooks/useConfig';
 
-const values = [
-  {
-    icon: '/images/icons/value-hand.png',
-    title: 'Fait main',
-    description: 'Chaque bijou est entièrement façonné à la main, avec soin et patience. Aucune production en série.',
-  },
-  {
-    icon: '/images/icons/value-gem.png',
-    title: 'Pierres naturelles',
-    description: 'Nous sélectionnons des pierres naturelles de qualité : pierre de lune, perles, améthyste et bien d\'autres.',
-  },
-  {
-    icon: '/images/icons/value-leaf.png',
-    title: 'Pièces uniques',
-    description: 'Chaque création est unique. Deux bijoux ne sont jamais exactement identiques, c\'est la magie de l\'artisanat.',
-  },
-];
 
 // Le processus de création est dynamique depuis la config (processSteps)
 
@@ -62,23 +45,47 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Valeurs */}
+        {/* La Magie de la Lithothérapie */}
         <div className="about-values">
           <div className="section-title">
-            <h2>Nos valeurs</h2>
-            <p>Ce qui guide chaque création</p>
+            <h2>L'Âme des Pierres</h2>
+            <p>La Lithothérapie au cœur de nos créations</p>
           </div>
 
-          <div className="values-grid" ref={valuesRef}>
-            {values.map((v) => (
-              <div key={v.title} className="value-card reveal-item">
-                <div className="value-card__icon">
-                  <img src={v.icon} alt={v.title} loading="lazy" width="60" height="60" style={{ width: '60px', height: '60px', objectFit: 'contain' }} />
-                </div>
-                <h3>{v.title}</h3>
-                <p>{v.description}</p>
+          <div className="lithotherapy-content" ref={valuesRef}>
+            <div className="lithotherapy-text" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', lineHeight: '1.8', color: 'var(--color-gray-600)', fontSize: '1.05rem', marginBottom: 'var(--space-2xl)' }}>
+              <p>
+                Chez Perlipimpon, la beauté d'un bijou ne s'arrête pas à son esthétique. Nous accordons une importance fondamentale à l'énergie que chaque pierre renferme. Nos gemmes sont rigoureusement étudiées et sélectionnées pour leurs vertus thérapeutiques, offrant un accompagnement subtil de l'âme et du corps.
+              </p>
+            </div>
+
+            <div className="values-grid">
+              
+              <div className="value-card reveal-item" style={{ border: '1px solid var(--color-gold-light)', padding: 'var(--space-xl)', background: 'var(--color-white)', borderRadius: 'var(--radius-lg)' }}>
+                <div style={{ fontSize: '2rem', marginBottom: 'var(--space-sm)' }}>🌸</div>
+                <h3>L'Harmonie du Cœur</h3>
+                <p style={{ marginTop: 'var(--space-sm)', color: 'var(--color-gray-600)' }}>
+                  Des joyaux comme le Quartz Rose ou la Rhodonite sont spécifiquement choisis pour apaiser les blessures émotionnelles. Ils ouvrent le chakra du cœur, diffusent une douceur enveloppante et favorisent la paix intérieure et l'amour de soi.
+                </p>
               </div>
-            ))}
+
+              <div className="value-card reveal-item" style={{ border: '1px solid var(--color-gold-light)', padding: 'var(--space-xl)', background: 'var(--color-white)', borderRadius: 'var(--radius-lg)' }}>
+                <div style={{ fontSize: '2rem', marginBottom: 'var(--space-sm)' }}>🌙</div>
+                <h3>Sérénité Mentale</h3>
+                <p style={{ marginTop: 'var(--space-sm)', color: 'var(--color-gray-600)' }}>
+                  Pour l'anxiété et le surmenage, nous marions l'Améthyste ou la Labradorite. Ces pierres libèrent l'esprit des ruminations, équilibrent le système nerveux profond et stimulent des nuits paisibles et réparatrices.
+                </p>
+              </div>
+
+              <div className="value-card reveal-item" style={{ border: '1px solid var(--color-gold-light)', padding: 'var(--space-xl)', background: 'var(--color-white)', borderRadius: 'var(--radius-lg)' }}>
+                <div style={{ fontSize: '2rem', marginBottom: 'var(--space-sm)' }}>🌿</div>
+                <h3>Équilibre du Corps</h3>
+                <p style={{ marginTop: 'var(--space-sm)', color: 'var(--color-gray-600)' }}>
+                  La répercussion physique est intime. L'Oeil de Tigre ou la Cornaline, aux vibrations chaudes, réveillent la vitalité corporelle, apaisent le système digestif et l'intestin, et relancent l'énergie vitale depuis les fondations du corps.
+                </p>
+              </div>
+
+            </div>
           </div>
         </div>
 

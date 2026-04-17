@@ -11,6 +11,8 @@ interface CategoryFilterProps {
   activeCategories: string[];
   onCategoryToggle: (cat: string) => void;
   onCategoryAll: () => void;
+  showCoupsDeCoeur: boolean;
+  onCoupsDeCoeurToggle: () => void;
 }
 
 export default function CategoryFilter({
@@ -18,12 +20,16 @@ export default function CategoryFilter({
   activeCategories,
   onCategoryToggle,
   onCategoryAll,
+  showCoupsDeCoeur,
+  onCoupsDeCoeurToggle,
 }: CategoryFilterProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const activeLabel = activeCategories.length === 0
-    ? 'Toutes les créations'
-    : activeCategories.join(', ');
+  const activeLabel = showCoupsDeCoeur 
+    ? '✦ Coups de Cœur'
+    : activeCategories.length === 0
+      ? 'Toutes les créations'
+      : activeCategories.join(', ');
 
   return (
     <>
@@ -31,10 +37,24 @@ export default function CategoryFilter({
       <div className="category-filter-modern">
         <button
           type="button"
-          className={`category-filter__btn ${activeCategories.length === 0 ? 'active' : ''}`}
-          onClick={onCategoryAll}
+          className={`category-filter__btn ${showCoupsDeCoeur ? 'active' : ''}`}
+          onClick={onCoupsDeCoeurToggle}
+          style={{ borderColor: showCoupsDeCoeur ? 'var(--color-gold)' : undefined, color: showCoupsDeCoeur ? 'var(--color-gold)' : undefined, fontWeight: '500' }}
         >
-          Toutes les créations
+          ✦ Coups de Cœur
+        </button>
+
+        <div className="category-filter__divider" style={{ width: '1px', height: '24px', background: 'var(--color-gray-300)', margin: '0 8px' }}></div>
+
+        <button
+          type="button"
+          className={`category-filter__btn ${activeCategories.length === 0 && !showCoupsDeCoeur ? 'active' : ''}`}
+          onClick={() => {
+            if (showCoupsDeCoeur) onCoupsDeCoeurToggle();
+            onCategoryAll();
+          }}
+        >
+          Toutes
         </button>
 
         {categories.map((cat) => (
@@ -72,8 +92,16 @@ export default function CategoryFilter({
           <div className="shop-filter-mobile-pills">
             <button
               type="button"
-              className={`filter-pill ${activeCategories.length === 0 ? 'active' : ''}`}
-              onClick={() => { onCategoryAll(); setMobileOpen(false); }}
+              className={`filter-pill ${showCoupsDeCoeur ? 'active' : ''}`}
+              onClick={() => { onCoupsDeCoeurToggle(); setMobileOpen(false); }}
+              style={{ borderColor: showCoupsDeCoeur ? 'var(--color-gold)' : undefined, color: showCoupsDeCoeur ? 'var(--color-gold)' : undefined, backgroundColor: showCoupsDeCoeur ? 'var(--color-cream)' : undefined }}
+            >
+              ✦ Coups de Cœur
+            </button>
+            <button
+              type="button"
+              className={`filter-pill ${activeCategories.length === 0 && !showCoupsDeCoeur ? 'active' : ''}`}
+              onClick={() => { if (showCoupsDeCoeur) onCoupsDeCoeurToggle(); onCategoryAll(); setMobileOpen(false); }}
             >
               Toutes
             </button>

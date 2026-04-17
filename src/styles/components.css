@@ -647,72 +647,81 @@
 
 /* ═══════════════════════════════════════════
    SECTION CONFIANCE (TRUST) E-COMMERCE
+/* ═══════════════════════════════════════════
+   BRAND VALUES SECTION
    ═══════════════════════════════════════════ */
 
-.trust-section {
-  padding: var(--space-3xl) 0;
+.brand-values {
+  padding: var(--space-4xl) 0;
   background: linear-gradient(to bottom, var(--color-cream), #fdf8f4);
   border-top: 1px solid rgba(201, 169, 110, 0.12);
   border-bottom: 1px solid rgba(201, 169, 110, 0.12);
 }
 
-.trust-grid {
+.brand-values__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-xl);
+  margin-top: var(--space-3xl);
 }
 
-.trust-item {
+.brand-value-card {
   text-align: center;
   padding: var(--space-xl);
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(201, 169, 110, 0.12);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(201, 169, 110, 0.15);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.trust-item:hover {
-  transform: translateY(-4px);
+.brand-value-card:hover {
+  transform: translateY(-5px);
   box-shadow: 0 12px 32px rgba(201, 169, 110, 0.12);
+  border-color: var(--color-gold);
 }
 
-.trust-item__icon {
+.brand-value-card__icon {
   width: 64px;
   height: 64px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, rgba(201,169,110,0.12), rgba(249,235,232,0.8));
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(201,169,110,0.05), rgba(249,235,232,0.6));
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto var(--space-md);
-  color: var(--color-gold-deep);
-  border: 1px solid rgba(201, 169, 110, 0.2);
+  margin: 0 auto var(--space-lg);
+  color: var(--color-gold);
+  border: 1px solid rgba(201, 169, 110, 0.3);
 }
 
-.trust-item h4 {
+.brand-value-card h4 {
   font-family: var(--font-display);
-  font-size: var(--text-base);
-  font-weight: 600;
-  color: var(--color-charcoal);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--color-gray-900);
   margin-bottom: var(--space-sm);
+  letter-spacing: 0.02em;
 }
 
-.trust-item p {
-  font-size: var(--text-sm);
-  color: var(--color-gray-500);
+.brand-value-card p {
+  font-size: 0.95rem;
+  color: var(--color-gray-600);
   line-height: 1.6;
+  margin: 0;
 }
 
-@media (max-width: 768px) {
-  .trust-grid {
+@media (max-width: 1024px) {
+  .brand-values__grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 600px) {
+  .brand-values__grid {
+    grid-template-columns: 1fr;
     gap: var(--space-md);
   }
 }
-
-@media (max-width: 480px) {
-  .trust-grid {
-    grid-template-columns: 1fr;
-  }
-}
-

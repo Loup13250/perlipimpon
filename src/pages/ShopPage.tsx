@@ -19,35 +19,54 @@ export default function ShopPage() {
 
   // Récupère le filtre catégorie depuis l'URL si on vient de la page d'accueil
   const urlCategory = searchParams.get('cat') || '';
+  const urlCoupDeCoeur = searchParams.get('coupdecoeur') === 'true';
+  
   const [activeCategories, setActiveCategories] = useState<string[]>(
     urlCategory ? [urlCategory] : []
   );
+  const [showCoupsDeCoeur, setShowCoupsDeCoeur] = useState<boolean>(urlCoupDeCoeur);
 
   const filteredArticles = useMemo(() => {
-    if (activeCategories.length === 0) return articles;
-    return articles.filter((a) => activeCategories.includes(a.categorie));
-  }, [articles, activeCategories]);
+    let result = articles;
+    if (showCoupsDeCoeur) {
+      result = result.filter(a => a.enVedette);
+    }
+    if (activeCategories.length > 0) {
+      result = result.filter(a => activeCategories.includes(a.categorie));
+    }
+    return result;
+  }, [articles, activeCategories, showCoupsDeCoeur]);
 
   const gridRef = useScrollRevealGroup({}, [filteredArticles]);
 
+  const updateUrl = (cats: string[], coeur: boolean) => {
+    const params = new URLSearchParams();
+    if (coeur) params.set('coupdecoeur', 'true');
+    if (cats.length === 1) params.set('cat', cats[0]);
+    else if (cats.length > 1) params.set('cat', cats.join(','));
+    setSearchParams(params);
+  };
+
   const handleCategoryToggle = (cat: string) => {
+    setShowCoupsDeCoeur(false);
     const nextCategories = activeCategories.includes(cat)
       ? activeCategories.filter((c) => c !== cat)
       : [...activeCategories, cat];
 
     setActiveCategories(nextCategories);
+    updateUrl(nextCategories, false);
+  };
 
-    if (nextCategories.length === 1) {
-      setSearchParams({ cat: nextCategories[0] });
-    } else if (nextCategories.length === 0) {
-      setSearchParams({});
-    } else {
-      setSearchParams({ cat: nextCategories.join(',') });
-    }
+  const handleCoupsDeCoeurToggle = () => {
+    const nextCoups = !showCoupsDeCoeur;
+    setShowCoupsDeCoeur(nextCoups);
+    setActiveCategories([]);
+    updateUrl([], nextCoups);
   };
 
   const handleCategoryAll = () => {
     setActiveCategories([]);
+    setShowCoupsDeCoeur(false);
     setSearchParams({});
   };
 
@@ -72,6 +91,8 @@ export default function ShopPage() {
               categories={config.categories}
               activeCategories={activeCategories}
               onCategoryToggle={handleCategoryToggle}
+              showCoupsDeCoeur={showCoupsDeCoeur}
+              onCoupsDeCoeurToggle={handleCoupsDeCoeurToggle}
               onCategoryAll={handleCategoryAll}
             />
 
