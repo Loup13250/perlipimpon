@@ -17,28 +17,36 @@ async function processDirectory(dir) {
 
     if (stat.isDirectory()) {
       await processDirectory(fullPath);
-    } else if (file.match(/\.(jpg|jpeg|png)$/i)) {
-      // Over 100KB is worth compressing for web 
-      if (stat.size > 100 * 1024) {
+    } else {
+      const isJpeg = file.match(/\.(jpg|jpeg)$/i);
+      const isPng = file.match(/\.png$/i);
+      
+      if ((isJpeg || isPng) && stat.size > 100 * 1024) {
         console.log(`Compressing: ${file} (${Math.round(stat.size / 1024)} KB)`);
+        const tempPath = fullPath + '.tmp';
         
         try {
-          const tempPath = fullPath + '.tmp';
-          await sharp(fullPath)
-            .resize({ width: 1200, withoutEnlargement: true }) // Max width 1200
-            .jpeg({ quality: 80, progressive: true, mozjpeg: true })
-            .toFile(tempPath);
+          let processor = sharp(fullPath).resize({ width: 1200, withoutEnlargement: true });
+          
+          if (isJpeg) {
+            processor = processor.jpeg({ quality: 80, progressive: true, mozjpeg: true });
+          } else if (isPng) {
+            processor = processor.png({ quality: 80, palette: true, compressionLevel: 9 });
+          }
+          
+          await processor.toFile(tempPath);
             
           fs.renameSync(tempPath, fullPath);
           const newStat = fs.statSync(fullPath);
           console.log(` -> Done: ${Math.round(newStat.size / 1024)} KB`);
         } catch (err) {
           console.error(`Error processing ${file}:`, err);
+          if (fs.existsSync(tempPath)) fs.unlinkSync(tempPath);
         }
       }
     }
   }
 }
 
-console.log('Starting image compression...');
+console.log('Starting proper image compression (preserving PNG transparency)...');
 processDirectory(directoryPath).then(() => console.log('All done!')).catch(console.error);

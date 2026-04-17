@@ -4,7 +4,7 @@
  * C'est la base de tout le design du site.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+/* Font declarations moved to index.html for performance */
 
 /* ── Tokens de design ─────────────────────── */
 :root {
