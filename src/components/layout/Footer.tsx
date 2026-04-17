@@ -79,7 +79,7 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <p>© {year} {config.nomMarque || 'Perlipimpon'} — Tous droits réservés</p>
-          <p>Bijoux artisanaux faits main avec amour ✦</p>
+          <p>Bijoux artisanaux faits main avec amour ❤</p>
         </div>
       </div>
     </footer>

@@ -97,10 +97,32 @@ export default function ShopPage() {
             />
 
             {/* Compteur */}
-            <p className="shop-count">
-              {filteredArticles.length} création{filteredArticles.length > 1 ? 's' : ''}
-              {activeCategories.length > 0 && ` dans ${activeCategories.join(', ')}`}
-            </p>
+            <div className="shop-info-bar">
+              <p className="shop-count">
+                {filteredArticles.length} création{filteredArticles.length > 1 ? 's' : ''}
+                {activeCategories.length === 0 && !showCoupsDeCoeur && " au total"}
+              </p>
+              
+              {(activeCategories.length > 0 || showCoupsDeCoeur) && (
+                <div className="active-filters-tags">
+                  {showCoupsDeCoeur && (
+                    <span className="filter-tag filter-tag--heart">
+                      ❤ Coups de Cœur
+                      <button onClick={handleCoupsDeCoeurToggle} aria-label="Retirer le filtre">✕</button>
+                    </span>
+                  )}
+                  {activeCategories.map(cat => (
+                    <span key={cat} className="filter-tag">
+                      {cat}
+                      <button onClick={() => handleCategoryToggle(cat)} aria-label={`Retirer le filtre ${cat}`}>✕</button>
+                    </span>
+                  ))}
+                  {(activeCategories.length > 1 || (activeCategories.length > 0 && showCoupsDeCoeur)) && (
+                    <button className="filter-tag-clear" onClick={handleCategoryAll}>Tout effacer</button>
+                  )}
+                </div>
+              )}
+            </div>
 
             {/* Grille */}
             <div className="shop-grid" ref={gridRef}>

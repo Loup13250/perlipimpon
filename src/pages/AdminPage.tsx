@@ -85,7 +85,7 @@ function AdminLogin({ onLogin }: { onLogin: (email: string, password: string) =>
               />
             </div>
             <button type="submit" className="btn btn--primary btn--lg" style={{ width: '100%', marginTop: '1.5rem' }} disabled={loading}>
-              {loading ? 'Connexion...' : 'Se connecter ✦'}
+              {loading ? 'Connexion...' : 'Se connecter ❤'}
             </button>
           </form>
         </div>
@@ -291,7 +291,7 @@ function ArticleForm({
                 onChange={(e) => updateField('enVedette', e.target.checked)}
               />
               <div className="beautiful-toggle__slider"></div>
-              <span className="beautiful-toggle__label">⭐ Coup de Cœur</span>
+              <span className="beautiful-toggle__label">❤ Coup de Cœur</span>
             </label>
 
             <label className="beautiful-toggle">
@@ -376,7 +376,7 @@ function SiteConfigForm({
     { id: 'general', label: 'Général & SEO', icon: '🌐' },
     { id: 'hero', label: 'Accueil & CTA', icon: '🏠' },
     { id: 'about', label: 'À Propos', icon: '📖' },
-    { id: 'testimonials', label: 'Avis Clients', icon: '⭐' },
+    { id: 'testimonials', label: 'Avis Clients', icon: '❤' },
     { id: 'maintenance', label: 'Maintenance', icon: '🛠️' },
   ] as const;
 
@@ -625,7 +625,7 @@ function SiteConfigForm({
 
             <div className="maintenance-section" style={{ background: 'rgba(201,169,110,0.05)', padding: '1.5rem', borderRadius: '16px', border: '1px dashed rgba(201,169,110,0.3)', marginBottom: '1.5rem' }}>
               <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-deep)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-deep)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                 Réinitialiser les Avis Clients
               </h3>
               <p style={{ color: 'var(--color-gray-600)', fontSize: '0.9rem', marginBottom: '1rem' }}>

@@ -41,13 +41,14 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: var(--space-sm) var(--space-md);
-  padding: var(--space-md) var(--space-xl);
+  gap: var(--space-xs) var(--space-md);
+  padding: var(--space-md) var(--space-lg);
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(8px);
   border-radius: var(--radius-xl);
   border: 1px solid rgba(201, 169, 110, 0.2);
   box-shadow: 0 2px 16px rgba(201, 169, 110, 0.08);
+  margin-bottom: var(--space-lg);
 }
 
 .category-filter__btn {
@@ -171,12 +172,79 @@
   font-weight: 600;
 }
 
-/* Compteur résultats */
+/* Compteur et Tags actifs */
+.shop-info-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+}
+
 .shop-count {
-  text-align: center;
-  margin-bottom: var(--space-xl);
   color: var(--color-gray-500);
   font-size: var(--text-sm);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.active-filters-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.filter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-cream);
+  border: 1px solid rgba(201, 169, 110, 0.3);
+  color: var(--color-charcoal);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.filter-tag--heart {
+  border-color: rgba(201, 169, 110, 0.5);
+  background: rgba(201, 169, 110, 0.05);
+  color: var(--color-gold-deep);
+}
+
+.filter-tag button {
+  background: transparent;
+  border: none;
+  color: var(--color-gray-400);
+  cursor: pointer;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  transition: color 0.2s ease;
+}
+
+.filter-tag button:hover {
+  color: var(--color-danger);
+}
+
+.filter-tag-clear {
+  background: transparent;
+  border: none;
+  color: var(--color-gray-400);
+  font-size: var(--text-xs);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.2s ease;
+}
+
+.filter-tag-clear:hover {
+  color: var(--color-charcoal);
 }
 
 /* Grille produits */
@@ -208,11 +276,21 @@
 
 @media (max-width: 768px) {
   .shop-filters-desktop-wrapper {
-    display: none;
+    display: block; /* Keep desktop filters visible */
   }
   .shop-filters-mobile {
-    display: block;
-    margin-bottom: var(--space-xl);
+    display: none; /* Hide old mobile filter wrapper if any */
+  }
+  .category-filter-modern {
+    padding: var(--space-sm);
+    gap: var(--space-xs);
+  }
+  .category-filter__btn {
+    padding: var(--space-xs) var(--space-md);
+    font-size: var(--text-xs);
+  }
+  .category-filter__divider {
+    display: none;
   }
 
   .shop-grid {
