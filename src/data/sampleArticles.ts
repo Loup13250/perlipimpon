@@ -2,7 +2,7 @@
  * Données de démonstration pour peupler le site au premier lancement.
  */
 
-import type { Article, Testimonial, SiteConfig } from '../types';
+import type { Article, SiteConfig } from '../types';
 
 export const defaultSiteConfig: SiteConfig = {
   nomMarque: 'Perlipimpon',
@@ -69,6 +69,24 @@ export const defaultSiteConfig: SiteConfig = {
       auteur: 'Camille D.',
       note: 5,
       texte: 'Un vrai coup de cœur pour cette boutique ! Je suis fidèle depuis deux ans maintenant. Chaque nouvelle création est une surprise magnifique. La créatrice est passionnée et ça se ressent dans chacune de ses pièces.'
+    },
+    {
+      id: 't-007',
+      auteur: 'Isabelle F.',
+      note: 5,
+      texte: 'La bague en labradorite que j\'ai reçue est tout simplement éblouissante. Les reflets bleutés changent selon la lumière, c\'est magique ! La finition est impeccable et le colis était emballé avec beaucoup d\'attention. Une adresse à chérir.'
+    },
+    {
+      id: 't-008',
+      auteur: 'Aurélie G.',
+      note: 5,
+      texte: 'J\'ai commandé un collier en malachite pour l\'anniversaire de ma sœur et elle était aux larmes ! La pierre est d\'une beauté rare et la chaîne est fine et solide. Vous avez une nouvelle cliente fidèle, merci infiniment !'
+    },
+    {
+      id: 't-009',
+      auteur: 'Lucie B.',
+      note: 5,
+      texte: 'Mes nouvelles boucles d\'oreilles en améthyste sont parfaites — légères, bien finies, exactement comme sur les photos. J\'adore le fait que chaque pièce soit unique. On ressent vraiment le travail artisanal derrière chaque création.'
     }
   ],
   processSteps: [
@@ -139,17 +157,6 @@ export const sampleArticles: Article[] = [
     "id": "auto-006",
     "titre": "Bague Labradorite Royale",
     "description": "Bague majestueuse sertie d'une Labradorite aux reflets bleutés envoûtants.",
-    "prix": 35,
- "categorie": "Boucles d'oreilles",
-    "photos": ["/images/creations/473340799_122201328548158928_2038345838962049893_n.jpg"],
-    "dateCreation": "2026-04-10T02:18:36Z",
-    "dateMaj": "2026-04-10T02:18:36Z",
-    "enVedette": true
-  },
-  {
-    "id": "auto-006",
-    "titre": "Bague Labrad'Orite Royale",
-    "description": "Bague majestueuse sertie dune Labrad'Orite aux reflets bleutés envoûtants.",
     "prix": 35,
     "categorie": "Bagues",
     "photos": ["/images/creations/473341420_122201328206158928_2828597019880718112_n.jpg"],
@@ -626,6 +633,201 @@ export const sampleArticles: Article[] = [
     "prix": 35,
     "categorie": "Bracelets",
     "photos": ["/images/creations/474200707_122202711824158928_6827775833202492470_n.jpg"],
+  },
+  {
+    "id": "auto-032",
+    "titre": "Boucles Pampilles Argent",
+    "description": "Boucles d'oreilles avec de multiples pampilles argentées mobiles.",
+    "prix": 35,
+    "categorie": "Boucles d'oreilles",
+    "photos": ["/images/creations/474038694_122202536162158928_510954882395770702_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-033",
+    "titre": "Bague Topaze Bleue",
+    "description": "Bague lumineuse sertie dune Topaze bleue claire et pure.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "photos": ["/images/creations/474050030_122202536414158928_7623025863111960861_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-034",
+    "titre": "Bague Grenat passion",
+    "description": "Bague envoutante ornée dun Grenat rouge profond.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "photos": ["/images/creations/474067360_122202537008158928_7779281431957026996_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-035",
+    "titre": "Bague Peridot Printemps",
+    "description": "Bague fraiche avec un Peridot vert olive eclatant.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "photos": ["/images/creations/474068627_122202536648158928_6168960549888235370_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-036",
+    "titre": "Bague Citrine Solaire",
+    "description": "Bague rayonnante mettant en valeur une Citrine jaune d'Or.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "photos": ["/images/creations/474073415_122202536762158928_5270765036021272470_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-037",
+    "titre": "Bague Hematite Force",
+    "description": "Bague au design moderne avec une Hematite aux reflets metalliques.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "photos": ["/images/creations/474085302_122202536186158928_8177287603919219394_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-038",
+    "titre": "Bague Jaspe Rouge",
+    "description": "Bague ancree avec un Jaspe rouge aux tons terreux et naturels.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "photos": ["/images/creations/474105068_122202536888158928_260107995910757901_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-039",
+    "titre": "Bague Sodalite Sagesse",
+    "description": "Bague apaisante ornée dune Sodalite bleue veinee de blanc.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "photos": ["/images/creations/474135951_122202536144158928_5117788262173145538_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-040",
+    "titre": "Bague Unakite Nature",
+    "description": "Bague originale combinant le vert et le rose de lUnakite.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "photos": ["/images/creations/474137838_122202536594158928_3276680666977018168_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-041",
+    "titre": "Bague Obsidienne Noire",
+    "description": "Bague intense sertie dune Obsidienne noire protectrice.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "photos": ["/images/creations/474139143_122202536378158928_7767449053865933548_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-042",
+    "titre": "Bague Calcedoine Bleue",
+    "description": "Bague douce avec une Calcedoine dun bleu pastel delicat.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "photos": ["/images/creations/474143934_122202536744158928_223690050841474990_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-043",
+    "titre": "Bague Rhodonite Tendresse",
+    "description": "Bague rose tendre ornée dune Rhodonite veinee de noir.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "photos": ["/images/creations/474146896_122202536882158928_8214072194493370941_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-044",
+    "titre": "Bague Aventurine Prospere",
+    "description": "Bague au vert tendre, symbole de chance et de prosperite.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "photos": ["/images/creations/474162800_122202536720158928_5764662690346226503_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-045",
+    "titre": "Bague Jade Imperial",
+    "description": "Bague précieuse sertie dun Jade vert intense et symbolique.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "photos": ["/images/creations/474164566_122202536624158928_615655267435086183_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-046",
+    "titre": "Bague Fluorite Arc-en-ciel",
+    "description": "Bague colorée avec une Fluorite aux multiples nuances de violet et vert.",
+    "prix": 35,
+    "categorie": "Bagues",
+    "photos": ["/images/creations/474177940_122202536708158928_3484378336419254563_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-047",
+    "titre": "Bracelet Maillons Leopard",
+    "description": "Bracelet tendance avec des maillons en acrylique au motif leopard.",
+    "prix": 35,
+    "categorie": "Bracelets",
+    "photos": ["/images/creations/474188349_122202711638158928_307615407925336821_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-048",
+    "titre": "Bracelet Maillons Ambre",
+    "description": "Bracelet chaleureux avec des maillons ambres et d'Orés.",
+    "prix": 35,
+    "categorie": "Bracelets",
+    "photos": ["/images/creations/474189407_122202711626158928_2074019437738859462_n.jpg"],
+    "dateCreation": "2026-04-10T02:18:36Z",
+    "dateMaj": "2026-04-10T02:18:36Z",
+    "enVedette": false
+  },
+  {
+    "id": "auto-049",
+    "titre": "Bracelet Maillons Nacre",
+    "description": "Bracelet raffine avec des maillons nacres et métallisés.",
+    "prix": 35,
+    "categorie": "Bracelets",
+    "photos": ["/images/creations/474200707_122202711824158928_6827775833202492470_n.jpg"],
     "dateCreation": "2026-04-10T02:18:36Z",
     "dateMaj": "2026-04-10T02:18:36Z",
     "enVedette": false
@@ -640,18 +842,5 @@ export const sampleArticles: Article[] = [
     "dateCreation": "2026-04-10T02:18:36Z",
     "dateMaj": "2026-04-10T02:18:36Z",
     "enVedette": false
-  },
-  {
-    "id": "demo-001",
-    "titre": "Collier ÃƒÆ’ââ‚¬Â°clat de Lune",
-    "description": "Un collier délicat en argent 925 serti d'une pierre de lune aux reflets bleutés. Pièce unique fabriquée entièrement à la main.",
-    "prix": 89,
-    "categorie": "Colliers",
-    "photos": ["/images/moonstone_necklace.png"],
-    "dateCreation": "2026-01-15T10:00:00Z",
-    "dateMaj": "2026-01-15T10:00:00Z",
-    "enVedette": true
   }
 ];
-
-export const sampleTestimonials: Testimonial[] = [];

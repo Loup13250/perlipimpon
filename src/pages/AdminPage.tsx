@@ -4,7 +4,7 @@
  * Vue principale : liste + formulaire d'édition + gestion des données.
  */
 
-import { useState, useCallback, type FormEvent } from 'react';
+import { useState, useCallback, useEffect, useRef, type FormEvent } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useArticles } from '../hooks/useArticles';
 import { useConfig } from '../hooks/useConfig';
@@ -13,6 +13,22 @@ import { formatPrice, formatDate, fileToBase64 } from '../utils/helpers';
 import { useToast } from '../components/Toast';
 import { defaultSiteConfig } from '../data/sampleArticles';
 import type { Article, ArticleFormData, Category, SiteConfig, CategoryData } from '../types';
+
+// ──────────────────────────────────────────────
+// Hook : avertissement avant fermeture navigateur
+// ──────────────────────────────────────────────
+function useBeforeUnload(isDirty: boolean) {
+  useEffect(() => {
+    const handler = (e: BeforeUnloadEvent) => {
+      if (isDirty) {
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    };
+    window.addEventListener('beforeunload', handler);
+    return () => window.removeEventListener('beforeunload', handler);
+  }, [isDirty]);
+}
 
 // ──────────────────────────────────────────────
 // Composant Login
@@ -86,11 +102,13 @@ function ArticleForm({
   categories,
   onSave,
   onCancel,
+  onDirtyChange,
 }: {
   article?: Article;
   categories: string[];
   onSave: (data: ArticleFormData) => void;
   onCancel: () => void;
+  onDirtyChange?: (dirty: boolean) => void;
 }) {
   const isEditing = !!article;
 
@@ -98,19 +116,37 @@ function ArticleForm({
     titre: article?.titre || '',
     description: article?.description || '',
     prix: article?.prix || 0,
-    categorie: article?.categorie || 'Colliers',
+    categorie: article?.categorie || (categories[0] || 'Colliers'),
     photos: article?.photos || [],
     enVedette: article?.enVedette || false,
     vendu: article?.vendu || false,
   });
 
+  const isDirtyRef = useRef(false);
+
   const updateField = <K extends keyof ArticleFormData>(key: K, value: ArticleFormData[K]) => {
-    setForm((prev) => ({ ...prev, [key]: value }));
+    setForm((prev) => {
+      const next = { ...prev, [key]: value };
+      if (!isDirtyRef.current) {
+        isDirtyRef.current = true;
+        onDirtyChange?.(true);
+      }
+      return next;
+    });
+  };
+
+  // Réinitialiser dirty après sauvegarde
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!form.titre.trim() || form.prix <= 0) return;
+    isDirtyRef.current = false;
+    onDirtyChange?.(false);
+    onSave(form);
   };
 
   const handlePhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if (!files) return;
+    if (!files || files.length === 0) return;
     const newPhotosBase64: string[] = [];
     for (const file of Array.from(files)) {
       try {
@@ -122,8 +158,13 @@ function ArticleForm({
     }
     setForm((prev) => {
       const updatedPhotos = [...prev.photos, ...newPhotosBase64].slice(0, 4);
+      if (!isDirtyRef.current) {
+        isDirtyRef.current = true;
+        onDirtyChange?.(true);
+      }
       return { ...prev, photos: updatedPhotos };
     });
+    // Réinitialiser l'input pour pouvoir re-sélectionner le même fichier
     e.target.value = '';
   };
 
@@ -131,17 +172,17 @@ function ArticleForm({
     updateField('photos', form.photos.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    if (!form.titre.trim() || form.prix <= 0) return;
-    onSave(form);
-  };
-
   return (
     <div className="admin-form">
       <div className="admin-form__header">
         <h2>{isEditing ? '✏️ Modifier l\'article' : '✨ Nouvel article'}</h2>
-        <button className="btn btn--outline btn--sm" onClick={onCancel}>✕ Annuler</button>
+        <button
+          type="button"
+          className="btn btn--outline btn--sm"
+          onClick={onCancel}
+        >
+          ✕ Annuler
+        </button>
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -156,6 +197,7 @@ function ArticleForm({
               value={form.titre}
               onChange={(e) => updateField('titre', e.target.value)}
               required
+              autoComplete="off"
             />
           </div>
 
@@ -171,6 +213,7 @@ function ArticleForm({
               value={form.prix || ''}
               onChange={(e) => updateField('prix', parseFloat(e.target.value) || 0)}
               required
+              autoComplete="off"
             />
           </div>
 
@@ -197,19 +240,24 @@ function ArticleForm({
               value={form.description}
               onChange={(e) => updateField('description', e.target.value)}
               rows={4}
+              autoComplete="off"
             />
           </div>
 
           {/* Upload photos */}
           <div className="photo-upload">
             <label>Photos ({form.photos.length}/4)</label>
-            <label className="photo-upload__area" htmlFor="photo-input">
-              <div className="photo-upload__area-icon">📷</div>
-              <p><span>Cliquez pour ajouter</span> des photos (max 4)</p>
-              <p>JPG, PNG — 5 Mo max par image</p>
-            </label>
+
+            {/* Zone cliquable pour ajouter des photos — label séparé de l'input */}
+            {form.photos.length < 4 && (
+              <label className="photo-upload__area" htmlFor="photo-input-field" style={{ cursor: 'pointer' }}>
+                <div className="photo-upload__area-icon">📷</div>
+                <p><span>Cliquez pour ajouter</span> des photos (max 4)</p>
+                <p>JPG, PNG — 5 Mo max par image</p>
+              </label>
+            )}
             <input
-              id="photo-input"
+              id="photo-input-field"
               type="file"
               accept="image/*"
               multiple
@@ -273,11 +321,44 @@ function ArticleForm({
 // ──────────────────────────────────────────────
 // Formulaire Paramètres Généraux
 // ──────────────────────────────────────────────
-function SiteConfigForm({ config, onSave, onInjectSamples }: { config: SiteConfig, onSave: (c: SiteConfig) => void, onInjectSamples: () => void }) {
+function SiteConfigForm({
+  config,
+  onSave,
+  onInjectSamples,
+  onDirtyChange,
+}: {
+  config: SiteConfig;
+  onSave: (c: SiteConfig) => void;
+  onInjectSamples: () => void;
+  onDirtyChange?: (dirty: boolean) => void;
+}) {
   const [form, setForm] = useState<SiteConfig>(config);
   const [activeTab, setActiveTab] = useState<'general' | 'hero' | 'about' | 'testimonials' | 'maintenance'>('general');
-  const handleChange = (field: keyof SiteConfig, value: any) => setForm(prev => ({ ...prev, [field]: value }));
-  const handleSubmit = (e: FormEvent) => { e.preventDefault(); onSave(form); };
+  const isDirtyRef = useRef(false);
+
+  // Sync si la config change depuis l'extérieur (ex: import JSON)
+  useEffect(() => {
+    setForm(config);
+  }, [config]);
+
+  useBeforeUnload(isDirtyRef.current);
+
+  const handleChange = (field: keyof SiteConfig, value: any) => {
+    setForm(prev => {
+      if (!isDirtyRef.current) {
+        isDirtyRef.current = true;
+        onDirtyChange?.(true);
+      }
+      return { ...prev, [field]: value };
+    });
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    isDirtyRef.current = false;
+    onDirtyChange?.(false);
+    onSave(form);
+  };
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, field: keyof SiteConfig) => {
     const file = e.target.files?.[0];
@@ -285,7 +366,7 @@ function SiteConfigForm({ config, onSave, onInjectSamples }: { config: SiteConfi
       try {
         const b64 = await fileToBase64(file);
         handleChange(field, b64);
-      } catch (err) {
+      } catch {
         alert('Erreur de chargement d\'image');
       }
     }
@@ -324,23 +405,23 @@ function SiteConfigForm({ config, onSave, onInjectSamples }: { config: SiteConfi
             <div className="admin-form__grid" style={{ marginBottom: '2rem' }}>
               <div className="form-group">
                 <label>Nom de la Marque</label>
-                <input type="text" value={form.nomMarque} onChange={e => handleChange('nomMarque', e.target.value)} required />
+                <input type="text" value={form.nomMarque} onChange={e => handleChange('nomMarque', e.target.value)} required autoComplete="off" />
               </div>
               <div className="form-group">
                 <label>Email de contact</label>
-                <input type="email" value={form.email} onChange={e => handleChange('email', e.target.value)} required />
+                <input type="email" value={form.email} onChange={e => handleChange('email', e.target.value)} required autoComplete="off" />
               </div>
               <div className="form-group">
                 <label>Téléphone</label>
-                <input type="text" value={form.telephone} onChange={e => handleChange('telephone', e.target.value)} required />
+                <input type="text" value={form.telephone} onChange={e => handleChange('telephone', e.target.value)} required autoComplete="off" />
               </div>
               <div className="form-group">
                 <label>Lien Facebook</label>
-                <input type="url" value={form.facebook} onChange={e => handleChange('facebook', e.target.value)} />
+                <input type="url" value={form.facebook} onChange={e => handleChange('facebook', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group">
                 <label>Lien Instagram</label>
-                <input type="url" value={form.instagram} onChange={e => handleChange('instagram', e.target.value)} />
+                <input type="url" value={form.instagram} onChange={e => handleChange('instagram', e.target.value)} autoComplete="off" />
               </div>
             </div>
 
@@ -348,12 +429,12 @@ function SiteConfigForm({ config, onSave, onInjectSamples }: { config: SiteConfi
             <div className="admin-form__grid">
               <div className="form-group form-group--full">
                 <label>Titre de l'onglet (Meta Title)</label>
-                <input type="text" value={form.metaTitle} onChange={e => handleChange('metaTitle', e.target.value)} required />
+                <input type="text" value={form.metaTitle} onChange={e => handleChange('metaTitle', e.target.value)} required autoComplete="off" />
                 <small style={{color:'var(--color-gray-500)', marginTop:'4px', display:'block'}}>C'est ce qui s'affiche dans l'onglet du navigateur et tout en haut des résultats Google.</small>
               </div>
               <div className="form-group form-group--full">
                 <label>Description du site (Meta Description)</label>
-                <textarea rows={3} value={form.metaDescription} onChange={e => handleChange('metaDescription', e.target.value)} required />
+                <textarea rows={3} value={form.metaDescription} onChange={e => handleChange('metaDescription', e.target.value)} required autoComplete="off" />
                 <small style={{color:'var(--color-gray-500)', marginTop:'4px', display:'block'}}>Un court résumé incitatif (150 caractères idéalement) affiché dans les résultats Google.</small>
               </div>
             </div>
@@ -377,19 +458,19 @@ function SiteConfigForm({ config, onSave, onInjectSamples }: { config: SiteConfi
               </div>
               <div className="form-group form-group--full">
                 <label>Surtitre (Au dessus du titre)</label>
-                <input type="text" value={form.heroSubtitle || ''} onChange={e => handleChange('heroSubtitle', e.target.value)} />
+                <input type="text" value={form.heroSubtitle || ''} onChange={e => handleChange('heroSubtitle', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group">
                 <label>Titre principal (Début en blanc)</label>
-                <input type="text" value={form.heroTitle1 || ''} onChange={e => handleChange('heroTitle1', e.target.value)} />
+                <input type="text" value={form.heroTitle1 || ''} onChange={e => handleChange('heroTitle1', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group">
                 <label>Mot accentué (Fin en italique doré)</label>
-                <input type="text" value={form.heroTitle2 || ''} onChange={e => handleChange('heroTitle2', e.target.value)} />
+                <input type="text" value={form.heroTitle2 || ''} onChange={e => handleChange('heroTitle2', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group form-group--full">
                 <label>Texte descriptif principal</label>
-                <textarea rows={3} value={form.heroDescription || ''} onChange={e => handleChange('heroDescription', e.target.value)} />
+                <textarea rows={3} value={form.heroDescription || ''} onChange={e => handleChange('heroDescription', e.target.value)} autoComplete="off" />
               </div>
             </div>
 
@@ -397,11 +478,11 @@ function SiteConfigForm({ config, onSave, onInjectSamples }: { config: SiteConfi
             <div className="admin-form__grid">
               <div className="form-group form-group--full">
                 <label>Titre d'accroche</label>
-                <input type="text" value={form.ctaTitle || ''} onChange={e => handleChange('ctaTitle', e.target.value)} />
+                <input type="text" value={form.ctaTitle || ''} onChange={e => handleChange('ctaTitle', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group form-group--full">
                 <label>Texte incitatif (Contactez-nous...)</label>
-                <textarea rows={2} value={form.ctaDescription || ''} onChange={e => handleChange('ctaDescription', e.target.value)} />
+                <textarea rows={2} value={form.ctaDescription || ''} onChange={e => handleChange('ctaDescription', e.target.value)} autoComplete="off" />
               </div>
             </div>
           </>
@@ -424,15 +505,15 @@ function SiteConfigForm({ config, onSave, onInjectSamples }: { config: SiteConfi
               </div>
               <div className="form-group form-group--full">
                 <label>Titre principal ("À propos")</label>
-                <input type="text" value={form.aboutTitle || ''} onChange={e => handleChange('aboutTitle', e.target.value)} />
+                <input type="text" value={form.aboutTitle || ''} onChange={e => handleChange('aboutTitle', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group form-group--full">
                 <label>Texte descriptif (Paragraphe 1)</label>
-                <textarea rows={3} value={form.aboutText1 || ''} onChange={e => handleChange('aboutText1', e.target.value)} />
+                <textarea rows={3} value={form.aboutText1 || ''} onChange={e => handleChange('aboutText1', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group form-group--full">
                 <label>Texte descriptif (Paragraphe 2)</label>
-                <textarea rows={3} value={form.aboutText2 || ''} onChange={e => handleChange('aboutText2', e.target.value)} />
+                <textarea rows={3} value={form.aboutText2 || ''} onChange={e => handleChange('aboutText2', e.target.value)} autoComplete="off" />
               </div>
             </div>
 
@@ -448,14 +529,14 @@ function SiteConfigForm({ config, onSave, onInjectSamples }: { config: SiteConfi
                 <div className="admin-form__grid">
                   <div className="form-group">
                     <label>Étape N° {index + 1} - Titre</label>
-                    <input type="text" value={step.title} onChange={e => {
-                      const arr = [...form.processSteps]; arr[index].title = e.target.value; handleChange('processSteps', arr);
+                    <input type="text" value={step.title} autoComplete="off" onChange={e => {
+                      const arr = [...form.processSteps]; arr[index] = { ...arr[index], title: e.target.value }; handleChange('processSteps', arr);
                     }} required />
                   </div>
                   <div className="form-group form-group--full">
                     <label>Description courte</label>
-                    <input type="text" value={step.description} onChange={e => {
-                      const arr = [...form.processSteps]; arr[index].description = e.target.value; handleChange('processSteps', arr);
+                    <input type="text" value={step.description} autoComplete="off" onChange={e => {
+                      const arr = [...form.processSteps]; arr[index] = { ...arr[index], description: e.target.value }; handleChange('processSteps', arr);
                     }} required />
                   </div>
                 </div>
@@ -471,7 +552,7 @@ function SiteConfigForm({ config, onSave, onInjectSamples }: { config: SiteConfi
             <h2>Vos Mots Doux (Avis Clients)</h2>
             <p style={{ color: 'var(--color-gray-500)', fontSize: '0.8rem', marginBottom: '1rem' }}>Saisissez ici les meilleurs retours de vos clients affichés sur la page d'accueil.</p>
             {(form.testimonials || []).map((t, index) => (
-              <div key={t.id} style={{ border: '1px solid rgba(201,169,110,0.2)', padding: '1rem', borderRadius: '14px', marginBottom: '1rem', position: 'relative', background: 'rgba(250,246,240,0.5)' }}>
+              <div key={index} style={{ border: '1px solid rgba(201,169,110,0.2)', padding: '1rem', borderRadius: '14px', marginBottom: '1rem', position: 'relative', background: 'rgba(250,246,240,0.5)' }}>
                 <button type="button" className="btn btn--outline btn--sm" style={{ position: 'absolute', top: '10px', right: '10px', padding: '6px 10px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)', background: 'transparent' }} title="Supprimer ce témoignage" onClick={() => {
                   if (window.confirm("Êtes-vous sûr de vouloir supprimer ce témoignage ?")) {
                     const arr = [...form.testimonials]; arr.splice(index, 1); handleChange('testimonials', arr);
@@ -480,20 +561,23 @@ function SiteConfigForm({ config, onSave, onInjectSamples }: { config: SiteConfi
                 <div className="admin-form__grid">
                   <div className="form-group">
                     <label>Auteur</label>
-                    <input type="text" value={t.auteur} onChange={e => {
-                      const arr = [...form.testimonials]; arr[index].auteur = e.target.value; handleChange('testimonials', arr);
+                    <input type="text" value={t.auteur} autoComplete="off" onChange={e => {
+                      const arr = form.testimonials.map((item, i) => i === index ? { ...item, auteur: e.target.value } : item);
+                      handleChange('testimonials', arr);
                     }} required />
                   </div>
                   <div className="form-group">
                     <label>Note / 5</label>
                     <input type="number" min="1" max="5" value={t.note} onChange={e => {
-                      const arr = [...form.testimonials]; arr[index].note = Number(e.target.value); handleChange('testimonials', arr);
+                      const arr = form.testimonials.map((item, i) => i === index ? { ...item, note: Number(e.target.value) } : item);
+                      handleChange('testimonials', arr);
                     }} required />
                   </div>
                   <div className="form-group form-group--full">
                     <label>Texte (L'avis)</label>
-                    <textarea rows={2} value={t.texte} onChange={e => {
-                      const arr = [...form.testimonials]; arr[index].texte = e.target.value; handleChange('testimonials', arr);
+                    <textarea rows={2} value={t.texte} autoComplete="off" onChange={e => {
+                      const arr = form.testimonials.map((item, i) => i === index ? { ...item, texte: e.target.value } : item);
+                      handleChange('testimonials', arr);
                     }} required />
                   </div>
                 </div>
@@ -515,9 +599,9 @@ function SiteConfigForm({ config, onSave, onInjectSamples }: { config: SiteConfi
               <p style={{ color: 'var(--color-gray-600)', fontSize: '0.9rem', marginBottom: '1rem' }}>
                 Si votre boutique est vide, injectez les 12 créations de démonstration pour voir le rendu complet.
               </p>
-              <button 
-                type="button" 
-                className="btn btn--outline btn--sm" 
+              <button
+                type="button"
+                className="btn btn--outline btn--sm"
                 style={{ color: 'var(--color-gold-deep)', borderColor: 'var(--color-gold-deep)' }}
                 onClick={() => {
                   if (window.confirm("Injecter les 12 articles démo ? (Vos articles actuels ne seront pas supprimés)")) {
@@ -535,14 +619,14 @@ function SiteConfigForm({ config, onSave, onInjectSamples }: { config: SiteConfi
                 Réinitialiser les Avis Clients
               </h3>
               <p style={{ color: 'var(--color-gray-600)', fontSize: '0.9rem', marginBottom: '1rem' }}>
-                Remplace tous les avis actuels par les 6 témoignages modèles pré-écrits. Utile si vous voulez repartir de bases professionnelles.
+                Remplace tous les avis actuels par les 9 témoignages modèles pré-écrits. Utile si vous voulez repartir de bases professionnelles.
               </p>
-              <button 
-                type="button" 
-                className="btn btn--outline btn--sm" 
+              <button
+                type="button"
+                className="btn btn--outline btn--sm"
                 style={{ color: 'var(--color-charcoal)', borderColor: 'rgba(84,74,66,0.4)' }}
                 onClick={() => {
-                  if (window.confirm("Réinitialiser les avis clients avec les 6 modèles ? Les avis actuels seront remplacés.")) {
+                  if (window.confirm("Réinitialiser les avis clients avec les modèles ? Les avis actuels seront remplacés.")) {
                     handleChange('testimonials', defaultSiteConfig.testimonials);
                     alert('Avis réinitialisés ! Cliquez sur Enregistrer pour les sauvegarder.');
                   }
@@ -580,22 +664,57 @@ function SiteConfigForm({ config, onSave, onInjectSamples }: { config: SiteConfi
 // ──────────────────────────────────────────────
 // Formulaire Catégories
 // ──────────────────────────────────────────────
-function CategoriesForm({ config, onSave }: { config: SiteConfig, onSave: (c: SiteConfig) => void }) {
+function CategoriesForm({
+  config,
+  onSave,
+  onDirtyChange,
+}: {
+  config: SiteConfig;
+  onSave: (c: SiteConfig) => void;
+  onDirtyChange?: (dirty: boolean) => void;
+}) {
   const [form, setForm] = useState<SiteConfig>(config);
-  const updateCategory = (index: number, field: keyof CategoryData, value: string) => {
-    const newCats = [...form.categories];
-    newCats[index] = { ...newCats[index], [field]: value };
-    setForm(prev => ({ ...prev, categories: newCats }));
+  const isDirtyRef = useRef(false);
+
+  useEffect(() => {
+    setForm(config);
+  }, [config]);
+
+  useBeforeUnload(isDirtyRef.current);
+
+  const markDirty = () => {
+    if (!isDirtyRef.current) {
+      isDirtyRef.current = true;
+      onDirtyChange?.(true);
+    }
   };
+
+  const updateCategory = (index: number, field: keyof CategoryData, value: string) => {
+    markDirty();
+    setForm(prev => {
+      const newCats = prev.categories.map((cat, i) => i === index ? { ...cat, [field]: value } : cat);
+      return { ...prev, categories: newCats };
+    });
+  };
+
   const removeCategory = (index: number) => {
     if (window.confirm("Voulez-vous vraiment supprimer cette catégorie ?")) {
+      markDirty();
       setForm(prev => ({ ...prev, categories: prev.categories.filter((_, i) => i !== index) }));
     }
   };
+
   const addCategory = () => {
-    setForm(prev => ({ ...prev, categories: [...prev.categories, { name: 'Nouvelle', image: '' }] }));
+    markDirty();
+    setForm(prev => ({ ...prev, categories: [...prev.categories, { name: 'Nouvelle catégorie', image: '' }] }));
   };
-  const handleSubmit = (e: FormEvent) => { e.preventDefault(); onSave(form); };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    isDirtyRef.current = false;
+    onDirtyChange?.(false);
+    onSave(form);
+  };
 
   return (
     <form onSubmit={handleSubmit} className="admin-form">
@@ -605,7 +724,7 @@ function CategoriesForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
       </p>
       <div className="config-categories">
         {form.categories.map((cat, index) => (
-          <div key={`cat-${cat.name}-${index}`} className="category-edit-row">
+          <div key={index} className="category-edit-row">
             {/* Aperçu image à gauche */}
             <div className="category-thumb">
               {cat.image
@@ -619,6 +738,7 @@ function CategoriesForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
               value={cat.name}
               onChange={e => updateCategory(index, 'name', e.target.value)}
               placeholder="Nom de la catégorie"
+              autoComplete="off"
               style={{ flex: '1 1 150px', padding: '0.75rem 1rem', borderRadius: '12px', border: '1.5px solid rgba(201,169,110,0.25)', fontFamily: 'inherit', fontSize: 'var(--text-sm)', color: 'var(--color-charcoal)', background: 'rgba(255,255,255,0.8)' }}
               required
             />
@@ -631,7 +751,7 @@ function CategoriesForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
                   try {
                     const b64 = await fileToBase64(file);
                     updateCategory(index, 'image', b64);
-                  } catch (err) {}
+                  } catch { /* ignore */ }
                 }
               }} />
             </label>
@@ -648,10 +768,11 @@ function CategoriesForm({ config, onSave }: { config: SiteConfig, onSave: (c: Si
   );
 }
 
-
 // ──────────────────────────────────────────────
 // Page Admin principale
 // ──────────────────────────────────────────────
+type SortOrder = 'date-desc' | 'date-asc' | 'maj-desc' | 'prix-asc' | 'prix-desc';
+
 export default function AdminPage() {
   const { isAuthenticated, authLoading, login, logout } = useAuth();
   const { articles, articlesLoading, addArticle, updateArticle, deleteArticle, replaceAll, forceInjectSamples } = useArticles();
@@ -661,6 +782,7 @@ export default function AdminPage() {
 
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [filterStatus, setFilterStatus] = useState<'all' | 'vendu' | 'enVedette'>('all');
+  const [sortOrder, setSortOrder] = useState<SortOrder>('date-desc');
   const [searchQuery, setSearchQuery] = useState('');
 
   const [adminTab, setAdminTab] = useState<'articles' | 'categories' | 'config' | 'logs'>('articles');
@@ -668,9 +790,34 @@ export default function AdminPage() {
   const [editingArticle, setEditingArticle] = useState<Article | undefined>();
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
 
+  // Dirty state pour warning de navigation
+  const [isDirty, setIsDirty] = useState(false);
+  useBeforeUnload(isDirty);
+
   // Sélection multiple
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [bulkDeleteConfirm, setBulkDeleteConfirm] = useState(false);
+
+  // Guard de navigation : vérifie isDirty avant de changer d'onglet
+  const guardedTabChange = useCallback((tab: 'articles' | 'categories' | 'config' | 'logs') => {
+    if (isDirty) {
+      const ok = window.confirm('⚠️ Vous avez des modifications non sauvegardées.\n\nVoulez-vous quitter sans enregistrer ?');
+      if (!ok) return;
+      setIsDirty(false);
+    }
+    setAdminTab(tab);
+  }, [isDirty]);
+
+  // Guard pour quitter le formulaire article (retour vers liste)
+  const guardedReturn = useCallback(() => {
+    if (isDirty) {
+      const ok = window.confirm('⚠️ Vous avez des modifications non sauvegardées.\n\nVoulez-vous quitter sans enregistrer ?');
+      if (!ok) return;
+      setIsDirty(false);
+    }
+    setView('list');
+    setEditingArticle(undefined);
+  }, [isDirty]);
 
   // ── Hooks ──────────────────────────────────
   const handleSave = useCallback(async (data: ArticleFormData) => {
@@ -686,6 +833,7 @@ export default function AdminPage() {
     } catch {
       toast.error('Erreur', 'Une erreur est survenue lors de la sauvegarde.');
     }
+    setIsDirty(false);
     setView('list');
     setEditingArticle(undefined);
   }, [view, editingArticle, updateArticle, addArticle, addLog, toast]);
@@ -693,6 +841,7 @@ export default function AdminPage() {
   const handleEdit = useCallback((article: Article) => {
     setEditingArticle(article);
     setView('edit');
+    setIsDirty(false);
   }, []);
 
   const handleDelete = useCallback(async (id: string) => {
@@ -786,6 +935,7 @@ export default function AdminPage() {
       await setConfig(newConfig);
       addLog('CONFIG_SAVED', 'Paramètres du site enregistrés');
       toast.success('Paramètres sauvegardés !', 'Les modifications sont en ligne.');
+      setIsDirty(false);
     } catch {
       toast.error('Erreur', 'Impossible d\'enregistrer les paramètres.');
     }
@@ -796,12 +946,13 @@ export default function AdminPage() {
       await setConfig(newConfig);
       addLog('CATEGORIES_SAVED', `${newConfig.categories.length} catégorie(s) sauvegardées`);
       toast.success('Catégories sauvegardées !', 'Les modifications sont en ligne.');
+      setIsDirty(false);
     } catch {
       toast.error('Erreur', 'Impossible d\'enregistrer les catégories.');
     }
   }, [setConfig, addLog, toast]);
 
-  // Articles filtrés
+  // Articles filtrés & triés
   const filteredArticles = articles
     .filter(a => filterCategory === 'all' || a.categorie === filterCategory)
     .filter(a => {
@@ -810,7 +961,23 @@ export default function AdminPage() {
       if (filterStatus === 'enVedette') return a.enVedette;
       return true;
     })
-    .filter(a => !searchQuery || a.titre.toLowerCase().includes(searchQuery.toLowerCase()));
+    .filter(a => !searchQuery || a.titre.toLowerCase().includes(searchQuery.toLowerCase()))
+    .sort((a, b) => {
+      switch (sortOrder) {
+        case 'date-asc':
+          return new Date(a.dateCreation).getTime() - new Date(b.dateCreation).getTime();
+        case 'date-desc':
+          return new Date(b.dateCreation).getTime() - new Date(a.dateCreation).getTime();
+        case 'maj-desc':
+          return new Date(b.dateMaj).getTime() - new Date(a.dateMaj).getTime();
+        case 'prix-asc':
+          return a.prix - b.prix;
+        case 'prix-desc':
+          return b.prix - a.prix;
+        default:
+          return new Date(b.dateCreation).getTime() - new Date(a.dateCreation).getTime();
+      }
+    });
 
   const soldCount = articles.filter(a => a.vendu).length;
   const featuredCount = articles.filter(a => a.enVedette).length;
@@ -833,7 +1000,8 @@ export default function AdminPage() {
             article={editingArticle}
             categories={config.categories.map(c => c.name)}
             onSave={handleSave}
-            onCancel={() => { setView('list'); setEditingArticle(undefined); }}
+            onCancel={guardedReturn}
+            onDirtyChange={setIsDirty}
           />
         </div>
       ) : (
@@ -864,7 +1032,7 @@ export default function AdminPage() {
           <div className="admin-stats">
             <button
               className="stat-card stat-card--clickable"
-              onClick={() => { setAdminTab('articles'); setFilterStatus('all'); setFilterCategory('all'); }}
+              onClick={() => { guardedTabChange('articles'); setFilterStatus('all'); setFilterCategory('all'); }}
               title="Voir toutes les créations"
             >
               <div className="stat-card__icon">
@@ -875,7 +1043,7 @@ export default function AdminPage() {
             </button>
             <button
               className="stat-card stat-card--clickable"
-              onClick={() => { setAdminTab('articles'); setFilterStatus('enVedette'); setFilterCategory('all'); }}
+              onClick={() => { guardedTabChange('articles'); setFilterStatus('enVedette'); setFilterCategory('all'); }}
               title="Voir les coups de cœur"
             >
               <div className="stat-card__icon">
@@ -886,7 +1054,7 @@ export default function AdminPage() {
             </button>
             <button
               className="stat-card stat-card--clickable"
-              onClick={() => { setAdminTab('articles'); setFilterStatus('vendu'); setFilterCategory('all'); }}
+              onClick={() => { guardedTabChange('articles'); setFilterStatus('vendu'); setFilterCategory('all'); }}
               title="Voir les articles vendus"
             >
               <div className="stat-card__icon">
@@ -897,7 +1065,7 @@ export default function AdminPage() {
             </button>
             <button
               className="stat-card stat-card--clickable"
-              onClick={() => setAdminTab('categories')}
+              onClick={() => guardedTabChange('categories')}
               title="Gérer les catégories"
             >
               <div className="stat-card__icon">
@@ -912,28 +1080,28 @@ export default function AdminPage() {
           <div className="admin-nav">
             <button
               className={`admin-nav__btn ${adminTab === 'articles' ? 'active' : ''}`}
-              onClick={() => setAdminTab('articles')}
+              onClick={() => guardedTabChange('articles')}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
               Mes Créations
             </button>
             <button
               className={`admin-nav__btn ${adminTab === 'categories' ? 'active' : ''}`}
-              onClick={() => setAdminTab('categories')}
+              onClick={() => guardedTabChange('categories')}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
               Catégories
             </button>
             <button
               className={`admin-nav__btn ${adminTab === 'config' ? 'active' : ''}`}
-              onClick={() => setAdminTab('config')}
+              onClick={() => guardedTabChange('config')}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M4.93 19.07l1.41-1.41M19.07 19.07l-1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
               Design & Textes
             </button>
             <button
               className={`admin-nav__btn ${adminTab === 'logs' ? 'active' : ''}`}
-              onClick={() => setAdminTab('logs')}
+              onClick={() => guardedTabChange('logs')}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
               Activité
@@ -941,8 +1109,21 @@ export default function AdminPage() {
           </div>
 
           {/* Onglets */}
-          {adminTab === 'config' && <SiteConfigForm config={config} onSave={onSaveConfig} onInjectSamples={handleInjectSamples} />}
-          {adminTab === 'categories' && <CategoriesForm config={config} onSave={onSaveCategories} />}
+          {adminTab === 'config' && (
+            <SiteConfigForm
+              config={config}
+              onSave={onSaveConfig}
+              onInjectSamples={handleInjectSamples}
+              onDirtyChange={setIsDirty}
+            />
+          )}
+          {adminTab === 'categories' && (
+            <CategoriesForm
+              config={config}
+              onSave={onSaveCategories}
+              onDirtyChange={setIsDirty}
+            />
+          )}
 
           {adminTab === 'articles' && (
             <div className="admin-list">
@@ -987,10 +1168,23 @@ export default function AdminPage() {
                       <option value="vendu">Vendus</option>
                       <option value="enVedette">Coups de Cœur</option>
                     </select>
+
+                    <select
+                      id="admin-sort-filter"
+                      value={sortOrder}
+                      onChange={(e) => setSortOrder(e.target.value as SortOrder)}
+                      className="admin-filter-select"
+                    >
+                      <option value="date-desc">Date d'ajout ↓ (récent)</option>
+                      <option value="date-asc">Date d'ajout ↑ (ancien)</option>
+                      <option value="maj-desc">Modifié ↓ (récent)</option>
+                      <option value="prix-asc">Prix ↑ (croissant)</option>
+                      <option value="prix-desc">Prix ↓ (décroissant)</option>
+                    </select>
                   </div>
                 </div>
 
-                <button className="btn btn--primary btn--sm" onClick={() => setView('create')}>
+                <button className="btn btn--primary btn--sm" onClick={() => { setIsDirty(false); setView('create'); }}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                   Nouvel article
                 </button>
