@@ -166,7 +166,11 @@ export default function ProductDetailPage() {
           </div>
         ) : !article ? (
           <div className="product-not-found">
-            <div className="product-not-found__icon" style={{ fontSize: '3rem' }}><span role="img" aria-label="Not found">🌙</span></div>
+            <div className="product-not-found__icon" style={{ fontSize: '3rem' }}>
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+              </svg>
+            </div>
             <h2>Création introuvable</h2>
             <p>Cette pièce n'existe pas ou a été retirée de la collection.</p>
             <Link to="/creations" className="btn btn--primary">
@@ -174,41 +178,43 @@ export default function ProductDetailPage() {
             </Link>
           </div>
         ) : (
-          <>
-            {/* Fil d'ariane */}
-            <nav className="product-breadcrumb">
-              <Link to="/">Accueil</Link>
-              <span className="separator">›</span>
-              <Link to="/creations">Créations</Link>
-              <span className="separator">›</span>
-              <span>{article.titre}</span>
-            </nav>
-
-            {/* Layout principal */}
-            <div className="product-layout">
-              {/* Galerie images */}
-              <div className="gallery">
-                <div className="gallery__main" style={{ position: 'relative', cursor: article.photos.length > 0 ? 'zoom-in' : 'default', background: 'var(--color-cream)' }} onClick={() => article.photos.length > 0 && setLightboxOpen(true)}>
-                  {article.vendu && (
-                    <div className="product-card__banner-vendu" style={{ top: '40px', right: '-65px', width: '280px', fontSize: 'var(--text-lg)', padding: '12px 0' }}>
-                      <span>Vendu</span>
-                    </div>
-                  )}
-                  {article.photos.length > 0 ? (
-                    <img
-                      src={article.photos[activePhoto]}
-                      alt={`${article.titre} — Vue ${activePhoto + 1}`}
-                      width="800"
-                      height="800"
-                      style={{ objectFit: 'contain' }}
-                    />
-                  ) : (
-                    <div className="gallery__main-placeholder">
-                      <span role="img" aria-label="placeholder" style={{ fontSize: '5rem', color: 'var(--color-gold)' }}>🌙</span>
-                      <span>Photo à venir</span>
-                    </div>
-                  )}
-                </div>
+           <>
+             {/* Fil d'ariane */}
+             <nav className="product-breadcrumb">
+               <Link to="/">Accueil</Link>
+               <span className="separator">›</span>
+               <Link to="/creations">Créations</Link>
+               <span className="separator">›</span>
+               <span>{article.titre}</span>
+             </nav>
+ 
+             {/* Layout principal */}
+             <div className="product-layout">
+               {/* Galerie images */}
+               <div className="gallery">
+                 <div className="gallery__main" style={{ position: 'relative', cursor: article.photos.length > 0 ? 'zoom-in' : 'default', background: 'var(--color-cream)' }} onClick={() => article.photos.length > 0 && setLightboxOpen(true)}>
+                   {article.vendu && (
+                     <div className="product-card__banner-vendu" style={{ top: '40px', right: '-65px', width: '280px', fontSize: 'var(--text-lg)', padding: '12px 0' }}>
+                       <span>Vendu</span>
+                     </div>
+                   )}
+                   {article.photos.length > 0 ? (
+                     <img
+                       src={article.photos[activePhoto]}
+                       alt={`${article.titre} — Vue ${activePhoto + 1}`}
+                       width="800"
+                       height="800"
+                       style={{ objectFit: 'contain' }}
+                     />
+                   ) : (
+                     <div className="gallery__main-placeholder">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                        </svg>
+                       <span>Photo à venir</span>
+                     </div>
+                   )}
+                 </div>
 
                 {article.photos.length > 1 && (
                   <div className="gallery__thumbs">

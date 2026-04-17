@@ -54,7 +54,6 @@ function AdminLogin({ onLogin }: { onLogin: (email: string, password: string) =>
     <div className="admin-page">
       <div className="container">
         <div className="admin-login">
-          <span className="admin-login__icon">🌸</span>
           <h2>Espace Créatrice</h2>
           <p>Connectez-vous pour gérer vos créations</p>
 
@@ -322,7 +321,7 @@ function ArticleForm({
           <div className="admin-form__actions">
             <button type="button" className="btn btn--outline" onClick={onCancel}>Annuler</button>
             <button type="submit" className="btn btn--primary">
-              {isEditing ? '💾 Enregistrer' : '✨ Créer l\'article'}
+              {isEditing ? 'Enregistrer' : 'Créer l\'article'}
             </button>
           </div>
         </div>
@@ -386,11 +385,11 @@ function SiteConfigForm({
   };
 
   const tabs = [
-    { id: 'general', label: 'Général & SEO', icon: '🌐' },
-    { id: 'hero', label: 'Accueil & CTA', icon: '🏠' },
-    { id: 'about', label: 'À Propos', icon: '📖' },
-    { id: 'testimonials', label: 'Avis Clients', icon: '❤' },
-    { id: 'maintenance', label: 'Maintenance', icon: '🛠️' },
+    { id: 'general', label: 'Général & SEO', icon: '' },
+    { id: 'hero', label: 'Accueil & CTA', icon: '' },
+    { id: 'about', label: 'À Propos', icon: '' },
+    { id: 'testimonials', label: 'Avis Clients', icon: '' },
+    { id: 'maintenance', label: 'Maintenance', icon: '' },
   ] as const;
 
   return (
@@ -789,7 +788,7 @@ function CategoriesForm({
         <button type="button" className="btn btn--outline btn--sm" onClick={addCategory} style={{ marginTop: 'var(--space-sm)' }}>+ Ajouter une catégorie</button>
       </div>
       <div className="admin-form__actions" style={{ marginTop: '2rem' }}>
-        <button type="submit" className="btn btn--primary">💾 Enregistrer les catégories</button>
+        <button type="submit" className="btn btn--primary">Enregistrer les catégories</button>
       </div>
     </form>
   );
