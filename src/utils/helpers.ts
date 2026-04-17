@@ -101,9 +101,9 @@ export function compressImageToBase64(
 }
 
 /**
- * Compresse une image pour les catégories (plus petit, 400px max).
- * Priorité à la taille mini pour respecter la limite 1 Mo Firestore.
+ * Compresse une image pour les catégories (700px max, qualité correcte pour affichage homepage).
+ * Compromis : bonne qualité visuelle tout en restant dans la limite Firestore 1 Mo.
  */
 export function compressCategoryImage(file: File): Promise<string> {
-  return compressImageToBase64(file, 400, 0.70);
+  return compressImageToBase64(file, 700, 0.82);
 }
