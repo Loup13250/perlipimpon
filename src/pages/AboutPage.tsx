@@ -53,7 +53,7 @@ export default function AboutPage() {
         {/* Story */}
         <div className="about-story">
           <div className="about-story__image" style={{ padding: 0, overflow: 'hidden', background: 'transparent', border: 'none', boxShadow: 'none' }}>
-            <img src={config.aboutImage || "/images/moonstone_necklace.png"} alt="A propos" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius-lg)' }} />
+            <img src={config.aboutImage || "/images/moonstone_necklace.png"} alt="A propos" loading="lazy" width="600" height="800" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius-lg)' }} />
           </div>
           <div className="about-story__text">
             <h2>{config.aboutTitle || 'Une passion devenue création'}</h2>
@@ -73,7 +73,7 @@ export default function AboutPage() {
             {values.map((v) => (
               <div key={v.title} className="value-card reveal-item">
                 <div className="value-card__icon">
-                  <img src={v.icon} alt={v.title} style={{ width: '60px', height: '60px', objectFit: 'contain' }} />
+                  <img src={v.icon} alt={v.title} loading="lazy" width="60" height="60" style={{ width: '60px', height: '60px', objectFit: 'contain' }} />
                 </div>
                 <h3>{v.title}</h3>
                 <p>{v.description}</p>

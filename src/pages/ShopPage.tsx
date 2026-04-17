@@ -106,7 +106,7 @@ export default function ShopPage() {
                   >
                     <div className="product-card__image">
                       {Array.isArray(article.photos) && article.photos.length > 0 ? (
-                        <img src={article.photos[0]} alt={article.titre} />
+                        <img src={article.photos[0]} alt={article.titre} loading="lazy" width="500" height="500" />
                       ) : (
                         <div className="product-card__placeholder">
                           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">

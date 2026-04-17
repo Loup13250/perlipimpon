@@ -52,6 +52,8 @@ export default function Header() {
             src="/images/logo-jewelry-transparent.png"
             alt="Perlipimpon"
             className="brand-icon"
+            width="42"
+            height="42"
             style={{
               width: '42px',
               height: '42px',

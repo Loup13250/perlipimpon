@@ -59,7 +59,7 @@ export default function HomePage() {
             <div className="container">
               <div className="about-preview__grid">
                 <div className="about-preview__image" style={{ padding: 0, overflow: 'hidden' }}>
-                  <img src={config.aboutImage || "/images/moonstone_necklace.png"} alt="Création artisanale" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src={config.aboutImage || "/images/moonstone_necklace.png"} alt="Création artisanale" loading="lazy" width="800" height="800" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div className="about-preview__text">
                   <h2>
@@ -92,7 +92,7 @@ export default function HomePage() {
                       >
                         <div className="product-card__image">
                           {article.photos && article.photos.length > 0 ? (
-                            <img src={article.photos[0]} alt={article.titre} />
+                            <img src={article.photos[0]} alt={article.titre} loading="lazy" width="500" height="500" />
                           ) : (
                             <div className="product-card__placeholder">
                               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -202,14 +202,14 @@ export default function HomePage() {
                   >
                     <div className="category-card__icon">
                       {cat.image ? (
-                        <img src={cat.image} alt={cat.name} />
+                        <img src={cat.image} alt={cat.name} loading="lazy" width="400" height="400" />
                       ) : (
                         <img src={
                           cat.name.toLowerCase().includes('collier') ? '/images/moonstone_necklace.png' :
                           cat.name.toLowerCase().includes('bracelet') ? '/images/pearl_bracelet.png' :
                           cat.name.toLowerCase().includes('bague') ? '/images/rose_quartz_ring.png' :
                           '/images/hero_bg.png'
-                        } alt={cat.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        } alt={cat.name} loading="lazy" width="400" height="400" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       )}
                     </div>
                     <div className="category-card__content">
