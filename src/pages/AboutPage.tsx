@@ -58,19 +58,35 @@ export default function AboutPage() {
           {/* Suppression de reveal-item pour garantir la visibilité immédiate */}
           <div className="values-grid">
             <div className="value-card">
-              <div className="value-card__icon">🌸</div>
+              <div className="value-card__icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                </svg>
+              </div>
               <h3>L'Harmonie du Cœur</h3>
               <p>Des joyaux comme le Quartz Rose sont choisis pour apaiser et favoriser la paix intérieure.</p>
             </div>
 
             <div className="value-card">
-              <div className="value-card__icon">🌙</div>
+              <div className="value-card__icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                </svg>
+              </div>
               <h3>Sérénité Mentale</h3>
               <p>L'Améthyste et la Labradorite libèrent l'esprit et stimulent des nuits paisibles.</p>
             </div>
 
             <div className="value-card">
-              <div className="value-card__icon">🌿</div>
+              <div className="value-card__icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                  <path d="M5 3v4" />
+                  <path d="M19 17v4" />
+                  <path d="M3 5h4" />
+                  <path d="M17 19h4" />
+                </svg>
+              </div>
               <h3>Énergie Vitale</h3>
               <p>L'Oeil de Tigre et la Cornaline réveillent la force corporelle et relancent l'énergie.</p>
             </div>
