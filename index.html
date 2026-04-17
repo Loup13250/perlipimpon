@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <link rel="preload" as="image" href="/images/hero_bg.png" fetchpriority="high" />
 
     <!-- SEO -->
     <title>Perlipimpon — Créatrice de bijoux fantaisie, énergies et pierres naturelles</title>
@@ -21,7 +20,7 @@
     <meta property="og:description" content="Découvrez une collection unique de bijoux artisanaux imprégnés d'énergies célestes. Fait main." />
     <meta property="og:type" content="website" />
   </head>
-  <body>
+  <body style="margin: 0; background-color: #FAF6F0;">
     <!-- Filtre Chirurgical (Branding) — Permanent dans le DOM pour éviter tout artefact noir -->
     <svg style="position: absolute; width: 0; height: 0; pointer-events: none;" aria-hidden="true">
       <defs>
@@ -37,7 +36,32 @@
       </defs>
     </svg>
 
-    <div id="root"></div>
+    <!-- INVISIBLE SVG LOGO REMAINS IN BODY FOR CACHING -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <defs>
+        <clipPath id="logo-mask">
+          <ellipse cx="50" cy="50" rx="40" ry="30" />
+        </clipPath>
+      </defs>
+    </svg>
+
+    <div id="root">
+      <!-- FAST FIRST CONTENTFUL PAINT (FCP) SKELETON -->
+      <style>
+        .fcp-loader {
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #FAF6F0;
+          color: #D4AF37;
+          font-family: 'Playfair Display', serif;
+          font-style: italic;
+          font-size: 24px;
+        }
+      </style>
+      <div class="fcp-loader">Perlipimpon...</div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
