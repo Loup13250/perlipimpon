@@ -3,13 +3,10 @@
  */
 
 import { Link } from 'react-router-dom';
-import { useScrollRevealGroup } from '../hooks/useScrollReveal';
 import { useConfig } from '../hooks/useConfig';
 
 export default function AboutPage() {
-  const { config, configLoading } = useConfig();
-  const valuesRef = useScrollRevealGroup();
-  const processRef = useScrollRevealGroup({}, [config.processSteps]);
+  const { configLoading } = useConfig();
 
   if (configLoading) {
     return (
@@ -19,7 +16,7 @@ export default function AboutPage() {
     );
   }
 
-  // Textes Lithothérapie (Hardcoded pour garantir la mise à jour immédiate demandée)
+  // Textes Lithothérapie (Statiques pour éviter tout délai d'affichage)
   const aboutTitle = "L'Éclat des Pierres, l'Énergie du Corps";
   const aboutText1 = "Chaque gemme est sélectionnée pour sa vibration unique. Chez Perlipimpon, nous croyons que la beauté d'un bijou réside autant dans son éclat que dans les bienfaits qu'il procure à l'âme.";
   const aboutText2 = "De l'apaisement du Quartz Rose à la force protectrice de l'Améthyste, nous créons des talismans modernes pensés pour harmoniser vos énergies et vos humeurs au quotidien.";
@@ -58,20 +55,21 @@ export default function AboutPage() {
             <p>La Lithothérapie au cœur de chaque parure</p>
           </div>
 
-          <div className="values-grid" ref={valuesRef}>
-            <div className="value-card reveal-item">
+          {/* Suppression de reveal-item pour garantir la visibilité immédiate */}
+          <div className="values-grid">
+            <div className="value-card">
               <div className="value-card__icon">🌸</div>
               <h3>L'Harmonie du Cœur</h3>
               <p>Des joyaux comme le Quartz Rose sont choisis pour apaiser et favoriser la paix intérieure.</p>
             </div>
 
-            <div className="value-card reveal-item">
+            <div className="value-card">
               <div className="value-card__icon">🌙</div>
               <h3>Sérénité Mentale</h3>
               <p>L'Améthyste et la Labradorite libèrent l'esprit et stimulent des nuits paisibles.</p>
             </div>
 
-            <div className="value-card reveal-item">
+            <div className="value-card">
               <div className="value-card__icon">🌿</div>
               <h3>Énergie Vitale</h3>
               <p>L'Oeil de Tigre et la Cornaline réveillent la force corporelle et relancent l'énergie.</p>
@@ -79,17 +77,18 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Redesigned Process Section (Vertical Timeline) */}
+        {/* Process Section (Vertical Timeline) */}
         <div className="about-process">
           <div className="section-title">
             <h2>Le voyage de création</h2>
             <p>Un savoir-faire minutieux, de l'inspiration à l'écrin</p>
           </div>
 
-          <div className="process-timeline" ref={processRef}>
+          {/* Suppression de reveal-item pour garantir la visibilité immédiate */}
+          <div className="process-timeline">
             <div className="process-timeline__line"></div>
             
-            <div className="process-item reveal-item">
+            <div className="process-item">
               <div className="process-item__marker">1</div>
               <div className="process-item__content">
                 <h4>L'Inspiration & L'Éveil</h4>
@@ -97,7 +96,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="process-item reveal-item">
+            <div className="process-item">
               <div className="process-item__marker">2</div>
               <div className="process-item__content">
                 <h4>La Sélection de Rigueur</h4>
@@ -105,7 +104,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="process-item reveal-item">
+            <div className="process-item">
               <div className="process-item__marker">3</div>
               <div className="process-item__content">
                 <h4>La Main de l'Artisan</h4>
@@ -113,7 +112,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="process-item reveal-item">
+            <div className="process-item">
               <div className="process-item__marker">4</div>
               <div className="process-item__content">
                 <h4>Le Rituel Packaging</h4>
