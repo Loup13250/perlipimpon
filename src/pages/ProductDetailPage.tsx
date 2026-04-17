@@ -13,9 +13,34 @@ export default function ProductDetailPage() {
   const { getArticle, articlesLoading } = useArticles();
   const article = id ? getArticle(id) : undefined;
   const [activePhoto, setActivePhoto] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  const prevPhoto = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (article) setActivePhoto((activePhoto - 1 + article.photos.length) % article.photos.length);
+  };
+
+  const nextPhoto = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (article) setActivePhoto((activePhoto + 1) % article.photos.length);
+  };
 
   return (
     <div className="product-page">
+      {/* LIGHTBOX OVERLAY */}
+      {lightboxOpen && article && article.photos.length > 0 && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 9999, backgroundColor: 'rgba(0,0,0,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={() => setLightboxOpen(false)}>
+          {article.photos.length > 1 && (
+            <button onClick={prevPhoto} style={{ position: 'absolute', left: '20px', background: 'transparent', border: 'none', color: 'white', fontSize: '3rem', cursor: 'pointer', padding: '20px' }}>‹</button>
+          )}
+          <img src={article.photos[activePhoto]} alt={article.titre} style={{ maxHeight: '90vh', maxWidth: '90vw', objectFit: 'contain' }} onClick={(e) => e.stopPropagation()} />
+          {article.photos.length > 1 && (
+            <button onClick={nextPhoto} style={{ position: 'absolute', right: '20px', background: 'transparent', border: 'none', color: 'white', fontSize: '3rem', cursor: 'pointer', padding: '20px' }}>›</button>
+          )}
+          <button onClick={() => setLightboxOpen(false)} style={{ position: 'absolute', top: '20px', right: '30px', background: 'transparent', border: 'none', color: 'white', fontSize: '2.5rem', cursor: 'pointer' }}>×</button>
+        </div>
+      )}
+
       <div className="container">
         {articlesLoading ? (
           <div className="product-not-found">
@@ -45,7 +70,7 @@ export default function ProductDetailPage() {
             <div className="product-layout">
               {/* Galerie images */}
               <div className="gallery">
-                <div className="gallery__main" style={{ position: 'relative' }}>
+                <div className="gallery__main" style={{ position: 'relative', cursor: article.photos.length > 0 ? 'zoom-in' : 'default', background: 'var(--color-cream)' }} onClick={() => article.photos.length > 0 && setLightboxOpen(true)}>
                   {article.vendu && (
                     <div className="product-card__banner-vendu" style={{ top: '40px', right: '-65px', width: '280px', fontSize: 'var(--text-lg)', padding: '12px 0' }}>
                       <span>Vendu</span>
@@ -57,7 +82,7 @@ export default function ProductDetailPage() {
                       alt={`${article.titre} — Vue ${activePhoto + 1}`}
                       width="800"
                       height="800"
-                      style={{ objectFit: 'cover' }}
+                      style={{ objectFit: 'contain' }}
                     />
                   ) : (
                     <div className="gallery__main-placeholder">

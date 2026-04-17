@@ -155,49 +155,21 @@ export default function HomePage() {
               <div className="brand-values__grid">
                 
                 <div className="brand-value-card">
-                  <div className="brand-value-card__icon">
-                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/>
-                      <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/>
-                      <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/>
-                      <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82l2.76 2.76V15"/>
-                    </svg>
-                  </div>
                   <h4>Atelier Artisanal</h4>
                   <p>Chaque parure prend vie minutieusement à la main, guidée par une passion authentique.</p>
                 </div>
 
                 <div className="brand-value-card">
-                  <div className="brand-value-card__icon">
-                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                      <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                      <polyline points="2 17 12 22 22 17"/>
-                      <polyline points="2 12 12 17 22 12"/>
-                    </svg>
-                  </div>
                   <h4>Gemmes Sélectionnées</h4>
                   <p>Des pierres fines sourcées avec exigence pour leurs vertus énergétiques et leur éclat naturel.</p>
                 </div>
 
                 <div className="brand-value-card">
-                  <div className="brand-value-card__icon">
-                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                    </svg>
-                  </div>
                   <h4>Édition Singulière</h4>
                   <p>Aucune copie. Vous adoptez une création qui n'existe qu'en un seul et unique exemplaire.</p>
                 </div>
 
                 <div className="brand-value-card">
-                  <div className="brand-value-card__icon">
-                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/>
-                      <path d="M7 3.34V5a3 3 0 0 0 3 3v0a2 2 0 0 1 2 2v0c0 1.1.9 2 2 2v0a2 2 0 0 0 2-2v0c0-1.1.9-2 2-2h1.66"/>
-                      <path d="M11 21.95V18a2 2 0 0 0-2-2v0c-1.1 0-2-.9-2-2v0c0-1.1-.9-2-2-2H2.05"/>
-                      <circle cx="12" cy="12" r="10"/>
-                    </svg>
-                  </div>
                   <h4>Envois Soignés</h4>
                   <p>Toutes nos petites merveilles voyagent délicatement emballées, partout en France.</p>
                 </div>
