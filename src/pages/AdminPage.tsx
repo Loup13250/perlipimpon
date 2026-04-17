@@ -619,16 +619,19 @@ function SiteConfigForm({
                 Réinitialiser les Avis Clients
               </h3>
               <p style={{ color: 'var(--color-gray-600)', fontSize: '0.9rem', marginBottom: '1rem' }}>
-                Remplace tous les avis actuels par les 9 témoignages modèles pré-écrits. Utile si vous voulez repartir de bases professionnelles.
+                Remplace tous les avis actuels par les 9 témoignages modèles pré-écrits et les sauvegarde immédiatement en ligne.
               </p>
               <button
                 type="button"
                 className="btn btn--outline btn--sm"
                 style={{ color: 'var(--color-charcoal)', borderColor: 'rgba(84,74,66,0.4)' }}
                 onClick={() => {
-                  if (window.confirm("Réinitialiser les avis clients avec les modèles ? Les avis actuels seront remplacés.")) {
-                    handleChange('testimonials', defaultSiteConfig.testimonials);
-                    alert('Avis réinitialisés ! Cliquez sur Enregistrer pour les sauvegarder.');
+                  if (window.confirm("Réinitialiser les avis clients avec les 9 modèles ? Les avis actuels seront remplacés et sauvegardés immédiatement.")) {
+                    const newForm = { ...form, testimonials: defaultSiteConfig.testimonials };
+                    setForm(newForm);
+                    isDirtyRef.current = false;
+                    onDirtyChange?.(false);
+                    onSave(newForm);
                   }
                 }}
               >
