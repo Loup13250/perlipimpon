@@ -1,13 +1,10 @@
 /**
- * Page À Propos — histoire de Perlipimpon et sa philosophie.
+ * Page À Propos — Histoire de Perlipimpon, Lithothérapie et Processus de Création.
  */
 
 import { Link } from 'react-router-dom';
 import { useScrollRevealGroup } from '../hooks/useScrollReveal';
 import { useConfig } from '../hooks/useConfig';
-
-
-// Le processus de création est dynamique depuis la config (processSteps)
 
 export default function AboutPage() {
   const { config, configLoading } = useConfig();
@@ -22,99 +19,116 @@ export default function AboutPage() {
     );
   }
 
+  // Textes Lithothérapie (Hardcoded pour garantir la mise à jour immédiate demandée)
+  const aboutTitle = "L'Éclat des Pierres, l'Énergie du Corps";
+  const aboutText1 = "Chaque gemme est sélectionnée pour sa vibration unique. Chez Perlipimpon, nous croyons que la beauté d'un bijou réside autant dans son éclat que dans les bienfaits qu'il procure à l'âme.";
+  const aboutText2 = "De l'apaisement du Quartz Rose à la force protectrice de l'Améthyste, nous créons des talismans modernes pensés pour harmoniser vos énergies et vos humeurs au quotidien.";
+
   return (
     <div className="about-page">
       <div className="container">
-        {/* Hero */}
+        {/* Hero Compact */}
         <div className="about-hero">
           <h1>À propos de Perlipimpon</h1>
-          <p>
-            L'histoire d'une passion pour la création de bijoux artisanaux
-          </p>
+          <p>L'histoire d'une passion pour les pierres et la création artisanale</p>
         </div>
 
-        {/* Story */}
+        {/* Story Section */}
         <div className="about-story">
-          <div className="about-story__image" style={{ padding: 0, overflow: 'hidden', background: 'transparent', border: 'none', boxShadow: 'none' }}>
-            <img src={config.aboutImage || "/images/moonstone_necklace.png"} alt="A propos" loading="lazy" width="600" height="800" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius-lg)' }} />
+          <div className="about-story__image">
+            <img 
+              src="/images/about_workshop.png" 
+              alt="Notre atelier de création" 
+              loading="lazy" 
+              width="600" 
+              height="800" 
+            />
           </div>
           <div className="about-story__text">
-            <h2>{config.aboutTitle || 'Une passion devenue création'}</h2>
-            <p>{config.aboutText1}</p>
-            {config.aboutText2 && <p>{config.aboutText2}</p>}
+            <h2>{aboutTitle}</h2>
+            <p>{aboutText1}</p>
+            <p>{aboutText2}</p>
           </div>
         </div>
 
-        {/* La Magie de la Lithothérapie */}
+        {/* Lithotherapy Deep Dive */}
         <div className="about-values">
           <div className="section-title">
             <h2>L'Âme des Pierres</h2>
-            <p>La Lithothérapie au cœur de nos créations</p>
+            <p>La Lithothérapie au cœur de chaque parure</p>
           </div>
 
-          <div className="lithotherapy-content" ref={valuesRef}>
-            <div className="lithotherapy-text" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', lineHeight: '1.8', color: 'var(--color-gray-600)', fontSize: '1.05rem', marginBottom: 'var(--space-2xl)' }}>
-              <p>
-                Chez Perlipimpon, la beauté d'un bijou ne s'arrête pas à son esthétique. Nous accordons une importance fondamentale à l'énergie que chaque pierre renferme. Nos gemmes sont rigoureusement étudiées et sélectionnées pour leurs vertus thérapeutiques, offrant un accompagnement subtil de l'âme et du corps.
-              </p>
+          <div className="values-grid" ref={valuesRef}>
+            <div className="value-card reveal-item">
+              <div className="value-card__icon">🌸</div>
+              <h3>L'Harmonie du Cœur</h3>
+              <p>Des joyaux comme le Quartz Rose sont choisis pour apaiser et favoriser la paix intérieure.</p>
             </div>
 
-            <div className="values-grid">
-              
-              <div className="value-card reveal-item" style={{ border: '1px solid var(--color-gold-light)', padding: 'var(--space-xl)', background: 'var(--color-white)', borderRadius: 'var(--radius-lg)' }}>
-                <div style={{ fontSize: '2rem', marginBottom: 'var(--space-sm)' }}>🌸</div>
-                <h3>L'Harmonie du Cœur</h3>
-                <p style={{ marginTop: 'var(--space-sm)', color: 'var(--color-gray-600)' }}>
-                  Des joyaux comme le Quartz Rose ou la Rhodonite sont spécifiquement choisis pour apaiser les blessures émotionnelles. Ils ouvrent le chakra du cœur, diffusent une douceur enveloppante et favorisent la paix intérieure et l'amour de soi.
-                </p>
-              </div>
+            <div className="value-card reveal-item">
+              <div className="value-card__icon">🌙</div>
+              <h3>Sérénité Mentale</h3>
+              <p>L'Améthyste et la Labradorite libèrent l'esprit et stimulent des nuits paisibles.</p>
+            </div>
 
-              <div className="value-card reveal-item" style={{ border: '1px solid var(--color-gold-light)', padding: 'var(--space-xl)', background: 'var(--color-white)', borderRadius: 'var(--radius-lg)' }}>
-                <div style={{ fontSize: '2rem', marginBottom: 'var(--space-sm)' }}>🌙</div>
-                <h3>Sérénité Mentale</h3>
-                <p style={{ marginTop: 'var(--space-sm)', color: 'var(--color-gray-600)' }}>
-                  Pour l'anxiété et le surmenage, nous marions l'Améthyste ou la Labradorite. Ces pierres libèrent l'esprit des ruminations, équilibrent le système nerveux profond et stimulent des nuits paisibles et réparatrices.
-                </p>
-              </div>
-
-              <div className="value-card reveal-item" style={{ border: '1px solid var(--color-gold-light)', padding: 'var(--space-xl)', background: 'var(--color-white)', borderRadius: 'var(--radius-lg)' }}>
-                <div style={{ fontSize: '2rem', marginBottom: 'var(--space-sm)' }}>🌿</div>
-                <h3>Équilibre du Corps</h3>
-                <p style={{ marginTop: 'var(--space-sm)', color: 'var(--color-gray-600)' }}>
-                  La répercussion physique est intime. L'Oeil de Tigre ou la Cornaline, aux vibrations chaudes, réveillent la vitalité corporelle, apaisent le système digestif et l'intestin, et relancent l'énergie vitale depuis les fondations du corps.
-                </p>
-              </div>
-
+            <div className="value-card reveal-item">
+              <div className="value-card__icon">🌿</div>
+              <h3>Énergie Vitale</h3>
+              <p>L'Oeil de Tigre et la Cornaline réveillent la force corporelle et relancent l'énergie.</p>
             </div>
           </div>
         </div>
 
-        {/* Processus */}
+        {/* Redesigned Process Section (Vertical Timeline) */}
         <div className="about-process">
           <div className="section-title">
-            <h2>Le processus de création</h2>
-            <p>De l'idée au bijou fini, chaque étape compte</p>
+            <h2>Le voyage de création</h2>
+            <p>Un savoir-faire minutieux, de l'inspiration à l'écrin</p>
           </div>
 
-          <div className="process-steps" ref={processRef}>
-            {(config.processSteps || []).map((step, idx) => (
-              <div key={idx} className="process-step reveal-item">
-                <div className="process-step__number">{step.number || idx + 1}</div>
-                <h4>{step.title}</h4>
-                <p>{step.description}</p>
+          <div className="process-timeline" ref={processRef}>
+            <div className="process-timeline__line"></div>
+            
+            <div className="process-item reveal-item">
+              <div className="process-item__marker">1</div>
+              <div className="process-item__content">
+                <h4>L'Inspiration & L'Éveil</h4>
+                <p>Tout commence par une émotion, un reflet sur une pierre ou une lumière de fin de journée. L'esquisse prend forme selon l'énergie de la gemme choisie.</p>
               </div>
-            ))}
+            </div>
+
+            <div className="process-item reveal-item">
+              <div className="process-item__marker">2</div>
+              <div className="process-item__content">
+                <h4>La Sélection de Rigueur</h4>
+                <p>Nous sourçons chaque pierre naturelle pour son éclat et ses vertus. Seules les gemmes possédant une vibration authentique intègrent l'atelier.</p>
+              </div>
+            </div>
+
+            <div className="process-item reveal-item">
+              <div className="process-item__marker">3</div>
+              <div className="process-item__content">
+                <h4>La Main de l'Artisan</h4>
+                <p>Fil par fil, perle par perle, le bijou est tissé et assemblé à la main. Chaque pièce est unique, portant l'empreinte d'un travail patient et passionné.</p>
+              </div>
+            </div>
+
+            <div className="process-item reveal-item">
+              <div className="process-item__marker">4</div>
+              <div className="process-item__content">
+                <h4>Le Rituel Packaging</h4>
+                <p>Avant de vous rejoindre, chaque création est purifiée, vérifiée et glissée dans un écrin respectueux, prête à devenir votre nouveau talisman.</p>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* CTA */}
-        <div className="cta-section" style={{ borderRadius: 'var(--radius-lg)', marginTop: 'var(--space-3xl)' }}>
-          <h2>{config.ctaTitle}</h2>
-          <p>
-            {config.ctaDescription}
-          </p>
+        <div className="cta-section about-cta">
+          <h2>Envie d'une création personnalisée ?</h2>
+          <p>Nous pouvons imaginer ensemble le bijou qui résonne avec votre énergie.</p>
           <Link to="/contact" className="btn btn--primary btn--lg">
-            Parlons de votre projet
+            Nous contacter
           </Link>
         </div>
       </div>

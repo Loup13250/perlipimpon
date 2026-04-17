@@ -4,26 +4,28 @@
  */
 
 .about-page {
-  padding: var(--space-3xl) 0 var(--space-4xl);
+  padding: var(--space-2xl) 0 var(--space-4xl);
 }
 
 /* Hero à propos */
 .about-hero {
   text-align: center;
-  padding: var(--space-xl) 0;
-  margin-bottom: var(--space-xl);
+  padding: var(--space-lg) var(--space-xl);
+  margin-bottom: var(--space-2xl);
   background: linear-gradient(135deg, var(--color-rose-light), var(--color-cream));
   border-radius: var(--radius-lg);
 }
 
 .about-hero h1 {
-  margin-bottom: var(--space-md);
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-sm);
 }
 
 .about-hero p {
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   max-width: 600px;
   margin: 0 auto;
+  color: var(--color-gray-600);
 }
 
 /* Section bio */
@@ -32,19 +34,14 @@
   grid-template-columns: 1fr 1fr;
   gap: var(--space-3xl);
   align-items: center;
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var(--space-3xl); /* Réduit le blanc */
 }
 
 .about-story__image {
   aspect-ratio: 4 / 5;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: linear-gradient(135deg, var(--color-cream-dark), var(--color-rose-light));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 5rem;
-  color: var(--color-gray-500);
+  box-shadow: var(--shadow-md);
 }
 
 .about-story__image img {
@@ -54,21 +51,23 @@
 }
 
 .about-story__text h2 {
+  font-size: var(--text-2xl);
   margin-bottom: var(--space-lg);
-}
-
-.about-story__text h2 span {
-  color: var(--color-gold);
+  line-height: 1.2;
 }
 
 .about-story__text p {
   margin-bottom: var(--space-md);
-  line-height: 1.8;
+  line-height: 1.7;
+  color: var(--color-gray-700);
 }
 
-/* Valeurs */
+/* Valeurs / Lithothérapie */
 .about-values {
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var(--space-3xl); /* Réduit le blanc */
+  background: rgba(255, 255, 255, 0.4);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-xl);
 }
 
 .values-grid {
@@ -79,117 +78,124 @@
 
 .value-card {
   text-align: center;
-  padding: var(--space-2xl);
+  padding: var(--space-xl);
   background: var(--color-white);
   border-radius: var(--radius-lg);
+  border: 1px solid var(--color-gold-light);
   box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-
-.value-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
 }
 
 .value-card__icon {
-  font-size: 2.5rem;
-  margin-bottom: var(--space-lg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.value-card__icon img {
-  mix-blend-mode: multiply; /* Fusionne le blanc de l'icône avec le fond de la carte */
-  filter: contrast(1.1); /* Renforce le tracé pour une netteté maximale */
-}
-
-.value-card h3 {
-  font-size: var(--text-lg);
-  margin-bottom: var(--space-md);
-}
-
-.value-card p {
-  font-size: var(--text-sm);
-  color: var(--color-gray-500);
-}
-
-/* Processus de création */
-.about-page .about-process {
-  margin-bottom: var(--space-4xl);
-  padding: var(--space-4xl);
-  background: var(--color-charcoal, #544a42); /* Nouveau Taupe chaud */
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid rgba(212, 175, 55, 0.1);
-}
-
-.about-page .about-process .section-title h2 {
-  color: var(--color-gold-light, #F3E5AB);
-}
-
-.about-page .about-process .section-title p {
-  color: var(--color-cream, #FAF6F0);
-  opacity: 0.9;
-}
-
-.process-steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-xl);
-}
-
-.process-step {
-  text-align: center;
-}
-
-.process-step__number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-full);
-  border: 2px solid var(--color-gold-deep, #b08d57);
-  color: var(--color-gold-deep, #b08d57);
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: 600;
-  margin-bottom: var(--space-md);
-  background: rgba(176, 141, 87, 0.1);
-}
-
-.process-step h4 {
-  color: var(--color-white, #ffffff);
-  font-size: var(--text-base);
+  font-size: 2rem;
   margin-bottom: var(--space-sm);
-  letter-spacing: 0.05em;
 }
 
-.process-step p {
-  color: var(--color-cream, #FAF6F0);
-  opacity: 0.8;
-  font-size: var(--text-sm);
+/* ──────────────────────────────────────────────────
+   RECONSTRUCTION DU PROCESSUS (TIMELINE)
+   ────────────────────────────────────────────────── */
+
+.about-process {
+  margin-bottom: var(--space-3xl);
+  padding: var(--space-3xl) var(--space-xl);
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  box-shadow: var(--shadow-sm);
 }
 
-@media (max-width: 768px) {
+.process-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: var(--space-2xl) auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+/* Ligne centrale de la timeline */
+.process-timeline__line {
+  position: absolute;
+  left: 32px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--color-gold), transparent);
+  opacity: 0.5;
+}
+
+.process-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xl);
+  padding-left: 0;
+}
+
+.process-item__marker {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-white);
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(176, 141, 87, 0.1);
+  z-index: 2;
+}
+
+.process-item__content {
+  padding-top: var(--space-xs);
+}
+
+.process-item__content h4 {
+  font-size: var(--text-lg);
+  color: var(--color-black);
+  margin-bottom: var(--space-xs);
+  font-family: var(--font-display);
+}
+
+.process-item__content p {
+  color: var(--color-gray-600);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* CTA Spécifique À Propos */
+.about-cta {
+  background: linear-gradient(135deg, var(--color-charcoal), #74685e);
+  color: var(--color-white);
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+.about-cta h2 { color: var(--color-white); }
+.about-cta p { color: var(--color-cream); opacity: 0.9; }
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
   .about-story {
     grid-template-columns: 1fr;
-    gap: var(--space-xl);
   }
-
   .values-grid {
     grid-template-columns: 1fr;
   }
-
-  .process-steps {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-lg);
-  }
 }
 
-@media (max-width: 480px) {
-  .process-steps {
-    grid-template-columns: 1fr;
+@media (max-width: 600px) {
+  .process-timeline__line {
+    left: 24px;
+  }
+  .process-item__marker {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+  .process-item {
+    gap: var(--space-lg);
   }
 }
