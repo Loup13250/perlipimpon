@@ -447,12 +447,22 @@ function SiteConfigForm({
             <h2>Visuel du Haut de Page (Accueil)</h2>
             <div className="admin-form__grid" style={{ marginBottom: '2rem' }}>
               <div className="form-group form-group--full">
-                <label>Image d'ambiance (Haut de page)</label>
+                <label>Image d'ambiance (Haut de page — Bureau & Défaut)</label>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
                   {form.heroImage && <img src={form.heroImage} alt="Hero" style={{ flexShrink: 0, height: '64px', width: '100px', objectFit: 'cover', borderRadius: '12px', border: '1px solid rgba(201,169,110,0.2)' }} />}
                   <label className="btn btn--outline btn--sm" style={{ cursor: 'pointer', margin: 0 }}>
                     Changer l'image
                     <input type="file" accept="image/*" style={{ display: 'none' }} onClick={(e) => { (e.target as HTMLInputElement).value = ''; }} onChange={e => handleImageUpload(e, 'heroImage')} />
+                  </label>
+                </div>
+              </div>
+              <div className="form-group form-group--full">
+                <label>Image d'ambiance (Mobile — Format vertical/réduit recommandé)</label>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
+                  {form.heroImageMobile && <img src={form.heroImageMobile} alt="Hero Mobile" style={{ flexShrink: 0, height: '64px', width: '64px', objectFit: 'cover', borderRadius: '12px', border: '1px solid rgba(201,169,110,0.2)' }} />}
+                  <label className="btn btn--outline btn--sm" style={{ cursor: 'pointer', margin: 0 }}>
+                    Changer l'image Mobile
+                    <input type="file" accept="image/*" style={{ display: 'none' }} onClick={(e) => { (e.target as HTMLInputElement).value = ''; }} onChange={e => handleImageUpload(e, 'heroImageMobile')} />
                   </label>
                 </div>
               </div>

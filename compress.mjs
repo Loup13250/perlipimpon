@@ -26,8 +26,16 @@ async function processDirectory(dir) {
         const tempPath = fullPath + '.tmp';
         
         try {
-          let processor = sharp(fullPath).resize({ width: 1200, withoutEnlargement: true });
+          let processor = sharp(fullPath);
           
+          if (file.toLowerCase().includes('logo')) {
+            // Logos n'ont pas besoin de dépasser 200px
+            processor = processor.resize({ width: 200, withoutEnlargement: true });
+          } else {
+            // Photos standards max 800px (largement suffisant pour cartes et miniatures)
+            processor = processor.resize({ width: 800, withoutEnlargement: true });
+          }
+
           if (isJpeg) {
             processor = processor.jpeg({ quality: 80, progressive: true, mozjpeg: true });
           } else if (isPng) {

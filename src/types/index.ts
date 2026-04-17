@@ -77,6 +77,7 @@ export interface SiteConfig {
   heroTitle2: string; // The italic part
   heroDescription: string;
   heroImage: string;
+  heroImageMobile?: string;
 
   // CTA (Bas de page)
   ctaTitle: string;

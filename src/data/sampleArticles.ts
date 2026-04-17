@@ -31,6 +31,7 @@ export const defaultSiteConfig: SiteConfig = {
   heroTitle2: 'création',
   heroDescription: 'Des bijoux fantaisie uniques, fabriqués à la main avec des pierres naturelles soigneusement sélectionnées.',
   heroImage: '/images/hero_bg.png',
+  heroImageMobile: '/images/hero_bg.png',
   ctaTitle: 'Une pièce vous fait envie ?',
   ctaDescription: 'Contactez-nous pour toute question ou commande personnalisée.',
   testimonials: [
