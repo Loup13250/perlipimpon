@@ -33,7 +33,7 @@
   height: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--space-xl);
+  padding: 0 var(--space-lg);
 }
 
 /* Logo / Marque */
@@ -69,7 +69,7 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
+  gap: var(--space-md);
 }
 
 .nav-link {
@@ -78,8 +78,8 @@
   font-weight: 500;
   color: var(--color-gray-700);
   text-transform: uppercase;
-  letter-spacing: 0.07em;
-  padding: var(--space-xs) 0;
+  letter-spacing: 0.05em;
+  padding: 4px 0;
   transition: color var(--transition-fast);
 }
 

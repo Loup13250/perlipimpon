@@ -92,32 +92,6 @@
   flex-wrap: wrap;
 }
 
-.hero__scroll-hint {
-  position: absolute;
-  bottom: var(--space-2xl);
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-sm);
-  color: var(--color-white);
-  font-size: var(--text-xs);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  animation: float 3s ease-in-out infinite;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-
-.hero__scroll-hint .arrow {
-  font-size: var(--text-lg);
-}
-
-@keyframes float {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(8px); }
-}
-
 /* ═══════════════════════════════════════════
    SECTION ABOUT PREVIEW
    ═══════════════════════════════════════════ */

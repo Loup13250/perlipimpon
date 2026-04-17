@@ -44,11 +44,6 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-
-        <div className="hero__scroll-hint">
-          <span>Défiler</span>
-          <span className="arrow">↓</span>
-        </div>
       </section>
 
       {articlesLoading ? (
