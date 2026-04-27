@@ -387,7 +387,7 @@ function SiteConfigForm({
   const tabs = [
     { id: 'general', label: 'Général & SEO', icon: '' },
     { id: 'hero', label: 'Accueil & CTA', icon: '' },
-    { id: 'pages', label: 'Pages & Valeurs', icon: '' },
+    { id: 'pages', label: 'Gestion du Contenu', icon: '' },
     { id: 'about', label: 'À Propos', icon: '' },
     { id: 'testimonials', label: 'Avis Clients', icon: '' },
     { id: 'maintenance', label: 'Maintenance', icon: '' },
@@ -748,6 +748,80 @@ function SiteConfigForm({
                 }}
               >
                 Réinitialiser avec les avis modèles
+              </button>
+            </div>
+
+            <div className="maintenance-section" style={{ background: 'rgba(201,169,110,0.05)', padding: '1.5rem', borderRadius: '16px', border: '1px dashed rgba(201,169,110,0.3)', marginBottom: '1.5rem' }}>
+              <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-deep)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Sauvegarde et Restauration
+              </h3>
+              <p style={{ color: 'var(--color-gray-600)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+                Vous pouvez exporter toute la configuration actuelle de votre site vers un fichier JSON, ou importer un fichier existant pour restaurer une configuration.
+              </p>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <button
+                  type="button"
+                  className="btn btn--primary btn--sm"
+                  onClick={() => {
+                    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(form, null, 2));
+                    const downloadAnchorNode = document.createElement('a');
+                    downloadAnchorNode.setAttribute("href", dataStr);
+                    downloadAnchorNode.setAttribute("download", "perlimpimpon_config_backup.json");
+                    document.body.appendChild(downloadAnchorNode);
+                    downloadAnchorNode.click();
+                    downloadAnchorNode.remove();
+                  }}
+                >
+                  Exporter (Télécharger)
+                </button>
+
+                <label className="btn btn--outline btn--sm" style={{ cursor: 'pointer', margin: 0, borderColor: 'var(--color-gray-400)' }}>
+                  Importer (Restaurer)
+                  <input type="file" accept=".json" style={{ display: 'none' }} onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (!file) return;
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                      try {
+                        const importedConfig = JSON.parse(event.target?.result as string);
+                        if (window.confirm("Êtes-vous sûr de vouloir écraser la configuration actuelle ? Pensez à sauvegarder avant !")) {
+                          setForm(importedConfig);
+                          isDirtyRef.current = true;
+                          if (onDirtyChange) onDirtyChange(true);
+                          alert("Configuration importée avec succès. N'oubliez pas d'Enregistrer.");
+                        }
+                      } catch (err) {
+                        alert("Le fichier JSON est invalide.");
+                      }
+                    };
+                    reader.readAsText(file);
+                    e.target.value = '';
+                  }} />
+                </label>
+              </div>
+            </div>
+
+            <div className="maintenance-section" style={{ background: 'rgba(201,169,110,0.05)', padding: '1.5rem', borderRadius: '16px', border: '1px dashed rgba(201,169,110,0.3)', marginBottom: '1.5rem' }}>
+              <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-danger)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                Vider le cache du navigateur
+              </h3>
+              <p style={{ color: 'var(--color-gray-600)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+                Si vous rencontrez des problèmes d'affichage ou que vos modifications ne semblent pas s'appliquer, vider le cache local peut forcer le site à récupérer les données fraîches depuis le serveur.
+              </p>
+              <button
+                type="button"
+                className="btn btn--outline btn--sm"
+                style={{ color: 'var(--color-danger)', borderColor: 'var(--color-danger)' }}
+                onClick={() => {
+                  if (window.confirm("Êtes-vous sûr ? Cela rafraîchira la page immédiatement.")) {
+                    localStorage.clear();
+                    window.location.reload();
+                  }
+                }}
+              >
+                Vider le cache et rafraîchir
               </button>
             </div>
 

@@ -172,52 +172,36 @@
 
 .product-card__badge {
   position: absolute;
-  top: 25px;
-  left: -55px;
-  width: 220px;
-  background-color: rgba(212, 175, 55, 0.95);
+  top: 12px;
+  left: 12px;
+  background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  color: var(--color-white);
+  color: var(--color-gold-deep);
   font-family: var(--font-display);
-  font-weight: 600;
   font-style: italic;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: var(--text-xs);
-  padding: 8px 0;
-  transform: rotate(-45deg);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  font-size: 0.8rem;
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(201, 169, 110, 0.3);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   z-index: 10;
-  pointer-events: none;
-  border-bottom: 1px solid var(--color-white);
-  border-top: 1px solid var(--color-white);
 }
 
 .product-card__banner-vendu {
   position: absolute;
-  top: 25px;
-  right: -55px;
-  width: 220px; /* Explicit width to guarantee it spans the whole corner */
-  background-color: rgba(11, 12, 16, 0.95);
+  top: 12px;
+  right: 12px;
+  background-color: rgba(84, 74, 66, 0.9); /* Charcoal */
   backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  color: var(--color-gold-light);
+  color: var(--color-white);
   font-family: var(--font-display);
-  font-weight: 600;
   font-style: italic;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: var(--text-xs);
-  padding: 8px 0;
-  transform: rotate(45deg);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  font-size: 0.8rem;
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   z-index: 10;
-  pointer-events: none;
-  border-bottom: 2px solid var(--color-gold);
-  border-top: 2px solid var(--color-gold);
 }
 
 .product-card__body {
@@ -679,17 +663,16 @@
   /* Badge + banner adaptés au petit format */
   .product-card__badge,
   .product-card__banner-vendu {
-    width: 160px;
-    font-size: 0.6rem;
-    padding: 5px 0;
+    font-size: 0.7rem;
+    padding: 3px 10px;
   }
   .product-card__badge {
-    top: 16px;
-    left: -40px;
+    top: 8px;
+    left: 8px;
   }
   .product-card__banner-vendu {
-    top: 16px;
-    right: -40px;
+    top: 8px;
+    right: 8px;
   }
 }
 
