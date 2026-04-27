@@ -14,6 +14,7 @@ export default function Header() {
 
   // Ferme le menu mobile à chaque changement de page
   useEffect(() => {
+    // eslint-disable-next-line
     setMenuOpen(false);
     window.scrollTo(0, 0);
   }, [location.pathname]);

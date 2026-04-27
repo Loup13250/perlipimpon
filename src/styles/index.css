@@ -280,3 +280,8 @@ input, textarea, select {
     padding: 0 var(--space-sm);
   }
 }
+
+/* ── Spinner animation (PageLoader) ──────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

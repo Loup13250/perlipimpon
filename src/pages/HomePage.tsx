@@ -22,7 +22,7 @@ export default function HomePage() {
       <section className="hero">
         <picture>
           <source media="(max-width: 768px)" srcSet={config.heroImageMobile || config.heroImage} />
-          <img src={config.heroImage} alt="Bienvenue — Héro" fetchPriority="high" decoding="sync" className="hero__background" />
+          <img src={config.heroImage} alt={`${config.nomMarque || 'Perlipimpon'} — Bijoux artisanaux faits main`} fetchPriority="high" decoding="sync" className="hero__background" />
         </picture>
         <div className="hero__glow-1" />
         <div className="hero__glow-2" />

@@ -18,8 +18,8 @@ export default function ContactPage() {
         <div className="contact-card">
           <div className="contact-info">
             <div className="contact-info__card">
-              <div className="contact-info__icon">
-                <img src="/images/icons/contact-phone.png" alt="Téléphone" />
+              <div className="contact-info__icon" aria-hidden="true">
+                <img src="/images/icons/contact-phone.png" alt="" width="48" height="48" />
               </div>
               <div className="contact-info__text">
                 <h3>Téléphone</h3>
@@ -32,8 +32,8 @@ export default function ContactPage() {
             </div>
 
             <div className="contact-info__card">
-              <div className="contact-info__icon">
-                <img src="/images/icons/contact-mail.png" alt="Email" />
+              <div className="contact-info__icon" aria-hidden="true">
+                <img src="/images/icons/contact-mail.png" alt="" width="48" height="48" />
               </div>
               <div className="contact-info__text">
                 <h3>Email</h3>
@@ -44,8 +44,8 @@ export default function ContactPage() {
             </div>
 
             <div className="contact-info__card">
-              <div className="contact-info__icon">
-                <img src="/images/icons/contact-clock.png" alt="Disponibilité" />
+              <div className="contact-info__icon" aria-hidden="true">
+                <img src="/images/icons/contact-clock.png" alt="" width="48" height="48" />
               </div>
               <div className="contact-info__text">
                 <h3>Disponibilité</h3>
@@ -56,14 +56,15 @@ export default function ContactPage() {
             {/* Réseaux sociaux */}
             <div className="contact-social">
               <h3>Retrouvez-nous sur les réseaux</h3>
-              <div className="contact-social__links">
+              <div className="contact-social__links" role="list">
                 {config.facebook && (
                   <a
                     href={config.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-link"
-                    aria-label="Facebook"
+                    aria-label="Suivez-nous sur Facebook"
+                    role="listitem"
                   >
                     <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
@@ -76,7 +77,8 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-link"
-                    aria-label="Instagram"
+                    aria-label="Suivez-nous sur Instagram"
+                    role="listitem"
                   >
                     <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>

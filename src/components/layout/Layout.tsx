@@ -12,7 +12,7 @@ export default function Layout() {
     <div className={`site-layout ${isHome ? 'is-home' : ''}`}>
       {!isAdmin && <Header />}
       {!isAdmin && <FloralBorders />}
-      <main className="site-main" style={isAdmin ? { paddingTop: 0 } : {}}>
+      <main className="site-main" aria-label="Contenu principal" style={isAdmin ? { paddingTop: 0 } : {}}>
         <Outlet />
       </main>
       {!isAdmin && <Footer />}

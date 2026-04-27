@@ -34,7 +34,7 @@ export default function CategoryFilter({
           onClick={onCoupsDeCoeurToggle}
           style={{ borderColor: showCoupsDeCoeur ? 'var(--color-gold)' : undefined, color: showCoupsDeCoeur ? 'var(--color-gold)' : undefined, fontWeight: '500' }}
         >
-          ❤ Coups de Cœur
+          <span aria-hidden="true">❤</span> Coups de Cœur
         </button>
 
         <div className="category-filter__divider" style={{ width: '1px', height: '24px', background: 'var(--color-gray-300)', margin: '0 8px' }}></div>

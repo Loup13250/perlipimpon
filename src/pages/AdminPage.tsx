@@ -17,10 +17,11 @@ import type { Article, ArticleFormData, Category, SiteConfig, CategoryData } fro
 // ──────────────────────────────────────────────
 // Hook : avertissement avant fermeture navigateur
 // ──────────────────────────────────────────────
-function useBeforeUnload(isDirty: boolean) {
+function useBeforeUnload(isDirty: boolean | React.MutableRefObject<boolean>) {
   useEffect(() => {
     const handler = (e: BeforeUnloadEvent) => {
-      if (isDirty) {
+      const dirty = typeof isDirty === 'boolean' ? isDirty : isDirty.current;
+      if (dirty) {
         e.preventDefault();
         e.returnValue = '';
       }
@@ -353,9 +354,9 @@ function SiteConfigForm({
     setForm(config);
   }, [config]);
 
-  useBeforeUnload(isDirtyRef.current);
+  useBeforeUnload(isDirtyRef);
 
-  const handleChange = (field: keyof SiteConfig, value: any) => {
+  const handleChange = (field: keyof SiteConfig, value: unknown) => {
     setForm(prev => {
       if (!isDirtyRef.current) {
         isDirtyRef.current = true;
@@ -791,7 +792,7 @@ function SiteConfigForm({
                           if (onDirtyChange) onDirtyChange(true);
                           alert("Configuration importée avec succès. N'oubliez pas d'Enregistrer.");
                         }
-                      } catch (err) {
+                      } catch {
                         alert("Le fichier JSON est invalide.");
                       }
                     };
@@ -869,7 +870,7 @@ function CategoriesForm({
     setForm(config);
   }, [config]);
 
-  useBeforeUnload(isDirtyRef.current);
+  useBeforeUnload(isDirtyRef);
 
   const markDirty = () => {
     if (!isDirtyRef.current) {
@@ -1351,7 +1352,7 @@ export default function AdminPage() {
                     <select
                       id="admin-status-filter"
                       value={filterStatus}
-                      onChange={(e) => setFilterStatus(e.target.value as any)}
+                      onChange={(e) => setFilterStatus(e.target.value as 'all' | 'vendu' | 'enVedette')}
                       className="admin-filter-select"
                     >
                       <option value="all">Tous les statuts</option>

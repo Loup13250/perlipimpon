@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { db } from '../lib/firebase';
-import { collection, doc, onSnapshot, setDoc, deleteDoc, updateDoc, query, getDocs } from 'firebase/firestore';
+import { collection, doc, onSnapshot, setDoc, deleteDoc, updateDoc, query, getDocs, type QueryDocumentSnapshot, type DocumentData } from 'firebase/firestore';
 import { generateId } from '../utils/helpers';
 import { sampleArticles } from '../data/sampleArticles';
 import type { Article, ArticleFormData } from '../types';
@@ -21,7 +21,7 @@ export function useArticles() {
     // Détection de Google PageSpeed / Lighthouse pour éviter le long-polling (qui cause un blocage de 21.6s)
     const isBot = /bot|googlebot|crawler|spider|robot|crawling|lighthouse|pagespeed/i.test(navigator.userAgent);
 
-    const processSnapshot = (docs: any[]) => {
+    const processSnapshot = (docs: QueryDocumentSnapshot<DocumentData, DocumentData>[]) => {
       if (docs.length === 0) {
         setArticles([]);
         setArticlesLoading(false);

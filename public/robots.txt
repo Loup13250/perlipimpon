@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /admin
 
-Sitemap: https://perlipimpon.vercel.app/sitemap.xml
+Sitemap: https://perlipimpon.fr/sitemap.xml
