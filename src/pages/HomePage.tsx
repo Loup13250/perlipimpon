@@ -166,11 +166,9 @@ export default function HomePage() {
                   <img src={config.aboutImage === '/images/moonstone_necklace.png' ? "/images/about_workshop.png" : config.aboutImage} alt="Création artisanale" loading="lazy" decoding="async" width="800" height="800" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div className="about-preview__text">
-                  <h2>
-                    {config.aboutTitle === 'Fait main, fait avec cœur' ? "L'Éclat des Pierres, l'Énergie du Cœur" : config.aboutTitle}
-                  </h2>
-                  <p>{config.aboutText1.includes('Bienvenue') ? "Chaque gemme est sélectionnée pour sa vibration unique. Chez Perlipimpon, nous croyons que la beauté d'un bijou réside autant dans son éclat que dans les bienfaits qu'il procure à l'âme." : config.aboutText1}</p>
-                  <p>{config.aboutText1.includes('Bienvenue') ? "De l'apaisement du Quartz Rose à la force protectrice de l'Améthyste, nous créons des talismans modernes pensés pour harmoniser vos énergies au quotidien." : config.aboutText2}</p>
+                  <h2>{config.aboutTitle}</h2>
+                  <p>{config.aboutText1}</p>
+                  <p>{config.aboutText2}</p>
                   <p className="about-preview__signature">— {config.nomMarque || 'Perlipimpon'}</p>
                 </div>
               </div>
@@ -193,25 +191,12 @@ export default function HomePage() {
               </div>
               <div className="brand-values__grid">
                 
-                <div className="brand-value-card">
-                  <h4>Atelier Artisanal</h4>
-                  <p>Chaque parure prend vie minutieusement à la main, guidée par une passion authentique.</p>
-                </div>
-
-                <div className="brand-value-card">
-                  <h4>Gemmes Sélectionnées</h4>
-                  <p>Des pierres fines sourcées avec exigence pour leurs vertus énergétiques et leur éclat naturel.</p>
-                </div>
-
-                <div className="brand-value-card">
-                  <h4>Édition Singulière</h4>
-                  <p>Aucune copie. Vous adoptez une création qui n'existe qu'en un seul et unique exemplaire.</p>
-                </div>
-
-                <div className="brand-value-card">
-                  <h4>Envois Soignés</h4>
-                  <p>Toutes nos petites merveilles voyagent délicatement emballées, partout en France.</p>
-                </div>
+                {(config.brandValues || []).map((val, index) => (
+                  <div className="brand-value-card" key={index}>
+                    <h4>{val.title}</h4>
+                    <p>{val.description}</p>
+                  </div>
+                ))}
 
               </div>
             </div>

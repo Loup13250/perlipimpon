@@ -345,7 +345,7 @@ function SiteConfigForm({
   onDirtyChange?: (dirty: boolean) => void;
 }) {
   const [form, setForm] = useState<SiteConfig>(config);
-  const [activeTab, setActiveTab] = useState<'general' | 'hero' | 'about' | 'testimonials' | 'maintenance'>('general');
+  const [activeTab, setActiveTab] = useState<'general' | 'hero' | 'pages' | 'about' | 'testimonials' | 'maintenance'>('general');
   const isDirtyRef = useRef(false);
 
   // Sync si la config change depuis l'extérieur (ex: import JSON)
@@ -387,6 +387,7 @@ function SiteConfigForm({
   const tabs = [
     { id: 'general', label: 'Général & SEO', icon: '' },
     { id: 'hero', label: 'Accueil & CTA', icon: '' },
+    { id: 'pages', label: 'Pages & Valeurs', icon: '' },
     { id: 'about', label: 'À Propos', icon: '' },
     { id: 'testimonials', label: 'Avis Clients', icon: '' },
     { id: 'maintenance', label: 'Maintenance', icon: '' },
@@ -510,6 +511,68 @@ function SiteConfigForm({
           </>
         )}
 
+        {/* TAB PAGES: HEADERS & BRAND VALUES */}
+        {activeTab === 'pages' && (
+          <>
+            <h2>En-têtes de Pages</h2>
+            <div className="admin-form__grid" style={{ marginBottom: '2rem' }}>
+              <div className="form-group">
+                <label>Titre Boutique (Nos Créations)</label>
+                <input type="text" value={form.shopTitle || ''} onChange={e => handleChange('shopTitle', e.target.value)} autoComplete="off" />
+              </div>
+              <div className="form-group">
+                <label>Sous-titre Boutique</label>
+                <input type="text" value={form.shopSubtitle || ''} onChange={e => handleChange('shopSubtitle', e.target.value)} autoComplete="off" />
+              </div>
+              
+              <div className="form-group">
+                <label>Titre Contact</label>
+                <input type="text" value={form.contactTitle || ''} onChange={e => handleChange('contactTitle', e.target.value)} autoComplete="off" />
+              </div>
+              <div className="form-group">
+                <label>Sous-titre Contact</label>
+                <input type="text" value={form.contactSubtitle || ''} onChange={e => handleChange('contactSubtitle', e.target.value)} autoComplete="off" />
+              </div>
+
+              <div className="form-group">
+                <label>Surtitre À Propos (Haut de page)</label>
+                <input type="text" value={form.aboutHeroTitle || ''} onChange={e => handleChange('aboutHeroTitle', e.target.value)} autoComplete="off" />
+              </div>
+              <div className="form-group">
+                <label>Sous-titre À Propos</label>
+                <input type="text" value={form.aboutHeroSubtitle || ''} onChange={e => handleChange('aboutHeroSubtitle', e.target.value)} autoComplete="off" />
+              </div>
+            </div>
+
+            <h2>L'Âme de l'Atelier (Valeurs Accueil)</h2>
+            <p style={{ color: 'var(--color-gray-500)', fontSize: '0.8rem', marginBottom: '1rem' }}>Les 4 valeurs affichées sur la page d'accueil (Atelier Artisanal, Gemmes Sélectionnées...).</p>
+            {(form.brandValues || []).map((val, index) => (
+              <div key={index} style={{ border: '1px solid rgba(201,169,110,0.2)', padding: '1rem', borderRadius: '14px', marginBottom: '1rem', position: 'relative', background: 'rgba(250,246,240,0.5)' }}>
+                <button type="button" className="btn btn--outline btn--sm" style={{ position: 'absolute', top: '10px', right: '10px', padding: '6px 10px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)', background: 'transparent' }} title="Supprimer cette valeur" onClick={() => {
+                  if (window.confirm("Êtes-vous sûr de vouloir supprimer cette valeur ?")) {
+                    const arr = [...form.brandValues]; arr.splice(index, 1); handleChange('brandValues', arr);
+                  }
+                }}>🗑️</button>
+                <div className="admin-form__grid">
+                  <div className="form-group form-group--full">
+                    <label>Titre</label>
+                    <input type="text" value={val.title} autoComplete="off" onChange={e => {
+                      const arr = [...form.brandValues]; arr[index] = { ...arr[index], title: e.target.value }; handleChange('brandValues', arr);
+                    }} required />
+                  </div>
+                  <div className="form-group form-group--full">
+                    <label>Description</label>
+                    <textarea rows={2} value={val.description} autoComplete="off" onChange={e => {
+                      const arr = [...form.brandValues]; arr[index] = { ...arr[index], description: e.target.value }; handleChange('brandValues', arr);
+                    }} required />
+                  </div>
+                </div>
+              </div>
+            ))}
+            <button type="button" className="btn btn--outline btn--sm" onClick={() => handleChange('brandValues', [...(form.brandValues || []), { title: 'Nouvelle Valeur', description: '' }])}>+ Ajouter une valeur</button>
+          </>
+        )}
+
         {/* TAB 3: ABOUT & PROCESS */}
         {activeTab === 'about' && (
           <>
@@ -565,6 +628,33 @@ function SiteConfigForm({
               </div>
             ))}
             <button type="button" className="btn btn--outline btn--sm" onClick={() => handleChange('processSteps', [...(form.processSteps || []), { number: (form.processSteps?.length || 0) + 1, title: 'Nouvelle Étape', description: '' }])}>+ Ajouter une étape</button>
+
+            <h2 style={{ marginTop: '3rem' }}>L'Âme des Pierres (Lithothérapie)</h2>
+            <p style={{ color: 'var(--color-gray-500)', fontSize: '0.8rem', marginBottom: '1rem' }}>Les trois valeurs ou bienfaits des pierres affichés sur la page À propos.</p>
+            {(form.lithotherapyValues || []).map((item, index) => (
+              <div key={index} style={{ border: '1px solid rgba(201,169,110,0.2)', padding: '1rem', borderRadius: '14px', marginBottom: '1rem', position: 'relative', background: 'rgba(250,246,240,0.5)' }}>
+                <button type="button" className="btn btn--outline btn--sm" style={{ position: 'absolute', top: '10px', right: '10px', padding: '6px 10px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)', background: 'transparent' }} title="Supprimer cette valeur" onClick={() => {
+                  if (window.confirm("Êtes-vous sûr de vouloir supprimer cette valeur de lithothérapie ?")) {
+                    const arr = [...form.lithotherapyValues]; arr.splice(index, 1); handleChange('lithotherapyValues', arr);
+                  }
+                }}>🗑️</button>
+                <div className="admin-form__grid">
+                  <div className="form-group form-group--full">
+                    <label>Titre de la valeur</label>
+                    <input type="text" value={item.title} autoComplete="off" onChange={e => {
+                      const arr = [...form.lithotherapyValues]; arr[index] = { ...arr[index], title: e.target.value }; handleChange('lithotherapyValues', arr);
+                    }} required />
+                  </div>
+                  <div className="form-group form-group--full">
+                    <label>Description (Bienfaits)</label>
+                    <textarea rows={2} value={item.description} autoComplete="off" onChange={e => {
+                      const arr = [...form.lithotherapyValues]; arr[index] = { ...arr[index], description: e.target.value }; handleChange('lithotherapyValues', arr);
+                    }} required />
+                  </div>
+                </div>
+              </div>
+            ))}
+            <button type="button" className="btn btn--outline btn--sm" onClick={() => handleChange('lithotherapyValues', [...(form.lithotherapyValues || []), { title: 'Nouveau Bienfait', description: '' }])}>+ Ajouter un bienfait</button>
           </>
         )}
 

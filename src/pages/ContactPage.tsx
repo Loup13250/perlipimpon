@@ -8,9 +8,9 @@ export default function ContactPage() {
       <div className="container">
         {/* Hero */}
         <div className="contact-hero">
-          <h1>Contactez-nous</h1>
+          <h1>{config?.contactTitle || 'Contactez-nous'}</h1>
           <p>
-            Une question, une envie, une commande personnalisée ? N'hésitez pas à nous contacter directement.
+            {config?.contactSubtitle || "Une question, une envie, une commande personnalisée ? N'hésitez pas à nous contacter directement."}
           </p>
         </div>
 

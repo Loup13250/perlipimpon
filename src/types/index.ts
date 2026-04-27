@@ -53,6 +53,16 @@ export interface ProcessStep {
 }
 
 // Configuration générale du site
+export interface LithotherapyValue {
+  title: string;
+  description: string;
+}
+
+export interface BrandValue {
+  title: string;
+  description: string;
+}
+
 export interface SiteConfig {
   nomMarque: string;
   tagline: string;
@@ -66,6 +76,8 @@ export interface SiteConfig {
   categories: CategoryData[];
   
   // ABOUT Preview
+  aboutHeroTitle: string;
+  aboutHeroSubtitle: string;
   aboutTitle: string;
   aboutText1: string;
   aboutText2: string;
@@ -83,7 +95,15 @@ export interface SiteConfig {
   ctaTitle: string;
   ctaDescription: string;
 
+  // Pages Headers
+  shopTitle: string;
+  shopSubtitle: string;
+  contactTitle: string;
+  contactSubtitle: string;
+
   // Listes dynamiques
   testimonials: Testimonial[];
   processSteps: ProcessStep[];
+  lithotherapyValues: LithotherapyValue[];
+  brandValues: BrandValue[];
 }

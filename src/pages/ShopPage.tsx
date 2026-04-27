@@ -75,8 +75,8 @@ export default function ShopPage() {
       <div className="container">
         {/* En-tête (toujours visible) */}
         <div className="shop-header">
-          <h1>Nos Créations</h1>
-          <p>Bijoux fantaisie artisanaux, pièces uniques faites main</p>
+          <h1>{config?.shopTitle || 'Nos Créations'}</h1>
+          <p>{config?.shopSubtitle || 'Bijoux fantaisie artisanaux, pièces uniques faites main'}</p>
         </div>
 
         {articlesLoading || configLoading ? (

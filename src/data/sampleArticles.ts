@@ -90,11 +90,28 @@ export const defaultSiteConfig: SiteConfig = {
       texte: "Mes nouvelles boucles d'oreilles en améthyste sont parfaites — légères, bien finies, exactement comme sur les photos. J'adore le fait que chaque pièce soit unique. On ressent vraiment le travail artisanal derrière chaque création."
     }
   ],
+  shopTitle: 'Nos Créations',
+  shopSubtitle: 'Bijoux fantaisie artisanaux, pièces uniques faites main',
+  contactTitle: 'Contactez-nous',
+  contactSubtitle: "Une question, une envie, une commande personnalisée ? N'hésitez pas à nous contacter directement.",
+  aboutHeroTitle: 'À propos de Perlipimpon',
+  aboutHeroSubtitle: "L'histoire d'une passion pour les pierres et la création artisanale",
   processSteps: [
     { number: 1, title: "L'inspiration", description: "Chaque pièce naît d'une rencontre : une pierre, une couleur, une émotion. Je m'inspire de la nature, des saisons et de mes voyages." },
     { number: 2, title: 'La sélection des matières', description: 'Je choisis avec soin chaque perle, pierre naturelle et apprêt. Qualité et authenticité sont mes priorités absolues.' },
     { number: 3, title: 'La création à la main', description: "Fil par fil, perle par perle, chaque bijou prend vie entre mes mains. Pas de machine, pas de série — juste du savoir-faire artisanal." },
     { number: 4, title: 'Les finitions & contrôle', description: "Avant de vous parvenir, chaque pièce est soigneusement inspectée, nettoyée et emballée avec amour dans son écrin." }
+  ],
+  lithotherapyValues: [
+    { title: "L'Harmonie du Cœur", description: "Des joyaux comme le Quartz Rose sont choisis pour apaiser et favoriser la paix intérieure." },
+    { title: "Sérénité Mentale", description: "L'Améthyste et la Labradorite libèrent l'esprit et stimulent des nuits paisibles." },
+    { title: "Énergie Vitale", description: "L'Oeil de Tigre et la Cornaline réveillent la force corporelle et relancent l'énergie." }
+  ],
+  brandValues: [
+    { title: 'Atelier Artisanal', description: 'Chaque parure prend vie minutieusement à la main, guidée par une passion authentique.' },
+    { title: 'Gemmes Sélectionnées', description: 'Des pierres fines sourcées avec exigence pour leurs vertus énergétiques et leur éclat naturel.' },
+    { title: 'Édition Singulière', description: "Aucune copie. Vous adoptez une création qui n'existe qu'en un seul et unique exemplaire." },
+    { title: 'Envois Soignés', description: 'Toutes nos petites merveilles voyagent délicatement emballées, partout en France.' }
   ]
 };
 
