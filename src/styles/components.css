@@ -170,38 +170,67 @@
   letter-spacing: 0.1em;
 }
 
+/* ═══════════════════════════════════════════
+   BADGE COUP DE COEUR — Flèche dorée artisanale
+   ═══════════════════════════════════════════ */
+
 .product-card__badge {
   position: absolute;
   top: 12px;
-  left: 12px;
-  background-color: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(4px);
-  color: var(--color-gold-deep);
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(135deg, #d4a853, #b08d57);
+  color: #fff;
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 0.8rem;
-  padding: 4px 14px;
-  border-radius: 20px;
-  border: 1px solid rgba(201, 169, 110, 0.3);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 5px 14px 5px 10px;
+  /* Forme flèche vers la droite */
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
   z-index: 10;
+  letter-spacing: 0.04em;
+  line-height: 1;
 }
+
+.product-card__badge::before {
+  content: '\2665';
+  font-style: normal;
+  font-size: 0.6rem;
+  opacity: 0.9;
+}
+
+/* ═══════════════════════════════════════════
+   BADGE VENDU — Ruban de coin (corner ribbon)
+   Fonctionne parfaitement dans overflow:hidden
+   ═══════════════════════════════════════════ */
 
 .product-card__banner-vendu {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  background-color: rgba(84, 74, 66, 0.9); /* Charcoal */
-  backdrop-filter: blur(4px);
-  color: var(--color-white);
+  top: 18px;
+  right: -30px;
+  width: 120px;
+  text-align: center;
+  background: rgba(60, 52, 46, 0.90);
+  color: #e8d5b7;
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 0.8rem;
-  padding: 4px 14px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  padding: 6px 0;
+  transform: rotate(38deg);
   z-index: 10;
+  border-top: 1px solid rgba(201, 169, 110, 0.4);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.product-card__banner-vendu > span {
+  display: block;
 }
 
 .product-card__body {
@@ -661,18 +690,16 @@
   }
 
   /* Badge + banner adaptés au petit format */
-  .product-card__badge,
-  .product-card__banner-vendu {
-    font-size: 0.7rem;
-    padding: 3px 10px;
-  }
   .product-card__badge {
-    top: 8px;
-    left: 8px;
+    font-size: 0.62rem;
+    padding: 4px 12px 4px 10px;
   }
   .product-card__banner-vendu {
-    top: 8px;
-    right: 8px;
+    top: 14px;
+    right: -28px;
+    width: 100px;
+    font-size: 0.6rem;
+    padding: 5px 0;
   }
 }
 

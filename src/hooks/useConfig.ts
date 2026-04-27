@@ -27,10 +27,12 @@ export function useConfig() {
         const merged: SiteConfig = {
           ...defaultSiteConfig,
           ...data,
-          // Fallbacks pour les tableaux pour éviter les erreurs de mapping
+          // Fallbacks pour les tableaux — si vide, on garde les valeurs par défaut
           categories: data.categories?.length ? data.categories : defaultSiteConfig.categories,
-          testimonials: data.testimonials || [],
-          processSteps: data.processSteps || [],
+          testimonials: data.testimonials?.length ? data.testimonials : defaultSiteConfig.testimonials,
+          processSteps: data.processSteps?.length ? data.processSteps : defaultSiteConfig.processSteps,
+          lithotherapyValues: data.lithotherapyValues?.length ? data.lithotherapyValues : defaultSiteConfig.lithotherapyValues,
+          brandValues: data.brandValues?.length ? data.brandValues : defaultSiteConfig.brandValues,
         };
         
         setConfigState(merged);

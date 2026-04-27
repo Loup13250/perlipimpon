@@ -193,11 +193,11 @@ export default function ProductDetailPage() {
                {/* Galerie images */}
                <div className="gallery">
                  <div className="gallery__main" style={{ position: 'relative', cursor: article.photos.length > 0 ? 'zoom-in' : 'default', background: 'var(--color-cream)' }} onClick={() => article.photos.length > 0 && setLightboxOpen(true)}>
-                   {article.vendu && (
-                     <div className="product-card__banner-vendu" style={{ top: '40px', right: '-65px', width: '280px', fontSize: 'var(--text-lg)', padding: '12px 0' }}>
-                       <span>Vendu</span>
-                     </div>
-                   )}
+                    {article.vendu && (
+                      <div className="product-card__banner-vendu" style={{ position: 'absolute' }}>
+                        <span>Vendu</span>
+                      </div>
+                    )}
                    {article.photos.length > 0 ? (
                      <img
                        src={article.photos[activePhoto]}
