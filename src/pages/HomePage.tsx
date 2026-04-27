@@ -171,10 +171,10 @@ export default function HomePage() {
           <section className="about-preview">
             <div className="container">
               <div className="about-preview__grid">
-                <div className="about-preview__image" style={{ padding: 0, overflow: 'hidden' }}>
+                <div className="about-preview__image">
                   <picture>
                     <source srcSet={config.aboutImage === '/images/moonstone_necklace.webp' ? "/images/about_workshop.webp" : config.aboutImage.replace('.png', '.webp')} type="image/webp" />
-                    <img src={config.aboutImage === '/images/moonstone_necklace.webp' ? "/images/about_workshop.png" : config.aboutImage} alt="Création artisanale" loading="lazy" decoding="async" width="800" height="800" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={config.aboutImage === '/images/moonstone_necklace.webp' ? "/images/about_workshop.png" : config.aboutImage} alt="Création artisanale" loading="lazy" decoding="async" width="800" height="800" />
                   </picture>
                 </div>
                 <div className="about-preview__text">

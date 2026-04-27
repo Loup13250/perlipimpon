@@ -112,19 +112,18 @@
   aspect-ratio: 4 / 5;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: linear-gradient(135deg, var(--color-black-light), var(--color-charcoal));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-gold);
+  display: block; /* Removed flex to avoid centering gaps */
+  position: relative;
   border: 1px solid rgba(212, 175, 55, 0.2);
   box-shadow: 0 0 40px rgba(212, 175, 55, 0.1);
   font-size: 5rem;
 }
 
+.about-preview__image picture,
 .about-preview__image img {
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: cover;
 }
 
@@ -161,6 +160,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-xl);
+  min-height: 400px; /* Stabilizes layout during data load */
 }
 
 .featured__cta {
@@ -182,6 +182,7 @@
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: var(--space-xl);
   justify-content: center;
+  min-height: 350px; /* Reduces CLS during load */
 }
 
 .category-card {
