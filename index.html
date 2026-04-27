@@ -15,9 +15,9 @@
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
     </noscript>
 
-    <!-- LCP Image Preloads -->
-    <link rel="preload" as="image" fetchpriority="high" href="/images/hero_bg_mobile.jpg" media="(max-width: 768px)" />
-    <link rel="preload" as="image" fetchpriority="high" href="/images/hero_bg.png" media="(min-width: 769px)" />
+    <!-- LCP Image Preloads - WebP for modern browsers -->
+    <link rel="preload" as="image" fetchpriority="high" href="/images/hero_bg_mobile.jpg" media="(max-width: 768px)" type="image/jpeg" />
+    <link rel="preload" as="image" fetchpriority="high" href="/images/hero_bg.webp" media="(min-width: 769px)" type="image/webp" />
 
     <!-- SEO -->
     <title>Perlipimpon — Créatrice de bijoux fantaisie, énergies et pierres naturelles</title>
@@ -77,7 +77,7 @@
           justify-content: center;
           background-color: #FAF6F0;
           color: #D4AF37;
-          font-family: 'Playfair Display', serif;
+          font-family: 'Playfair Display', serif, system-ui, -apple-system;
           font-style: italic;
           font-size: 24px;
         }

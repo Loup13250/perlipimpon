@@ -35,13 +35,17 @@ export default function AboutPage() {
         {/* Story Section */}
         <div className="about-story">
           <div className="about-story__image">
-            <img 
-              src={aboutImage}
-              alt="Notre atelier de création" 
-              loading="lazy" 
-              width="600" 
-              height="800" 
-            />
+            <picture>
+              <source srcSet={aboutImage.replace('.png', '.webp')} type="image/webp" />
+              <img 
+                src={aboutImage}
+                alt="Notre atelier de création" 
+                loading="lazy" 
+                decoding="async"
+                width="600" 
+                height="800" 
+              />
+            </picture>
           </div>
           <div className="about-story__text">
             <h2>{aboutTitle}</h2>

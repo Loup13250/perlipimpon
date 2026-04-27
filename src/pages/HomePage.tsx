@@ -21,8 +21,9 @@ export default function HomePage() {
       {/* ── HERO COMPACT ─────────────────────── */}
       <section className="hero">
         <picture>
-          <source media="(max-width: 768px)" srcSet={config.heroImageMobile || config.heroImage} />
-          <img src={config.heroImage} alt={`${config.nomMarque || 'Perlipimpon'} — Bijoux artisanaux faits main`} fetchPriority="high" decoding="sync" className="hero__background" />
+          <source media="(max-width: 768px)" srcSet="/images/hero_bg_mobile.jpg" type="image/jpeg" />
+          <source srcSet="/images/hero_bg.webp" type="image/webp" />
+          <img src="/images/hero_bg.png" alt={`${config.nomMarque || 'Perlipimpon'} — Bijoux artisanaux faits main`} fetchPriority="high" decoding="sync" className="hero__background" />
         </picture>
         <div className="hero__glow-1" />
         <div className="hero__glow-2" />
@@ -140,12 +141,20 @@ export default function HomePage() {
                       {cat.image ? (
                         <img src={cat.image} alt={cat.name} loading="lazy" decoding="async" width="400" height="400" />
                       ) : (
-                        <img src={
-                          cat.name.toLowerCase().includes('collier') ? '/images/moonstone_necklace.png' :
-                          cat.name.toLowerCase().includes('bracelet') ? '/images/pearl_bracelet.png' :
-                          cat.name.toLowerCase().includes('bague') ? '/images/rose_quartz_ring.png' :
-                          '/images/hero_bg.png'
-                        } alt={cat.name} loading="lazy" decoding="async" width="400" height="400" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <picture>
+                          <source srcSet={
+                            cat.name.toLowerCase().includes('collier') ? '/images/moonstone_necklace.webp' :
+                            cat.name.toLowerCase().includes('bracelet') ? '/images/pearl_bracelet.webp' :
+                            cat.name.toLowerCase().includes('bague') ? '/images/rose_quartz_ring.webp' :
+                            '/images/hero_bg.webp'
+                          } type="image/webp" />
+                          <img src={
+                            cat.name.toLowerCase().includes('collier') ? '/images/moonstone_necklace.png' :
+                            cat.name.toLowerCase().includes('bracelet') ? '/images/pearl_bracelet.png' :
+                            cat.name.toLowerCase().includes('bague') ? '/images/rose_quartz_ring.png' :
+                            '/images/hero_bg.png'
+                          } alt={cat.name} loading="lazy" decoding="async" width="400" height="400" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        </picture>
                       )}
                     </div>
                     <div className="category-card__content">
@@ -163,7 +172,10 @@ export default function HomePage() {
             <div className="container">
               <div className="about-preview__grid">
                 <div className="about-preview__image" style={{ padding: 0, overflow: 'hidden' }}>
-                  <img src={config.aboutImage === '/images/moonstone_necklace.png' ? "/images/about_workshop.png" : config.aboutImage} alt="Création artisanale" loading="lazy" decoding="async" width="800" height="800" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <picture>
+                    <source srcSet={config.aboutImage === '/images/moonstone_necklace.webp' ? "/images/about_workshop.webp" : config.aboutImage.replace('.png', '.webp')} type="image/webp" />
+                    <img src={config.aboutImage === '/images/moonstone_necklace.webp' ? "/images/about_workshop.png" : config.aboutImage} alt="Création artisanale" loading="lazy" decoding="async" width="800" height="800" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </picture>
                 </div>
                 <div className="about-preview__text">
                   <h2>{config.aboutTitle}</h2>

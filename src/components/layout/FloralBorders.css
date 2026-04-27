@@ -62,8 +62,8 @@
      Contrairement au 'blend-mode', cela ne crée pas d'ombres sur les bords. */
   filter: url(#remove-white-filter);
 
-  /* Retour à l'image originale de haute qualité */
-  background-image: url('/images/decorations/floral-left-v2.png');
+  /* Utilisation du WebP optimisé (18 KB vs 851 KB) */
+  background-image: url('/images/decorations/floral-left-v2.webp');
 }
 
 .floral-border--left .floral-border-inner {

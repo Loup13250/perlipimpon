@@ -225,7 +225,7 @@ export default function ProductDetailPage() {
                         onClick={() => setActivePhoto(index)}
                         aria-label={`Vue ${index + 1}`}
                       >
-                        <img src={photo} alt={`${article.titre} — Miniature ${index + 1}`} loading="lazy" width="100" height="100" />
+                        <img src={photo} alt={`${article.titre} — Miniature ${index + 1}`} loading="lazy" decoding="async" width="100" height="100" />
                       </button>
                     ))}
                   </div>

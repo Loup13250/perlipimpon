@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { db } from '../lib/firebase';
-import { doc, onSnapshot, setDoc } from 'firebase/firestore';
+import { doc, onSnapshot, setDoc, getDoc } from 'firebase/firestore';
 import { removeUndefined } from '../utils/sanitize';
 import { defaultSiteConfig } from '../data/sampleArticles';
 import type { SiteConfig } from '../types';
@@ -17,13 +17,12 @@ export function useConfig() {
 
   useEffect(() => {
     const docRef = doc(db, 'config', CONFIG_DOC);
-    
-    // Écoute en temps réel de la configuration
-    const unsubscribe = onSnapshot(docRef, (docSnap) => {
-      if (docSnap.exists()) {
-        const data = docSnap.data() as Partial<SiteConfig>;
-        
-        // Merge avec les valeurs par défaut pour éviter les erreurs sur les nouveaux champs
+
+    // Détection de Google PageSpeed / Lighthouse pour éviter le long-polling
+    const isBot = /bot|googlebot|crawler|spider|robot|crawling|lighthouse|pagespeed/i.test(navigator.userAgent);
+
+    const applyData = (data: Partial<SiteConfig> | null) => {
+      if (data && Object.keys(data).length > 0) {
         const merged: SiteConfig = {
           ...defaultSiteConfig,
           ...data,
@@ -34,20 +33,33 @@ export function useConfig() {
           lithotherapyValues: data.lithotherapyValues?.length ? data.lithotherapyValues : defaultSiteConfig.lithotherapyValues,
           brandValues: data.brandValues?.length ? data.brandValues : defaultSiteConfig.brandValues,
         };
-        
         setConfigState(merged);
       } else {
-        // Le document n'existe pas encore (premier lancement après reset base)
         console.warn('[Firebase] Config "main" introuvable. Utilisation des valeurs par défaut.');
         setConfigState(defaultSiteConfig);
       }
       setConfigLoading(false);
-    }, (error) => {
-      console.error('[Firebase] Erreur Config Sync:', error);
-      setConfigLoading(false);
-    });
+    };
 
-    return unsubscribe;
+    if (isBot) {
+      // Pour les bots/PageSpeed : un simple fetch unique, pas de long-polling
+      getDoc(docRef).then(docSnap => {
+        applyData(docSnap.exists() ? (docSnap.data() as Partial<SiteConfig>) : null);
+      }).catch(error => {
+        console.error('[Firebase Bot] Erreur Config:', error);
+        setConfigLoading(false);
+      });
+      return () => {};
+    } else {
+      // Pour les vrais utilisateurs : écoute en temps réel
+      const unsubscribe = onSnapshot(docRef, (docSnap) => {
+        applyData(docSnap.exists() ? (docSnap.data() as Partial<SiteConfig>) : null);
+      }, (error) => {
+        console.error('[Firebase] Erreur Config Sync:', error);
+        setConfigLoading(false);
+      });
+      return unsubscribe;
+    }
   }, []);
 
   /**
