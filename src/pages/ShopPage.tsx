@@ -142,7 +142,10 @@ export default function ShopPage() {
                         <div className="product-card__banner-vendu"><span>Vendu</span></div>
                       )}
                       {article.enVedette && !article.vendu && (
-                        <div className="product-card__badge">Coup de Cœur</div>
+                        <div className="product-card__badge">
+                          <span className="product-card__badge__heart">♥</span>
+                          Coup de Cœur
+                        </div>
                       )}
                     </div>
                     <div className="product-card__body">

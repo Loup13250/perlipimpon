@@ -55,6 +55,9 @@ function AdminLogin({ onLogin }: { onLogin: (email: string, password: string) =>
     <div className="admin-page">
       <div className="container">
         <div className="admin-login">
+          <div className="admin-login__icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-deep)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1"/></svg>
+          </div>
           <h2>Espace Créatrice</h2>
           <p>Connectez-vous pour gérer vos créations</p>
 
@@ -85,7 +88,7 @@ function AdminLogin({ onLogin }: { onLogin: (email: string, password: string) =>
               />
             </div>
             <button type="submit" className="btn btn--primary btn--lg" style={{ width: '100%', marginTop: '1.5rem' }} disabled={loading}>
-              {loading ? 'Connexion...' : 'Se connecter ❤'}
+              {loading ? 'Connexion...' : 'Se connecter'}
             </button>
           </form>
         </div>
@@ -176,13 +179,20 @@ function ArticleForm({
   return (
     <div className="admin-form">
       <div className="admin-form__header">
-        <h2>{isEditing ? '✏️ Modifier l\'article' : '✨ Nouvel article'}</h2>
+        <h2 style={{ display:'flex', alignItems:'center', gap:'10px' }}>
+          {isEditing ? (
+            <><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-deep)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Modifier l'article</>
+          ) : (
+            <><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-deep)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg> Nouvel article</>
+          )}
+        </h2>
         <button
           type="button"
           className="btn btn--outline btn--sm"
           onClick={onCancel}
         >
-          ✕ Annuler
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Annuler
         </button>
       </div>
 
@@ -259,7 +269,9 @@ function ArticleForm({
                 pointerEvents: form.photos.length < 4 ? 'auto' : 'none',
               }}
             >
-              <div className="photo-upload__area-icon">📷</div>
+              <div className="photo-upload__area-icon">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-deep)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              </div>
               {form.photos.length < 4 ? (
                 <>
                   <p><span>Cliquez pour ajouter</span> des photos (max 4)</p>
@@ -304,7 +316,10 @@ function ArticleForm({
                 onChange={(e) => updateField('enVedette', e.target.checked)}
               />
               <div className="beautiful-toggle__slider"></div>
-              <span className="beautiful-toggle__label">❤ Coup de Cœur</span>
+              <span className="beautiful-toggle__label" style={{ display:'flex', alignItems:'center', gap:'6px' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" style={{ color:'#e07090' }}><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                Coup de Cœur
+              </span>
             </label>
 
             <label className="beautiful-toggle">
@@ -314,7 +329,10 @@ function ArticleForm({
                 onChange={(e) => updateField('vendu', e.target.checked)}
               />
               <div className="beautiful-toggle__slider"></div>
-              <span className="beautiful-toggle__label">🔴 Marquer comme vendu</span>
+              <span className="beautiful-toggle__label" style={{ display:'flex', alignItems:'center', gap:'6px' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0e9f9f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Marquer comme vendu
+              </span>
             </label>
           </div>
 
@@ -553,7 +571,9 @@ function SiteConfigForm({
                   if (window.confirm("Êtes-vous sûr de vouloir supprimer cette valeur ?")) {
                     const arr = [...form.brandValues]; arr.splice(index, 1); handleChange('brandValues', arr);
                   }
-                }}>🗑️</button>
+                }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                </button>
                 <div className="admin-form__grid">
                   <div className="form-group form-group--full">
                     <label>Titre</label>
@@ -611,7 +631,9 @@ function SiteConfigForm({
                   if (window.confirm("Êtes-vous sûr de vouloir supprimer cette étape ?")) {
                     const arr = [...form.processSteps]; arr.splice(index, 1); handleChange('processSteps', arr);
                   }
-                }}>🗑️</button>
+                }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                </button>
                 <div className="admin-form__grid">
                   <div className="form-group">
                     <label>Étape N° {index + 1} - Titre</label>
@@ -638,7 +660,9 @@ function SiteConfigForm({
                   if (window.confirm("Êtes-vous sûr de vouloir supprimer cette valeur de lithothérapie ?")) {
                     const arr = [...form.lithotherapyValues]; arr.splice(index, 1); handleChange('lithotherapyValues', arr);
                   }
-                }}>🗑️</button>
+                }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                </button>
                 <div className="admin-form__grid">
                   <div className="form-group form-group--full">
                     <label>Titre de la valeur</label>
@@ -670,7 +694,9 @@ function SiteConfigForm({
                   if (window.confirm("Êtes-vous sûr de vouloir supprimer ce témoignage ?")) {
                     const arr = [...form.testimonials]; arr.splice(index, 1); handleChange('testimonials', arr);
                   }
-                }}>🗑️</button>
+                }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                </button>
                 <div className="admin-form__grid">
                   <div className="form-group">
                     <label>Auteur</label>
@@ -919,7 +945,9 @@ function CategoriesForm({
             <div className="category-thumb">
               {cat.image
                 ? <img src={cat.image} alt={cat.name} />
-                : <span className="category-thumb__placeholder">🏷️</span>
+                : <span className="category-thumb__placeholder">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                  </span>
               }
             </div>
 
@@ -933,8 +961,12 @@ function CategoriesForm({
               required
             />
 
-            <label className="btn btn--outline btn--sm" style={{ cursor: 'pointer', margin: 0, flexShrink: 0 }}>
-              {cat.image ? '🔄 Modifier l\'image' : '📷 Ajouter une image'}
+            <label className="btn btn--outline btn--sm" style={{ cursor: 'pointer', margin: 0, flexShrink: 0, display: 'flex', alignItems: 'center', gap: '6px' }}>
+              {cat.image ? (
+                <><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg> Modifier l'image</>
+              ) : (
+                <><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> Ajouter une image</>
+              )}
               <input type="file" accept="image/*" style={{ display: 'none' }} onClick={(e) => { (e.target as HTMLInputElement).value = ''; }} onChange={async (e) => {
                 const file = e.target.files?.[0];
                 if (file) {
@@ -947,7 +979,9 @@ function CategoriesForm({
               }} />
             </label>
 
-            <button type="button" className="btn btn--sm" style={{ flexShrink: 0, background: 'transparent', borderRadius: '10px', border: '1.5px solid rgba(192,57,43,0.4)', color: 'var(--color-danger)', padding: '8px 12px' }} title="Supprimer cette catégorie" onClick={() => removeCategory(index)}>🗑️</button>
+            <button type="button" className="btn btn--sm" style={{ flexShrink: 0, background: 'transparent', borderRadius: '10px', border: '1.5px solid rgba(192,57,43,0.4)', color: 'var(--color-danger)', padding: '8px 12px' }} title="Supprimer cette catégorie" onClick={() => removeCategory(index)}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+            </button>
           </div>
         ))}
         <button type="button" className="btn btn--outline btn--sm" onClick={addCategory} style={{ marginTop: 'var(--space-sm)' }}>+ Ajouter une catégorie</button>
@@ -1179,8 +1213,8 @@ export default function AdminPage() {
   return (
     <div className="admin-page">
       {authLoading || configLoading || articlesLoading ? (
-        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '1rem' }}>
-          <div style={{ fontSize: '3rem', animation: 'float 2s ease-in-out infinite' }}>🌸</div>
+        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '1.5rem' }}>
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-deep)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ animation: 'spin 2s linear infinite', opacity: 0.7 }}><path d="M12 2a10 10 0 0 1 10 10"/><path d="M12 22a10 10 0 0 1-10-10"/></svg>
           <p style={{ color: 'var(--color-gold-deep)', fontFamily: 'var(--font-display)', fontStyle: 'italic' }}>Chargement de l'atelier...</p>
         </div>
       ) : !isAuthenticated ? (
@@ -1201,10 +1235,12 @@ export default function AdminPage() {
           {/* Header Admin Premium */}
           <div className="admin-header-card">
             <div className="admin-header__brand">
-              <div className="admin-header__avatar">🌸</div>
+              <div className="admin-header__avatar">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </div>
               <div className="admin-header__text">
                 <h1>Espace Créatrice</h1>
-                <p>Bienvenue dans votre atelier digital ✦</p>
+                <p>Bienvenue dans votre atelier digital</p>
               </div>
             </div>
             <div className="admin-header__actions">
@@ -1222,7 +1258,7 @@ export default function AdminPage() {
           {/* Statistiques rapides — cliquables pour filtrer rapidement */}
           <div className="admin-stats">
             <button
-              className="stat-card stat-card--clickable"
+              className="stat-card stat-card--clickable stat-card--gold"
               onClick={() => { guardedTabChange('articles'); setFilterStatus('all'); setFilterCategory('all'); }}
               title="Voir toutes les créations"
             >
@@ -1233,18 +1269,18 @@ export default function AdminPage() {
               <div className="stat-card__label">Créations</div>
             </button>
             <button
-              className="stat-card stat-card--clickable"
+              className="stat-card stat-card--clickable stat-card--rose"
               onClick={() => { guardedTabChange('articles'); setFilterStatus('enVedette'); setFilterCategory('all'); }}
               title="Voir les coups de cœur"
             >
               <div className="stat-card__icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
               </div>
               <div className="stat-card__value">{featuredCount}</div>
               <div className="stat-card__label">Coups de Cœur</div>
             </button>
             <button
-              className="stat-card stat-card--clickable"
+              className="stat-card stat-card--clickable stat-card--teal"
               onClick={() => { guardedTabChange('articles'); setFilterStatus('vendu'); setFilterCategory('all'); }}
               title="Voir les articles vendus"
             >
@@ -1255,7 +1291,7 @@ export default function AdminPage() {
               <div className="stat-card__label">Vendus</div>
             </button>
             <button
-              className="stat-card stat-card--clickable"
+              className="stat-card stat-card--clickable stat-card--purple"
               onClick={() => guardedTabChange('categories')}
               title="Gérer les catégories"
             >
