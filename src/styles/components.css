@@ -811,33 +811,28 @@
   display: none;
   align-items: center;
   justify-content: center;
-  gap: 10px;
   background: var(--color-white);
   border: 1px solid rgba(201, 169, 110, 0.4);
-  padding: 10px 24px;
-  border-radius: 100px;
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: var(--color-charcoal);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   margin: 0 auto var(--space-lg);
-  width: max-content;
+  flex-shrink: 0;
 }
 
 .view-toggle:hover {
   border-color: var(--color-gold);
   background: var(--color-cream);
-  transform: translateY(-1px);
+  transform: scale(1.05);
   box-shadow: 0 6px 16px rgba(212, 175, 55, 0.15);
 }
 
 .view-toggle svg {
   color: var(--color-gold-deep);
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .view-toggle:hover svg {
