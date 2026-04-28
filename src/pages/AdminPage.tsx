@@ -517,7 +517,7 @@ function SiteConfigForm({
             <div className="admin-form__grid" style={{ marginBottom: '2rem' }}>
               <div className="form-group form-group--full">
                 <label>Image d'ambiance (Haut de page — Bureau & Défaut)</label>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
+                <div className="admin-image-upload-group">
                   {form.heroImage && <img src={form.heroImage} alt="Hero" style={{ flexShrink: 0, height: '64px', width: '100px', objectFit: 'cover', borderRadius: '12px', border: '1px solid rgba(201,169,110,0.2)' }} />}
                   <label className="btn btn--outline btn--sm" style={{ cursor: 'pointer', margin: 0 }}>
                     Changer l'image
@@ -527,7 +527,7 @@ function SiteConfigForm({
               </div>
               <div className="form-group form-group--full">
                 <label>Image d'ambiance (Mobile — Format vertical/réduit recommandé)</label>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
+                <div className="admin-image-upload-group">
                   {form.heroImageMobile && <img src={form.heroImageMobile} alt="Hero Mobile" style={{ flexShrink: 0, height: '64px', width: '64px', objectFit: 'cover', borderRadius: '12px', border: '1px solid rgba(201,169,110,0.2)' }} />}
                   <label className="btn btn--outline btn--sm" style={{ cursor: 'pointer', margin: 0 }}>
                     Changer l'image Mobile
@@ -664,7 +664,7 @@ function SiteConfigForm({
             <div className="admin-form__grid" style={{ marginBottom: '2rem' }}>
               <div className="form-group form-group--full">
                 <label>Image d'illustration personnelle</label>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
+                <div className="admin-image-upload-group">
                   {form.aboutImage && <img src={form.aboutImage} alt="A propos" style={{ flexShrink: 0, height: '64px', width: '64px', objectFit: 'cover', borderRadius: '12px', border: '1px solid rgba(201,169,110,0.2)' }} />}
                   <label className="btn btn--outline btn--sm" style={{ cursor: 'pointer', margin: 0 }}>
                     Changer l'image
