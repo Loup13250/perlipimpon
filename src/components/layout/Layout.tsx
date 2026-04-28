@@ -9,7 +9,7 @@ export default function Layout() {
   const isAdmin = location.pathname.startsWith('/admin');
 
   return (
-    <div className={`site-layout ${isHome ? 'is-home' : ''}`}>
+    <div className={`site-layout ${isHome ? 'is-home' : ''} ${isAdmin ? 'is-admin' : ''}`}>
       {!isAdmin && <Header />}
       {!isAdmin && <FloralBorders />}
       <main className="site-main" aria-label="Contenu principal" style={isAdmin ? { paddingTop: 0 } : {}}>
