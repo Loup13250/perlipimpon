@@ -175,10 +175,11 @@
 /* Compteur et Tags actifs */
 .shop-info-bar {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: var(--space-md);
-  margin-bottom: var(--space-2xl);
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: var(--space-xl);
 }
 
 .shop-count {

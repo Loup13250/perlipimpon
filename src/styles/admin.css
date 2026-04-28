@@ -8,7 +8,7 @@
    ═══════════════════════════════════════════ */
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
 .admin-layout {
@@ -134,19 +134,31 @@
   .admin-top-banner__nav {
     width: 100% !important;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 4px;
-    padding: 5px;
+    padding: 8px 5px;
     background: rgba(201,169,110,0.05);
     border-radius: 16px;
     box-sizing: border-box;
+    overflow-x: auto;
+    margin-left: 0 !important; /* Reset desktop margin */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .admin-top-banner__nav::-webkit-scrollbar {
+    display: none;
+  }
+  .admin-top-banner__nav {
+    scrollbar-width: none;
   }
   
   .admin-nav__btn {
-    flex: 1;
-    min-width: 0;
-    padding: 10px 2px;
-    font-size: 9px;
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 75px; /* Smaller min-width */
+    padding: 8px 5px;
+    font-size: 10px;
     flex-direction: column;
     justify-content: center;
     border-radius: 12px;
@@ -160,12 +172,13 @@
   }
   
   .admin-main {
-    padding: 16px !important;
+    padding: 12px !important;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
     margin: 0 !important;
     overflow-x: hidden;
+    display: block !important; /* Change flex to block to avoid centering issues */
   }
   
   .admin-header-card {
@@ -178,7 +191,13 @@
   
   .admin-stats {
     grid-template-columns: 1fr 1fr !important;
-    gap: var(--space-md) !important;
+    gap: 10px !important;
+  }
+
+  @media (max-width: 480px) {
+    .admin-stats {
+      grid-template-columns: 1fr !important;
+    }
   }
   
   .hide-mobile {
@@ -186,11 +205,19 @@
   }
   
   .admin-form {
-    padding: var(--space-lg) !important;
+    padding: 15px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    border-radius: 16px !important;
   }
   
   .stat-card {
-    padding: var(--space-md) !important;
+    padding: 12px !important;
+    gap: 10px !important;
+    height: auto !important;
+    min-height: 70px;
   }
   
   .stat-card__icon {
@@ -1576,6 +1603,7 @@
     flex-direction: column;
     width: 100% !important;
     align-items: stretch;
+    gap: 16px !important;
   }
   .admin-config-sidebar {
     width: 100% !important;
@@ -1584,9 +1612,9 @@
   }
   .admin-subtabs {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 10px !important;
-    padding: 10px !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    padding: 8px !important;
     background: #fff;
     border: 1px solid rgba(201, 169, 110, 0.15);
     border-radius: 20px;
@@ -1599,13 +1627,14 @@
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
-    padding: 15px 5px !important;
+    padding: 10px 5px !important;
     margin-bottom: 0 !important;
-    gap: 8px !important;
-    font-size: 10px !important;
+    gap: 4px !important;
+    font-size: 9px !important;
     height: auto !important;
-    border-radius: 14px !important;
+    border-radius: 12px !important;
     width: 100% !important;
+    min-height: 60px !important;
   }
   
   .admin-subtab__label {
@@ -1662,16 +1691,34 @@
   }
 
   .form-group label {
-    text-align: center !important;
+    text-align: left !important;
     width: 100% !important;
     font-size: 11px !important;
+    margin-bottom: 6px !important;
+    display: block !important;
+  }
+
+  .admin-form__header {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  .admin-form__header h2 {
+    font-size: 1.1rem !important;
+    justify-content: center;
   }
 
   .form-group input, 
-  .form-group textarea {
-    text-align: center !important;
+  .form-group textarea,
+  .form-group select {
+    text-align: left !important;
     width: 100% !important;
+    max-width: 100% !important;
     font-size: 16px !important;
+    box-sizing: border-box !important;
+    padding: 12px !important;
   }
 
   .admin-form__actions {
@@ -1694,7 +1741,8 @@
 
 @media (max-width: 768px) {
   .admin-search {
-    min-width: 100%;
+    width: 100% !important;
+    min-width: 0 !important;
   }
 
   .admin-page {
@@ -1726,5 +1774,18 @@
 
   .admin-header-card {
     padding: var(--space-lg);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-md);
+  }
+
+  .admin-header__brand {
+    flex-direction: column;
+  }
+
+  .admin-header__actions {
+    justify-content: center;
+    width: 100%;
   }
 }

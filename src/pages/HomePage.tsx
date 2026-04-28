@@ -61,26 +61,25 @@ export default function HomePage() {
             <div className="container">
               <div className="section-title">
                 <h2>Nos Coups de Cœur</h2>
-                <p>Découvrez nos créations les plus appréciées</p>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginTop: 'var(--space-md)' }}>
+                  <p style={{ margin: 0 }}>Découvrez nos créations les plus appréciées</p>
+                  <button 
+                    className="view-toggle" 
+                    onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}
+                    aria-label="Changer l'affichage"
+                    style={{ margin: 0 }}
+                  >
+                    {viewMode === 'grid' ? (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    ) : (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    )}
+                  </button>
+                </div>
               </div>
 
               {featuredArticles.length > 0 ? (
                 <>
-                  <div style={{ display: 'flex', justifyContent: 'center', width: '100%', marginBottom: 'var(--space-lg)' }}>
-                    <button 
-                      className="view-toggle" 
-                      onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}
-                      aria-label="Changer l'affichage"
-                      style={{ margin: 0 }}
-                    >
-                      {viewMode === 'grid' ? (
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-                      ) : (
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                      )}
-                    </button>
-                  </div>
-
                   <div className={`featured__grid ${viewMode === 'list' ? 'is-list-view' : ''}`} ref={featuredRef}>
                     {featuredArticles.slice(0, 6).map((article) => (
                       <Link

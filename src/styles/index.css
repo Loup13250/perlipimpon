@@ -176,7 +176,7 @@ input, textarea, select {
 /* ── Titres de section ────────────────────── */
 .section-title {
   text-align: center;
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-2xl);
 }
 
 .section-title h2 {
@@ -266,6 +266,10 @@ input, textarea, select {
 
   .container {
     padding: 0 var(--space-md);
+  }
+
+  .section-title {
+    margin-bottom: var(--space-lg);
   }
 }
 
