@@ -1430,7 +1430,7 @@ export default function AdminPage() {
                   <div className="admin-table">
                     {/* En-tête colonne */}
                     {filteredArticles.length > 0 && (
-                      <div style={{ display: 'grid', gridTemplateColumns: '32px 72px 3fr 1fr 1fr 1fr auto', alignItems: 'center', gap: 'var(--space-md)', padding: '8px var(--space-xl)', borderBottom: '2px solid rgba(201,169,110,0.15)', background: 'rgba(250,246,240,0.8)', fontSize: 'var(--text-xs)', fontWeight: 600, color: 'var(--color-gray-500)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                      <div className="admin-table__header">
                         <input
                           type="checkbox"
                           className="article-row__checkbox"

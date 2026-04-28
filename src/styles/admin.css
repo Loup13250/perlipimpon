@@ -110,7 +110,7 @@
   
   .admin-top-banner__brand {
     flex: 1;
-    min-width: 50%;
+    min-width: 0;
   }
 
   .admin-top-banner__actions {
@@ -156,6 +156,88 @@
   
   .admin-form {
     padding: var(--space-lg) !important;
+  }
+  
+  .stat-card {
+    padding: var(--space-md) !important;
+  }
+  
+  .stat-card__icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .stat-card__icon svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .stat-card__value {
+    font-size: 1.5rem;
+  }
+  
+  .stat-card__label {
+    font-size: 9px;
+  }
+
+  .admin-table__header {
+    display: none !important;
+  }
+
+  .article-row {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: var(--space-sm) !important;
+    padding: var(--space-lg) !important;
+    position: relative;
+  }
+
+  .article-row__check {
+    position: absolute;
+    top: var(--space-lg);
+    right: var(--space-lg);
+  }
+
+  .article-row__thumb {
+    width: 60px;
+    height: 60px;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article-row__info {
+    width: 100%;
+    padding-right: 30px; /* Space for checkbox */
+  }
+
+  .article-row__category {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .article-row__price {
+    font-weight: 700;
+    font-size: var(--text-base);
+  }
+
+  .article-row__preview {
+    position: absolute;
+    top: var(--space-lg);
+    right: calc(var(--space-lg) + 32px);
+  }
+
+  .article-row__actions {
+    width: 100%;
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+  }
+
+  .article-row__actions .btn {
+    flex: 1;
+    justify-content: center;
   }
 }
 
@@ -638,6 +720,21 @@
 .admin-bulk-bar__count {
   font-weight: 600;
   color: var(--color-gold-deep);
+}
+
+.admin-table__header {
+  display: grid;
+  grid-template-columns: 32px 72px 3fr 1fr 1fr 1fr auto;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 8px var(--space-xl);
+  border-bottom: 2px solid rgba(201,169,110,0.15);
+  background: rgba(250,246,240,0.8);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 /* Article Row */
