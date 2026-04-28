@@ -415,36 +415,48 @@ function SiteConfigForm({
   };
 
   const tabs = [
-    { id: 'general', label: 'Général & SEO', icon: '' },
-    { id: 'hero', label: 'Accueil & CTA', icon: '' },
-    { id: 'pages', label: 'Gestion du Contenu', icon: '' },
-    { id: 'about', label: 'À Propos', icon: '' },
-    { id: 'testimonials', label: 'Avis Clients', icon: '' },
-    { id: 'maintenance', label: 'Maintenance', icon: '' },
+    { id: 'general', label: 'Général', icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> },
+    { id: 'hero', label: 'Accueil', icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> },
+    { id: 'pages', label: 'Pages', icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> },
+    { id: 'about', label: 'Atelier', icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> },
+    { id: 'testimonials', label: 'Avis', icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> },
+    { id: 'maintenance', label: 'Système', icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> },
   ] as const;
 
   return (
     <div className="admin-form">
-      {/* Sous-Menu Navigation */}
-      <div className="admin-subtabs">
-        {tabs.map(tab => (
-          <button
-            key={tab.id}
-            type="button"
-            className={`admin-subtab ${activeTab === tab.id ? 'active' : ''}`}
-            onClick={() => setActiveTab(tab.id)}
-          >
-            <span>{tab.icon}</span> {tab.label}
-          </button>
-        ))}
-      </div>
+      <form onSubmit={handleSubmit} className="admin-config-form">
+        <div className="admin-config-layout">
+          {/* Sidebar Tabs */}
+          <div className="admin-config-sidebar">
+            <div className="admin-subtabs">
+              {tabs.map(tab => (
+                <button
+                  key={tab.id}
+                  type="button"
+                  className={`admin-subtab ${activeTab === tab.id ? 'active' : ''}`}
+                  onClick={() => setActiveTab(tab.id)}
+                >
+                  <span className="admin-subtab__icon">{tab.icon}</span>
+                  <span className="admin-subtab__label">{tab.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
 
-      <form onSubmit={handleSubmit}>
+          {/* Main Content Area */}
+          <div className="admin-config-content">
+
 
         {/* TAB 1: GENERAL & SEO */}
         {activeTab === 'general' && (
-          <>
-            <h2>Contact & Réseaux Sociaux</h2>
+          <div className="config-section-wrapper">
+            <div className="config-card">
+              <div className="config-card__header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <h3>Identité & Contact</h3>
+              </div>
+              <div className="config-card__body">
             <div className="admin-form__grid" style={{ marginBottom: '2rem' }}>
               <div className="form-group">
                 <label htmlFor="config-nomMarque">Nom de la Marque</label>
@@ -467,8 +479,15 @@ function SiteConfigForm({
                 <input id="config-instagram" name="instagram" type="url" value={form.instagram} onChange={e => handleChange('instagram', e.target.value)} autoComplete="off" />
               </div>
             </div>
+              </div>
+            </div>
 
-            <h2>Optimisation Moteur de Recherche (SEO)</h2>
+            <div className="config-card">
+              <div className="config-card__header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <h3>Référencement (SEO)</h3>
+              </div>
+              <div className="config-card__body">
             <div className="admin-form__grid">
               <div className="form-group form-group--full">
                 <label htmlFor="config-metaTitle">Titre de l'onglet (Meta Title)</label>
@@ -481,13 +500,20 @@ function SiteConfigForm({
                 <small style={{color:'var(--color-gray-500)', marginTop:'4px', display:'block'}}>Un court résumé incitatif (150 caractères idéalement) affiché dans les résultats Google.</small>
               </div>
             </div>
-          </>
+              </div>
+            </div>
+          </div>
         )}
 
         {/* TAB 2: HERO & CTA */}
         {activeTab === 'hero' && (
-          <>
-            <h2>Visuel du Haut de Page (Accueil)</h2>
+          <div className="config-section-wrapper">
+            <div className="config-card">
+              <div className="config-card__header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                <h3>Bannière d'Accueil</h3>
+              </div>
+              <div className="config-card__body">
             <div className="admin-form__grid" style={{ marginBottom: '2rem' }}>
               <div className="form-group form-group--full">
                 <label>Image d'ambiance (Haut de page — Bureau & Défaut)</label>
@@ -526,8 +552,15 @@ function SiteConfigForm({
                 <textarea id="config-heroDescription" name="heroDescription" rows={3} value={form.heroDescription || ''} onChange={e => handleChange('heroDescription', e.target.value)} autoComplete="off" />
               </div>
             </div>
+              </div>
+            </div>
 
-            <h2>Bandeau d'Appel à l'action (Bas de page)</h2>
+            <div className="config-card">
+              <div className="config-card__header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                <h3>Appel à l'action (Bas de page)</h3>
+              </div>
+              <div className="config-card__body">
             <div className="admin-form__grid">
               <div className="form-group form-group--full">
                 <label htmlFor="config-ctaTitle">Titre d'accroche</label>
@@ -538,13 +571,20 @@ function SiteConfigForm({
                 <textarea id="config-ctaDescription" name="ctaDescription" rows={2} value={form.ctaDescription || ''} onChange={e => handleChange('ctaDescription', e.target.value)} autoComplete="off" />
               </div>
             </div>
-          </>
+              </div>
+            </div>
+          </div>
         )}
 
         {/* TAB PAGES: HEADERS & BRAND VALUES */}
         {activeTab === 'pages' && (
-          <>
-            <h2>En-têtes de Pages</h2>
+          <div className="config-section-wrapper">
+            <div className="config-card">
+              <div className="config-card__header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                <h3>Titres des Pages</h3>
+              </div>
+              <div className="config-card__body">
             <div className="admin-form__grid" style={{ marginBottom: '2rem' }}>
               <div className="form-group">
                 <label htmlFor="config-shopTitle">Titre Boutique (Nos Créations)</label>
@@ -573,9 +613,15 @@ function SiteConfigForm({
                 <input id="config-aboutHeroSubtitle" name="aboutHeroSubtitle" type="text" value={form.aboutHeroSubtitle || ''} onChange={e => handleChange('aboutHeroSubtitle', e.target.value)} autoComplete="off" />
               </div>
             </div>
+              </div>
+            </div>
 
-            <h2>L'Âme de l'Atelier (Valeurs Accueil)</h2>
-            <p style={{ color: 'var(--color-gray-500)', fontSize: '0.8rem', marginBottom: '1rem' }}>Les 4 valeurs affichées sur la page d'accueil (Atelier Artisanal, Gemmes Sélectionnées...).</p>
+            <div className="config-card">
+              <div className="config-card__header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <h3>L'Âme de l'Atelier (Valeurs)</h3>
+              </div>
+              <div className="config-card__body">
             {(form.brandValues || []).map((val, index) => (
               <div key={index} style={{ border: '1px solid rgba(201,169,110,0.2)', padding: '1rem', borderRadius: '14px', marginBottom: '1rem', position: 'relative', background: 'rgba(250,246,240,0.5)' }}>
                 <button type="button" className="btn btn--outline btn--sm" style={{ position: 'absolute', top: '10px', right: '10px', padding: '6px 10px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)', background: 'transparent' }} title="Supprimer cette valeur" onClick={() => {
@@ -601,14 +647,20 @@ function SiteConfigForm({
                 </div>
               </div>
             ))}
-            <button type="button" className="btn btn--outline btn--sm" onClick={() => handleChange('brandValues', [...(form.brandValues || []), { title: 'Nouvelle Valeur', description: '' }])}>+ Ajouter une valeur</button>
-          </>
+              </div>
+            </div>
+          </div>
         )}
 
         {/* TAB 3: ABOUT & PROCESS */}
         {activeTab === 'about' && (
-          <>
-            <h2>Histoire de la Marque (A Propos)</h2>
+          <div className="config-section-wrapper">
+            <div className="config-card">
+              <div className="config-card__header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                <h3>Votre Histoire</h3>
+              </div>
+              <div className="config-card__body">
             <div className="admin-form__grid" style={{ marginBottom: '2rem' }}>
               <div className="form-group form-group--full">
                 <label>Image d'illustration personnelle</label>
@@ -633,9 +685,15 @@ function SiteConfigForm({
                 <textarea id="config-aboutText2" name="aboutText2" rows={3} value={form.aboutText2 || ''} onChange={e => handleChange('aboutText2', e.target.value)} autoComplete="off" />
               </div>
             </div>
+              </div>
+            </div>
 
-            <h2>Processus de Création</h2>
-            <p style={{ color: 'var(--color-gray-500)', fontSize: '0.8rem', marginBottom: '1rem' }}>Les étapes de fabrication affichées sur la page À propos.</p>
+            <div className="config-card">
+              <div className="config-card__header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                <h3>Processus Créatif</h3>
+              </div>
+              <div className="config-card__body">
             {(form.processSteps || []).map((step, index) => (
               <div key={index} style={{ border: '1px solid rgba(201,169,110,0.2)', padding: '1rem', borderRadius: '14px', marginBottom: '1rem', position: 'relative', background: 'rgba(250,246,240,0.5)' }}>
                 <button type="button" className="btn btn--outline btn--sm" style={{ position: 'absolute', top: '10px', right: '10px', padding: '6px 10px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)', background: 'transparent' }} title="Supprimer cette étape" onClick={() => {
@@ -662,9 +720,15 @@ function SiteConfigForm({
               </div>
             ))}
             <button type="button" className="btn btn--outline btn--sm" onClick={() => handleChange('processSteps', [...(form.processSteps || []), { number: (form.processSteps?.length || 0) + 1, title: 'Nouvelle Étape', description: '' }])}>+ Ajouter une étape</button>
+              </div>
+            </div>
 
-            <h2 style={{ marginTop: '3rem' }}>L'Âme des Pierres (Lithothérapie)</h2>
-            <p style={{ color: 'var(--color-gray-500)', fontSize: '0.8rem', marginBottom: '1rem' }}>Les trois valeurs ou bienfaits des pierres affichés sur la page À propos.</p>
+            <div className="config-card">
+              <div className="config-card__header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <h3>L'Âme des Pierres</h3>
+              </div>
+              <div className="config-card__body">
             {(form.lithotherapyValues || []).map((item, index) => (
               <div key={index} style={{ border: '1px solid rgba(201,169,110,0.2)', padding: '1rem', borderRadius: '14px', marginBottom: '1rem', position: 'relative', background: 'rgba(250,246,240,0.5)' }}>
                 <button type="button" className="btn btn--outline btn--sm" style={{ position: 'absolute', top: '10px', right: '10px', padding: '6px 10px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)', background: 'transparent' }} title="Supprimer cette valeur" onClick={() => {
@@ -690,15 +754,20 @@ function SiteConfigForm({
                 </div>
               </div>
             ))}
-            <button type="button" className="btn btn--outline btn--sm" onClick={() => handleChange('lithotherapyValues', [...(form.lithotherapyValues || []), { title: 'Nouveau Bienfait', description: '' }])}>+ Ajouter un bienfait</button>
-          </>
+              </div>
+            </div>
+          </div>
         )}
 
         {/* TAB 4: TESTIMONIALS */}
         {activeTab === 'testimonials' && (
-          <>
-            <h2>Vos Mots Doux (Avis Clients)</h2>
-            <p style={{ color: 'var(--color-gray-500)', fontSize: '0.8rem', marginBottom: '1rem' }}>Saisissez ici les meilleurs retours de vos clients affichés sur la page d'accueil.</p>
+          <div className="config-section-wrapper">
+            <div className="config-card">
+              <div className="config-card__header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <h3>Avis Clients</h3>
+              </div>
+              <div className="config-card__body">
             {(form.testimonials || []).map((t, index) => (
               <div key={index} style={{ border: '1px solid rgba(201,169,110,0.2)', padding: '1rem', borderRadius: '14px', marginBottom: '1rem', position: 'relative', background: 'rgba(250,246,240,0.5)' }}>
                 <button type="button" className="btn btn--outline btn--sm" style={{ position: 'absolute', top: '10px', right: '10px', padding: '6px 10px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)', background: 'transparent' }} title="Supprimer ce témoignage" onClick={() => {
@@ -733,14 +802,20 @@ function SiteConfigForm({
                 </div>
               </div>
             ))}
-            <button type="button" className="btn btn--outline btn--sm" onClick={() => handleChange('testimonials', [...(form.testimonials || []), { id: `t-${Date.now()}`, auteur: 'Nom', note: 5, texte: '' }])}>+ Ajouter un témoignage</button>
-          </>
+              </div>
+            </div>
+          </div>
         )}
 
         {/* TAB 5: MAINTENANCE */}
         {activeTab === 'maintenance' && (
-          <>
-            <h2>Maintenance & Données</h2>
+          <div className="config-section-wrapper">
+            <div className="config-card">
+              <div className="config-card__header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                <h3>Maintenance & Import/Export</h3>
+              </div>
+              <div className="config-card__body">
             <div className="maintenance-section" style={{ background: 'rgba(201,169,110,0.05)', padding: '1.5rem', borderRadius: '16px', border: '1px dashed rgba(201,169,110,0.3)', marginBottom: '1.5rem' }}>
               <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-deep)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
@@ -872,14 +947,19 @@ function SiteConfigForm({
                 Vos modifications sont sauvegardées instantanément sur Firestore et visibles 24h/24.
               </p>
             </div>
-          </>
+              </div>
+            </div>
+          </div>
         )}
 
-        <div className="admin-form__actions" style={{ marginTop: '2rem', borderTop: '1px solid rgba(201,169,110,0.15)', paddingTop: '1.5rem' }}>
+          </div>
+        </div>
+
+        <div className="admin-form__actions" style={{ marginTop: '2rem', borderTop: '1px solid rgba(201,169,110,0.15)', paddingTop: '1.5rem', display: 'flex', justifyContent: 'flex-end' }}>
           {activeTab !== 'maintenance' && (
-            <button type="submit" className="btn btn--primary btn--lg">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-              Enregistrer
+            <button type="submit" className="btn btn--primary btn--lg" style={{ minWidth: '200px' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              Enregistrer les modifications
             </button>
           )}
         </div>
@@ -1363,6 +1443,8 @@ export default function AdminPage() {
                   <div className="admin-search">
                     <svg className="admin-search__icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                     <input
+                      id="admin-search-articles"
+                      name="admin-search-articles"
                       className="admin-search__input"
                       type="text"
                       placeholder="Rechercher un bijou..."
