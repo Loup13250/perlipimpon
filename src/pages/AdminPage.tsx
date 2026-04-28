@@ -1245,6 +1245,9 @@ export default function AdminPage() {
                 <h1 style={{ fontSize: 'var(--text-base)', margin: 0, color: 'var(--color-charcoal)', fontFamily: 'var(--font-display)' }}>Perlimpimpon</h1>
                 <p style={{ fontSize: 'var(--text-xs)', margin: 0, color: 'var(--color-gray-500)' }}>Espace Créatrice</p>
               </div>
+              <a href="/" target="_blank" rel="noopener noreferrer" className="btn--admin-ghost" style={{ padding: '6px 10px', color: 'var(--color-gold-deep)', borderColor: 'rgba(212,175,55,0.3)', background: 'rgba(212,175,55,0.05)' }} title="Voir le site public">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </a>
             </div>
             
             <nav className="admin-sidebar__nav">
