@@ -120,24 +120,17 @@
   .admin-top-banner__nav {
     order: 3;
     width: 100%;
-    overflow-x: auto;
-    justify-content: flex-start;
-    padding-bottom: 4px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: var(--space-sm);
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    flex-wrap: nowrap;
-    display: flex;
+    padding-top: var(--space-xs);
   }
   
   .admin-nav__btn {
-    flex-shrink: 0;
-    padding: 10px 14px;
-    font-size: var(--text-xs);
-  }
-
-  .admin-top-banner__nav::-webkit-scrollbar {
-    display: none;
+    width: 100%;
+    padding: 10px 8px;
+    font-size: 11px;
+    justify-content: center;
   }
   
   .admin-main {
