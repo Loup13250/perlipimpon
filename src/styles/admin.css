@@ -140,15 +140,14 @@ html, body {
   .admin-top-banner__nav {
     width: 100% !important;
     display: flex;
-    justify-content: flex-start;
-    gap: 8px;
-    padding: 10px;
+    justify-content: space-between;
+    gap: 4px;
+    padding: 8px 5px;
     background: rgba(201,169,110,0.06);
     border-radius: 20px;
     box-sizing: border-box;
-    overflow-x: auto;
+    overflow-x: hidden; /* No scroll */
     margin-left: 0 !important;
-    -webkit-overflow-scrolling: touch;
     border: 1px solid rgba(201,169,110,0.1);
   }
 
@@ -161,21 +160,20 @@ html, body {
   }
   
   .admin-nav__btn {
-    flex: 0 0 auto;
-    width: auto;
-    min-width: 100px; /* Larger min-width */
-    padding: 12px 10px;
-    font-size: 11px;
+    flex: 1 1 0; /* Take equal space */
+    min-width: 0;
+    padding: 10px 2px;
+    font-size: 9px;
     flex-direction: column;
     justify-content: center;
-    border-radius: 16px;
-    gap: 6px;
+    border-radius: 12px;
+    gap: 4px;
     background: transparent;
   }
 
   .admin-nav__btn svg {
-    width: 20px !important;
-    height: 20px !important;
+    width: 18px !important;
+    height: 18px !important;
   }
   
   .admin-nav__btn span {
