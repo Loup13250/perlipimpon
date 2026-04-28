@@ -68,6 +68,7 @@ function AdminLogin({ onLogin }: { onLogin: (email: string, password: string) =>
               <label htmlFor="admin-email">Adresse e-mail</label>
               <input
                 id="admin-email"
+                name="admin-email"
                 type="email"
                 placeholder="Entrez votre e-mail"
                 value={email}
@@ -80,6 +81,7 @@ function AdminLogin({ onLogin }: { onLogin: (email: string, password: string) =>
               <label htmlFor="admin-password">Mot de passe</label>
               <input
                 id="admin-password"
+                name="admin-password"
                 type="password"
                 placeholder="Entrez le mot de passe"
                 value={password}
@@ -203,6 +205,7 @@ function ArticleForm({
             <label htmlFor="article-titre">Titre *</label>
             <input
               id="article-titre"
+              name="titre"
               type="text"
               placeholder="Ex : Collier Éclat de Lune"
               value={form.titre}
@@ -217,6 +220,7 @@ function ArticleForm({
             <label htmlFor="article-prix">Prix (€) *</label>
             <input
               id="article-prix"
+              name="prix"
               type="number"
               min="0"
               step="0.01"
@@ -233,6 +237,7 @@ function ArticleForm({
             <label htmlFor="article-categorie">Catégorie</label>
             <select
               id="article-categorie"
+              name="categorie"
               value={form.categorie}
               onChange={(e) => updateField('categorie', e.target.value as Category)}
             >
@@ -247,6 +252,7 @@ function ArticleForm({
             <label htmlFor="article-description">Description</label>
             <textarea
               id="article-description"
+              name="description"
               placeholder="Décrivez ce bijou en détail : matériaux, dimensions, inspiration..."
               value={form.description}
               onChange={(e) => updateField('description', e.target.value)}
@@ -283,6 +289,7 @@ function ArticleForm({
             </label>
             <input
               id="photo-input-field"
+              name="photos"
               type="file"
               accept="image/*"
               multiple
@@ -311,6 +318,8 @@ function ArticleForm({
           <div className="form-group form-group--full" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <label className="beautiful-toggle">
               <input
+                id="toggle-enVedette"
+                name="enVedette"
                 type="checkbox"
                 checked={form.enVedette}
                 onChange={(e) => updateField('enVedette', e.target.checked)}
@@ -324,6 +333,8 @@ function ArticleForm({
 
             <label className="beautiful-toggle">
               <input
+                id="toggle-vendu"
+                name="vendu"
                 type="checkbox"
                 checked={form.vendu}
                 onChange={(e) => updateField('vendu', e.target.checked)}
@@ -436,37 +447,37 @@ function SiteConfigForm({
             <h2>Contact & Réseaux Sociaux</h2>
             <div className="admin-form__grid" style={{ marginBottom: '2rem' }}>
               <div className="form-group">
-                <label>Nom de la Marque</label>
-                <input type="text" value={form.nomMarque} onChange={e => handleChange('nomMarque', e.target.value)} required autoComplete="off" />
+                <label htmlFor="config-nomMarque">Nom de la Marque</label>
+                <input id="config-nomMarque" name="nomMarque" type="text" value={form.nomMarque} onChange={e => handleChange('nomMarque', e.target.value)} required autoComplete="off" />
               </div>
               <div className="form-group">
-                <label>Email de contact</label>
-                <input type="email" value={form.email} onChange={e => handleChange('email', e.target.value)} required autoComplete="off" />
+                <label htmlFor="config-email">Email de contact</label>
+                <input id="config-email" name="email" type="email" value={form.email} onChange={e => handleChange('email', e.target.value)} required autoComplete="off" />
               </div>
               <div className="form-group">
-                <label>Téléphone</label>
-                <input type="text" value={form.telephone} onChange={e => handleChange('telephone', e.target.value)} required autoComplete="off" />
+                <label htmlFor="config-telephone">Téléphone</label>
+                <input id="config-telephone" name="telephone" type="text" value={form.telephone} onChange={e => handleChange('telephone', e.target.value)} required autoComplete="off" />
               </div>
               <div className="form-group">
-                <label>Lien Facebook</label>
-                <input type="url" value={form.facebook} onChange={e => handleChange('facebook', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-facebook">Lien Facebook</label>
+                <input id="config-facebook" name="facebook" type="url" value={form.facebook} onChange={e => handleChange('facebook', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group">
-                <label>Lien Instagram</label>
-                <input type="url" value={form.instagram} onChange={e => handleChange('instagram', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-instagram">Lien Instagram</label>
+                <input id="config-instagram" name="instagram" type="url" value={form.instagram} onChange={e => handleChange('instagram', e.target.value)} autoComplete="off" />
               </div>
             </div>
 
             <h2>Optimisation Moteur de Recherche (SEO)</h2>
             <div className="admin-form__grid">
               <div className="form-group form-group--full">
-                <label>Titre de l'onglet (Meta Title)</label>
-                <input type="text" value={form.metaTitle} onChange={e => handleChange('metaTitle', e.target.value)} required autoComplete="off" />
+                <label htmlFor="config-metaTitle">Titre de l'onglet (Meta Title)</label>
+                <input id="config-metaTitle" name="metaTitle" type="text" value={form.metaTitle} onChange={e => handleChange('metaTitle', e.target.value)} required autoComplete="off" />
                 <small style={{color:'var(--color-gray-500)', marginTop:'4px', display:'block'}}>C'est ce qui s'affiche dans l'onglet du navigateur et tout en haut des résultats Google.</small>
               </div>
               <div className="form-group form-group--full">
-                <label>Description du site (Meta Description)</label>
-                <textarea rows={3} value={form.metaDescription} onChange={e => handleChange('metaDescription', e.target.value)} required autoComplete="off" />
+                <label htmlFor="config-metaDescription">Description du site (Meta Description)</label>
+                <textarea id="config-metaDescription" name="metaDescription" rows={3} value={form.metaDescription} onChange={e => handleChange('metaDescription', e.target.value)} required autoComplete="off" />
                 <small style={{color:'var(--color-gray-500)', marginTop:'4px', display:'block'}}>Un court résumé incitatif (150 caractères idéalement) affiché dans les résultats Google.</small>
               </div>
             </div>
@@ -499,32 +510,32 @@ function SiteConfigForm({
                 </div>
               </div>
               <div className="form-group form-group--full">
-                <label>Surtitre (Au dessus du titre)</label>
-                <input type="text" value={form.heroSubtitle || ''} onChange={e => handleChange('heroSubtitle', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-heroSubtitle">Surtitre (Au dessus du titre)</label>
+                <input id="config-heroSubtitle" name="heroSubtitle" type="text" value={form.heroSubtitle || ''} onChange={e => handleChange('heroSubtitle', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group">
-                <label>Titre principal (Début en blanc)</label>
-                <input type="text" value={form.heroTitle1 || ''} onChange={e => handleChange('heroTitle1', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-heroTitle1">Titre principal (Début en blanc)</label>
+                <input id="config-heroTitle1" name="heroTitle1" type="text" value={form.heroTitle1 || ''} onChange={e => handleChange('heroTitle1', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group">
-                <label>Mot accentué (Fin en italique doré)</label>
-                <input type="text" value={form.heroTitle2 || ''} onChange={e => handleChange('heroTitle2', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-heroTitle2">Mot accentué (Fin en italique doré)</label>
+                <input id="config-heroTitle2" name="heroTitle2" type="text" value={form.heroTitle2 || ''} onChange={e => handleChange('heroTitle2', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group form-group--full">
-                <label>Texte descriptif principal</label>
-                <textarea rows={3} value={form.heroDescription || ''} onChange={e => handleChange('heroDescription', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-heroDescription">Texte descriptif principal</label>
+                <textarea id="config-heroDescription" name="heroDescription" rows={3} value={form.heroDescription || ''} onChange={e => handleChange('heroDescription', e.target.value)} autoComplete="off" />
               </div>
             </div>
 
             <h2>Bandeau d'Appel à l'action (Bas de page)</h2>
             <div className="admin-form__grid">
               <div className="form-group form-group--full">
-                <label>Titre d'accroche</label>
-                <input type="text" value={form.ctaTitle || ''} onChange={e => handleChange('ctaTitle', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-ctaTitle">Titre d'accroche</label>
+                <input id="config-ctaTitle" name="ctaTitle" type="text" value={form.ctaTitle || ''} onChange={e => handleChange('ctaTitle', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group form-group--full">
-                <label>Texte incitatif (Contactez-nous...)</label>
-                <textarea rows={2} value={form.ctaDescription || ''} onChange={e => handleChange('ctaDescription', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-ctaDescription">Texte incitatif (Contactez-nous...)</label>
+                <textarea id="config-ctaDescription" name="ctaDescription" rows={2} value={form.ctaDescription || ''} onChange={e => handleChange('ctaDescription', e.target.value)} autoComplete="off" />
               </div>
             </div>
           </>
@@ -536,30 +547,30 @@ function SiteConfigForm({
             <h2>En-têtes de Pages</h2>
             <div className="admin-form__grid" style={{ marginBottom: '2rem' }}>
               <div className="form-group">
-                <label>Titre Boutique (Nos Créations)</label>
-                <input type="text" value={form.shopTitle || ''} onChange={e => handleChange('shopTitle', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-shopTitle">Titre Boutique (Nos Créations)</label>
+                <input id="config-shopTitle" name="shopTitle" type="text" value={form.shopTitle || ''} onChange={e => handleChange('shopTitle', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group">
-                <label>Sous-titre Boutique</label>
-                <input type="text" value={form.shopSubtitle || ''} onChange={e => handleChange('shopSubtitle', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-shopSubtitle">Sous-titre Boutique</label>
+                <input id="config-shopSubtitle" name="shopSubtitle" type="text" value={form.shopSubtitle || ''} onChange={e => handleChange('shopSubtitle', e.target.value)} autoComplete="off" />
               </div>
               
               <div className="form-group">
-                <label>Titre Contact</label>
-                <input type="text" value={form.contactTitle || ''} onChange={e => handleChange('contactTitle', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-contactTitle">Titre Contact</label>
+                <input id="config-contactTitle" name="contactTitle" type="text" value={form.contactTitle || ''} onChange={e => handleChange('contactTitle', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group">
-                <label>Sous-titre Contact</label>
-                <input type="text" value={form.contactSubtitle || ''} onChange={e => handleChange('contactSubtitle', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-contactSubtitle">Sous-titre Contact</label>
+                <input id="config-contactSubtitle" name="contactSubtitle" type="text" value={form.contactSubtitle || ''} onChange={e => handleChange('contactSubtitle', e.target.value)} autoComplete="off" />
               </div>
 
               <div className="form-group">
-                <label>Surtitre À Propos (Haut de page)</label>
-                <input type="text" value={form.aboutHeroTitle || ''} onChange={e => handleChange('aboutHeroTitle', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-aboutHeroTitle">Surtitre À Propos (Haut de page)</label>
+                <input id="config-aboutHeroTitle" name="aboutHeroTitle" type="text" value={form.aboutHeroTitle || ''} onChange={e => handleChange('aboutHeroTitle', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group">
-                <label>Sous-titre À Propos</label>
-                <input type="text" value={form.aboutHeroSubtitle || ''} onChange={e => handleChange('aboutHeroSubtitle', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-aboutHeroSubtitle">Sous-titre À Propos</label>
+                <input id="config-aboutHeroSubtitle" name="aboutHeroSubtitle" type="text" value={form.aboutHeroSubtitle || ''} onChange={e => handleChange('aboutHeroSubtitle', e.target.value)} autoComplete="off" />
               </div>
             </div>
 
@@ -576,14 +587,14 @@ function SiteConfigForm({
                 </button>
                 <div className="admin-form__grid">
                   <div className="form-group form-group--full">
-                    <label>Titre</label>
-                    <input type="text" value={val.title} autoComplete="off" onChange={e => {
+                    <label htmlFor={`brandValue-title-${index}`}>Titre</label>
+                    <input id={`brandValue-title-${index}`} name={`brandValue-title-${index}`} type="text" value={val.title} autoComplete="off" onChange={e => {
                       const arr = [...form.brandValues]; arr[index] = { ...arr[index], title: e.target.value }; handleChange('brandValues', arr);
                     }} required />
                   </div>
                   <div className="form-group form-group--full">
-                    <label>Description</label>
-                    <textarea rows={2} value={val.description} autoComplete="off" onChange={e => {
+                    <label htmlFor={`brandValue-desc-${index}`}>Description</label>
+                    <textarea id={`brandValue-desc-${index}`} name={`brandValue-desc-${index}`} rows={2} value={val.description} autoComplete="off" onChange={e => {
                       const arr = [...form.brandValues]; arr[index] = { ...arr[index], description: e.target.value }; handleChange('brandValues', arr);
                     }} required />
                   </div>
@@ -610,16 +621,16 @@ function SiteConfigForm({
                 </div>
               </div>
               <div className="form-group form-group--full">
-                <label>Titre principal ("À propos")</label>
-                <input type="text" value={form.aboutTitle || ''} onChange={e => handleChange('aboutTitle', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-aboutTitle">Titre principal ("À propos")</label>
+                <input id="config-aboutTitle" name="aboutTitle" type="text" value={form.aboutTitle || ''} onChange={e => handleChange('aboutTitle', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group form-group--full">
-                <label>Texte descriptif (Paragraphe 1)</label>
-                <textarea rows={3} value={form.aboutText1 || ''} onChange={e => handleChange('aboutText1', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-aboutText1">Texte descriptif (Paragraphe 1)</label>
+                <textarea id="config-aboutText1" name="aboutText1" rows={3} value={form.aboutText1 || ''} onChange={e => handleChange('aboutText1', e.target.value)} autoComplete="off" />
               </div>
               <div className="form-group form-group--full">
-                <label>Texte descriptif (Paragraphe 2)</label>
-                <textarea rows={3} value={form.aboutText2 || ''} onChange={e => handleChange('aboutText2', e.target.value)} autoComplete="off" />
+                <label htmlFor="config-aboutText2">Texte descriptif (Paragraphe 2)</label>
+                <textarea id="config-aboutText2" name="aboutText2" rows={3} value={form.aboutText2 || ''} onChange={e => handleChange('aboutText2', e.target.value)} autoComplete="off" />
               </div>
             </div>
 
@@ -636,14 +647,14 @@ function SiteConfigForm({
                 </button>
                 <div className="admin-form__grid">
                   <div className="form-group">
-                    <label>Étape N° {index + 1} - Titre</label>
-                    <input type="text" value={step.title} autoComplete="off" onChange={e => {
+                    <label htmlFor={`processStep-title-${index}`}>Étape N° {index + 1} - Titre</label>
+                    <input id={`processStep-title-${index}`} name={`processStep-title-${index}`} type="text" value={step.title} autoComplete="off" onChange={e => {
                       const arr = [...form.processSteps]; arr[index] = { ...arr[index], title: e.target.value }; handleChange('processSteps', arr);
                     }} required />
                   </div>
                   <div className="form-group form-group--full">
-                    <label>Description courte</label>
-                    <input type="text" value={step.description} autoComplete="off" onChange={e => {
+                    <label htmlFor={`processStep-desc-${index}`}>Description courte</label>
+                    <input id={`processStep-desc-${index}`} name={`processStep-desc-${index}`} type="text" value={step.description} autoComplete="off" onChange={e => {
                       const arr = [...form.processSteps]; arr[index] = { ...arr[index], description: e.target.value }; handleChange('processSteps', arr);
                     }} required />
                   </div>
@@ -665,14 +676,14 @@ function SiteConfigForm({
                 </button>
                 <div className="admin-form__grid">
                   <div className="form-group form-group--full">
-                    <label>Titre de la valeur</label>
-                    <input type="text" value={item.title} autoComplete="off" onChange={e => {
+                    <label htmlFor={`litho-title-${index}`}>Titre de la valeur</label>
+                    <input id={`litho-title-${index}`} name={`litho-title-${index}`} type="text" value={item.title} autoComplete="off" onChange={e => {
                       const arr = [...form.lithotherapyValues]; arr[index] = { ...arr[index], title: e.target.value }; handleChange('lithotherapyValues', arr);
                     }} required />
                   </div>
                   <div className="form-group form-group--full">
-                    <label>Description (Bienfaits)</label>
-                    <textarea rows={2} value={item.description} autoComplete="off" onChange={e => {
+                    <label htmlFor={`litho-desc-${index}`}>Description (Bienfaits)</label>
+                    <textarea id={`litho-desc-${index}`} name={`litho-desc-${index}`} rows={2} value={item.description} autoComplete="off" onChange={e => {
                       const arr = [...form.lithotherapyValues]; arr[index] = { ...arr[index], description: e.target.value }; handleChange('lithotherapyValues', arr);
                     }} required />
                   </div>
@@ -699,22 +710,22 @@ function SiteConfigForm({
                 </button>
                 <div className="admin-form__grid">
                   <div className="form-group">
-                    <label>Auteur</label>
-                    <input type="text" value={t.auteur} autoComplete="off" onChange={e => {
+                    <label htmlFor={`testimonial-auteur-${index}`}>Auteur</label>
+                    <input id={`testimonial-auteur-${index}`} name={`testimonial-auteur-${index}`} type="text" value={t.auteur} autoComplete="off" onChange={e => {
                       const arr = form.testimonials.map((item, i) => i === index ? { ...item, auteur: e.target.value } : item);
                       handleChange('testimonials', arr);
                     }} required />
                   </div>
                   <div className="form-group">
-                    <label>Note / 5</label>
-                    <input type="number" min="1" max="5" value={t.note} onChange={e => {
+                    <label htmlFor={`testimonial-note-${index}`}>Note / 5</label>
+                    <input id={`testimonial-note-${index}`} name={`testimonial-note-${index}`} type="number" min="1" max="5" value={t.note} onChange={e => {
                       const arr = form.testimonials.map((item, i) => i === index ? { ...item, note: Number(e.target.value) } : item);
                       handleChange('testimonials', arr);
                     }} required />
                   </div>
                   <div className="form-group form-group--full">
-                    <label>Texte (L'avis)</label>
-                    <textarea rows={2} value={t.texte} autoComplete="off" onChange={e => {
+                    <label htmlFor={`testimonial-texte-${index}`}>Texte (L'avis)</label>
+                    <textarea id={`testimonial-texte-${index}`} name={`testimonial-texte-${index}`} rows={2} value={t.texte} autoComplete="off" onChange={e => {
                       const arr = form.testimonials.map((item, i) => i === index ? { ...item, texte: e.target.value } : item);
                       handleChange('testimonials', arr);
                     }} required />
@@ -952,6 +963,8 @@ function CategoriesForm({
             </div>
 
             <input
+              id={`category-name-${index}`}
+              name={`category-name-${index}`}
               type="text"
               value={cat.name}
               onChange={e => updateCategory(index, 'name', e.target.value)}
@@ -967,7 +980,7 @@ function CategoriesForm({
               ) : (
                 <><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> Ajouter une image</>
               )}
-              <input type="file" accept="image/*" style={{ display: 'none' }} onClick={(e) => { (e.target as HTMLInputElement).value = ''; }} onChange={async (e) => {
+              <input id={`category-image-${index}`} name={`category-image-${index}`} type="file" accept="image/*" style={{ display: 'none' }} onClick={(e) => { (e.target as HTMLInputElement).value = ''; }} onChange={async (e) => {
                 const file = e.target.files?.[0];
                 if (file) {
                   try {
@@ -1440,6 +1453,8 @@ export default function AdminPage() {
                     {filteredArticles.length > 0 && (
                       <div className="admin-table__header">
                         <input
+                          id="select-all-checkbox"
+                          name="select-all"
                           type="checkbox"
                           className="article-row__checkbox"
                           checked={selectedIds.size === filteredArticles.length && filteredArticles.length > 0}
@@ -1460,6 +1475,8 @@ export default function AdminPage() {
 
                         <div className="article-row__check">
                           <input
+                            id={`select-article-${article.id}`}
+                            name={`select-article-${article.id}`}
                             type="checkbox"
                             className="article-row__checkbox"
                             checked={selectedIds.has(article.id)}
