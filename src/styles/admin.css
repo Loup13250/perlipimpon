@@ -110,6 +110,11 @@
   
   .admin-top-banner__brand {
     flex: 1;
+    min-width: 50%;
+  }
+
+  .admin-top-banner__actions {
+    order: 2;
   }
   
   .admin-top-banner__nav {
@@ -118,11 +123,19 @@
     overflow-x: auto;
     justify-content: flex-start;
     padding-bottom: 4px;
-    gap: var(--space-xs);
+    gap: var(--space-sm);
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    flex-wrap: nowrap;
+    display: flex;
   }
   
+  .admin-nav__btn {
+    flex-shrink: 0;
+    padding: 10px 14px;
+    font-size: var(--text-xs);
+  }
+
   .admin-top-banner__nav::-webkit-scrollbar {
     display: none;
   }
