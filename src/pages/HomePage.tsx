@@ -3,6 +3,7 @@
  * Ordre e-commerce : Hero compact → Coups de Cœur → Catégories → À Propos → Témoignages → CTA
  */
 
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useArticles } from '../hooks/useArticles';
 import { useConfig } from '../hooks/useConfig';
@@ -12,6 +13,7 @@ import { formatPrice, truncateText } from '../utils/helpers';
 export default function HomePage() {
   const { featuredArticles, articlesLoading } = useArticles();
   const { config } = useConfig();
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const featuredRef = useScrollRevealGroup({}, [featuredArticles]);
   const categoriesRef = useScrollRevealGroup({}, [config.categories]);
   const testimonialsRef = useScrollRevealGroup({}, [config.testimonials]);
@@ -64,7 +66,25 @@ export default function HomePage() {
 
               {featuredArticles.length > 0 ? (
                 <>
-                  <div className="featured__grid" ref={featuredRef}>
+                  <button 
+                    className="view-toggle" 
+                    onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}
+                    aria-label="Changer l'affichage"
+                  >
+                    {viewMode === 'grid' ? (
+                      <>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                        Affichage 1 par 1
+                      </>
+                    ) : (
+                      <>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        Affichage en grille
+                      </>
+                    )}
+                  </button>
+
+                  <div className={`featured__grid ${viewMode === 'list' ? 'is-list-view' : ''}`} ref={featuredRef}>
                     {featuredArticles.slice(0, 6).map((article) => (
                       <Link
                         to={`/creations/${article.id}`}

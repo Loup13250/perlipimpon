@@ -410,6 +410,11 @@
     gap: var(--space-md);
   }
 
+  .featured__grid.is-list-view {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
   .categories__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-md);

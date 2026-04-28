@@ -15,6 +15,7 @@ import CategoryFilter from '../components/CategoryFilter';
 export default function ShopPage() {
   const { articles, articlesLoading } = useArticles();
   const { config, configLoading } = useConfig();
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Récupère le filtre catégorie depuis l'URL si on vient de la page d'accueil
@@ -96,16 +97,35 @@ export default function ShopPage() {
               onCategoryAll={handleCategoryAll}
             />
 
-            {/* Compteur */}
+            {/* Compteur et Toggle */}
             <div className="shop-info-bar">
               <p className="shop-count">
                 {filteredArticles.length} création{filteredArticles.length > 1 ? 's' : ''}
                 {activeCategories.length === 0 && !showCoupsDeCoeur && " au total"}
               </p>
+              
+              <button 
+                className="view-toggle" 
+                onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}
+                aria-label="Changer l'affichage"
+                style={{ margin: 'var(--space-md) 0 0' }}
+              >
+                {viewMode === 'grid' ? (
+                  <>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    Affichage 1 par 1
+                  </>
+                ) : (
+                  <>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    Affichage en grille
+                  </>
+                )}
+              </button>
             </div>
 
             {/* Grille */}
-            <div className="shop-grid" ref={gridRef}>
+            <div className={`shop-grid ${viewMode === 'list' ? 'is-list-view' : ''}`} ref={gridRef}>
               {filteredArticles.length === 0 ? (
                 <div className="shop-empty">
                   <div className="shop-empty__icon">
