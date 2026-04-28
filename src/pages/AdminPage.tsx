@@ -1373,47 +1373,41 @@ export default function AdminPage() {
           </header>
 
           <main className="admin-main">
-            {/* Header Admin Premium (Dashboard Header) */}
-            <div className="admin-header-card">
-              <div className="admin-header__brand">
-                <div className="admin-header__text">
-                  <h2 style={{ color: 'var(--color-cream)', fontSize: '1.8rem', margin: 0, fontFamily: 'var(--font-display)' }}>Bonjour, Créatrice.</h2>
-                  <p style={{ color: 'rgba(250, 246, 240, 0.7)', fontSize: '0.9rem', margin: '4px 0 0 0' }}>Voici un résumé de votre activité aujourd'hui.</p>
-                </div>
-              </div>
-            </div>
 
-            {/* Statistiques rapides */}
-            <div className="admin-stats">
-              <button className="stat-card stat-card--clickable stat-card--gold" onClick={() => { guardedTabChange('articles'); setFilterStatus('all'); setFilterCategory('all'); }}>
-                <div className="stat-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-                <div className="stat-card__content">
-                  <div className="stat-card__value">{articles.length}</div>
-                  <div className="stat-card__label">Créations</div>
-                </div>
-              </button>
-              <button className="stat-card stat-card--clickable stat-card--rose" onClick={() => { guardedTabChange('articles'); setFilterStatus('enVedette'); setFilterCategory('all'); }}>
-                <div className="stat-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-                <div className="stat-card__content">
-                  <div className="stat-card__value">{featuredCount}</div>
-                  <div className="stat-card__label">Coups de Cœur</div>
-                </div>
-              </button>
-              <button className="stat-card stat-card--clickable stat-card--teal" onClick={() => { guardedTabChange('articles'); setFilterStatus('vendu'); setFilterCategory('all'); }}>
-                <div className="stat-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
-                <div className="stat-card__content">
-                  <div className="stat-card__value">{soldCount}</div>
-                  <div className="stat-card__label">Vendus</div>
-                </div>
-              </button>
-              <button className="stat-card stat-card--clickable stat-card--purple" onClick={() => guardedTabChange('categories')}>
-                <div className="stat-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
-                <div className="stat-card__content">
-                  <div className="stat-card__value">{config.categories?.length || 0}</div>
-                  <div className="stat-card__label">Catégories</div>
-                </div>
-              </button>
-            </div>
+
+            {/* Statistiques rapides (Uniquement sur Créations et Catégories) */}
+            {(adminTab === 'articles' || adminTab === 'categories') && (
+              <div className="admin-stats">
+                <button className="stat-card stat-card--clickable stat-card--gold" onClick={() => { guardedTabChange('articles'); setFilterStatus('all'); setFilterCategory('all'); }}>
+                  <div className="stat-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+                  <div className="stat-card__content">
+                    <div className="stat-card__value">{articles.length}</div>
+                    <div className="stat-card__label">Créations</div>
+                  </div>
+                </button>
+                <button className="stat-card stat-card--clickable stat-card--rose" onClick={() => { guardedTabChange('articles'); setFilterStatus('enVedette'); setFilterCategory('all'); }}>
+                  <div className="stat-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+                  <div className="stat-card__content">
+                    <div className="stat-card__value">{featuredCount}</div>
+                    <div className="stat-card__label">Coups de Cœur</div>
+                  </div>
+                </button>
+                <button className="stat-card stat-card--clickable stat-card--teal" onClick={() => { guardedTabChange('articles'); setFilterStatus('vendu'); setFilterCategory('all'); }}>
+                  <div className="stat-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+                  <div className="stat-card__content">
+                    <div className="stat-card__value">{soldCount}</div>
+                    <div className="stat-card__label">Vendus</div>
+                  </div>
+                </button>
+                <button className="stat-card stat-card--clickable stat-card--purple" onClick={() => guardedTabChange('categories')}>
+                  <div className="stat-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+                  <div className="stat-card__content">
+                    <div className="stat-card__value">{config.categories?.length || 0}</div>
+                    <div className="stat-card__label">Catégories</div>
+                  </div>
+                </button>
+              </div>
+            )}
 
           {/* Onglets */}
           {adminTab === 'config' && (
