@@ -7,6 +7,10 @@
    PAGE ADMIN — DASHBOARD LAYOUT
    ═══════════════════════════════════════════ */
 
+* {
+  box-sizing: border-box;
+}
+
 .admin-layout {
   display: flex;
   flex-direction: column;
@@ -15,7 +19,9 @@
   font-family: var(--font-body);
   position: relative;
   overflow-x: hidden;
+  width: 100%;
 }
+
 
 /* Floral watermark background */
 .admin-layout::before {
@@ -105,49 +111,49 @@
    ═══════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .admin-top-banner__inner {
-    padding: var(--space-md);
+    padding: 12px !important;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: 12px;
     align-items: center;
-    width: 100%;
+    width: 100% !important;
     box-sizing: border-box;
-    text-align: center;
   }
   
   .admin-top-banner__brand {
-    width: 100%;
+    width: 100% !important;
     justify-content: center;
-    margin-bottom: 4px;
+    margin-bottom: 0;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }
 
   .admin-top-banner__actions {
-    width: 100%;
+    width: 100% !important;
     justify-content: center;
     order: 2;
-    gap: 12px;
+    gap: 10px;
   }
   
   .admin-top-banner__nav {
     order: 3;
-    width: 100%;
+    width: 100% !important;
     display: flex;
     gap: 4px;
-    padding: 6px;
+    padding: 4px;
     background: rgba(201,169,110,0.05);
-    border-radius: 16px;
+    border-radius: 12px;
     box-sizing: border-box;
   }
   
   .admin-nav__btn {
     flex: 1;
-    padding: 10px 4px;
-    font-size: 9.5px;
+    padding: 10px 2px;
+    font-size: 9px;
     flex-direction: column;
     justify-content: center;
-    border-radius: 12px;
+    border-radius: 10px;
     gap: 4px;
+    min-width: 0;
   }
   
   .admin-nav__btn span {
@@ -157,9 +163,11 @@
   }
   
   .admin-main {
-    padding: var(--space-md);
-    width: 100%;
-    box-sizing: border-box;
+    padding: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
     overflow-x: hidden;
   }
   
@@ -281,6 +289,7 @@
    ═══════════════════════════════════════════ */
 
 .admin-login {
+  width: calc(100% - 32px);
   max-width: 440px;
   margin: var(--space-4xl) auto;
   background: rgba(255, 255, 255, 0.95);
@@ -1568,13 +1577,14 @@
 @media (max-width: 1024px) {
   .admin-config-layout {
     flex-direction: column;
-    width: 100%;
+    width: 100% !important;
     align-items: center;
+    margin: 0 !important;
   }
   .admin-config-sidebar {
-    width: 100%;
+    width: 100% !important;
     position: static;
-    margin-bottom: var(--space-xl);
+    margin-bottom: 24px;
   }
   .admin-subtabs {
     display: grid;
@@ -1583,8 +1593,8 @@
     padding: 10px;
     background: #fff;
     border: 1.5px solid rgba(201, 169, 110, 0.15);
-    border-radius: 20px;
-    width: 100%;
+    border-radius: 16px;
+    width: 100% !important;
     box-sizing: border-box;
     box-shadow: 0 4px 15px rgba(84, 74, 66, 0.05);
   }
@@ -1594,80 +1604,85 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 12px 4px;
+    padding: 12px 2px !important;
     margin-bottom: 0;
     gap: 6px;
-    font-size: 10px;
+    font-size: 9.5px;
     height: auto;
-    border-radius: 12px;
+    border-radius: 10px;
+    min-width: 0;
   }
   
   .admin-subtab__label {
     text-transform: uppercase;
     font-weight: 700;
-    letter-spacing: 0.02em;
-    font-size: 8.5px;
+    letter-spacing: 0.01em;
+    font-size: 8px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
+    padding: 0 2px;
   }
 
   .admin-subtab__icon {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     margin: 0;
-    border-radius: 10px;
+    border-radius: 8px;
   }
 
   .admin-config-content {
-    width: 100%;
-    margin: 0;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .config-card {
-    border-radius: 24px;
-    width: 100%;
-    margin-bottom: var(--space-lg);
+    border-radius: 20px;
+    width: 100% !important;
+    margin-bottom: 16px;
     box-sizing: border-box;
   }
 
   .config-card__header {
     justify-content: center;
-    padding: 18px;
+    padding: 16px;
     text-align: center;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
   }
 
   .config-card__header h3 {
     text-align: center;
     width: 100%;
+    font-size: 1rem;
   }
 
   .config-card__body {
-    padding: 24px 16px;
+    padding: 20px 12px;
   }
 
   .admin-form__grid {
     grid-template-columns: 1fr !important;
-    gap: 24px;
-    width: 100%;
+    gap: 20px;
+    width: 100% !important;
   }
 
   .form-group {
-    width: 100%;
+    width: 100% !important;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 0;
   }
 
   .form-group label {
     text-align: center;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     width: 100%;
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 0.05em;
   }
 
@@ -1676,19 +1691,21 @@
     text-align: center;
     width: 100% !important;
     max-width: 100% !important;
-    box-sizing: border-box;
-    border-radius: 14px !important;
+    box-sizing: border-box !important;
+    border-radius: 12px !important;
+    font-size: 14px !important; /* Prevent zoom on iOS */
   }
 
   .config-card__body .btn {
     width: 100%;
     justify-content: center;
-    padding: 12px;
+    padding: 10px;
   }
 
   .admin-form__actions {
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
+    padding: 0 16px;
   }
 
   .admin-form__actions .btn {
@@ -1698,15 +1715,15 @@
   .admin-image-upload-group {
     flex-direction: column !important;
     align-items: center !important;
-    gap: 16px !important;
+    gap: 12px !important;
     text-align: center;
     width: 100%;
   }
 
   .admin-image-upload-group img {
     margin: 0 auto;
-    width: 120px !important;
-    height: 120px !important;
+    width: 100px !important;
+    height: 100px !important;
   }
 }
 
